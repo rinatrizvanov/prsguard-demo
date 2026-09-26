@@ -181,6 +181,11 @@ scripts/                      setup.sh, install_into_clawbio.py
 
 ## Credits
 
-PRSGuard team, ClawBio Hackathon Challenge 3. The v1 gate (`legacy/v1`) is the hackathon gate by a teammate;
-`equity-lit-auditor` is by the ClawBio Genome Equity hackathon team. Data: PGS Catalog (Lambert et al., Nat Genet
-2021), 1000 Genomes Project Consortium (Nature 2015), Ensembl, Europe PMC.
+PRSGuard was originally developed for ClawBio Hackathon Challenge 3 by:
+
+- Rinat Rizvanov
+- Timur Rizvanov
+- Takato Honda
+- Bradley Sheppard
+
+The post-hackathon development and final integration of PRSGuard were completed by **Rinat Rizvanov**.

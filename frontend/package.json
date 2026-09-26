@@ -1,0 +1,40 @@
+{
+  "name": "prsguard-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PRSGuard research web interface: evidence-aware polygenic score routing (static export; research software, not a medical device).",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "geo:iso3": "node scripts/build-iso3-map.mjs ../skills/equity-lit-auditor/reference/countries.csv lib/geo/iso3.json",
+    "smoke": "node scripts/smoke-check.mjs out"
+  },
+  "engines": {
+    "node": ">=18.18"
+  },
+  "dependencies": {
+    "d3-geo": "^3.1.1",
+    "next": "15.5.26",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "topojson-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@types/d3-geo": "^3.1.0",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/topojson-client": "^3.1.5",
+    "@types/topojson-specification": "^1.0.5",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "15.5.26",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.28"
+  }
+}

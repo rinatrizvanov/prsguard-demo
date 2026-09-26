@@ -1,0 +1,43 @@
+{
+  "description": "EAS exactly at min_eval_fraction counts as evaluated",
+  "expected": {
+    "decision": "PERCENTILE_SUPPORTED",
+    "reason_code": "P_SUPPORTED",
+    "rule_fired": "R11"
+  },
+  "input": {
+    "schema_version": "1.0",
+    "target": {
+      "ancestry_label": "EAS",
+      "ancestry_confidence": 0.95
+    },
+    "prs": {
+      "raw_score": 4.61,
+      "variants_matched": 74,
+      "variants_in_score": 77,
+      "percentile_reference_population": "EAS",
+      "candidate_percentile": 76.1
+    },
+    "pgs": {
+      "pgs_id": "PGS000001",
+      "trait": "Breast cancer",
+      "publication": "Mavaddat N 2015, J Natl Cancer Inst",
+      "eval_ancestry": [
+        {
+          "label": "EUR",
+          "fraction": 0.75
+        },
+        {
+          "label": "EAS",
+          "fraction": 0.05
+        },
+        {
+          "label": "NR",
+          "fraction": 0.2
+        }
+      ],
+      "eval_sample_set_count": 11
+    },
+    "extraction_notes": []
+  }
+}

@@ -1,4 +1,48 @@
+# Node / Next.js
 node_modules/
 .next/
+out/
 .vercel/
-.env*
+frontend/next-env.d.ts
+*.tsbuildinfo
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+*.egg-info/
+
+# Pinned upstream checkout (created by scripts/setup.sh)
+vendor/
+
+# Local runs, caches and private inputs (never commit genomes)
+runs/
+output/
+.cache/
+private_inputs/
+*.23andme.txt
+*.vcf.gz.tbi
+
+# Temporary integration artefacts
+*.patch
+*.zip
+__MACOSX/
+.DS_Store
+
+# Logs, coverage, genomic inputs outside the public demo set
+*.log
+.coverage
+htmlcov/
+uploads/
+*.bam
+*.cram
+*.bai
+*.crai

@@ -1,0 +1,35 @@
+{
+  "description": "Score evaluated only in EUR, AFR target",
+  "expected": {
+    "decision": "RAW_SCORE_ONLY",
+    "reason_code": "R_ANCESTRY_NOT_EVALUATED",
+    "rule_fired": "R8"
+  },
+  "input": {
+    "schema_version": "1.0",
+    "target": {
+      "ancestry_label": "AFR",
+      "ancestry_confidence": 0.95
+    },
+    "prs": {
+      "raw_score": 4.61,
+      "variants_matched": 74,
+      "variants_in_score": 77,
+      "percentile_reference_population": "EUR",
+      "candidate_percentile": 76.1
+    },
+    "pgs": {
+      "pgs_id": "PGS000001",
+      "trait": "Breast cancer",
+      "publication": "Mavaddat N 2015, J Natl Cancer Inst",
+      "eval_ancestry": [
+        {
+          "label": "EUR",
+          "fraction": 1.0
+        }
+      ],
+      "eval_sample_set_count": 11
+    },
+    "extraction_notes": []
+  }
+}

@@ -32,6 +32,32 @@ BORDER = "#fcfcfb"
 A1, A2, A3, A4 = 1.340264, -0.081106, 0.000893, 0.003796
 M = math.sqrt(3) / 2
 
+# Every figure made from the bundled fixture carries this label three ways: in its
+# title, as a watermark across the plot (survives cropping the title off), and as a
+# PNG text chunk (machine-readable: PIL.Image.open(p).text["data_provenance"]).
+SYNTHETIC_LABEL = "SYNTHETIC DEMO"
+SYNTHETIC_COLOR = "#b3261e"
+
+
+def provenance_label(synthetic: bool) -> str:
+    return SYNTHETIC_LABEL if synthetic else "LIVE (Europe PMC / PGS Catalog)"
+
+
+def _titled(title: str, synthetic: bool) -> str:
+    return f"{title} ({SYNTHETIC_LABEL})" if synthetic and SYNTHETIC_LABEL not in title else title
+
+
+def _save(fig, path, title: str, synthetic: bool) -> None:
+    if synthetic:
+        width_in = fig.get_size_inches()[0]   # keep the watermark inside narrow figures
+        fig.text(0.5, 0.5, f"{SYNTHETIC_LABEL} · NOT REAL LITERATURE", fontsize=2.3 * width_in,
+                 color=SYNTHETIC_COLOR, alpha=0.16, rotation=18, ha="center", va="center", weight="bold",
+                 zorder=100)
+    fig.savefig(path, facecolor=SURFACE, metadata={
+        "Title": title, "data_provenance": provenance_label(synthetic), "synthetic": str(bool(synthetic)).lower(),
+        "Software": "ClawBio equity-lit-auditor"})
+    plt.close(fig)
+
 
 def equal_earth(lon: float, lat: float) -> tuple[float, float]:
     lam = math.radians(lon)
@@ -102,8 +128,9 @@ def _projected_polygons(polys):
 
 
 def heatmap_png(country_values: dict[str, float], metric_label: str, title: str, subtitle: str, path,
-                unknown: set[str] | None = None) -> None:
+                unknown: set[str] | None = None, synthetic: bool = False) -> None:
     unknown = unknown or set()
+    title = _titled(title, synthetic)
     shapes = shapes_by_iso3()
     countries = load_countries()
     vals = [v for v in country_values.values() if v > 0]
@@ -152,14 +179,14 @@ def heatmap_png(country_values: dict[str, float], metric_label: str, title: str,
     plt.setp(leg.get_texts(), color=INK_MUTED)
     leg.get_title().set_color(INK)
 
-    fig.text(0.04, 0.955, title, fontsize=14, color=INK, weight="bold", ha="left", va="top")
+    fig.text(0.04, 0.955, title, fontsize=14, color=SYNTHETIC_COLOR if synthetic else INK, weight="bold",
+             ha="left", va="top")
     fig.text(0.04, 0.915, subtitle, fontsize=9, color=INK_MUTED, ha="left", va="top")
     fig.subplots_adjust(left=0.02, right=0.98, top=0.9, bottom=0.02)
-    fig.savefig(path, facecolor=SURFACE)
-    plt.close(fig)
+    _save(fig, path, title, synthetic)
 
 
-def representation_png(ancestry_share: dict[str, float], basis: str, path) -> None:
+def representation_png(ancestry_share: dict[str, float], basis: str, path, synthetic: bool = False) -> None:
     """Horizontal bars: share of participants by ancestry group vs coarse world population share."""
     groups = [g for g in ANCESTRY_GROUPS if g != "ASN" or ancestry_share.get("ASN")]
     world_total = sum(p for _, p in REGION_POPULATION_2022.values())
@@ -196,15 +223,22 @@ def representation_png(ancestry_share: dict[str, float], basis: str, path) -> No
                plt.Line2D([0], [0], color=INK, lw=2, label="World pop. share, matching UN region (2022)")]
     fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.015, 0.935), ncol=2, frameon=False,
                fontsize=7.5, labelcolor=INK_MUTED)
-    fig.suptitle("Who is in the data? Participant ancestry vs world population",
-                 fontsize=11, color=INK, weight="bold", x=0.02, ha="left")
+    title = _titled("Who is in the data? Participant ancestry vs world population", synthetic)
+    fig.suptitle(title, fontsize=11, color=SYNTHETIC_COLOR if synthetic else INK, weight="bold", x=0.02, ha="left")
     fig.tight_layout(rect=(0, 0, 1, 0.9))
-    fig.savefig(path, facecolor=SURFACE)
-    plt.close(fig)
+    _save(fig, path, title, synthetic)
 
 
-def heatmap_html(country_rows: list[dict], metric_label: str, title: str, subtitle: str, path) -> None:
+def heatmap_html(country_rows: list[dict], metric_label: str, title: str, subtitle: str, path,
+                 synthetic: bool = False) -> None:
     """Self-contained interactive map (inline SVG, hover tooltips, table view, light/dark)."""
+    title = _titled(title, synthetic)
+    provenance = provenance_label(synthetic)
+    banner = (f'<p class="synthetic" role="alert"><b>{SYNTHETIC_LABEL}.</b> Every paper, cohort and number on this '
+              "page comes from the bundled synthetic fixture. It is not real literature and must not be cited.</p>"
+              if synthetic else "")
+    watermark = (f'<text class="wm" x="500" y="260" text-anchor="middle" transform="rotate(-12 500 260)">'
+                 f"{SYNTHETIC_LABEL}</text>" if synthetic else "")
     shapes = shapes_by_iso3()
     countries = load_countries()
     vals = [r["value"] for r in country_rows if r["value"] > 0]
@@ -263,9 +297,10 @@ def heatmap_html(country_rows: list[dict], metric_label: str, title: str, subtit
     ramp_classes = "".join(f".c{i}{{fill:var(--c{i})}} .sw.c{i}{{background:var(--c{i})}}" for i in range(len(RAMP)))
 
     page = f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en" data-provenance="{html.escape(provenance)}" data-synthetic="{str(bool(synthetic)).lower()}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Genomic Cohort Map</title>
+<meta name="data-provenance" content="{html.escape(provenance)}">
+<title>{"Genomic Cohort Map (" + SYNTHETIC_LABEL + ")" if synthetic else "Genomic Cohort Map"}</title>
 <style>
 :root {{ --bg:#fcfcfb; --ink:#262624; --muted:#6b6a66; --nd:#e6e5e1; --unk:#b3b1ab; --line:#d4d3cf; --tip:#ffffff; }}
 :root {{ {light_vars}; }}
@@ -291,12 +326,16 @@ th, td {{ text-align:left; padding:6px 8px; border-bottom:1px solid var(--line);
 th {{ color:var(--muted); font-weight:600; }} td.num, th.num {{ text-align:right; font-variant-numeric:tabular-nums; }}
 details summary {{ cursor:pointer; color:var(--muted); margin-bottom:8px; }}
 .wrap {{ overflow-x:auto; }}
+.synthetic {{ border:2px solid #b3261e; color:#b3261e; border-radius:6px; padding:8px 12px; margin:0 0 12px; }}
+h1.synthetic-title {{ color:#b3261e; }}
+.wm {{ fill:#b3261e; opacity:.16; font:bold 64px system-ui,sans-serif; pointer-events:none; stroke:none; }}
 </style></head><body><main>
-<h1>{html.escape(title)}</h1>
+{banner}
+<h1{' class="synthetic-title"' if synthetic else ''}>{html.escape(title)}</h1>
 <p class="sub">{html.escape(subtitle)}</p>
 <svg viewBox="0 0 {W} {H}" role="img" aria-label="{html.escape(title)}">
 <path class="globe" d="{outline_d}"/>
-{''.join(paths)}{''.join(dots)}
+{''.join(paths)}{''.join(dots)}{watermark}
 </svg>
 <div class="legend"><b>{html.escape(metric_label)}</b>{''.join(f'<span>{x}</span>' for x in legend)}</div>
 <details open><summary>Table view ({len(rows_sorted)} countries)</summary>
@@ -305,6 +344,7 @@ details summary {{ cursor:pointer; color:var(--muted); margin-bottom:8px; }}
 <div id="tip"></div>
 </main>
 <script>
+const DATA_PROVENANCE = {json.dumps(provenance)};
 const DATA = {json.dumps(data)};
 const tip = document.getElementById('tip');
 function esc(s) {{ const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }}
@@ -326,14 +366,26 @@ document.querySelectorAll('[data-iso]').forEach(el => {{
 
 # Categorical slots (fixed order, from the ClawBio/dataviz reference palette).
 GROUP_COLORS = {
-    "EUR": "#2a78d6", "AFR": "#eb6834", "EAS": "#1baf7a", "SAS": "#eda100",
+    "EUR": "#2a78d6", "AFR": "#eb6834", "EAS": "#1baf7a", "SAS": "#eda100", "ASN": "#8c6d46",
     "AMR": "#e87ba4", "MID": "#008300", "OCE": "#4a3aa7", "OTHER": "#b3b1ab", "NR": "#e6e5e1",
 }
+# ASN ("Asian unspecified" in the PGS Catalog) has its own slot: folding it into
+# "Multi-ancestry / other" mislabelled single-ancestry Asian samples in the figure.
 GROUP_LABELS = {
     "EUR": "European", "AFR": "African", "EAS": "East/SE Asian", "SAS": "South/Central Asian",
+    "ASN": "Asian (unspecified)",
     "AMR": "Hispanic/Latin American", "MID": "Middle Eastern/N. African", "OCE": "Oceanian",
     "OTHER": "Multi-ancestry / other", "NR": "Not reported",
 }
+
+
+def fold_stage_groups(counts: dict[str, int]) -> dict[str, int]:
+    """Map ancestry codes onto the figure's colour slots (OTH and unknown codes -> OTHER)."""
+    folded: dict[str, int] = {}
+    for g, n in counts.items():
+        key = g if g in GROUP_COLORS else "OTHER"
+        folded[key] = folded.get(key, 0) + n
+    return folded
 
 
 def pgs_stage_png(stages: dict[str, dict[str, int]], path, demo: bool = False) -> None:
@@ -347,10 +399,7 @@ def pgs_stage_png(stages: dict[str, dict[str, int]], path, demo: bool = False) -
     order = list(GROUP_COLORS)
     used = set()
     for i, (st, counts) in enumerate(rows):
-        folded: dict[str, int] = {}
-        for g, n in counts.items():
-            key = g if g in GROUP_COLORS else "OTHER"
-            folded[key] = folded.get(key, 0) + n
+        folded = fold_stage_groups(counts)
         tot = sum(folded.values()) or 1
         left = 0.0
         y = len(rows) - 1 - i
@@ -361,7 +410,7 @@ def pgs_stage_png(stages: dict[str, dict[str, int]], path, demo: bool = False) -
             used.add(g)
             ax.barh(y, share, left=left, height=0.55, color=GROUP_COLORS[g], edgecolor=SURFACE, linewidth=2)
             if share >= 7:
-                ink = "#ffffff" if g in {"EUR", "MID", "OCE", "AFR"} else INK
+                ink = "#ffffff" if g in {"EUR", "MID", "OCE", "AFR", "ASN"} else INK
                 ax.text(left + share / 2, y, f"{share:.0f}%", ha="center", va="center", fontsize=8, color=ink)
             left += share
         ax.text(101, y, f"n = {_fmt(sum(counts.values()))}", va="center", fontsize=8, color=INK_MUTED)
@@ -379,8 +428,7 @@ def pgs_stage_png(stages: dict[str, dict[str, int]], path, demo: bool = False) -
     handles = [Patch(facecolor=GROUP_COLORS[g], label=GROUP_LABELS[g]) for g in order if g in used]
     fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.015, 0.915), ncol=min(5, len(handles)),
                frameon=False, fontsize=7.5, labelcolor=INK_MUTED, handlelength=1.2)
-    fig.suptitle("PGS Catalog: ancestry of participants at each stage" + (" (SYNTHETIC DEMO)" if demo else ""),
-                 fontsize=11, color=INK, weight="bold", x=0.02, ha="left")
+    title = _titled("PGS Catalog: ancestry of participants at each stage", demo)
+    fig.suptitle(title, fontsize=11, color=SYNTHETIC_COLOR if demo else INK, weight="bold", x=0.02, ha="left")
     fig.tight_layout(rect=(0, 0, 1, 0.8 if len(handles) > 4 else 0.85))
-    fig.savefig(path, facecolor=SURFACE)
-    plt.close(fig)
+    _save(fig, path, title, demo)

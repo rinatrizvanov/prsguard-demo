@@ -75,6 +75,18 @@ def broad_to_codes(label: str) -> list[str]:
     return codes or ["NR"]
 
 
+def sample_identity(stage: str, smp: dict) -> tuple:
+    """Identity of one curated sample set within a paper and stage.
+
+    The PGS Catalog repeats the same sample set many times: once per score that
+    reused a GWAS, once per GWAS Catalog accession of one publication (e.g. BMI-
+    adjusted and unadjusted analyses of the same 159,208 people), and once per
+    performance record of a sampleset. Identical (stage, ancestry, N) within one
+    paper is the same people, so it is counted once (as stage_ancestry already did).
+    """
+    return stage, (smp.get("ancestry_broad") or "Not reported").strip(), smp.get("sample_number")
+
+
 def pub_seed(pub: dict | None) -> str | None:
     """Publication dict -> seed ID understood by literature.parse_seed."""
     if not pub:
@@ -141,6 +153,7 @@ class PGSCatalogClient:
     def _paged(self, path: str, params: dict, limit: int) -> list[dict]:
         out: list[dict] = []
         data = self._get(path, {**params, "limit": min(limit, 250)})
+        self.last_count = data.get("count")   # total available, before --pgs-max-scores truncation
         while True:
             out.extend(data.get("results", []) or [])
             nxt = data.get("next")
@@ -153,7 +166,8 @@ class PGSCatalogClient:
         return self._paged("trait/search", {"term": term}, 50)
 
     def scores_for_trait(self, efo_id: str, limit: int) -> list[dict]:
-        return self._paged("score/search", {"trait_id": efo_id, "include_children": 1}, limit)
+        # Direct associations only: this endpoint ignores include_children (see gather()).
+        return self._paged("score/search", {"trait_id": efo_id}, limit)
 
     def scores_by_ids(self, ids: list[str]) -> list[dict]:
         out = []
@@ -161,7 +175,7 @@ class PGSCatalogClient:
             out.extend(self._paged("score/search", {"pgs_ids": ",".join(ids[i:i + 50])}, 50))
         return out
 
-    def performance(self, pgs_id: str, limit: int = 100) -> list[dict]:
+    def performance(self, pgs_id: str, limit: int = 500) -> list[dict]:
         return self._paged("performance/search", {"pgs_id": pgs_id}, limit)
 
 
@@ -175,24 +189,42 @@ class PGSFixtureClient:
         return self.data.get("traits", [])
 
     def scores_for_trait(self, efo_id: str, limit: int) -> list[dict]:
-        return [s for s in self.data.get("scores", {}).values()
-                if any(t.get("id") == efo_id for t in s.get("trait_efo", []))][:limit]
+        found = [s for s in self.data.get("scores", {}).values()
+                 if any(t.get("id") == efo_id for t in s.get("trait_efo", []))]
+        self.last_count = len(found)
+        return found[:limit]
 
     def scores_by_ids(self, ids: list[str]) -> list[dict]:
         scores = self.data.get("scores", {})
         return [scores[i] for i in ids if i in scores]
 
-    def performance(self, pgs_id: str, limit: int = 100) -> list[dict]:
-        return self.data.get("performance", {}).get(pgs_id, [])[:limit]
+    def performance(self, pgs_id: str, limit: int = 500) -> list[dict]:
+        found = self.data.get("performance", {}).get(pgs_id, [])
+        self.last_count = len(found)
+        return found[:limit]
 
 
 def _match_trait(traits: list[dict], term: str) -> list[dict]:
-    """Prefer exact label matches; otherwise every trait whose label contains the term."""
+    """Prefer an exact label, then an exact synonym, then labels containing the term.
+
+    Each returned trait records how it matched (``match``), so the report can say
+    when the last resort (the first search hits, no label or synonym match) was used.
+    """
     t = term.lower().strip()
+
+    def tag(xs: list[dict], how: str) -> list[dict]:
+        return [{**x, "match": how} for x in xs]
+
     exact = [x for x in traits if (x.get("label") or "").lower() == t]
     if exact:
-        return exact
-    return [x for x in traits if t in (x.get("label") or "").lower()] or traits[:3]
+        return tag(exact, "exact label")
+    synonym = [x for x in traits if t in {str(s).lower() for s in x.get("trait_synonyms") or []}]
+    if synonym:
+        return tag(synonym, "exact synonym")
+    contains = [x for x in traits if t in (x.get("label") or "").lower()]
+    if contains:
+        return tag(contains, "label contains term")
+    return tag(traits[:3], "first search hits (no label or synonym match)")
 
 
 def gather(client, trait: str | None, pgs_ids: list[str], max_scores: int, include_eval: bool,
@@ -202,16 +234,38 @@ def gather(client, trait: str | None, pgs_ids: list[str], max_scores: int, inclu
     scores: dict[str, dict] = {}
     if trait:
         res.traits = _match_trait(client.search_traits(trait), trait)
+        # score/search?trait_id=... silently ignores include_children (checked live
+        # 2026-09-26: 'breast cancer' MONDO_0007254 returns 10 scores with or without
+        # it, while the trait lists 184 more under child traits such as breast
+        # carcinoma). The trait record carries both ID lists, so enumerate those and
+        # fetch the scores by ID, lowest PGS IDs first, up to --pgs-max-scores.
+        wanted: list[str] = []
         for tr in res.traits:
-            for s in client.scores_for_trait(tr["id"], max_scores):
+            ids = list(dict.fromkeys([*(tr.get("associated_pgs_ids") or []),
+                                      *(tr.get("child_associated_pgs_ids") or [])]))
+            if ids:
+                tr["scores_available"] = len(ids)
+                wanted.extend(ids)
+            else:  # trait record without ID lists: fall back to the trait_id search
+                for s in client.scores_for_trait(tr["id"], max_scores):
+                    scores.setdefault(s["id"], s)
+                tr["scores_available"] = getattr(client, "last_count", None)
+        wanted = sorted(dict.fromkeys(wanted), key=lambda x: (len(x), x))
+        room = max(0, max_scores - len(scores))
+        if wanted and room:
+            for s in client.scores_by_ids(wanted[:room]):
                 scores.setdefault(s["id"], s)
-                if len(scores) >= max_scores:
-                    break
         log(f"  PGS Catalog: {len(res.traits)} trait(s) matched '{trait}': "
-            + ", ".join(f"{t.get('label')} ({t.get('id')})" for t in res.traits))
+            + ", ".join(f"{t.get('label')} ({t.get('id')}, {t['match']}, "
+                        f"{t['scores_available'] if t['scores_available'] is not None else '?'} scores)"
+                        for t in res.traits))
     if pgs_ids:
-        for s in client.scores_by_ids(pgs_ids):
+        found = client.scores_by_ids(pgs_ids)
+        for s in found:
             scores.setdefault(s["id"], s)
+        missing = [i for i in pgs_ids if i not in {s["id"] for s in found}]
+        if missing:
+            log(f"  warning: PGS Catalog returned no score for {', '.join(missing)}")
     res.scores = list(scores.values())[:max_scores]
 
     for s in res.scores:
@@ -229,10 +283,21 @@ def gather(client, trait: str | None, pgs_ids: list[str], max_scores: int, inclu
             res.links.append(PGSLink(seed, sid, "development", s.get("publication") or {},
                                      list(s.get("samples_training") or [])))
         if include_eval:
-            for perf in client.performance(sid):
+            seen_sets: set = set()
+            perfs = client.performance(sid)
+            total = getattr(client, "last_count", None)
+            if isinstance(total, int) and total > len(perfs):
+                log(f"  warning: {sid}: read {len(perfs)} of {total} PGS Catalog performance records; "
+                    "evaluation publications beyond that are missing")
+            for perf in perfs:
                 pseed = pub_seed(perf.get("publication"))
-                samples = ((perf.get("sampleset") or {}).get("samples")) or []
-                if pseed:
+                sampleset = perf.get("sampleset") or {}
+                samples = sampleset.get("samples") or []
+                # One performance record per metric/covariate model: the same sampleset
+                # (PSS id) is listed many times for one score. Link it once.
+                set_key = (pseed, sampleset.get("id") or tuple(sample_identity("evaluation", s) for s in samples))
+                if pseed and set_key not in seen_sets:
+                    seen_sets.add(set_key)
                     res.links.append(PGSLink(pseed, sid, "evaluation", perf.get("publication") or {}, samples))
     log(f"  PGS Catalog: {len(res.scores)} score(s) -> {len(res.seeds)} linked publication(s)")
     return res
@@ -251,18 +316,20 @@ def curated_records(link: PGSLink) -> list[PopulationRecord]:
         snippet = (f"{link.pgs_id} {link.stage}: {n if n is not None else 'NR'} {broad}"
                    + (f"; {smp.get('ancestry_country')}" if smp.get("ancestry_country") else "")
                    + (f"; cohorts {cohorts}" if cohorts else ""))
+        key = "|".join(str(x) for x in sample_identity(link.stage, smp))
         # N is attributable to a group / country only when the sample set has exactly one.
         n_group = n if len(codes) == 1 else None
         for code in codes:
             recs.append(PopulationRecord(
                 ancestry=code, iso3=None, n=n_group, term=broad, kind="pgs_catalog",
-                section=f"PGS Catalog ({link.stage})", confidence="curated", snippet=snippet,
+                section=f"PGS Catalog ({link.stage})", confidence="curated", snippet=snippet, sample_key=key,
             ))
         for iso in countries:
             recs.append(PopulationRecord(
                 ancestry=codes[0] if len(codes) == 1 else None, iso3=iso,
                 n=n if len(countries) == 1 else None, term=smp.get("ancestry_country") or "",
                 kind="pgs_catalog", section=f"PGS Catalog ({link.stage})", confidence="curated", snippet=snippet,
+                sample_key=key,
             ))
     return recs
 
@@ -281,7 +348,7 @@ def stage_ancestry(res: PGSResult) -> dict[str, dict[str, int]]:
             if not isinstance(n, (int, float)):
                 continue
             codes = broad_to_codes(smp.get("ancestry_broad") or "Not reported")
-            key = (link.stage, link.seed, smp.get("ancestry_broad"), n)
+            key = (link.seed, *sample_identity(link.stage, smp))
             if key in seen:
                 continue
             seen.add(key)

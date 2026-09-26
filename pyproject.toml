@@ -1,0 +1,46 @@
+[project]
+name = "prsguard"
+version = "1.0.0"
+description = "Trait-first, evidence-aware polygenic score router and applicability gate built on ClawBio"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "matplotlib>=3.7",
+    "pyyaml>=6.0",
+    "requests>=2.31",
+    "opentelemetry-sdk>=1.20,<2",
+]
+
+[project.optional-dependencies]
+# Only needed to (re)build the 1000 Genomes reference panel from the public FTP.
+reference = ["pysam>=0.22"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+prsguard = "prsguard.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["prsguard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "skills/prs-applicability-gate/tests", "skills/prs-applicability-gate/legacy/v1/evals", "skills/equity-lit-auditor/tests"]
+addopts = "--import-mode=importlib -p no:cacheprovider"
+markers = ["network: live external API calls (set RUN_LIVE_TESTS=1; PRSGUARD_LIVE_TESTS=1 also accepted)", "slow: long-running"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["skills/prs-applicability-gate/legacy", "vendor", "frontend"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E731", "B905"]

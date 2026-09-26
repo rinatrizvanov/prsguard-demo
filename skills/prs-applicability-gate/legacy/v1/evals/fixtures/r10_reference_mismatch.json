@@ -1,0 +1,43 @@
+{
+  "description": "EAS target, percentile referenced against EUR",
+  "expected": {
+    "decision": "RAW_SCORE_ONLY",
+    "reason_code": "R_PERCENTILE_REFERENCE_MISMATCH",
+    "rule_fired": "R10"
+  },
+  "input": {
+    "schema_version": "1.0",
+    "target": {
+      "ancestry_label": "EAS",
+      "ancestry_confidence": 0.95
+    },
+    "prs": {
+      "raw_score": 4.61,
+      "variants_matched": 74,
+      "variants_in_score": 77,
+      "percentile_reference_population": "EUR",
+      "candidate_percentile": 76.1
+    },
+    "pgs": {
+      "pgs_id": "PGS000001",
+      "trait": "Breast cancer",
+      "publication": "Mavaddat N 2015, J Natl Cancer Inst",
+      "eval_ancestry": [
+        {
+          "label": "EUR",
+          "fraction": 0.727
+        },
+        {
+          "label": "EAS",
+          "fraction": 0.091
+        },
+        {
+          "label": "NR",
+          "fraction": 0.182
+        }
+      ],
+      "eval_sample_set_count": 11
+    },
+    "extraction_notes": []
+  }
+}

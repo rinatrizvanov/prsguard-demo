@@ -1,0 +1,9771 @@
+{
+ "benchmark": "reference placement, leave-one-out",
+ "panel_sha256": "b11b9274bcf24f750f60a1eff1364d2bcf4df96211415311fd96385ae9718b40",
+ "seed": 20260926,
+ "bootstrap": 50,
+ "k_pcs": 4,
+ "cloud_quantile": 0.999,
+ "ref_per_group": 100,
+ "n_jobs": 503,
+ "runtime_s": 260.5,
+ "summary": {
+  "core": {
+   "AFR": {
+    "n": 40,
+    "resolved_correct": 40,
+    "resolved_wrong": 0,
+    "intermediate": 0,
+    "unstable": 0
+   },
+   "EUR": {
+    "n": 40,
+    "resolved_correct": 38,
+    "resolved_wrong": 0,
+    "intermediate": 1,
+    "unstable": 1
+   },
+   "EAS": {
+    "n": 40,
+    "resolved_correct": 39,
+    "resolved_wrong": 0,
+    "intermediate": 0,
+    "unstable": 1
+   },
+   "SAS": {
+    "n": 40,
+    "resolved_correct": 38,
+    "resolved_wrong": 0,
+    "intermediate": 0,
+    "unstable": 2
+   },
+   "AMR": {
+    "n": 8,
+    "resolved_correct": 8,
+    "resolved_wrong": 0,
+    "intermediate": 0,
+    "unstable": 0
+   }
+  },
+  "admixed": {
+   "ASW": {
+    "n": 25,
+    "outcomes": {
+     "RESOLVED:AFR": 3,
+     "INTERMEDIATE": 20,
+     "RESOLVED:AMR": 1,
+     "UNSTABLE": 1
+    },
+    "median_max_admixture_component": 0.823,
+    "resolved_max_component": [
+     0.654,
+     0.906,
+     0.906,
+     0.91
+    ]
+   },
+   "ACB": {
+    "n": 25,
+    "outcomes": {
+     "UNSTABLE": 4,
+     "RESOLVED:AFR": 12,
+     "INTERMEDIATE": 9
+    },
+    "median_max_admixture_component": 0.91,
+    "resolved_max_component": [
+     0.887,
+     0.909,
+     0.925,
+     0.926,
+     0.927,
+     0.93,
+     0.948,
+     0.95,
+     0.964,
+     0.973,
+     0.976,
+     0.99
+    ]
+   },
+   "MXL": {
+    "n": 25,
+    "outcomes": {
+     "RESOLVED:AMR": 17,
+     "UNSTABLE": 4,
+     "INTERMEDIATE": 3,
+     "RESOLVED:EUR": 1
+    },
+    "median_max_admixture_component": 0.606,
+    "resolved_max_component": [
+     0.468,
+     0.47,
+     0.519,
+     0.529,
+     0.544,
+     0.561,
+     0.562,
+     0.577,
+     0.606,
+     0.607,
+     0.66,
+     0.686,
+     0.702,
+     0.769,
+     0.798,
+     0.894,
+     0.946,
+     0.965
+    ]
+   },
+   "PUR": {
+    "n": 25,
+    "outcomes": {
+     "INTERMEDIATE": 18,
+     "UNSTABLE": 5,
+     "RESOLVED:AMR": 2
+    },
+    "median_max_admixture_component": 0.655,
+    "resolved_max_component": [
+     0.537,
+     0.607
+    ]
+   },
+   "CLM": {
+    "n": 25,
+    "outcomes": {
+     "RESOLVED:AMR": 13,
+     "UNSTABLE": 6,
+     "INTERMEDIATE": 4,
+     "RESOLVED:EUR": 2
+    },
+    "median_max_admixture_component": 0.565,
+    "resolved_max_component": [
+     0.394,
+     0.463,
+     0.474,
+     0.48,
+     0.482,
+     0.487,
+     0.488,
+     0.517,
+     0.525,
+     0.533,
+     0.565,
+     0.578,
+     0.666,
+     0.92,
+     0.938
+    ]
+   }
+  },
+  "sparsity": {
+   "50": {
+    "n": 30,
+    "resolved": 4,
+    "resolved_correct": 4,
+    "resolved_wrong": 0,
+    "median_stability": 0.73
+   },
+   "100": {
+    "n": 30,
+    "resolved": 9,
+    "resolved_correct": 9,
+    "resolved_wrong": 0,
+    "median_stability": 0.84
+   },
+   "200": {
+    "n": 30,
+    "resolved": 21,
+    "resolved_correct": 21,
+    "resolved_wrong": 0,
+    "median_stability": 0.98
+   },
+   "400": {
+    "n": 30,
+    "resolved": 29,
+    "resolved_correct": 29,
+    "resolved_wrong": 0,
+    "median_stability": 1.0
+   },
+   "800": {
+    "n": 30,
+    "resolved": 30,
+    "resolved_correct": 30,
+    "resolved_wrong": 0,
+    "median_stability": 1.0
+   },
+   "1600": {
+    "n": 30,
+    "resolved": 30,
+    "resolved_correct": 30,
+    "resolved_wrong": 0,
+    "median_stability": 1.0
+   },
+   "3200": {
+    "n": 30,
+    "resolved": 30,
+    "resolved_correct": 30,
+    "resolved_wrong": 0,
+    "median_stability": 1.0
+   }
+  }
+ },
+ "rows": [
+  {
+   "kind": "admixed",
+   "sample": "HG02429",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.88,
+   "d2_nearest": 12.299,
+   "admixture": {
+    "AFR": 0.926,
+    "EUR": 0.062,
+    "EAS": 0.004,
+    "SAS": 0.008,
+    "AMR": 0.0
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02497",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 7.706,
+   "admixture": {
+    "AFR": 0.964,
+    "EUR": 0.001,
+    "EAS": 0.031,
+    "SAS": 0.001,
+    "AMR": 0.003
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02558",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 12.122,
+   "admixture": {
+    "AFR": 0.909,
+    "EUR": 0.068,
+    "EAS": 0.0,
+    "SAS": 0.02,
+    "AMR": 0.002
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02433",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.64,
+   "d2_nearest": 29.824,
+   "admixture": {
+    "AFR": 0.881,
+    "EUR": 0.06,
+    "EAS": 0.012,
+    "SAS": 0.023,
+    "AMR": 0.023
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02095",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 11.893,
+   "admixture": {
+    "AFR": 0.93,
+    "EUR": 0.055,
+    "EAS": 0.001,
+    "SAS": 0.013,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01958",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.86,
+   "d2_nearest": 36.538,
+   "admixture": {
+    "AFR": 0.858,
+    "EUR": 0.083,
+    "EAS": 0.005,
+    "SAS": 0.007,
+    "AMR": 0.047
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02323",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.332,
+   "admixture": {
+    "AFR": 0.948,
+    "EUR": 0.036,
+    "EAS": 0.003,
+    "SAS": 0.01,
+    "AMR": 0.002
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02332",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.26,
+   "d2_nearest": 20.248,
+   "admixture": {
+    "AFR": 0.91,
+    "EUR": 0.084,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.005
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02317",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 10.817,
+   "admixture": {
+    "AFR": 0.95,
+    "EUR": 0.027,
+    "EAS": 0.019,
+    "SAS": 0.004,
+    "AMR": 0.0
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01890",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.54,
+   "d2_nearest": 23.745,
+   "admixture": {
+    "AFR": 0.874,
+    "EUR": 0.105,
+    "EAS": 0.001,
+    "SAS": 0.014,
+    "AMR": 0.007
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01889",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.28,
+   "admixture": {
+    "AFR": 0.99,
+    "EUR": 0.007,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02439",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 6.979,
+   "admixture": {
+    "AFR": 0.926,
+    "EUR": 0.054,
+    "EAS": 0.012,
+    "SAS": 0.004,
+    "AMR": 0.004
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02496",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 8.516,
+   "admixture": {
+    "AFR": 0.925,
+    "EUR": 0.057,
+    "EAS": 0.001,
+    "SAS": 0.009,
+    "AMR": 0.007
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02014",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.32,
+   "d2_nearest": 19.994,
+   "admixture": {
+    "AFR": 0.874,
+    "EUR": 0.099,
+    "EAS": 0.016,
+    "SAS": 0.009,
+    "AMR": 0.003
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01914",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.96,
+   "d2_nearest": 36.446,
+   "admixture": {
+    "AFR": 0.837,
+    "EUR": 0.115,
+    "EAS": 0.004,
+    "SAS": 0.032,
+    "AMR": 0.012
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02546",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.92,
+   "d2_nearest": 14.222,
+   "admixture": {
+    "AFR": 0.925,
+    "EUR": 0.06,
+    "EAS": 0.004,
+    "SAS": 0.005,
+    "AMR": 0.005
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02013",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.148,
+   "admixture": {
+    "AFR": 0.976,
+    "EUR": 0.006,
+    "EAS": 0.004,
+    "SAS": 0.005,
+    "AMR": 0.009
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02536",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 41.259,
+   "admixture": {
+    "AFR": 0.816,
+    "EUR": 0.148,
+    "EAS": 0.002,
+    "SAS": 0.032,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02484",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.74,
+   "d2_nearest": 16.062,
+   "admixture": {
+    "AFR": 0.89,
+    "EUR": 0.1,
+    "EAS": 0.002,
+    "SAS": 0.008,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02577",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 70.48,
+   "admixture": {
+    "AFR": 0.756,
+    "EUR": 0.213,
+    "EAS": 0.003,
+    "SAS": 0.028,
+    "AMR": 0.0
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02284",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.82,
+   "d2_nearest": 28.262,
+   "admixture": {
+    "AFR": 0.849,
+    "EUR": 0.118,
+    "EAS": 0.001,
+    "SAS": 0.031,
+    "AMR": 0.002
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02450",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 10.69,
+   "admixture": {
+    "AFR": 0.927,
+    "EUR": 0.068,
+    "EAS": 0.001,
+    "SAS": 0.003,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02477",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 12.408,
+   "admixture": {
+    "AFR": 0.887,
+    "EUR": 0.079,
+    "EAS": 0.006,
+    "SAS": 0.027,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02545",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.8,
+   "d2_nearest": 17.375,
+   "admixture": {
+    "AFR": 0.908,
+    "EUR": 0.078,
+    "EAS": 0.001,
+    "SAS": 0.006,
+    "AMR": 0.007
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG02318",
+   "pop": "ACB",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.624,
+   "admixture": {
+    "AFR": 0.973,
+    "EUR": 0.016,
+    "EAS": 0.0,
+    "SAS": 0.011,
+    "AMR": 0.0
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19920",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.96,
+   "d2_nearest": 12.759,
+   "admixture": {
+    "AFR": 0.91,
+    "EUR": 0.041,
+    "EAS": 0.011,
+    "SAS": 0.004,
+    "AMR": 0.033
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20357",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 10.952,
+   "admixture": {
+    "AFR": 0.906,
+    "EUR": 0.07,
+    "EAS": 0.006,
+    "SAS": 0.013,
+    "AMR": 0.005
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19922",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 108.97,
+   "admixture": {
+    "AFR": 0.699,
+    "EUR": 0.246,
+    "EAS": 0.004,
+    "SAS": 0.031,
+    "AMR": 0.02
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20294",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.86,
+   "d2_nearest": 27.992,
+   "admixture": {
+    "AFR": 0.858,
+    "EUR": 0.122,
+    "EAS": 0.0,
+    "SAS": 0.012,
+    "AMR": 0.007
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20296",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 76.856,
+   "admixture": {
+    "AFR": 0.769,
+    "EUR": 0.169,
+    "EAS": 0.004,
+    "SAS": 0.017,
+    "AMR": 0.041
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19700",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 44.115,
+   "admixture": {
+    "AFR": 0.823,
+    "EUR": 0.136,
+    "EAS": 0.014,
+    "SAS": 0.007,
+    "AMR": 0.02
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19625",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 100.908,
+   "admixture": {
+    "AFR": 0.648,
+    "EUR": 0.047,
+    "EAS": 0.025,
+    "SAS": 0.028,
+    "AMR": 0.251
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20274",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 23.693,
+   "admixture": {
+    "AFR": 0.304,
+    "EUR": 0.078,
+    "EAS": 0.039,
+    "SAS": 0.066,
+    "AMR": 0.513
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20342",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 88.806,
+   "admixture": {
+    "AFR": 0.614,
+    "EUR": 0.338,
+    "EAS": 0.01,
+    "SAS": 0.012,
+    "AMR": 0.026
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19921",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 77.841,
+   "admixture": {
+    "AFR": 0.583,
+    "EUR": 0.267,
+    "EAS": 0.055,
+    "SAS": 0.036,
+    "AMR": 0.059
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20351",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 101.857,
+   "admixture": {
+    "AFR": 0.67,
+    "EUR": 0.314,
+    "EAS": 0.001,
+    "SAS": 0.012,
+    "AMR": 0.004
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20314",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 6.845,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.231,
+    "EAS": 0.084,
+    "SAS": 0.03,
+    "AMR": 0.654
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20346",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 48.312,
+   "admixture": {
+    "AFR": 0.82,
+    "EUR": 0.115,
+    "EAS": 0.012,
+    "SAS": 0.008,
+    "AMR": 0.045
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19923",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 85.0,
+   "admixture": {
+    "AFR": 0.607,
+    "EUR": 0.324,
+    "EAS": 0.001,
+    "SAS": 0.067,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20289",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 69.419,
+   "admixture": {
+    "AFR": 0.779,
+    "EUR": 0.187,
+    "EAS": 0.001,
+    "SAS": 0.031,
+    "AMR": 0.002
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19704",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.88,
+   "d2_nearest": 31.551,
+   "admixture": {
+    "AFR": 0.863,
+    "EUR": 0.133,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.003
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19982",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 9.55,
+   "admixture": {
+    "AFR": 0.906,
+    "EUR": 0.074,
+    "EAS": 0.003,
+    "SAS": 0.008,
+    "AMR": 0.009
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20281",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.8,
+   "d2_nearest": 27.466,
+   "admixture": {
+    "AFR": 0.842,
+    "EUR": 0.136,
+    "EAS": 0.007,
+    "SAS": 0.009,
+    "AMR": 0.006
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20340",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 37.827,
+   "admixture": {
+    "AFR": 0.824,
+    "EUR": 0.159,
+    "EAS": 0.006,
+    "SAS": 0.008,
+    "AMR": 0.004
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19711",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.92,
+   "d2_nearest": 14.912,
+   "admixture": {
+    "AFR": 0.892,
+    "EUR": 0.087,
+    "EAS": 0.013,
+    "SAS": 0.004,
+    "AMR": 0.004
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20355",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.92,
+   "d2_nearest": 34.309,
+   "admixture": {
+    "AFR": 0.824,
+    "EUR": 0.149,
+    "EAS": 0.005,
+    "SAS": 0.016,
+    "AMR": 0.006
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19835",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 38.96,
+   "admixture": {
+    "AFR": 0.836,
+    "EUR": 0.121,
+    "EAS": 0.034,
+    "SAS": 0.007,
+    "AMR": 0.001
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19712",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.42,
+   "d2_nearest": 18.934,
+   "admixture": {
+    "AFR": 0.884,
+    "EUR": 0.092,
+    "EAS": 0.002,
+    "SAS": 0.021,
+    "AMR": 0.002
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA20348",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 0.76,
+   "d2_nearest": 29.146,
+   "admixture": {
+    "AFR": 0.838,
+    "EUR": 0.113,
+    "EAS": 0.021,
+    "SAS": 0.018,
+    "AMR": 0.01
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19713",
+   "pop": "ASW",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 92.699,
+   "admixture": {
+    "AFR": 0.727,
+    "EUR": 0.241,
+    "EAS": 0.006,
+    "SAS": 0.019,
+    "AMR": 0.007
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "core",
+   "sample": "HG03803",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.98,
+   "d2_nearest": 8.116,
+   "admixture": {
+    "AFR": 0.005,
+    "EUR": 0.016,
+    "EAS": 0.09,
+    "SAS": 0.883,
+    "AMR": 0.005
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03916",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.98,
+   "d2_nearest": 14.897,
+   "admixture": {
+    "AFR": 0.017,
+    "EUR": 0.01,
+    "EAS": 0.118,
+    "SAS": 0.854,
+    "AMR": 0.002
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03814",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 10.362,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.009,
+    "EAS": 0.13,
+    "SAS": 0.856,
+    "AMR": 0.003
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03595",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.94,
+   "d2_nearest": 15.132,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.025,
+    "EAS": 0.134,
+    "SAS": 0.806,
+    "AMR": 0.032
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03594",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.98,
+   "d2_nearest": 12.042,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.019,
+    "EAS": 0.125,
+    "SAS": 0.838,
+    "AMR": 0.017
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG04180",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 5.487,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.016,
+    "EAS": 0.055,
+    "SAS": 0.909,
+    "AMR": 0.014
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03928",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.98,
+   "d2_nearest": 10.481,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.008,
+    "EAS": 0.099,
+    "SAS": 0.892,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03908",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 5.849,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.015,
+    "EAS": 0.078,
+    "SAS": 0.902,
+    "AMR": 0.003
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01801",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.88,
+   "d2_nearest": 18.289,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.0,
+    "EAS": 0.991,
+    "SAS": 0.001,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02367",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 6.373,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.994,
+    "SAS": 0.006,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02408",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 6.224,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.001,
+    "EAS": 0.984,
+    "SAS": 0.012,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02395",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.98,
+   "d2_nearest": 13.149,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.003,
+    "EAS": 0.969,
+    "SAS": 0.021,
+    "AMR": 0.006
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01809",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.264,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.996,
+    "SAS": 0.003,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01811",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.725,
+   "admixture": {
+    "AFR": 0.009,
+    "EUR": 0.0,
+    "EAS": 0.988,
+    "SAS": 0.0,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02401",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 4.199,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.999,
+    "SAS": 0.0,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02386",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.933,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.0,
+    "EAS": 0.974,
+    "SAS": 0.013,
+    "AMR": 0.009
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA12272",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.532,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.996,
+    "EAS": 0.0,
+    "SAS": 0.002,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA12762",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 3.873,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.981,
+    "EAS": 0.0,
+    "SAS": 0.019,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA12872",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.154,
+   "admixture": {
+    "AFR": 0.008,
+    "EUR": 0.942,
+    "EAS": 0.004,
+    "SAS": 0.027,
+    "AMR": 0.019
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA11932",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.619,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.987,
+    "EAS": 0.0,
+    "SAS": 0.01,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA12718",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 10.334,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.978,
+    "EAS": 0.0,
+    "SAS": 0.02,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA11931",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 7.93,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.958,
+    "EAS": 0.001,
+    "SAS": 0.015,
+    "AMR": 0.026
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA12234",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.9,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.995,
+    "EAS": 0.0,
+    "SAS": 0.003,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA12347",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 8.327,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.939,
+    "EAS": 0.002,
+    "SAS": 0.049,
+    "AMR": 0.009
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18563",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 8.537,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.001,
+    "EAS": 0.953,
+    "SAS": 0.009,
+    "AMR": 0.037
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18533",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.052,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.002,
+    "EAS": 0.989,
+    "SAS": 0.002,
+    "AMR": 0.007
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18602",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 4.358,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.956,
+    "SAS": 0.002,
+    "AMR": 0.041
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18557",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.172,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.995,
+    "SAS": 0.002,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18571",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 9.533,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.987,
+    "SAS": 0.002,
+    "AMR": 0.01
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18526",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 0.671,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18740",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 0.991,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.997,
+    "SAS": 0.0,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18616",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.29,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.99,
+    "SAS": 0.001,
+    "AMR": 0.009
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00449",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.98,
+   "d2_nearest": 5.816,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.992,
+    "SAS": 0.002,
+    "AMR": 0.006
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00458",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.809,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.997,
+    "SAS": 0.001,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00705",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.658,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00409",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.019,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.999,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00581",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 5.468,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.986,
+    "SAS": 0.001,
+    "AMR": 0.013
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00421",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 6.822,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.999,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00690",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 0.871,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.0,
+    "EAS": 0.997,
+    "SAS": 0.0,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00410",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 2.56,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.988,
+    "SAS": 0.003,
+    "AMR": 0.008
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01456",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 9.33,
+   "admixture": {
+    "AFR": 0.051,
+    "EUR": 0.482,
+    "EAS": 0.01,
+    "SAS": 0.019,
+    "AMR": 0.437
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01137",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.84,
+   "d2_nearest": 17.415,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.57,
+    "EAS": 0.016,
+    "SAS": 0.063,
+    "AMR": 0.347
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01134",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.94,
+   "d2_nearest": 15.32,
+   "admixture": {
+    "AFR": 0.143,
+    "EUR": 0.613,
+    "EAS": 0.011,
+    "SAS": 0.018,
+    "AMR": 0.215
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01497",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 12.455,
+   "admixture": {
+    "AFR": 0.052,
+    "EUR": 0.487,
+    "EAS": 0.045,
+    "SAS": 0.06,
+    "AMR": 0.356
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01345",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.92,
+   "d2_nearest": 20.264,
+   "admixture": {
+    "AFR": 0.048,
+    "EUR": 0.708,
+    "EAS": 0.005,
+    "SAS": 0.023,
+    "AMR": 0.216
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01139",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 12.683,
+   "admixture": {
+    "AFR": 0.144,
+    "EUR": 0.488,
+    "EAS": 0.022,
+    "SAS": 0.041,
+    "AMR": 0.306
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01360",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.88,
+   "d2_nearest": 16.752,
+   "admixture": {
+    "AFR": 0.029,
+    "EUR": 0.642,
+    "EAS": 0.008,
+    "SAS": 0.035,
+    "AMR": 0.287
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01142",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 13.015,
+   "admixture": {
+    "AFR": 0.209,
+    "EUR": 0.33,
+    "EAS": 0.007,
+    "SAS": 0.061,
+    "AMR": 0.394
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01375",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 11.27,
+   "admixture": {
+    "AFR": 0.149,
+    "EUR": 0.48,
+    "EAS": 0.006,
+    "SAS": 0.021,
+    "AMR": 0.345
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01366",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 13.781,
+   "admixture": {
+    "AFR": 0.108,
+    "EUR": 0.578,
+    "EAS": 0.012,
+    "SAS": 0.008,
+    "AMR": 0.294
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01444",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 12.461,
+   "admixture": {
+    "AFR": 0.091,
+    "EUR": 0.533,
+    "EAS": 0.045,
+    "SAS": 0.046,
+    "AMR": 0.286
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01438",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.98,
+   "d2_nearest": 12.027,
+   "admixture": {
+    "AFR": 0.003,
+    "EUR": 0.92,
+    "EAS": 0.009,
+    "SAS": 0.048,
+    "AMR": 0.019
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01486",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 13.79,
+   "admixture": {
+    "AFR": 0.03,
+    "EUR": 0.565,
+    "EAS": 0.002,
+    "SAS": 0.012,
+    "AMR": 0.391
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01112",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 8.536,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.938,
+    "EAS": 0.0,
+    "SAS": 0.01,
+    "AMR": 0.047
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01441",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 8.646,
+   "admixture": {
+    "AFR": 0.014,
+    "EUR": 0.434,
+    "EAS": 0.033,
+    "SAS": 0.056,
+    "AMR": 0.463
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01479",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.52,
+   "d2_nearest": 27.551,
+   "admixture": {
+    "AFR": 0.023,
+    "EUR": 0.791,
+    "EAS": 0.013,
+    "SAS": 0.042,
+    "AMR": 0.132
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01342",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 30.209,
+   "admixture": {
+    "AFR": 0.365,
+    "EUR": 0.384,
+    "EAS": 0.01,
+    "SAS": 0.028,
+    "AMR": 0.213
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01280",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.9,
+   "d2_nearest": 15.738,
+   "admixture": {
+    "AFR": 0.033,
+    "EUR": 0.625,
+    "EAS": 0.005,
+    "SAS": 0.033,
+    "AMR": 0.304
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01344",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 11.587,
+   "admixture": {
+    "AFR": 0.018,
+    "EUR": 0.45,
+    "EAS": 0.01,
+    "SAS": 0.047,
+    "AMR": 0.474
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01498",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 11.569,
+   "admixture": {
+    "AFR": 0.054,
+    "EUR": 0.525,
+    "EAS": 0.031,
+    "SAS": 0.03,
+    "AMR": 0.359
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01462",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.4,
+   "d2_nearest": 18.45,
+   "admixture": {
+    "AFR": 0.285,
+    "EUR": 0.303,
+    "EAS": 0.013,
+    "SAS": 0.043,
+    "AMR": 0.355
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01443",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.433,
+   "admixture": {
+    "AFR": 0.027,
+    "EUR": 0.288,
+    "EAS": 0.004,
+    "SAS": 0.015,
+    "AMR": 0.666
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01356",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 13.566,
+   "admixture": {
+    "AFR": 0.054,
+    "EUR": 0.517,
+    "EAS": 0.029,
+    "SAS": 0.06,
+    "AMR": 0.34
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01359",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.76,
+   "d2_nearest": 24.478,
+   "admixture": {
+    "AFR": 0.032,
+    "EUR": 0.647,
+    "EAS": 0.006,
+    "SAS": 0.072,
+    "AMR": 0.242
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01447",
+   "pop": "CLM",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.92,
+   "d2_nearest": 16.356,
+   "admixture": {
+    "AFR": 0.072,
+    "EUR": 0.631,
+    "EAS": 0.009,
+    "SAS": 0.043,
+    "AMR": 0.245
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "core",
+   "sample": "HG03518",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.0,
+   "admixture": {
+    "AFR": 0.998,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03198",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.341,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03294",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.468,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02974",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.502,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03129",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.091,
+   "admixture": {
+    "AFR": 0.999,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03115",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.378,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02938",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.795,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03135",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.725,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00189",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 10.092,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.915,
+    "EAS": 0.038,
+    "SAS": 0.028,
+    "AMR": 0.02
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00332",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 12.245,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.897,
+    "EAS": 0.019,
+    "SAS": 0.04,
+    "AMR": 0.044
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00176",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 10.388,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.92,
+    "EAS": 0.03,
+    "SAS": 0.013,
+    "AMR": 0.037
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00343",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.843,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.965,
+    "EAS": 0.007,
+    "SAS": 0.006,
+    "AMR": 0.022
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00173",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.94,
+   "d2_nearest": 15.34,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.848,
+    "EAS": 0.019,
+    "SAS": 0.089,
+    "AMR": 0.043
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00357",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.401,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.962,
+    "EAS": 0.006,
+    "SAS": 0.025,
+    "AMR": 0.007
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00190",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.523,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.909,
+    "EAS": 0.009,
+    "SAS": 0.055,
+    "AMR": 0.027
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00358",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.96,
+   "d2_nearest": 11.273,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.881,
+    "EAS": 0.026,
+    "SAS": 0.036,
+    "AMR": 0.058
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02215",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.237,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.994,
+    "EAS": 0.0,
+    "SAS": 0.005,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00123",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 6.682,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.981,
+    "EAS": 0.0,
+    "SAS": 0.015,
+    "AMR": 0.003
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00141",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.878,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.955,
+    "EAS": 0.004,
+    "SAS": 0.025,
+    "AMR": 0.016
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00149",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.988,
+   "admixture": {
+    "AFR": 0.017,
+    "EUR": 0.975,
+    "EAS": 0.001,
+    "SAS": 0.004,
+    "AMR": 0.004
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00154",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.445,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.991,
+    "EAS": 0.001,
+    "SAS": 0.007,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00114",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 3.781,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.992,
+    "EAS": 0.0,
+    "SAS": 0.004,
+    "AMR": 0.004
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00133",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 3.813,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.988,
+    "EAS": 0.0,
+    "SAS": 0.007,
+    "AMR": 0.003
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG00125",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.267,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.99,
+    "EAS": 0.001,
+    "SAS": 0.007,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20901",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.96,
+   "d2_nearest": 12.418,
+   "admixture": {
+    "AFR": 0.003,
+    "EUR": 0.055,
+    "EAS": 0.005,
+    "SAS": 0.884,
+    "AMR": 0.053
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA21109",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.486,
+   "admixture": {
+    "AFR": 0.005,
+    "EUR": 0.034,
+    "EAS": 0.005,
+    "SAS": 0.953,
+    "AMR": 0.004
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20897",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.135,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.017,
+    "EAS": 0.038,
+    "SAS": 0.943,
+    "AMR": 0.003
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20868",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 6.494,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.012,
+    "EAS": 0.001,
+    "SAS": 0.966,
+    "AMR": 0.021
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20900",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 7.606,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.197,
+    "EAS": 0.004,
+    "SAS": 0.791,
+    "AMR": 0.008
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20899",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 1.951,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.026,
+    "EAS": 0.0,
+    "SAS": 0.973,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA21104",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.758,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.018,
+    "EAS": 0.003,
+    "SAS": 0.972,
+    "AMR": 0.007
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20886",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 10.039,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.248,
+    "EAS": 0.024,
+    "SAS": 0.711,
+    "AMR": 0.014
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03247",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.3,
+   "admixture": {
+    "AFR": 0.982,
+    "EUR": 0.002,
+    "EAS": 0.002,
+    "SAS": 0.013,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02594",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.783,
+   "admixture": {
+    "AFR": 0.986,
+    "EUR": 0.009,
+    "EAS": 0.0,
+    "SAS": 0.002,
+    "AMR": 0.003
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02837",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.229,
+   "admixture": {
+    "AFR": 0.995,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.003
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02461",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.199,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02799",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 10.96,
+   "admixture": {
+    "AFR": 0.994,
+    "EUR": 0.004,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02861",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 6.946,
+   "admixture": {
+    "AFR": 0.98,
+    "EUR": 0.002,
+    "EAS": 0.016,
+    "SAS": 0.002,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02882",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.417,
+   "admixture": {
+    "AFR": 0.994,
+    "EUR": 0.006,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02679",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.849,
+   "admixture": {
+    "AFR": 0.986,
+    "EUR": 0.001,
+    "EAS": 0.006,
+    "SAS": 0.005,
+    "AMR": 0.002
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01628",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "EUR",
+   "stability": 0.48,
+   "d2_nearest": 25.543,
+   "admixture": {
+    "AFR": 0.085,
+    "EUR": 0.896,
+    "EAS": 0.0,
+    "SAS": 0.018,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01682",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.903,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.98,
+    "EAS": 0.0,
+    "SAS": 0.018,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02235",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.505,
+   "admixture": {
+    "AFR": 0.012,
+    "EUR": 0.97,
+    "EAS": 0.0,
+    "SAS": 0.017,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01704",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.96,
+   "d2_nearest": 14.901,
+   "admixture": {
+    "AFR": 0.039,
+    "EUR": 0.941,
+    "EAS": 0.003,
+    "SAS": 0.016,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01686",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.468,
+   "admixture": {
+    "AFR": 0.02,
+    "EUR": 0.971,
+    "EAS": 0.0,
+    "SAS": 0.006,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01613",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 10.77,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.939,
+    "EAS": 0.0,
+    "SAS": 0.052,
+    "AMR": 0.005
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01617",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.96,
+   "d2_nearest": 9.352,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.936,
+    "EAS": 0.012,
+    "SAS": 0.047,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01631",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.546,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.992,
+    "EAS": 0.0,
+    "SAS": 0.006,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG04022",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 7.044,
+   "admixture": {
+    "AFR": 0.009,
+    "EUR": 0.003,
+    "EAS": 0.013,
+    "SAS": 0.973,
+    "AMR": 0.002
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03868",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 1.658,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.019,
+    "EAS": 0.019,
+    "SAS": 0.959,
+    "AMR": 0.003
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG04063",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 7.357,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.011,
+    "SAS": 0.986,
+    "AMR": 0.003
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03864",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.674,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.034,
+    "EAS": 0.003,
+    "SAS": 0.955,
+    "AMR": 0.002
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03871",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.958,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.008,
+    "EAS": 0.002,
+    "SAS": 0.989,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03742",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.121,
+   "admixture": {
+    "AFR": 0.005,
+    "EUR": 0.005,
+    "EAS": 0.021,
+    "SAS": 0.967,
+    "AMR": 0.002
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG04219",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 5.021,
+   "admixture": {
+    "AFR": 0.015,
+    "EUR": 0.019,
+    "EAS": 0.004,
+    "SAS": 0.959,
+    "AMR": 0.003
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03771",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.477,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.003,
+    "EAS": 0.008,
+    "SAS": 0.988,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19066",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.162,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.977,
+    "SAS": 0.005,
+    "AMR": 0.018
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18985",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 4.195,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.997,
+    "SAS": 0.001,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19070",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 13.357,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.984,
+    "SAS": 0.005,
+    "AMR": 0.012
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18990",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.702,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.001,
+    "EAS": 0.991,
+    "SAS": 0.003,
+    "AMR": 0.004
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18949",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.353,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.002,
+    "EAS": 0.966,
+    "SAS": 0.007,
+    "AMR": 0.025
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18963",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 0.533,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.999,
+    "SAS": 0.0,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19075",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 6.423,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.985,
+    "SAS": 0.002,
+    "AMR": 0.013
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19077",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 0.956,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.986,
+    "SAS": 0.001,
+    "AMR": 0.013
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02029",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 0.384,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.0,
+    "EAS": 0.998,
+    "SAS": 0.001,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01878",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 4.985,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.003,
+    "EAS": 0.977,
+    "SAS": 0.012,
+    "AMR": 0.007
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02019",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.921,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.002,
+    "EAS": 0.984,
+    "SAS": 0.004,
+    "AMR": 0.009
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02075",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 5.295,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.01,
+    "EAS": 0.968,
+    "SAS": 0.02,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02047",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.952,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.013,
+    "EAS": 0.968,
+    "SAS": 0.018,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01868",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 11.117,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.003,
+    "EAS": 0.943,
+    "SAS": 0.047,
+    "AMR": 0.007
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01597",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 7.412,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.989,
+    "SAS": 0.01,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02113",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 6.245,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.001,
+    "EAS": 0.964,
+    "SAS": 0.028,
+    "AMR": 0.007
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19445",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.712,
+   "admixture": {
+    "AFR": 0.961,
+    "EUR": 0.028,
+    "EAS": 0.001,
+    "SAS": 0.008,
+    "AMR": 0.003
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19355",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.23,
+   "admixture": {
+    "AFR": 0.967,
+    "EUR": 0.001,
+    "EAS": 0.001,
+    "SAS": 0.011,
+    "AMR": 0.02
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19017",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 9.204,
+   "admixture": {
+    "AFR": 0.996,
+    "EUR": 0.003,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19031",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.256,
+   "admixture": {
+    "AFR": 0.946,
+    "EUR": 0.026,
+    "EAS": 0.004,
+    "SAS": 0.022,
+    "AMR": 0.003
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19323",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.31,
+   "admixture": {
+    "AFR": 0.952,
+    "EUR": 0.02,
+    "EAS": 0.001,
+    "SAS": 0.025,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19461",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.737,
+   "admixture": {
+    "AFR": 0.969,
+    "EUR": 0.001,
+    "EAS": 0.005,
+    "SAS": 0.022,
+    "AMR": 0.003
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19321",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.745,
+   "admixture": {
+    "AFR": 0.953,
+    "EUR": 0.021,
+    "EAS": 0.004,
+    "SAS": 0.021,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19043",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.876,
+   "admixture": {
+    "AFR": 0.965,
+    "EUR": 0.021,
+    "EAS": 0.0,
+    "SAS": 0.014,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03073",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.776,
+   "admixture": {
+    "AFR": 0.997,
+    "EUR": 0.002,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03451",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.802,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03064",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.988,
+   "admixture": {
+    "AFR": 0.999,
+    "EUR": 0.0,
+    "EAS": 0.001,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03063",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.142,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03078",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 0.817,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03084",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.423,
+   "admixture": {
+    "AFR": 0.998,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03428",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.812,
+   "admixture": {
+    "AFR": 0.995,
+    "EUR": 0.0,
+    "EAS": 0.004,
+    "SAS": 0.0,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03479",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.045,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19771",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 6.995,
+   "admixture": {
+    "AFR": 0.038,
+    "EUR": 0.373,
+    "EAS": 0.053,
+    "SAS": 0.016,
+    "AMR": 0.519
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19648",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.92,
+   "d2_nearest": 14.5,
+   "admixture": {
+    "AFR": 0.026,
+    "EUR": 0.907,
+    "EAS": 0.001,
+    "SAS": 0.029,
+    "AMR": 0.037
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19720",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.223,
+   "admixture": {
+    "AFR": 0.017,
+    "EUR": 0.163,
+    "EAS": 0.068,
+    "SAS": 0.049,
+    "AMR": 0.702
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19723",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 9.769,
+   "admixture": {
+    "AFR": 0.082,
+    "EUR": 0.261,
+    "EAS": 0.031,
+    "SAS": 0.097,
+    "AMR": 0.529
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19669",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 14.324,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.562,
+    "EAS": 0.04,
+    "SAS": 0.042,
+    "AMR": 0.349
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19761",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 5.458,
+   "admixture": {
+    "AFR": 0.031,
+    "EUR": 0.267,
+    "EAS": 0.078,
+    "SAS": 0.017,
+    "AMR": 0.606
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19750",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.32,
+   "d2_nearest": 19.27,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.588,
+    "EAS": 0.049,
+    "SAS": 0.058,
+    "AMR": 0.294
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19726",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.27,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.276,
+    "EAS": 0.029,
+    "SAS": 0.031,
+    "AMR": 0.66
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19679",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.96,
+   "d2_nearest": 9.975,
+   "admixture": {
+    "AFR": 0.039,
+    "EUR": 0.894,
+    "EAS": 0.005,
+    "SAS": 0.025,
+    "AMR": 0.038
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19663",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 5.447,
+   "admixture": {
+    "AFR": 0.049,
+    "EUR": 0.255,
+    "EAS": 0.068,
+    "SAS": 0.021,
+    "AMR": 0.607
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19734",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.688,
+   "admixture": {
+    "AFR": 0.015,
+    "EUR": 0.228,
+    "EAS": 0.049,
+    "SAS": 0.023,
+    "AMR": 0.686
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19649",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.76,
+   "d2_nearest": 19.841,
+   "admixture": {
+    "AFR": 0.028,
+    "EUR": 0.655,
+    "EAS": 0.021,
+    "SAS": 0.049,
+    "AMR": 0.247
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19682",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 10.046,
+   "admixture": {
+    "AFR": 0.009,
+    "EUR": 0.439,
+    "EAS": 0.063,
+    "SAS": 0.022,
+    "AMR": 0.468
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19652",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.78,
+   "d2_nearest": 16.102,
+   "admixture": {
+    "AFR": 0.04,
+    "EUR": 0.609,
+    "EAS": 0.039,
+    "SAS": 0.032,
+    "AMR": 0.279
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19755",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.87,
+   "admixture": {
+    "AFR": 0.026,
+    "EUR": 0.108,
+    "EAS": 0.065,
+    "SAS": 0.033,
+    "AMR": 0.769
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19728",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 5.252,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.054,
+    "SAS": 0.0,
+    "AMR": 0.946
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19732",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.913,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.035,
+    "SAS": 0.0,
+    "AMR": 0.965
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19746",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 2.243,
+   "admixture": {
+    "AFR": 0.007,
+    "EUR": 0.118,
+    "EAS": 0.046,
+    "SAS": 0.031,
+    "AMR": 0.798
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19747",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 7.986,
+   "admixture": {
+    "AFR": 0.018,
+    "EUR": 0.35,
+    "EAS": 0.008,
+    "SAS": 0.063,
+    "AMR": 0.561
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19658",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.42,
+   "d2_nearest": 19.964,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.571,
+    "EAS": 0.019,
+    "SAS": 0.064,
+    "AMR": 0.344
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19676",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.9,
+   "d2_nearest": 16.13,
+   "admixture": {
+    "AFR": 0.037,
+    "EUR": 0.523,
+    "EAS": 0.04,
+    "SAS": 0.068,
+    "AMR": 0.331
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19752",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 6.653,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.342,
+    "EAS": 0.037,
+    "SAS": 0.034,
+    "AMR": 0.577
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19792",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.9,
+   "d2_nearest": 16.26,
+   "admixture": {
+    "AFR": 0.042,
+    "EUR": 0.534,
+    "EAS": 0.034,
+    "SAS": 0.082,
+    "AMR": 0.307
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19756",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 6.4,
+   "admixture": {
+    "AFR": 0.056,
+    "EUR": 0.312,
+    "EAS": 0.038,
+    "SAS": 0.05,
+    "AMR": 0.544
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "NA19722",
+   "pop": "MXL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 9.966,
+   "admixture": {
+    "AFR": 0.044,
+    "EUR": 0.38,
+    "EAS": 0.058,
+    "SAS": 0.048,
+    "AMR": 0.47
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "core",
+   "sample": "HG02312",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 2.104,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.184,
+    "EAS": 0.036,
+    "SAS": 0.02,
+    "AMR": 0.76
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01980",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.072,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.059,
+    "EAS": 0.01,
+    "SAS": 0.042,
+    "AMR": 0.879
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02286",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.918,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.031,
+    "EAS": 0.04,
+    "SAS": 0.011,
+    "AMR": 0.918
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02275",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 0.916,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02277",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.083,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.163,
+    "EAS": 0.006,
+    "SAS": 0.032,
+    "AMR": 0.799
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01918",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.427,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.055,
+    "EAS": 0.022,
+    "SAS": 0.02,
+    "AMR": 0.903
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02090",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.313,
+   "admixture": {
+    "AFR": 0.084,
+    "EUR": 0.212,
+    "EAS": 0.025,
+    "SAS": 0.024,
+    "AMR": 0.654
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG01971",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 7.934,
+   "admixture": {
+    "AFR": 0.149,
+    "EUR": 0.146,
+    "EAS": 0.011,
+    "SAS": 0.006,
+    "AMR": 0.688
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02685",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.342,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.05,
+    "EAS": 0.008,
+    "SAS": 0.94,
+    "AMR": 0.002
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02780",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.335,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.03,
+    "EAS": 0.01,
+    "SAS": 0.954,
+    "AMR": 0.006
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02700",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 8.42,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.226,
+    "EAS": 0.024,
+    "SAS": 0.73,
+    "AMR": 0.021
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03702",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 1.859,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.027,
+    "EAS": 0.021,
+    "SAS": 0.946,
+    "AMR": 0.005
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02687",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.219,
+   "admixture": {
+    "AFR": 0.003,
+    "EUR": 0.027,
+    "EAS": 0.005,
+    "SAS": 0.953,
+    "AMR": 0.012
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02690",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 7.03,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.259,
+    "EAS": 0.001,
+    "SAS": 0.732,
+    "AMR": 0.004
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02734",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.9,
+   "d2_nearest": 16.333,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.3,
+    "EAS": 0.037,
+    "SAS": 0.615,
+    "AMR": 0.042
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG02655",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 9.533,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.281,
+    "EAS": 0.001,
+    "SAS": 0.701,
+    "AMR": 0.017
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG00640",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 25.728,
+   "admixture": {
+    "AFR": 0.052,
+    "EUR": 0.731,
+    "EAS": 0.063,
+    "SAS": 0.061,
+    "AMR": 0.093
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01086",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.4,
+   "d2_nearest": 20.274,
+   "admixture": {
+    "AFR": 0.142,
+    "EUR": 0.614,
+    "EAS": 0.02,
+    "SAS": 0.063,
+    "AMR": 0.16
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01069",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.84,
+   "d2_nearest": 20.404,
+   "admixture": {
+    "AFR": 0.11,
+    "EUR": 0.691,
+    "EAS": 0.003,
+    "SAS": 0.028,
+    "AMR": 0.169
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01323",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.96,
+   "d2_nearest": 21.664,
+   "admixture": {
+    "AFR": 0.113,
+    "EUR": 0.694,
+    "EAS": 0.014,
+    "SAS": 0.052,
+    "AMR": 0.126
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01392",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.36,
+   "d2_nearest": 20.017,
+   "admixture": {
+    "AFR": 0.125,
+    "EUR": 0.611,
+    "EAS": 0.008,
+    "SAS": 0.058,
+    "AMR": 0.199
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01204",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.96,
+   "d2_nearest": 20.707,
+   "admixture": {
+    "AFR": 0.1,
+    "EUR": 0.728,
+    "EAS": 0.033,
+    "SAS": 0.021,
+    "AMR": 0.117
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01075",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.9,
+   "d2_nearest": 27.867,
+   "admixture": {
+    "AFR": 0.088,
+    "EUR": 0.844,
+    "EAS": 0.029,
+    "SAS": 0.013,
+    "AMR": 0.025
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01052",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.64,
+   "d2_nearest": 19.823,
+   "admixture": {
+    "AFR": 0.202,
+    "EUR": 0.555,
+    "EAS": 0.003,
+    "SAS": 0.045,
+    "AMR": 0.195
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01092",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.94,
+   "d2_nearest": 23.048,
+   "admixture": {
+    "AFR": 0.236,
+    "EUR": 0.604,
+    "EAS": 0.01,
+    "SAS": 0.011,
+    "AMR": 0.139
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01162",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 33.18,
+   "admixture": {
+    "AFR": 0.105,
+    "EUR": 0.665,
+    "EAS": 0.001,
+    "SAS": 0.1,
+    "AMR": 0.128
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01405",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 28.63,
+   "admixture": {
+    "AFR": 0.101,
+    "EUR": 0.752,
+    "EAS": 0.02,
+    "SAS": 0.061,
+    "AMR": 0.067
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01110",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.58,
+   "d2_nearest": 19.259,
+   "admixture": {
+    "AFR": 0.125,
+    "EUR": 0.667,
+    "EAS": 0.011,
+    "SAS": 0.042,
+    "AMR": 0.155
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01170",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.78,
+   "d2_nearest": 18.851,
+   "admixture": {
+    "AFR": 0.115,
+    "EUR": 0.702,
+    "EAS": 0.015,
+    "SAS": 0.019,
+    "AMR": 0.148
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01393",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.86,
+   "d2_nearest": 19.78,
+   "admixture": {
+    "AFR": 0.21,
+    "EUR": 0.602,
+    "EAS": 0.029,
+    "SAS": 0.047,
+    "AMR": 0.112
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01188",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.66,
+   "d2_nearest": 17.49,
+   "admixture": {
+    "AFR": 0.228,
+    "EUR": 0.529,
+    "EAS": 0.022,
+    "SAS": 0.039,
+    "AMR": 0.181
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01079",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.96,
+   "d2_nearest": 23.458,
+   "admixture": {
+    "AFR": 0.171,
+    "EUR": 0.655,
+    "EAS": 0.003,
+    "SAS": 0.053,
+    "AMR": 0.118
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01414",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 16.129,
+   "admixture": {
+    "AFR": 0.12,
+    "EUR": 0.607,
+    "EAS": 0.019,
+    "SAS": 0.044,
+    "AMR": 0.21
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01190",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 13.97,
+   "admixture": {
+    "AFR": 0.16,
+    "EUR": 0.537,
+    "EAS": 0.03,
+    "SAS": 0.035,
+    "AMR": 0.237
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01167",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.72,
+   "d2_nearest": 19.308,
+   "admixture": {
+    "AFR": 0.249,
+    "EUR": 0.542,
+    "EAS": 0.014,
+    "SAS": 0.025,
+    "AMR": 0.17
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01101",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.66,
+   "d2_nearest": 18.034,
+   "admixture": {
+    "AFR": 0.164,
+    "EUR": 0.628,
+    "EAS": 0.003,
+    "SAS": 0.017,
+    "AMR": 0.188
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG00743",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.84,
+   "d2_nearest": 15.793,
+   "admixture": {
+    "AFR": 0.097,
+    "EUR": 0.611,
+    "EAS": 0.008,
+    "SAS": 0.036,
+    "AMR": 0.248
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG00637",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.58,
+   "d2_nearest": 18.413,
+   "admixture": {
+    "AFR": 0.148,
+    "EUR": 0.657,
+    "EAS": 0.009,
+    "SAS": 0.035,
+    "AMR": 0.151
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG00736",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.94,
+   "d2_nearest": 25.317,
+   "admixture": {
+    "AFR": 0.072,
+    "EUR": 0.812,
+    "EAS": 0.008,
+    "SAS": 0.031,
+    "AMR": 0.077
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG01187",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.84,
+   "d2_nearest": 14.754,
+   "admixture": {
+    "AFR": 0.197,
+    "EUR": 0.507,
+    "EAS": 0.004,
+    "SAS": 0.009,
+    "AMR": 0.283
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "admixed",
+   "sample": "HG00740",
+   "pop": "PUR",
+   "superpop": "AMR",
+   "n_sites": 6557,
+   "status": "INTERMEDIATE",
+   "nearest": "AMR",
+   "stability": 0.9,
+   "d2_nearest": 20.955,
+   "admixture": {
+    "AFR": 0.123,
+    "EUR": 0.692,
+    "EAS": 0.034,
+    "SAS": 0.015,
+    "AMR": 0.136
+   },
+   "expected_group": null
+  },
+  {
+   "kind": "core",
+   "sample": "HG03837",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.164,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.017,
+    "EAS": 0.028,
+    "SAS": 0.935,
+    "AMR": 0.013
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG04099",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.868,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.011,
+    "EAS": 0.008,
+    "SAS": 0.977,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03995",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.633,
+   "admixture": {
+    "AFR": 0.003,
+    "EUR": 0.014,
+    "EAS": 0.007,
+    "SAS": 0.971,
+    "AMR": 0.004
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03888",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 4.291,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.071,
+    "EAS": 0.007,
+    "SAS": 0.906,
+    "AMR": 0.016
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03851",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.566,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.024,
+    "EAS": 0.007,
+    "SAS": 0.964,
+    "AMR": 0.004
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03743",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.627,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.054,
+    "SAS": 0.944,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03681",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.16,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.006,
+    "EAS": 0.017,
+    "SAS": 0.97,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "HG03741",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.419,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.023,
+    "EAS": 0.044,
+    "SAS": 0.92,
+    "AMR": 0.006
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20510",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.447,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.957,
+    "EAS": 0.0,
+    "SAS": 0.039,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20810",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 7.241,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.957,
+    "EAS": 0.004,
+    "SAS": 0.038,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20760",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 8.334,
+   "admixture": {
+    "AFR": 0.006,
+    "EUR": 0.908,
+    "EAS": 0.001,
+    "SAS": 0.083,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20527",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.185,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.967,
+    "EAS": 0.0,
+    "SAS": 0.027,
+    "AMR": 0.005
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20756",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.96,
+   "d2_nearest": 12.166,
+   "admixture": {
+    "AFR": 0.021,
+    "EUR": 0.937,
+    "EAS": 0.001,
+    "SAS": 0.032,
+    "AMR": 0.009
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20799",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 7.069,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.955,
+    "EAS": 0.001,
+    "SAS": 0.042,
+    "AMR": 0.003
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20518",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.614,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.981,
+    "EAS": 0.002,
+    "SAS": 0.007,
+    "AMR": 0.01
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA20538",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.8,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.984,
+    "EAS": 0.0,
+    "SAS": 0.014,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18489",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 0.552,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18916",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.958,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19190",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.723,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA18502",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.329,
+   "admixture": {
+    "AFR": 0.999,
+    "EUR": 0.0,
+    "EAS": 0.001,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19146",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.248,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19152",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.338,
+   "admixture": {
+    "AFR": 0.999,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19099",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 4.868,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "core",
+   "sample": "NA19129",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 6557,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.738,
+   "admixture": {
+    "AFR": 0.999,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02799",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 50,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.798,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02772",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 50,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.584,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02852",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.84,
+   "d2_nearest": 6.65,
+   "admixture": {
+    "AFR": 0.918,
+    "EUR": 0.054,
+    "EAS": 0.028,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18853",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.76,
+   "d2_nearest": 4.532,
+   "admixture": {
+    "AFR": 0.825,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.175,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03514",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "AFR",
+   "stability": 0.68,
+   "d2_nearest": 4.228,
+   "admixture": {
+    "AFR": 0.792,
+    "EUR": 0.0,
+    "EAS": 0.001,
+    "SAS": 0.0,
+    "AMR": 0.207
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03259",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 50,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.721,
+   "admixture": {
+    "AFR": 0.994,
+    "EUR": 0.0,
+    "EAS": 0.006,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02819",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.402,
+   "admixture": {
+    "AFR": 0.914,
+    "EUR": 0.086,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03166",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.96,
+   "d2_nearest": 8.2,
+   "admixture": {
+    "AFR": 0.788,
+    "EUR": 0.119,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.092
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19376",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.724,
+   "admixture": {
+    "AFR": 0.905,
+    "EUR": 0.095,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02855",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.76,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19041",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.205,
+   "admixture": {
+    "AFR": 0.976,
+    "EUR": 0.0,
+    "EAS": 0.023,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19159",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 0.98,
+   "d2_nearest": 6.241,
+   "admixture": {
+    "AFR": 0.817,
+    "EUR": 0.013,
+    "EAS": 0.017,
+    "SAS": 0.0,
+    "AMR": 0.154
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19131",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.744,
+   "admixture": {
+    "AFR": 0.962,
+    "EUR": 0.006,
+    "EAS": 0.002,
+    "SAS": 0.024,
+    "AMR": 0.006
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03136",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.079,
+   "admixture": {
+    "AFR": 0.972,
+    "EUR": 0.028,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03072",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.872,
+   "admixture": {
+    "AFR": 0.938,
+    "EUR": 0.061,
+    "EAS": 0.001,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03470",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.298,
+   "admixture": {
+    "AFR": 0.994,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.006
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03577",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 0.255,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19391",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.75,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19360",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 11.428,
+   "admixture": {
+    "AFR": 0.884,
+    "EUR": 0.0,
+    "EAS": 0.034,
+    "SAS": 0.083,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18498",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.688,
+   "admixture": {
+    "AFR": 0.996,
+    "EUR": 0.003,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02840",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.572,
+   "admixture": {
+    "AFR": 0.953,
+    "EUR": 0.004,
+    "EAS": 0.01,
+    "SAS": 0.03,
+    "AMR": 0.003
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19461",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 0.791,
+   "admixture": {
+    "AFR": 0.986,
+    "EUR": 0.0,
+    "EAS": 0.014,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03247",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.58,
+   "admixture": {
+    "AFR": 0.948,
+    "EUR": 0.0,
+    "EAS": 0.051,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19113",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.454,
+   "admixture": {
+    "AFR": 0.942,
+    "EUR": 0.0,
+    "EAS": 0.021,
+    "SAS": 0.0,
+    "AMR": 0.037
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03370",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.307,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18933",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.192,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19119",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 0.441,
+   "admixture": {
+    "AFR": 0.991,
+    "EUR": 0.009,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19378",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 9.992,
+   "admixture": {
+    "AFR": 0.934,
+    "EUR": 0.001,
+    "EAS": 0.031,
+    "SAS": 0.033,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18912",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 7.293,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18858",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 3.321,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19028",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 7.637,
+   "admixture": {
+    "AFR": 0.904,
+    "EUR": 0.038,
+    "EAS": 0.0,
+    "SAS": 0.057,
+    "AMR": 0.001
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19455",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 6.87,
+   "admixture": {
+    "AFR": 0.965,
+    "EUR": 0.035,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03472",
+   "pop": "MSL",
+   "superpop": "AFR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 8.756,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18923",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 0.61,
+   "admixture": {
+    "AFR": 0.977,
+    "EUR": 0.022,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02944",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.716,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02805",
+   "pop": "GWD",
+   "superpop": "AFR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.096,
+   "admixture": {
+    "AFR": 0.998,
+    "EUR": 0.0,
+    "EAS": 0.002,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19471",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 1.551,
+   "admixture": {
+    "AFR": 0.949,
+    "EUR": 0.013,
+    "EAS": 0.004,
+    "SAS": 0.033,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19147",
+   "pop": "YRI",
+   "superpop": "AFR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 12.033,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19346",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.948,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19374",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 5.119,
+   "admixture": {
+    "AFR": 0.956,
+    "EUR": 0.021,
+    "EAS": 0.0,
+    "SAS": 0.017,
+    "AMR": 0.006
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19378",
+   "pop": "LWK",
+   "superpop": "AFR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 6.23,
+   "admixture": {
+    "AFR": 0.95,
+    "EUR": 0.003,
+    "EAS": 0.011,
+    "SAS": 0.03,
+    "AMR": 0.005
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02941",
+   "pop": "ESN",
+   "superpop": "AFR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AFR",
+   "stability": 1.0,
+   "d2_nearest": 2.138,
+   "admixture": {
+    "AFR": 1.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "AFR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20783",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.84,
+   "d2_nearest": 7.49,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.999,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA07037",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.6,
+   "d2_nearest": 0.95,
+   "admixture": {
+    "AFR": 0.068,
+    "EUR": 0.931,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00364",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.84,
+   "d2_nearest": 3.199,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.894,
+    "EAS": 0.0,
+    "SAS": 0.106,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01678",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.68,
+   "d2_nearest": 2.291,
+   "admixture": {
+    "AFR": 0.064,
+    "EUR": 0.936,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00176",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.6,
+   "d2_nearest": 3.312,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.472,
+    "EAS": 0.001,
+    "SAS": 0.527,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA11995",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.56,
+   "d2_nearest": 8.899,
+   "admixture": {
+    "AFR": 0.073,
+    "EUR": 0.927,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00261",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.74,
+   "d2_nearest": 6.428,
+   "admixture": {
+    "AFR": 0.159,
+    "EUR": 0.832,
+    "EAS": 0.0,
+    "SAS": 0.003,
+    "AMR": 0.006
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20790",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.62,
+   "d2_nearest": 7.575,
+   "admixture": {
+    "AFR": 0.2,
+    "EUR": 0.8,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA12043",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.84,
+   "d2_nearest": 2.587,
+   "admixture": {
+    "AFR": 0.088,
+    "EUR": 0.823,
+    "EAS": 0.002,
+    "SAS": 0.088,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00383",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.8,
+   "d2_nearest": 10.112,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.8,
+    "EAS": 0.0,
+    "SAS": 0.147,
+    "AMR": 0.053
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA12399",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.96,
+   "d2_nearest": 3.645,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 1.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00121",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.82,
+   "d2_nearest": 0.995,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 1.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20759",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.94,
+   "d2_nearest": 2.585,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 1.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20513",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.76,
+   "d2_nearest": 4.752,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.915,
+    "EAS": 0.0,
+    "SAS": 0.085,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00379",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.7,
+   "d2_nearest": 5.296,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.544,
+    "EAS": 0.0,
+    "SAS": 0.276,
+    "AMR": 0.18
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01512",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.9,
+   "d2_nearest": 5.423,
+   "admixture": {
+    "AFR": 0.11,
+    "EUR": 0.884,
+    "EAS": 0.0,
+    "SAS": 0.006,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20540",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.96,
+   "d2_nearest": 2.625,
+   "admixture": {
+    "AFR": 0.048,
+    "EUR": 0.944,
+    "EAS": 0.0,
+    "SAS": 0.008,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00267",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "EUR",
+   "stability": 0.78,
+   "d2_nearest": 1.553,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.855,
+    "EAS": 0.064,
+    "SAS": 0.0,
+    "AMR": 0.08
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02232",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.617,
+   "admixture": {
+    "AFR": 0.043,
+    "EUR": 0.954,
+    "EAS": 0.003,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01602",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.758,
+   "admixture": {
+    "AFR": 0.015,
+    "EUR": 0.932,
+    "EAS": 0.0,
+    "SAS": 0.009,
+    "AMR": 0.044
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20805",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 9.019,
+   "admixture": {
+    "AFR": 0.086,
+    "EUR": 0.914,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01785",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.98,
+   "d2_nearest": 3.121,
+   "admixture": {
+    "AFR": 0.007,
+    "EUR": 0.831,
+    "EAS": 0.033,
+    "SAS": 0.123,
+    "AMR": 0.006
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA12890",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 0.301,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.995,
+    "EAS": 0.0,
+    "SAS": 0.004,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00334",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.334,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.862,
+    "EAS": 0.0,
+    "SAS": 0.114,
+    "AMR": 0.023
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA12234",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.811,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.986,
+    "EAS": 0.0,
+    "SAS": 0.011,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20533",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.594,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.918,
+    "EAS": 0.0,
+    "SAS": 0.082,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20768",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 8.226,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.959,
+    "EAS": 0.0,
+    "SAS": 0.04,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01697",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.952,
+   "admixture": {
+    "AFR": 0.024,
+    "EUR": 0.75,
+    "EAS": 0.059,
+    "SAS": 0.124,
+    "AMR": 0.044
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00362",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.98,
+   "d2_nearest": 4.173,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.888,
+    "EAS": 0.009,
+    "SAS": 0.042,
+    "AMR": 0.061
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20787",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.792,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.95,
+    "EAS": 0.001,
+    "SAS": 0.048,
+    "AMR": 0.002
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA11893",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.695,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.962,
+    "EAS": 0.007,
+    "SAS": 0.028,
+    "AMR": 0.003
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00109",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 5.507,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.925,
+    "EAS": 0.0,
+    "SAS": 0.047,
+    "AMR": 0.028
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA12872",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.521,
+   "admixture": {
+    "AFR": 0.02,
+    "EUR": 0.966,
+    "EAS": 0.003,
+    "SAS": 0.011,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01507",
+   "pop": "IBS",
+   "superpop": "EUR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.52,
+   "admixture": {
+    "AFR": 0.015,
+    "EUR": 0.974,
+    "EAS": 0.002,
+    "SAS": 0.005,
+    "AMR": 0.003
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA11829",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 0.681,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.986,
+    "EAS": 0.001,
+    "SAS": 0.009,
+    "AMR": 0.004
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20763",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 0.211,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.996,
+    "EAS": 0.0,
+    "SAS": 0.004,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA11843",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 2.841,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.98,
+    "EAS": 0.002,
+    "SAS": 0.018,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00356",
+   "pop": "FIN",
+   "superpop": "EUR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.725,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.921,
+    "EAS": 0.04,
+    "SAS": 0.003,
+    "AMR": 0.031
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA07357",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 1.27,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.99,
+    "EAS": 0.001,
+    "SAS": 0.008,
+    "AMR": 0.001
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA11830",
+   "pop": "CEU",
+   "superpop": "EUR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 3.27,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.952,
+    "EAS": 0.002,
+    "SAS": 0.04,
+    "AMR": 0.006
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20532",
+   "pop": "TSI",
+   "superpop": "EUR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 0.98,
+   "d2_nearest": 10.363,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.911,
+    "EAS": 0.001,
+    "SAS": 0.077,
+    "AMR": 0.0
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00160",
+   "pop": "GBR",
+   "superpop": "EUR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EUR",
+   "stability": 1.0,
+   "d2_nearest": 4.663,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.962,
+    "EAS": 0.0,
+    "SAS": 0.004,
+    "AMR": 0.034
+   },
+   "expected_group": "EUR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01799",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.72,
+   "d2_nearest": 3.135,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02386",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.62,
+   "d2_nearest": 6.48,
+   "admixture": {
+    "AFR": 0.138,
+    "EUR": 0.047,
+    "EAS": 0.691,
+    "SAS": 0.0,
+    "AMR": 0.123
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00607",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.52,
+   "d2_nearest": 4.148,
+   "admixture": {
+    "AFR": 0.064,
+    "EUR": 0.0,
+    "EAS": 0.601,
+    "SAS": 0.174,
+    "AMR": 0.161
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00406",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.74,
+   "d2_nearest": 2.071,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.986,
+    "SAS": 0.0,
+    "AMR": 0.014
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01794",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.88,
+   "d2_nearest": 2.41,
+   "admixture": {
+    "AFR": 0.045,
+    "EUR": 0.0,
+    "EAS": 0.954,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18528",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.92,
+   "d2_nearest": 2.375,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00525",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.72,
+   "d2_nearest": 1.84,
+   "admixture": {
+    "AFR": 0.102,
+    "EUR": 0.0,
+    "EAS": 0.744,
+    "SAS": 0.105,
+    "AMR": 0.05
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19000",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.88,
+   "d2_nearest": 1.771,
+   "admixture": {
+    "AFR": 0.024,
+    "EUR": 0.0,
+    "EAS": 0.951,
+    "SAS": 0.0,
+    "AMR": 0.025
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00537",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.58,
+   "d2_nearest": 6.266,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.198,
+    "EAS": 0.705,
+    "SAS": 0.009,
+    "AMR": 0.088
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01872",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.98,
+   "d2_nearest": 1.541,
+   "admixture": {
+    "AFR": 0.046,
+    "EUR": 0.0,
+    "EAS": 0.954,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18957",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.82,
+   "d2_nearest": 9.78,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.814,
+    "SAS": 0.0,
+    "AMR": 0.186
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18595",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.92,
+   "d2_nearest": 4.095,
+   "admixture": {
+    "AFR": 0.02,
+    "EUR": 0.0,
+    "EAS": 0.899,
+    "SAS": 0.0,
+    "AMR": 0.082
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18740",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.96,
+   "d2_nearest": 7.128,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.005,
+    "EAS": 0.988,
+    "SAS": 0.0,
+    "AMR": 0.007
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00629",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 0.764,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.0,
+    "EAS": 0.975,
+    "SAS": 0.005,
+    "AMR": 0.01
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02367",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.98,
+   "d2_nearest": 1.149,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.003,
+    "EAS": 0.989,
+    "SAS": 0.002,
+    "AMR": 0.006
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19054",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 4.221,
+   "admixture": {
+    "AFR": 0.02,
+    "EUR": 0.0,
+    "EAS": 0.98,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02028",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.695,
+   "admixture": {
+    "AFR": 0.026,
+    "EUR": 0.0,
+    "EAS": 0.974,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01845",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.86,
+   "d2_nearest": 4.103,
+   "admixture": {
+    "AFR": 0.033,
+    "EUR": 0.0,
+    "EAS": 0.777,
+    "SAS": 0.0,
+    "AMR": 0.19
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19083",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.915,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.0,
+    "EAS": 0.984,
+    "SAS": 0.006,
+    "AMR": 0.008
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02371",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.319,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.999,
+    "SAS": 0.0,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02184",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.953,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.039,
+    "EAS": 0.941,
+    "SAS": 0.02,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02088",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.788,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.99,
+    "SAS": 0.0,
+    "AMR": 0.01
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18940",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.96,
+   "d2_nearest": 11.355,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.068,
+    "EAS": 0.807,
+    "SAS": 0.125,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19001",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 5.178,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19059",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 5.191,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00625",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.98,
+   "d2_nearest": 11.216,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.999,
+    "SAS": 0.001,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01848",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 5.736,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.946,
+    "SAS": 0.054,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01813",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 8.723,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.937,
+    "SAS": 0.048,
+    "AMR": 0.015
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02151",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 0.98,
+   "d2_nearest": 13.58,
+   "admixture": {
+    "AFR": 0.029,
+    "EUR": 0.047,
+    "EAS": 0.854,
+    "SAS": 0.069,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01855",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 2.129,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02141",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.736,
+   "admixture": {
+    "AFR": 0.003,
+    "EUR": 0.003,
+    "EAS": 0.963,
+    "SAS": 0.031,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18593",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 2.848,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.992,
+    "SAS": 0.001,
+    "AMR": 0.007
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18620",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.679,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.001,
+    "EAS": 0.978,
+    "SAS": 0.009,
+    "AMR": 0.012
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02395",
+   "pop": "CDX",
+   "superpop": "EAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 4.937,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.0,
+    "EAS": 0.958,
+    "SAS": 0.014,
+    "AMR": 0.018
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18621",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.394,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.0,
+    "EAS": 0.998,
+    "SAS": 0.0,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00403",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 6.306,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.005,
+    "EAS": 0.977,
+    "SAS": 0.012,
+    "AMR": 0.005
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18526",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.233,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.997,
+    "SAS": 0.001,
+    "AMR": 0.002
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA18635",
+   "pop": "CHB",
+   "superpop": "EAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 5.115,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.981,
+    "SAS": 0.001,
+    "AMR": 0.018
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01852",
+   "pop": "KHV",
+   "superpop": "EAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 2.6,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.969,
+    "SAS": 0.011,
+    "AMR": 0.02
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00478",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 1.234,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.999,
+    "SAS": 0.0,
+    "AMR": 0.001
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA19056",
+   "pop": "JPT",
+   "superpop": "EAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 3.334,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.969,
+    "SAS": 0.017,
+    "AMR": 0.013
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG00421",
+   "pop": "CHS",
+   "superpop": "EAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "EAS",
+   "stability": 1.0,
+   "d2_nearest": 8.907,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 1.0,
+    "SAS": 0.0,
+    "AMR": 0.0
+   },
+   "expected_group": "EAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04026",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.74,
+   "d2_nearest": 1.937,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.999,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA21114",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "EAS",
+   "stability": 0.44,
+   "d2_nearest": 5.443,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.003,
+    "EAS": 0.37,
+    "SAS": 0.524,
+    "AMR": 0.104
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03490",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.56,
+   "d2_nearest": 4.834,
+   "admixture": {
+    "AFR": 0.157,
+    "EUR": 0.174,
+    "EAS": 0.0,
+    "SAS": 0.668,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02494",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.66,
+   "d2_nearest": 2.26,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.088,
+    "EAS": 0.0,
+    "SAS": 0.912,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03745",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.34,
+   "d2_nearest": 3.354,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.363,
+    "SAS": 0.39,
+    "AMR": 0.247
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20863",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.78,
+   "d2_nearest": 4.982,
+   "admixture": {
+    "AFR": 0.077,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.923,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04159",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.38,
+   "d2_nearest": 6.429,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.487,
+    "SAS": 0.475,
+    "AMR": 0.037
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03965",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.8,
+   "d2_nearest": 0.292,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.001,
+    "EAS": 0.002,
+    "SAS": 0.93,
+    "AMR": 0.066
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03944",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.64,
+   "d2_nearest": 1.294,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.457,
+    "EAS": 0.16,
+    "SAS": 0.358,
+    "AMR": 0.025
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03693",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.78,
+   "d2_nearest": 3.649,
+   "admixture": {
+    "AFR": 0.024,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.963,
+    "AMR": 0.014
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03727",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.56,
+   "d2_nearest": 6.235,
+   "admixture": {
+    "AFR": 0.191,
+    "EUR": 0.001,
+    "EAS": 0.0,
+    "SAS": 0.709,
+    "AMR": 0.099
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03673",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.72,
+   "d2_nearest": 2.819,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.26,
+    "EAS": 0.074,
+    "SAS": 0.666,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04222",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.96,
+   "d2_nearest": 3.127,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 1.0,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03631",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.9,
+   "d2_nearest": 4.539,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.068,
+    "EAS": 0.035,
+    "SAS": 0.897,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04202",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.96,
+   "d2_nearest": 4.241,
+   "admixture": {
+    "AFR": 0.098,
+    "EUR": 0.001,
+    "EAS": 0.025,
+    "SAS": 0.784,
+    "AMR": 0.092
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04194",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.88,
+   "d2_nearest": 3.302,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.24,
+    "EAS": 0.22,
+    "SAS": 0.54,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA21141",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 200,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.94,
+   "d2_nearest": 2.327,
+   "admixture": {
+    "AFR": 0.122,
+    "EUR": 0.12,
+    "EAS": 0.001,
+    "SAS": 0.756,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02494",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.96,
+   "d2_nearest": 2.62,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.183,
+    "EAS": 0.165,
+    "SAS": 0.641,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04001",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.862,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.001,
+    "SAS": 0.999,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03765",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 400,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.6,
+   "d2_nearest": 13.335,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.397,
+    "EAS": 0.0,
+    "SAS": 0.603,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03809",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 4.074,
+   "admixture": {
+    "AFR": 0.025,
+    "EUR": 0.001,
+    "EAS": 0.097,
+    "SAS": 0.877,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA21086",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.368,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.0,
+    "EAS": 0.01,
+    "SAS": 0.99,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03755",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.98,
+   "d2_nearest": 3.018,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.027,
+    "SAS": 0.973,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA21107",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 11.491,
+   "admixture": {
+    "AFR": 0.058,
+    "EUR": 0.035,
+    "EAS": 0.0,
+    "SAS": 0.877,
+    "AMR": 0.03
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA21129",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.266,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.024,
+    "EAS": 0.036,
+    "SAS": 0.91,
+    "AMR": 0.03
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03668",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.98,
+   "d2_nearest": 5.295,
+   "admixture": {
+    "AFR": 0.028,
+    "EUR": 0.184,
+    "EAS": 0.065,
+    "SAS": 0.69,
+    "AMR": 0.033
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02658",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.143,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.149,
+    "EAS": 0.0,
+    "SAS": 0.85,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03808",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.616,
+   "admixture": {
+    "AFR": 0.017,
+    "EUR": 0.073,
+    "EAS": 0.055,
+    "SAS": 0.838,
+    "AMR": 0.018
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20902",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.521,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.001,
+    "EAS": 0.0,
+    "SAS": 0.999,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20889",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 0.493,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.007,
+    "EAS": 0.003,
+    "SAS": 0.98,
+    "AMR": 0.01
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA20910",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 0.98,
+   "d2_nearest": 9.414,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.271,
+    "EAS": 0.0,
+    "SAS": 0.725,
+    "AMR": 0.003
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02688",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.73,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.135,
+    "EAS": 0.002,
+    "SAS": 0.852,
+    "AMR": 0.011
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03858",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 4.293,
+   "admixture": {
+    "AFR": 0.008,
+    "EUR": 0.003,
+    "EAS": 0.073,
+    "SAS": 0.916,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03672",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 4.225,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 1.0,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03803",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 6.676,
+   "admixture": {
+    "AFR": 0.021,
+    "EUR": 0.037,
+    "EAS": 0.119,
+    "SAS": 0.822,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04096",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.122,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.002,
+    "SAS": 0.998,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "NA21092",
+   "pop": "GIH",
+   "superpop": "SAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 1.827,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.089,
+    "EAS": 0.001,
+    "SAS": 0.905,
+    "AMR": 0.005
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03941",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 5.328,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.0,
+    "EAS": 0.044,
+    "SAS": 0.943,
+    "AMR": 0.011
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02493",
+   "pop": "PJL",
+   "superpop": "SAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 3.516,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.188,
+    "EAS": 0.002,
+    "SAS": 0.81,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04025",
+   "pop": "ITU",
+   "superpop": "SAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 2.066,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.026,
+    "SAS": 0.973,
+    "AMR": 0.001
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG04039",
+   "pop": "STU",
+   "superpop": "SAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 10.756,
+   "admixture": {
+    "AFR": 0.032,
+    "EUR": 0.012,
+    "EAS": 0.003,
+    "SAS": 0.953,
+    "AMR": 0.0
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG03926",
+   "pop": "BEB",
+   "superpop": "SAS",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "SAS",
+   "stability": 1.0,
+   "d2_nearest": 4.542,
+   "admixture": {
+    "AFR": 0.002,
+    "EUR": 0.091,
+    "EAS": 0.052,
+    "SAS": 0.847,
+    "AMR": 0.008
+   },
+   "expected_group": "SAS"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01571",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.84,
+   "d2_nearest": 5.451,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.114,
+    "AMR": 0.886
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02253",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.48,
+   "d2_nearest": 4.193,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.423,
+    "EAS": 0.0,
+    "SAS": 0.001,
+    "AMR": 0.576
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01977",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.92,
+   "d2_nearest": 4.13,
+   "admixture": {
+    "AFR": 0.058,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.942
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01970",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.66,
+   "d2_nearest": 0.565,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.004,
+    "EAS": 0.246,
+    "SAS": 0.035,
+    "AMR": 0.715
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02425",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 50,
+   "status": "UNSTABLE",
+   "nearest": "SAS",
+   "stability": 0.62,
+   "d2_nearest": 2.973,
+   "admixture": {
+    "AFR": 0.261,
+    "EUR": 0.319,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.42
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02272",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 50,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 5.017,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02275",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.94,
+   "d2_nearest": 2.187,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02146",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.86,
+   "d2_nearest": 1.912,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.003,
+    "EAS": 0.036,
+    "SAS": 0.094,
+    "AMR": 0.867
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01923",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 100,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.377,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01979",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.9,
+   "d2_nearest": 0.313,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.006,
+    "EAS": 0.144,
+    "SAS": 0.003,
+    "AMR": 0.847
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02104",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.84,
+   "d2_nearest": 1.682,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.009,
+    "EAS": 0.04,
+    "SAS": 0.049,
+    "AMR": 0.902
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02102",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 100,
+   "status": "UNSTABLE",
+   "nearest": "AMR",
+   "stability": 0.64,
+   "d2_nearest": 4.4,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.013,
+    "SAS": 0.339,
+    "AMR": 0.648
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02291",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 5.373,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01920",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.484,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.041,
+    "SAS": 0.0,
+    "AMR": 0.959
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01953",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.294,
+   "admixture": {
+    "AFR": 0.028,
+    "EUR": 0.001,
+    "EAS": 0.1,
+    "SAS": 0.0,
+    "AMR": 0.872
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01948",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 2.541,
+   "admixture": {
+    "AFR": 0.141,
+    "EUR": 0.019,
+    "EAS": 0.028,
+    "SAS": 0.0,
+    "AMR": 0.812
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02147",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.791,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01577",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 4.992,
+   "admixture": {
+    "AFR": 0.047,
+    "EUR": 0.263,
+    "EAS": 0.004,
+    "SAS": 0.0,
+    "AMR": 0.685
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01947",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.962,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.29,
+    "EAS": 0.037,
+    "SAS": 0.0,
+    "AMR": 0.672
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01572",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.022,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01967",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 0.98,
+   "d2_nearest": 4.304,
+   "admixture": {
+    "AFR": 0.054,
+    "EUR": 0.353,
+    "EAS": 0.0,
+    "SAS": 0.046,
+    "AMR": 0.546
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02299",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 0.619,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.049,
+    "EAS": 0.032,
+    "SAS": 0.005,
+    "AMR": 0.914
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01924",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 12.875,
+   "admixture": {
+    "AFR": 0.256,
+    "EUR": 0.0,
+    "EAS": 0.001,
+    "SAS": 0.0,
+    "AMR": 0.743
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01932",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 400,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 2.996,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.014,
+    "SAS": 0.0,
+    "AMR": 0.986
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02089",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.788,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.102,
+    "EAS": 0.124,
+    "SAS": 0.004,
+    "AMR": 0.771
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01950",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.225,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.064,
+    "SAS": 0.0,
+    "AMR": 0.936
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01578",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.224,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.241,
+    "EAS": 0.024,
+    "SAS": 0.007,
+    "AMR": 0.728
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01936",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.416,
+   "admixture": {
+    "AFR": 0.075,
+    "EUR": 0.16,
+    "EAS": 0.0,
+    "SAS": 0.01,
+    "AMR": 0.753
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01997",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.223,
+   "admixture": {
+    "AFR": 0.005,
+    "EUR": 0.0,
+    "EAS": 0.006,
+    "SAS": 0.0,
+    "AMR": 0.988
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01572",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 800,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.129,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01992",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 3.308,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.999
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02150",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 2.595,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 1.0
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01941",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.588,
+   "admixture": {
+    "AFR": 0.029,
+    "EUR": 0.0,
+    "EAS": 0.009,
+    "SAS": 0.0,
+    "AMR": 0.961
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01970",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.47,
+   "admixture": {
+    "AFR": 0.001,
+    "EUR": 0.067,
+    "EAS": 0.004,
+    "SAS": 0.056,
+    "AMR": 0.873
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01980",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 5.764,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.049,
+    "EAS": 0.065,
+    "SAS": 0.091,
+    "AMR": 0.795
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02277",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 1600,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.054,
+   "admixture": {
+    "AFR": 0.014,
+    "EUR": 0.109,
+    "EAS": 0.009,
+    "SAS": 0.063,
+    "AMR": 0.805
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01992",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 7.148,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.004,
+    "SAS": 0.0,
+    "AMR": 0.996
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG02104",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.42,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.0,
+    "EAS": 0.005,
+    "SAS": 0.0,
+    "AMR": 0.995
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01950",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 5.023,
+   "admixture": {
+    "AFR": 0.01,
+    "EUR": 0.0,
+    "EAS": 0.039,
+    "SAS": 0.0,
+    "AMR": 0.951
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01941",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.804,
+   "admixture": {
+    "AFR": 0.036,
+    "EUR": 0.0,
+    "EAS": 0.024,
+    "SAS": 0.003,
+    "AMR": 0.938
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01979",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 4.274,
+   "admixture": {
+    "AFR": 0.0,
+    "EUR": 0.098,
+    "EAS": 0.0,
+    "SAS": 0.018,
+    "AMR": 0.884
+   },
+   "expected_group": "AMR"
+  },
+  {
+   "kind": "sparsity",
+   "sample": "HG01951",
+   "pop": "PEL",
+   "superpop": "AMR",
+   "n_sites": 3200,
+   "status": "RESOLVED",
+   "nearest": "AMR",
+   "stability": 1.0,
+   "d2_nearest": 1.836,
+   "admixture": {
+    "AFR": 0.004,
+    "EUR": 0.0,
+    "EAS": 0.0,
+    "SAS": 0.0,
+    "AMR": 0.996
+   },
+   "expected_group": "AMR"
+  }
+ ]
+}

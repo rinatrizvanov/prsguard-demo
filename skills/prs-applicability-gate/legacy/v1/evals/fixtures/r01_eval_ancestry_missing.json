@@ -1,0 +1,29 @@
+{
+  "description": "API response missing eval_ancestry entirely",
+  "expected": {
+    "decision": "ABSTAIN",
+    "reason_code": "A_MISSING_INPUT",
+    "rule_fired": "R1"
+  },
+  "input": {
+    "schema_version": "1.0",
+    "target": {
+      "ancestry_label": "EUR",
+      "ancestry_confidence": 0.95
+    },
+    "prs": {
+      "raw_score": 4.61,
+      "variants_matched": 74,
+      "variants_in_score": 77,
+      "percentile_reference_population": "EUR",
+      "candidate_percentile": 76.1
+    },
+    "pgs": {
+      "pgs_id": "PGS000001",
+      "trait": "Breast cancer",
+      "publication": "Mavaddat N 2015, J Natl Cancer Inst",
+      "eval_sample_set_count": 11
+    },
+    "extraction_notes": []
+  }
+}

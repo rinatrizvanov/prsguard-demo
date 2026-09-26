@@ -24,6 +24,17 @@ PARTICIPANT_NOUN = (
 # Order matters: longer / more specific phrases first. Matched spans are
 # masked so that "North African" is not also counted as "African".
 ANCESTRY_TERMS: list[tuple[str, str, str | None, str | None]] = [
+    # Negated forms first. "\bEuropean" also matches inside "non-European" (the hyphen
+    # is a word boundary), which read "350,000 of non-European ancestries" as 350,000
+    # Europeans and "non-Hispanic white participants" as Hispanic. US-census style
+    # "non-Hispanic white/Black" name a group; any other "non-X" is an unspecified
+    # set of other groups, recorded as OTH (never as X).
+    (r"non[- ]Hispanic whites?(?: (?:Americans?|participants|individuals|women|men|adults|patients|subjects|people))?",
+     "EUR", None, None),
+    (r"non[- ]Hispanic (?:Blacks?|African[- ]Americans?)(?: (?:participants|individuals|women|men|adults|patients|subjects|people))?",
+     "AFR", None, None),
+    (r"non[- ]?(?:Europeans?|Africans?|Asians?|Hispanics?|Latin[oa]s?|whites?|Whites?|Caucasians?|Black)"
+     r"(?:[- ](?:ancestry|ancestries|descent|origin|populations?))?", "OTH", None, None),
     (r"African[- ]Americans?", "AFR", "USA", None),
     (r"African[- ]Caribbeans?|Afro[- ]Caribbeans?", "AFR", None, None),
     (r"Black (?:British|African|Caribbean)", "AFR", "GBR", None),
@@ -42,7 +53,6 @@ ANCESTRY_TERMS: list[tuple[str, str, str | None, str | None]] = [
     (r"South[- ]?East Asians?|Southeast Asians?|East Asians?", "EAS", None, None),
     (r"South Asians?|Central Asians?", "SAS", None, None),
     (r"(?:white|White) British", "EUR", "GBR", None),
-    (r"non[- ]Hispanic whites?", "EUR", None, None),
     (r"white (?:Europeans?|Americans?|participants|individuals|women|men|adults|patients|subjects|people)", "EUR", None, None),
     (r"Caucasians?|Caucasoid", "EUR", None, "race_term"),
     (r"Ashkenazi(?: Jewish| Jews)?", "EUR", None, None),
@@ -101,7 +111,9 @@ REFERENCE_PANELS = re.compile(
     re.IGNORECASE,
 )
 
-NUMBER = r"(\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?\s*(?:million|M\b|k\b|K\b)|\d{2,7})"
+# Thousands may be grouped with commas or with (thin/no-break) spaces, as in "53 051 women" (JNCI, BMJ style).
+NUMBER = (r"(\d{1,3}(?:,\d{3})+|\d{1,3}(?:[ \u00a0\u2009\u202f]\d{3})+(?![\d.,])"
+          r"|\d+(?:\.\d+)?\s*(?:million|M\b|k\b|K\b)|\d{2,7})")
 
 # Strong: the design itself spans or dissects ancestries.
 CROSS_ANCESTRY_RE = re.compile(
@@ -145,6 +157,7 @@ class PopulationRecord:
     section: str       # abstract | methods
     confidence: str    # high | medium
     snippet: str
+    sample_key: str = ""   # curated PGS Catalog records: identity of the sample set (equity_lit_pgs.sample_identity)
 
 
 @dataclass
@@ -198,6 +211,8 @@ _BIOBANK_PATS = [(re.compile(p), label, isos, anc) for p, label, isos, anc in BI
 
 def parse_number(tok: str) -> int | None:
     t = tok.strip().replace(",", "")
+    if re.fullmatch(r"\d{1,3}(?:[ \u00a0\u2009\u202f]\d{3})+", t):
+        t = re.sub(r"[ \u00a0\u2009\u202f]", "", t)
     m = re.fullmatch(r"(\d+(?:\.\d+)?)\s*(million|M|k|K)?", t)
     if not m:
         return None
@@ -239,6 +254,23 @@ NON_PARTICIPANT_CONTEXT = re.compile(
 )
 
 
+# Populations named as excluded are not participants: "provided individuals with non-European
+# ancestry are excluded" (WTCCC 2007), "we excluded 250 participants of African ancestry". The
+# gap may not cross a clause break (a comma other than a digit separator, ';' or '.').
+_GAP = r"(?:[^.;,]|,(?=\d))"
+EXCLUDED_AFTER = re.compile(
+    rf"^{_GAP}{{0,40}}?\b(?:were|was|are|is|been|being)\s+(?:also\s+|then\s+|subsequently\s+)?"
+    r"(?:excluded|removed|omitted|dropped|filtered out)\b", re.IGNORECASE)
+EXCLUDED_BEFORE = re.compile(
+    r"\b(?:exclud(?:e|ed|ing)|remov(?:e|ed|ing)|omit(?:ted|ting)?)\s+(?:all\s+|any\s+|the\s+)?"
+    r"(?:[\w-]+\s+){0,3}$", re.IGNORECASE)
+
+
+def _excluded(sentence: str, span: tuple[int, int]) -> bool:
+    return bool(EXCLUDED_AFTER.search(sentence[span[1]:span[1] + 80])
+                or EXCLUDED_BEFORE.search(sentence[max(0, span[0] - 60):span[0]]))
+
+
 def _find_mentions(sentence: str) -> list[dict]:
     """All population mentions in one sentence, most specific first, non-overlapping."""
     mentions: list[dict] = []
@@ -274,7 +306,8 @@ def _find_mentions(sentence: str) -> list[dict]:
         if cur["kind"] == "demonym" and host in DIASPORA_HOSTS and len(prev["term"].split()) > 1 \
                 and re.fullmatch(r"\s*(?:,|and|or|,\s*and)\s*", sentence[prev["span"][1]:cur["span"][0]]):
             cur["isos"] = [DIASPORA_HOSTS[host]]
-    mentions = [m for m in mentions if not NON_PARTICIPANT_CONTEXT.search(sentence[max(0, m["span"][0] - 60):m["span"][0]])]
+    mentions = [m for m in mentions if not NON_PARTICIPANT_CONTEXT.search(sentence[max(0, m["span"][0] - 60):m["span"][0]])
+                and not _excluded(sentence, m["span"])]
     mentions.sort(key=lambda d: d["span"][0])
     return mentions
 
@@ -289,6 +322,9 @@ def _is_count(sentence: str, m: re.Match) -> bool:
     if re.match(r"\s*(?:%|years?|yrs|SNPs|variants|loci|genes|kb|Mb|bp|mg|ml|cM|months|days|weeks|times|fold|‐fold|-fold)\b", after):
         return False
     if re.search(r"(?:rs|chr|p\s*=\s*|P\s*[<=]\s*|\d\.)$", before):
+        return False
+    # Score names such as "PGS 313", "PRS313" or "GRS-77" are identifiers, not sample sizes.
+    if re.search(r"\b(?:PGS|PRS|GRS|PGRS|polygenic score|risk score)[\s_-]*$", before, re.I):
         return False
     # Bare 4-digit years need an explicit participant noun right after them.
     if "," not in raw and 1900 <= n <= 2035:
@@ -559,13 +595,18 @@ def audit_paper(paper, curated: list[PopulationRecord] | None = None) -> PaperAu
 def aggregate_curated(records: list[PopulationRecord]) -> tuple[dict, dict]:
     """Curated sample sets are distinct samples within a stage, so Ns are summed per
     stage; across stages (GWAS / development / evaluation of the same paper) the
-    largest stage total is kept to avoid counting one cohort twice."""
+    largest stage total is kept to avoid counting one cohort twice.
+
+    The same sample set reaches a paper once per score that reused it (and once per
+    GWAS Catalog accession of one analysis); ``sample_key`` makes those one set.
+    Keying on the snippet, which names the score, counted a GWAS reused by six
+    scores six times."""
     by_stage_anc: dict[str, dict[str, int]] = {}
     by_stage_cty: dict[str, dict[str, int]] = {}
     groups, countries = set(), set()
     seen = set()
     for r in records:
-        key = (r.section, r.snippet, r.ancestry, r.iso3)
+        key = (r.section, r.sample_key or r.snippet, r.ancestry, r.iso3)
         if key in seen:
             continue
         seen.add(key)

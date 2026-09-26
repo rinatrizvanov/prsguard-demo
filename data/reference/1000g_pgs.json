@@ -1,0 +1,18 @@
+{
+  "name": "1000g_pgs",
+  "variant_types": "biallelic SNVs and indels (plain-sequence alleles)",
+  "purpose": "empirical reference distributions and scoring calibration",
+  "scoring_files": [
+    "PGS000004_hmPOS_GRCh37.txt.gz",
+    "PGS001804_hmPOS_GRCh37.txt.gz",
+    "PGS001336_hmPOS_GRCh37.txt.gz",
+    "PGS000001_hmPOS_GRCh37.txt.gz"
+  ],
+  "retrieved_at": "2026-09-26T20:53:59+00:00",
+  "vcf_url_template": "ALL.chr{chrom}.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz",
+  "n_variants": 3749,
+  "n_samples": 2504,
+  "build": "GRCh37",
+  "source": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502",
+  "sha256": "c25c47690db2b847e08ad56ff3f8ba758b42c439104aeaebd325705538bc6955"
+}

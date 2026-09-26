@@ -1,0 +1,179 @@
+{
+ "benchmark": "build agreement and allele reconciliation on real public files",
+ "seed": 20260926,
+ "files": [
+  {
+   "file": "case_A_HG00097_array.txt",
+   "build": "GRCh37",
+   "grch37_agreement": 1.0,
+   "grch38_agreement": 0.0072,
+   "anchors_checked": 6554,
+   "mismatch": {
+    "PGS000004": 0.0,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "file": "case_B_HG00097_wgs_like.vcf.gz",
+   "build": "GRCh37",
+   "grch37_agreement": 1.0,
+   "grch38_agreement": 0.0072,
+   "anchors_checked": 6557,
+   "mismatch": {
+    "PGS000004": 0.0,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0039,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "file": "case_C_NA06985_wgs_like.vcf.gz",
+   "build": "GRCh37",
+   "grch37_agreement": 1.0,
+   "grch38_agreement": 0.0072,
+   "anchors_checked": 6557,
+   "mismatch": {
+    "PGS000004": 0.0,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0039,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "file": "case_D_NA18488_wgs_like.vcf.gz",
+   "build": "GRCh37",
+   "grch37_agreement": 1.0,
+   "grch38_agreement": 0.0072,
+   "anchors_checked": 6557,
+   "mismatch": {
+    "PGS000004": 0.0,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0039,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "file": "case_E_NA19625_wgs_like.vcf.gz",
+   "build": "GRCh37",
+   "grch37_agreement": 1.0,
+   "grch38_agreement": 0.0072,
+   "anchors_checked": 6557,
+   "mismatch": {
+    "PGS000004": 0.0,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0039,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "file": "case_F_HG01566_wgs_like.vcf.gz",
+   "build": "GRCh37",
+   "grch37_agreement": 1.0,
+   "grch38_agreement": 0.0072,
+   "anchors_checked": 6557,
+   "mismatch": {
+    "PGS000004": 0.0,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0039,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "file": "case_G_NA18939_thin.txt",
+   "build": "GRCh37",
+   "grch37_agreement": 1.0,
+   "grch38_agreement": 0.016,
+   "anchors_checked": 125,
+   "mismatch": {
+    "PGS000004": null,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0,
+    "PGS000001": null
+   }
+  },
+  {
+   "file": "manuel_corpas_23andme.txt.gz",
+   "build": "NCBI36",
+   "grch37_agreement": 0.0002,
+   "grch38_agreement": 0.0,
+   "anchors_checked": 6547,
+   "mismatch": {
+    "PGS000004": null,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "file": "george_church_23andme.txt.gz",
+   "build": "NCBI36",
+   "grch37_agreement": 0.0002,
+   "grch38_agreement": 0.0,
+   "anchors_checked": 6524,
+   "mismatch": {
+    "PGS000004": null,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0,
+    "PGS000001": 0.0
+   }
+  }
+ ],
+ "perturbation": [
+  {
+   "corrupted_fraction": 0.0,
+   "mismatch": {
+    "PGS000004": 0.0,
+    "PGS001804": 0.0,
+    "PGS001336": 0.0039,
+    "PGS000001": 0.0
+   }
+  },
+  {
+   "corrupted_fraction": 0.02,
+   "mismatch": {
+    "PGS000004": 0.023,
+    "PGS001804": 0.0235,
+    "PGS001336": 0.0217,
+    "PGS000001": 0.0395
+   }
+  },
+  {
+   "corrupted_fraction": 0.05,
+   "mismatch": {
+    "PGS000004": 0.0493,
+    "PGS001804": 0.0493,
+    "PGS001336": 0.0434,
+    "PGS000001": 0.0526
+   }
+  },
+  {
+   "corrupted_fraction": 0.1,
+   "mismatch": {
+    "PGS000004": 0.0855,
+    "PGS001804": 0.0925,
+    "PGS001336": 0.0809,
+    "PGS000001": 0.0789
+   }
+  },
+  {
+   "corrupted_fraction": 0.2,
+   "mismatch": {
+    "PGS000004": 0.1842,
+    "PGS001804": 0.196,
+    "PGS001336": 0.2012,
+    "PGS000001": 0.1579
+   }
+  },
+  {
+   "corrupted_fraction": 0.5,
+   "mismatch": {
+    "PGS000004": 0.4704,
+    "PGS001804": 0.493,
+    "PGS001336": 0.4517,
+    "PGS000001": 0.4474
+   }
+  }
+ ]
+}

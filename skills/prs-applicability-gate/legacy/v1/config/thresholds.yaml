@@ -1,0 +1,17 @@
+# PRS applicability gate thresholds.
+# Bump `version` on every change: it is stamped into each gate output so reports issued under
+# old values stay interpretable. Values below are PLACEHOLDERS, not calibrated.
+version: "2026.09.1-placeholder"
+
+# R6: minimum confidence in the target's ancestry assignment (0-1).
+min_ancestry_confidence: 0.80
+
+# R3 / R4: fraction of score variants matched (variants_matched / variants_in_score).
+coverage_hard_floor: 0.50
+coverage_soft_floor: 0.90
+
+# R7 / R8: minimum eval_ancestry fraction for a group to count as evaluated.
+min_eval_fraction: 0.05
+
+# R2: eval_ancestry fractions must sum to 1 within this tolerance.
+fraction_sum_tolerance: 0.05

@@ -1,0 +1,3891 @@
+{
+  "schema": "prsguard.candidate_set.v1",
+  "router_version": "1.0.0",
+  "status": "FROZEN",
+  "trait": {
+    "query": "breast cancer",
+    "router_version": "1.0.0",
+    "search_hits": [
+      {
+        "id": "MONDO_0007254",
+        "label": "breast cancer"
+      },
+      {
+        "id": "MONDO_0004989",
+        "label": "breast carcinoma"
+      },
+      {
+        "id": "MONDO_0004990",
+        "label": "breast tumor luminal A or B"
+      },
+      {
+        "id": "MONDO_0006513",
+        "label": "estrogen-receptor negative breast cancer"
+      },
+      {
+        "id": "MONDO_0006512",
+        "label": "estrogen-receptor positive breast cancer"
+      },
+      {
+        "id": "EFO_0005606",
+        "label": "family history of breast cancer"
+      },
+      {
+        "id": "MONDO_0004379",
+        "label": "female breast carcinoma"
+      },
+      {
+        "id": "MONDO_0006244",
+        "label": "HER2 positive breast carcinoma"
+      },
+      {
+        "id": "MONDO_0000618",
+        "label": "Her2-receptor negative breast cancer"
+      },
+      {
+        "id": "MONDO_0021116",
+        "label": "luminal A breast carcinoma"
+      },
+      {
+        "id": "MONDO_0021115",
+        "label": "luminal B breast carcinoma"
+      },
+      {
+        "id": "MONDO_0000616",
+        "label": "progesterone-receptor negative breast cancer"
+      },
+      {
+        "id": "MONDO_0005494",
+        "label": "triple-negative breast carcinoma"
+      }
+    ],
+    "status": "resolved",
+    "detail": "exact label match",
+    "term": {
+      "id": "MONDO_0007254",
+      "label": "breast cancer"
+    },
+    "scope": [
+      {
+        "id": "MONDO_0007254",
+        "label": "breast cancer",
+        "sex": null,
+        "reason": "resolved term",
+        "synonyms": [
+          "BC",
+          "breast cancer",
+          "breast tumor",
+          "breast tumour",
+          "cancer of breast",
+          "malignant breast neoplasm",
+          "malignant breast tumor",
+          "malignant breast tumour",
+          "malignant neoplasm of breast",
+          "malignant neoplasm of the breast",
+          "malignant tumor of breast",
+          "malignant tumor of the breast",
+          "malignant tumour of breast",
+          "malignant tumour of the breast",
+          "mammary tumor",
+          "mammary tumour",
+          "primary breast cancer"
+        ]
+      },
+      {
+        "id": "MONDO_0004379",
+        "label": "female breast carcinoma",
+        "sex": "female",
+        "reason": "same outcome (label equivalent to the resolved term)",
+        "synonyms": [
+          "breast carcinoma, female",
+          "carcinoma of female breast",
+          "carcinoma of the female breast",
+          "female breast cancer",
+          "female breast carcinoma",
+          "mammary carcinoma of female breast",
+          "mammary carcinoma of the female breast"
+        ]
+      },
+      {
+        "id": "MONDO_0004989",
+        "label": "breast carcinoma",
+        "sex": null,
+        "reason": "same outcome (label equivalent to the resolved term)",
+        "synonyms": [
+          "breast cancer",
+          "breast cancer, NOS",
+          "breast carcinoma",
+          "cancer of breast",
+          "cancer of the breast",
+          "cancer, breast",
+          "carcinoma of breast",
+          "carcinoma of the breast",
+          "mammary carcinoma"
+        ]
+      }
+    ],
+    "excluded_children": [
+      {
+        "id": "MONDO_0000618",
+        "label": "Her2-receptor negative breast cancer",
+        "sex": null,
+        "reason": "narrower sub-phenotype (molecular subtype or other qualifier)"
+      },
+      {
+        "id": "MONDO_0005494",
+        "label": "triple-negative breast carcinoma",
+        "sex": null,
+        "reason": "narrower sub-phenotype (molecular subtype or other qualifier)"
+      },
+      {
+        "id": "MONDO_0006244",
+        "label": "HER2 positive breast carcinoma",
+        "sex": null,
+        "reason": "narrower sub-phenotype (molecular subtype or other qualifier)"
+      },
+      {
+        "id": "MONDO_0006512",
+        "label": "estrogen-receptor positive breast cancer",
+        "sex": null,
+        "reason": "narrower sub-phenotype (molecular subtype or other qualifier)"
+      },
+      {
+        "id": "MONDO_0006513",
+        "label": "estrogen-receptor negative breast cancer",
+        "sex": null,
+        "reason": "narrower sub-phenotype (molecular subtype or other qualifier)"
+      },
+      {
+        "id": "MONDO_0021115",
+        "label": "luminal B breast carcinoma",
+        "sex": null,
+        "reason": "narrower sub-phenotype (molecular subtype or other qualifier)"
+      },
+      {
+        "id": "MONDO_0021116",
+        "label": "luminal A breast carcinoma",
+        "sex": null,
+        "reason": "narrower sub-phenotype (molecular subtype or other qualifier)"
+      }
+    ],
+    "scope_rule": "resolved term plus child terms whose label (after an optional sex prefix) equals the resolved label or its cancer/carcinoma equivalent"
+  },
+  "options": {
+    "sex": "female",
+    "build": "GRCh37",
+    "max_variants": 10000,
+    "top_k": 3
+  },
+  "eligibility_rules": [
+    "E1 trait: mapped (PGS Catalog trait_efo) to the resolved term or an in-scope child term.",
+    "E2 phenotype: trait_reported names the whole outcome (the term's label, a Catalog synonym of an in-scope term, or the query); parenthetical qualifiers are allowed only when they are a sex qualifier, a synonym or abbreviation of the term, or a phenotype code (PheCode/ICD); subtype, age-of-onset or carrier-status scores answer a different question.",
+    "E3 sex: sex-specific scores are excluded when the person's sex is given and differs.",
+    "E4 score model: additive with log-scale weights and no interaction terms (what the scorer computes).",
+    "E5 file: a PGS Catalog harmonised scoring file exists for the requested genome build (any build if unknown).",
+    "E6 evaluated: at least one evaluation (publication, sample set) unit in the Catalog.",
+    "E7 metadata: the Catalog record resolves and passes the consistency audit.",
+    "E8 engineering: variants_number <= max_variants when set (the prsguard CLI sets 10,000 by default, the size the shipped 1000 Genomes reference panel supports; --max-variants 0 disables it). A runtime constraint, not a scientific criterion."
+  ],
+  "ranking_rules": [
+    "R1 more distinct ancestry groups (single-ancestry evaluation units; NR/MAE/MAO/OTH not counted) with at least one reported performance metric - breadth of validation first;",
+    "R2 more evaluation units with a reported performance metric;",
+    "R3 larger total evaluation sample size (sum over units);",
+    "R4 earlier Catalog release (longer track record); R5 PGS id. The person's genotype is never an input."
+  ],
+  "n_found": 160,
+  "n_eligible": 87,
+  "eligible": [
+    {
+      "pgs_id": "PGS000004",
+      "name": "PRS313_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 313,
+      "weight_type": "NR",
+      "date_release": "2019-10-14",
+      "publication": {
+        "pgp_id": "PGP000002",
+        "pmid": "30554720",
+        "doi": "10.1016/j.ajhg.2018.11.002"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "AFR",
+          "AMR",
+          "ASN",
+          "EAS",
+          "EUR"
+        ],
+        "units_with_metrics": 64,
+        "units": 64,
+        "total_evaluation_n": 10967698
+      },
+      "sort_key": [
+        -5,
+        -64,
+        -10967698,
+        "2019-10-14",
+        "PGS000004"
+      ],
+      "pre_rank": 1
+    },
+    {
+      "pgs_id": "PGS001804",
+      "name": "portability-PLR_174.1",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 2984,
+      "weight_type": "beta",
+      "date_release": "2022-01-10",
+      "publication": {
+        "pgp_id": "PGP000263",
+        "pmid": "34995502",
+        "doi": "10.1016/j.ajhg.2021.11.008"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "AFR",
+          "EAS",
+          "EUR",
+          "GME",
+          "SAS"
+        ],
+        "units_with_metrics": 8,
+        "units": 8,
+        "total_evaluation_n": 24030
+      },
+      "sort_key": [
+        -5,
+        -8,
+        -24030,
+        "2022-01-10",
+        "PGS001804"
+      ],
+      "pre_rank": 2
+    },
+    {
+      "pgs_id": "PGS001336",
+      "name": "GBE_cancer1002",
+      "trait_reported": "Breast cancer",
+      "variants_number": 555,
+      "weight_type": "NR",
+      "date_release": "2021-10-21",
+      "publication": {
+        "pgp_id": "PGP000244",
+        "pmid": "35324888",
+        "doi": "10.1371/journal.pgen.1010105"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "AFR",
+          "EAS",
+          "EUR",
+          "SAS"
+        ],
+        "units_with_metrics": 5,
+        "units": 5,
+        "total_evaluation_n": 108362
+      },
+      "sort_key": [
+        -4,
+        -5,
+        -108362,
+        "2021-10-21",
+        "PGS001336"
+      ],
+      "pre_rank": 3
+    },
+    {
+      "pgs_id": "PGS000015",
+      "name": "GPS_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 5218,
+      "weight_type": "NR",
+      "date_release": "2019-10-14",
+      "publication": {
+        "pgp_id": "PGP000006",
+        "pmid": "30104762",
+        "doi": "10.1038/s41588-018-0183-z"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "AFR",
+          "AMR",
+          "EUR"
+        ],
+        "units_with_metrics": 4,
+        "units": 4,
+        "total_evaluation_n": 197846
+      },
+      "sort_key": [
+        -3,
+        -4,
+        -197846,
+        "2019-10-14",
+        "PGS000015"
+      ],
+      "pre_rank": 4
+    },
+    {
+      "pgs_id": "PGS000001",
+      "name": "PRS77_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 77,
+      "weight_type": "NR",
+      "date_release": "2019-10-14",
+      "publication": {
+        "pgp_id": "PGP000001",
+        "pmid": "25855707",
+        "doi": "10.1093/jnci/djv036"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS",
+          "EUR"
+        ],
+        "units_with_metrics": 11,
+        "units": 11,
+        "total_evaluation_n": 442196
+      },
+      "sort_key": [
+        -2,
+        -11,
+        -442196,
+        "2019-10-14",
+        "PGS000001"
+      ],
+      "pre_rank": 5
+    },
+    {
+      "pgs_id": "PGS004107",
+      "name": "pt_clump.auto.GCST004988.Breast_cancer",
+      "trait_reported": "Breast cancer",
+      "variants_number": 209,
+      "weight_type": "beta",
+      "date_release": "2023-12-19",
+      "publication": {
+        "pgp_id": "PGP000517",
+        "pmid": "38908374",
+        "doi": "10.1016/j.ajhg.2024.06.003"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR",
+          "SAS"
+        ],
+        "units_with_metrics": 6,
+        "units": 6,
+        "total_evaluation_n": 461302
+      },
+      "sort_key": [
+        -2,
+        -6,
+        -461302,
+        "2023-12-19",
+        "PGS004107"
+      ],
+      "pre_rank": 6
+    },
+    {
+      "pgs_id": "PGS004123",
+      "name": "pt_clump_nested.CV.GCST004988.Breast_cancer",
+      "trait_reported": "Breast cancer",
+      "variants_number": 982,
+      "weight_type": "beta",
+      "date_release": "2023-12-19",
+      "publication": {
+        "pgp_id": "PGP000517",
+        "pmid": "38908374",
+        "doi": "10.1016/j.ajhg.2024.06.003"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR",
+          "SAS"
+        ],
+        "units_with_metrics": 6,
+        "units": 6,
+        "total_evaluation_n": 461302
+      },
+      "sort_key": [
+        -2,
+        -6,
+        -461302,
+        "2023-12-19",
+        "PGS004123"
+      ],
+      "pre_rank": 7
+    },
+    {
+      "pgs_id": "PGS000007",
+      "name": "PRS3820_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 3820,
+      "weight_type": "NR",
+      "date_release": "2019-10-14",
+      "publication": {
+        "pgp_id": "PGP000002",
+        "pmid": "30554720",
+        "doi": "10.1016/j.ajhg.2018.11.002"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "AFR",
+          "EUR"
+        ],
+        "units_with_metrics": 6,
+        "units": 6,
+        "total_evaluation_n": 118262
+      },
+      "sort_key": [
+        -2,
+        -6,
+        -118262,
+        "2019-10-14",
+        "PGS000007"
+      ],
+      "pre_rank": 8
+    },
+    {
+      "pgs_id": "PGS000345",
+      "name": "PRS229_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 229,
+      "weight_type": "beta",
+      "date_release": "2020-12-08",
+      "publication": {
+        "pgp_id": "PGP000112",
+        "pmid": "32737321",
+        "doi": "10.1038/s41467-020-17680-w"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "ASN",
+          "EAS"
+        ],
+        "units_with_metrics": 3,
+        "units": 3,
+        "total_evaluation_n": 45212
+      },
+      "sort_key": [
+        -2,
+        -3,
+        -45212,
+        "2020-12-08",
+        "PGS000345"
+      ],
+      "pre_rank": 9
+    },
+    {
+      "pgs_id": "PGS000028",
+      "name": "PRS",
+      "trait_reported": "Breast cancer",
+      "variants_number": 83,
+      "weight_type": "log(OR)",
+      "date_release": "2019-10-14",
+      "publication": {
+        "pgp_id": "PGP000018",
+        "pmid": "27565998",
+        "doi": "10.1007/s10549-016-3953-2"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS",
+          "EUR"
+        ],
+        "units_with_metrics": 3,
+        "units": 3,
+        "total_evaluation_n": 1857
+      },
+      "sort_key": [
+        -2,
+        -3,
+        -1857,
+        "2019-10-14",
+        "PGS000028"
+      ],
+      "pre_rank": 10
+    },
+    {
+      "pgs_id": "PGS000873",
+      "name": "SNP143",
+      "trait_reported": "Breast cancer",
+      "variants_number": 143,
+      "weight_type": "log(OR)",
+      "date_release": "2021-08-26",
+      "publication": {
+        "pgp_id": "PGP000216",
+        "pmid": "31251818",
+        "doi": "10.1002/ijc.32541"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 10,
+        "units": 10,
+        "total_evaluation_n": 17101
+      },
+      "sort_key": [
+        -1,
+        -10,
+        -17101,
+        "2021-08-26",
+        "PGS000873"
+      ],
+      "pre_rank": 11
+    },
+    {
+      "pgs_id": "PGS000045",
+      "name": "BCPRS_Overall",
+      "trait_reported": "Breast cancer",
+      "variants_number": 88,
+      "weight_type": "NR",
+      "date_release": "2019-12-18",
+      "publication": {
+        "pgp_id": "PGP000033",
+        "pmid": "28376175",
+        "doi": "10.1093/jnci/djw302"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 5,
+        "units": 5,
+        "total_evaluation_n": 26108
+      },
+      "sort_key": [
+        -1,
+        -5,
+        -26108,
+        "2019-12-18",
+        "PGS000045"
+      ],
+      "pre_rank": 12
+    },
+    {
+      "pgs_id": "PGS000317",
+      "name": "PRS180",
+      "trait_reported": "Breast cancer",
+      "variants_number": 180,
+      "weight_type": "log(OR)",
+      "date_release": "2020-08-19",
+      "publication": {
+        "pgp_id": "PGP000094",
+        "pmid": "31553449",
+        "doi": "10.1093/jnci/djz174"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "AMR"
+        ],
+        "units_with_metrics": 4,
+        "units": 4,
+        "total_evaluation_n": 23794
+      },
+      "sort_key": [
+        -1,
+        -4,
+        -23794,
+        "2020-08-19",
+        "PGS000317"
+      ],
+      "pre_rank": 13
+    },
+    {
+      "pgs_id": "PGS000072",
+      "name": "CC_Breast",
+      "trait_reported": "Breast cancer",
+      "variants_number": 187,
+      "weight_type": "log(OR)",
+      "date_release": "2020-02-12",
+      "publication": {
+        "pgp_id": "PGP000050",
+        "pmid": "33579919",
+        "doi": "10.1038/s41467-021-21288-z"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 3,
+        "units": 3,
+        "total_evaluation_n": 455812
+      },
+      "sort_key": [
+        -1,
+        -3,
+        -455812,
+        "2020-02-12",
+        "PGS000072"
+      ],
+      "pre_rank": 14
+    },
+    {
+      "pgs_id": "PGS000344",
+      "name": "PRS287_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 287,
+      "weight_type": "beta",
+      "date_release": "2020-12-08",
+      "publication": {
+        "pgp_id": "PGP000112",
+        "pmid": "32737321",
+        "doi": "10.1038/s41467-020-17680-w"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "ASN"
+        ],
+        "units_with_metrics": 3,
+        "units": 3,
+        "total_evaluation_n": 49363
+      },
+      "sort_key": [
+        -1,
+        -3,
+        -49363,
+        "2020-12-08",
+        "PGS000344"
+      ],
+      "pre_rank": 15
+    },
+    {
+      "pgs_id": "PGS000050",
+      "name": "PRS44",
+      "trait_reported": "Breast cancer",
+      "variants_number": 44,
+      "weight_type": "NR",
+      "date_release": "2019-12-18",
+      "publication": {
+        "pgp_id": "PGP000035",
+        "pmid": "27931260",
+        "doi": "10.1186/s13058-016-0786-1"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 2,
+        "units": 2,
+        "total_evaluation_n": 28719
+      },
+      "sort_key": [
+        -1,
+        -2,
+        -28719,
+        "2019-12-18",
+        "PGS000050"
+      ],
+      "pre_rank": 16
+    },
+    {
+      "pgs_id": "PGS000783",
+      "name": "CC_Breast_IV",
+      "trait_reported": "Breast cancer",
+      "variants_number": 162,
+      "weight_type": "Inverse-variance weighting",
+      "date_release": "2021-05-28",
+      "publication": {
+        "pgp_id": "PGP000186",
+        "pmid": "33247094",
+        "doi": "10.1038/s41467-020-19600-4"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 216273
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -216273,
+        "2021-05-28",
+        "PGS000783"
+      ],
+      "pre_rank": 17
+    },
+    {
+      "pgs_id": "PGS004242",
+      "name": "PRS306_breast",
+      "trait_reported": "Breast cancer",
+      "variants_number": 306,
+      "weight_type": "beta",
+      "date_release": "2023-12-15",
+      "publication": {
+        "pgp_id": "PGP000542",
+        "pmid": "37087533",
+        "doi": "10.1038/s41698-023-00377-w"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 133830
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -133830,
+        "2023-12-15",
+        "PGS004242"
+      ],
+      "pre_rank": 18
+    },
+    {
+      "pgs_id": "PGS000486",
+      "name": "PRSWEB_PHECODE174.1_GWAS-Catalog-r2019-05-03-X174.1_P_5e-08_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 86,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000486"
+      ],
+      "pre_rank": 19
+    },
+    {
+      "pgs_id": "PGS000488",
+      "name": "PRSWEB_PHECODE174.1_GWAS-Catalog-r2019-05-03-X174.1_PT_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 79,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000488"
+      ],
+      "pre_rank": 20
+    },
+    {
+      "pgs_id": "PGS000490",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-negative-BRCA_P_5e-08_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 49,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000490"
+      ],
+      "pre_rank": 21
+    },
+    {
+      "pgs_id": "PGS000494",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-negative-BRCA_PT_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 49,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000494"
+      ],
+      "pre_rank": 22
+    },
+    {
+      "pgs_id": "PGS000498",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-positive-BRCA_P_5e-08_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 257,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000498"
+      ],
+      "pre_rank": 23
+    },
+    {
+      "pgs_id": "PGS000502",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-positive-BRCA_PT_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 747,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000502"
+      ],
+      "pre_rank": 24
+    },
+    {
+      "pgs_id": "PGS000506",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-Overall-BRCA_P_5e-08_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 334,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000506"
+      ],
+      "pre_rank": 25
+    },
+    {
+      "pgs_id": "PGS000510",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-Overall-BRCA_PT_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 1682,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000510"
+      ],
+      "pre_rank": 26
+    },
+    {
+      "pgs_id": "PGS000518",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-negative-BRCA_P_5e-08_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 10,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000518"
+      ],
+      "pre_rank": 27
+    },
+    {
+      "pgs_id": "PGS000522",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-negative-BRCA_PT_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 14,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000522"
+      ],
+      "pre_rank": 28
+    },
+    {
+      "pgs_id": "PGS000524",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-negative-BRCA_LASSOSUM_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 2708,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000524"
+      ],
+      "pre_rank": 29
+    },
+    {
+      "pgs_id": "PGS000526",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-positive-BRCA_P_5e-08_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 86,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000526"
+      ],
+      "pre_rank": 30
+    },
+    {
+      "pgs_id": "PGS000530",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-positive-BRCA_PT_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 174,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000530"
+      ],
+      "pre_rank": 31
+    },
+    {
+      "pgs_id": "PGS000534",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-Overall-BRCA_P_5e-08_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 110,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000534"
+      ],
+      "pre_rank": 32
+    },
+    {
+      "pgs_id": "PGS000538",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-Overall-BRCA_PT_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 85,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000538"
+      ],
+      "pre_rank": 33
+    },
+    {
+      "pgs_id": "PGS000540",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-Overall-BRCA_LASSOSUM_UKB_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 7118,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 68531
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -68531,
+        "2020-12-15",
+        "PGS000540"
+      ],
+      "pre_rank": 34
+    },
+    {
+      "pgs_id": "PGS005164",
+      "name": "PRS-BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 109,
+      "weight_type": "beta",
+      "date_release": "2025-03-17",
+      "publication": {
+        "pgp_id": "PGP000711",
+        "pmid": "40019942",
+        "doi": "10.1371/journal.pmed.1004534"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 57359
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -57359,
+        "2025-03-17",
+        "PGS005164"
+      ],
+      "pre_rank": 35
+    },
+    {
+      "pgs_id": "PGS004865",
+      "name": "PRS105_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 105,
+      "weight_type": "beta",
+      "date_release": "2024-04-18",
+      "publication": {
+        "pgp_id": "PGP000612",
+        "pmid": "34101481",
+        "doi": "10.1200/jco.20.01992"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 52925
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -52925,
+        "2024-04-18",
+        "PGS004865"
+      ],
+      "pre_rank": 36
+    },
+    {
+      "pgs_id": "PGS004166",
+      "name": "bc_1",
+      "trait_reported": "Breast cancer",
+      "variants_number": 3920,
+      "weight_type": "beta",
+      "date_release": "2023-12-15",
+      "publication": {
+        "pgp_id": "PGP000520",
+        "pmid": "37468507",
+        "doi": "10.1038/s41598-023-37580-5"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 45334
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -45334,
+        "2023-12-15",
+        "PGS004166"
+      ],
+      "pre_rank": 37
+    },
+    {
+      "pgs_id": "PGS004167",
+      "name": "bc_2",
+      "trait_reported": "Breast cancer",
+      "variants_number": 717,
+      "weight_type": "beta",
+      "date_release": "2023-12-15",
+      "publication": {
+        "pgp_id": "PGP000520",
+        "pmid": "37468507",
+        "doi": "10.1038/s41598-023-37580-5"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 45334
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -45334,
+        "2023-12-15",
+        "PGS004167"
+      ],
+      "pre_rank": 38
+    },
+    {
+      "pgs_id": "PGS004168",
+      "name": "bc_3",
+      "trait_reported": "Breast cancer",
+      "variants_number": 4618,
+      "weight_type": "beta",
+      "date_release": "2023-12-15",
+      "publication": {
+        "pgp_id": "PGP000520",
+        "pmid": "37468507",
+        "doi": "10.1038/s41598-023-37580-5"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 45334
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -45334,
+        "2023-12-15",
+        "PGS004168"
+      ],
+      "pre_rank": 39
+    },
+    {
+      "pgs_id": "PGS004169",
+      "name": "bc_4",
+      "trait_reported": "Breast cancer",
+      "variants_number": 1361,
+      "weight_type": "beta",
+      "date_release": "2023-12-15",
+      "publication": {
+        "pgp_id": "PGP000520",
+        "pmid": "37468507",
+        "doi": "10.1038/s41598-023-37580-5"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 45334
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -45334,
+        "2023-12-15",
+        "PGS004169"
+      ],
+      "pre_rank": 40
+    },
+    {
+      "pgs_id": "PGS004170",
+      "name": "bc_5",
+      "trait_reported": "Breast cancer",
+      "variants_number": 2278,
+      "weight_type": "beta",
+      "date_release": "2023-12-15",
+      "publication": {
+        "pgp_id": "PGP000520",
+        "pmid": "37468507",
+        "doi": "10.1038/s41598-023-37580-5"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 45334
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -45334,
+        "2023-12-15",
+        "PGS004170"
+      ],
+      "pre_rank": 41
+    },
+    {
+      "pgs_id": "PGS003396",
+      "name": "PRS-11ASN",
+      "trait_reported": "Breast cancer",
+      "variants_number": 11,
+      "weight_type": "beta",
+      "date_release": "2023-01-19",
+      "publication": {
+        "pgp_id": "PGP000415",
+        "pmid": "36343017",
+        "doi": "10.1093/ije/dyac206"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 41031
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -41031,
+        "2023-01-19",
+        "PGS003396"
+      ],
+      "pre_rank": 42
+    },
+    {
+      "pgs_id": "PGS003397",
+      "name": "PRS-42ASN",
+      "trait_reported": "Breast cancer",
+      "variants_number": 42,
+      "weight_type": "beta",
+      "date_release": "2023-01-19",
+      "publication": {
+        "pgp_id": "PGP000415",
+        "pmid": "36343017",
+        "doi": "10.1093/ije/dyac206"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 41031
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -41031,
+        "2023-01-19",
+        "PGS003397"
+      ],
+      "pre_rank": 43
+    },
+    {
+      "pgs_id": "PGS003398",
+      "name": "PRS-136EUR",
+      "trait_reported": "Breast cancer",
+      "variants_number": 136,
+      "weight_type": "beta",
+      "date_release": "2023-01-19",
+      "publication": {
+        "pgp_id": "PGP000415",
+        "pmid": "36343017",
+        "doi": "10.1093/ije/dyac206"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 41031
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -41031,
+        "2023-01-19",
+        "PGS003398"
+      ],
+      "pre_rank": 44
+    },
+    {
+      "pgs_id": "PGS003399",
+      "name": "PRS-209EUR",
+      "trait_reported": "Breast cancer",
+      "variants_number": 209,
+      "weight_type": "beta",
+      "date_release": "2023-01-19",
+      "publication": {
+        "pgp_id": "PGP000415",
+        "pmid": "36343017",
+        "doi": "10.1093/ije/dyac206"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 41031
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -41031,
+        "2023-01-19",
+        "PGS003399"
+      ],
+      "pre_rank": 45
+    },
+    {
+      "pgs_id": "PGS004295",
+      "name": "GenoBoost_breast_cancer_0",
+      "trait_reported": "Breast cancer",
+      "variants_number": 140,
+      "weight_type": "beta",
+      "date_release": "2024-06-12",
+      "publication": {
+        "pgp_id": "PGP000546",
+        "pmid": "38811555",
+        "doi": "10.1038/s41467-024-48654-x"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 36380
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -36380,
+        "2024-06-12",
+        "PGS004295"
+      ],
+      "pre_rank": 46
+    },
+    {
+      "pgs_id": "PGS004296",
+      "name": "GenoBoost_breast_cancer_1",
+      "trait_reported": "Breast cancer",
+      "variants_number": 80,
+      "weight_type": "beta",
+      "date_release": "2024-06-12",
+      "publication": {
+        "pgp_id": "PGP000546",
+        "pmid": "38811555",
+        "doi": "10.1038/s41467-024-48654-x"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 36380
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -36380,
+        "2024-06-12",
+        "PGS004296"
+      ],
+      "pre_rank": 47
+    },
+    {
+      "pgs_id": "PGS004297",
+      "name": "GenoBoost_breast_cancer_2",
+      "trait_reported": "Breast cancer",
+      "variants_number": 90,
+      "weight_type": "beta",
+      "date_release": "2024-06-12",
+      "publication": {
+        "pgp_id": "PGP000546",
+        "pmid": "38811555",
+        "doi": "10.1038/s41467-024-48654-x"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 36380
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -36380,
+        "2024-06-12",
+        "PGS004297"
+      ],
+      "pre_rank": 48
+    },
+    {
+      "pgs_id": "PGS004298",
+      "name": "GenoBoost_breast_cancer_3",
+      "trait_reported": "Breast cancer",
+      "variants_number": 900,
+      "weight_type": "beta",
+      "date_release": "2024-06-12",
+      "publication": {
+        "pgp_id": "PGP000546",
+        "pmid": "38811555",
+        "doi": "10.1038/s41467-024-48654-x"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 36380
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -36380,
+        "2024-06-12",
+        "PGS004298"
+      ],
+      "pre_rank": 49
+    },
+    {
+      "pgs_id": "PGS004299",
+      "name": "GenoBoost_breast_cancer_4",
+      "trait_reported": "Breast cancer",
+      "variants_number": 70,
+      "weight_type": "beta",
+      "date_release": "2024-06-12",
+      "publication": {
+        "pgp_id": "PGP000546",
+        "pmid": "38811555",
+        "doi": "10.1038/s41467-024-48654-x"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 36380
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -36380,
+        "2024-06-12",
+        "PGS004299"
+      ],
+      "pre_rank": 50
+    },
+    {
+      "pgs_id": "PGS018525",
+      "name": "TPMI_174_Lassosum2",
+      "trait_reported": "Breast cancer",
+      "variants_number": 4021,
+      "weight_type": "beta",
+      "date_release": "2026-07-29",
+      "publication": {
+        "pgp_id": "PGP000835",
+        "pmid": "41094136",
+        "doi": "10.1038/s41586-025-09350-y"
+      },
+      "mapped_terms": [
+        "MONDO_0007254"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 18527
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -18527,
+        "2026-07-29",
+        "PGS018525"
+      ],
+      "pre_rank": 51
+    },
+    {
+      "pgs_id": "PGS000472",
+      "name": "PRSWEB_PHECODE174.1_20001-1002_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 22,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000472"
+      ],
+      "pre_rank": 52
+    },
+    {
+      "pgs_id": "PGS000474",
+      "name": "PRSWEB_PHECODE174.1_20001-1002_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 68,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000474"
+      ],
+      "pre_rank": 53
+    },
+    {
+      "pgs_id": "PGS000476",
+      "name": "PRSWEB_PHECODE174.1_C3-BREAST-3_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 32,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000476"
+      ],
+      "pre_rank": 54
+    },
+    {
+      "pgs_id": "PGS000478",
+      "name": "PRSWEB_PHECODE174.1_C3-BREAST-3_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 120,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000478"
+      ],
+      "pre_rank": 55
+    },
+    {
+      "pgs_id": "PGS000479",
+      "name": "PRSWEB_PHECODE174.1_C3-BREAST-3_LASSOSUM_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 2267,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000479"
+      ],
+      "pre_rank": 56
+    },
+    {
+      "pgs_id": "PGS000480",
+      "name": "PRSWEB_PHECODE174.1_C50_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 20,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000480"
+      ],
+      "pre_rank": 57
+    },
+    {
+      "pgs_id": "PGS000482",
+      "name": "PRSWEB_PHECODE174.1_C50_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 42,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000482"
+      ],
+      "pre_rank": 58
+    },
+    {
+      "pgs_id": "PGS000483",
+      "name": "PRSWEB_PHECODE174.1_C50_LASSOSUM_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 4047,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000483"
+      ],
+      "pre_rank": 59
+    },
+    {
+      "pgs_id": "PGS000484",
+      "name": "PRSWEB_PHECODE174.1_D05_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 25,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000484"
+      ],
+      "pre_rank": 60
+    },
+    {
+      "pgs_id": "PGS000485",
+      "name": "PRSWEB_PHECODE174.1_GWAS-Catalog-r2019-05-03-X174.1_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 62,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000485"
+      ],
+      "pre_rank": 61
+    },
+    {
+      "pgs_id": "PGS000487",
+      "name": "PRSWEB_PHECODE174.1_GWAS-Catalog-r2019-05-03-X174.1_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 62,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000487"
+      ],
+      "pre_rank": 62
+    },
+    {
+      "pgs_id": "PGS000489",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-negative-BRCA_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 49,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000489"
+      ],
+      "pre_rank": 63
+    },
+    {
+      "pgs_id": "PGS000493",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-negative-BRCA_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 217,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000493"
+      ],
+      "pre_rank": 64
+    },
+    {
+      "pgs_id": "PGS000497",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-positive-BRCA_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 257,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000497"
+      ],
+      "pre_rank": 65
+    },
+    {
+      "pgs_id": "PGS000501",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-ER-positive-BRCA_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 1142,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000501"
+      ],
+      "pre_rank": 66
+    },
+    {
+      "pgs_id": "PGS000505",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-Overall-BRCA_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 334,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000505"
+      ],
+      "pre_rank": 67
+    },
+    {
+      "pgs_id": "PGS000509",
+      "name": "PRSWEB_PHECODE174.1_Onco-iCOGS-Overall-BRCA_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 3038,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000509"
+      ],
+      "pre_rank": 68
+    },
+    {
+      "pgs_id": "PGS000513",
+      "name": "PRSWEB_PHECODE174.1_UKBB-SAIGE-HRC-X174.1_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 41,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000513"
+      ],
+      "pre_rank": 69
+    },
+    {
+      "pgs_id": "PGS000515",
+      "name": "PRSWEB_PHECODE174.1_UKBB-SAIGE-HRC-X174.1_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 84,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000515"
+      ],
+      "pre_rank": 70
+    },
+    {
+      "pgs_id": "PGS000516",
+      "name": "PRSWEB_PHECODE174.1_UKBB-SAIGE-HRC-X174.1_LASSOSUM_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 6977,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000516"
+      ],
+      "pre_rank": 71
+    },
+    {
+      "pgs_id": "PGS000517",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-negative-BRCA_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 10,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000517"
+      ],
+      "pre_rank": 72
+    },
+    {
+      "pgs_id": "PGS000521",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-negative-BRCA_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 9,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000521"
+      ],
+      "pre_rank": 73
+    },
+    {
+      "pgs_id": "PGS000523",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-negative-BRCA_LASSOSUM_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 270,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000523"
+      ],
+      "pre_rank": 74
+    },
+    {
+      "pgs_id": "PGS000525",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-positive-BRCA_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 86,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000525"
+      ],
+      "pre_rank": 75
+    },
+    {
+      "pgs_id": "PGS000529",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-ER-positive-BRCA_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 310,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000529"
+      ],
+      "pre_rank": 76
+    },
+    {
+      "pgs_id": "PGS000533",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-Overall-BRCA_P_5e-08_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 110,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000533"
+      ],
+      "pre_rank": 77
+    },
+    {
+      "pgs_id": "PGS000537",
+      "name": "PRSWEB_PHECODE174.1_iCOGS-Overall-BRCA_PT_MGI_20200608",
+      "trait_reported": "Breast cancer (female)",
+      "variants_number": 363,
+      "weight_type": "NR",
+      "date_release": "2020-12-15",
+      "publication": {
+        "pgp_id": "PGP000118",
+        "pmid": "32991828",
+        "doi": "10.1016/j.ajhg.2020.08.025"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": "female",
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7785
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7785,
+        "2020-12-15",
+        "PGS000537"
+      ],
+      "pre_rank": 78
+    },
+    {
+      "pgs_id": "PGS005104",
+      "name": "PRSAFR",
+      "trait_reported": "Breast cancer",
+      "variants_number": 89,
+      "weight_type": "beta",
+      "date_release": "2024-12-16",
+      "publication": {
+        "pgp_id": "PGP000694",
+        "pmid": "38741014",
+        "doi": "10.1038/s41588-024-01736-4"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "AFR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 7096
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -7096,
+        "2024-12-16",
+        "PGS005104"
+      ],
+      "pre_rank": 79
+    },
+    {
+      "pgs_id": "PGS001778",
+      "name": "PRS15_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 15,
+      "weight_type": "log(OR)",
+      "date_release": "2021-11-25",
+      "publication": {
+        "pgp_id": "PGP000259",
+        "pmid": "34572793",
+        "doi": "10.3390/cancers13184568"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 1780
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -1780,
+        "2021-11-25",
+        "PGS001778"
+      ],
+      "pre_rank": 80
+    },
+    {
+      "pgs_id": "PGS002294",
+      "name": "PRS111",
+      "trait_reported": "Breast cancer",
+      "variants_number": 111,
+      "weight_type": "NR",
+      "date_release": "2022-05-18",
+      "publication": {
+        "pgp_id": "PGP000324",
+        "pmid": "35311964",
+        "doi": "10.1001/jamanetworkopen.2021.49030"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 1104
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -1104,
+        "2022-05-18",
+        "PGS002294"
+      ],
+      "pre_rank": 81
+    },
+    {
+      "pgs_id": "PGS003738",
+      "name": "PRS136_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 136,
+      "weight_type": "beta",
+      "date_release": "2023-06-01",
+      "publication": {
+        "pgp_id": "PGP000470",
+        "pmid": "36739632",
+        "doi": "10.1016/j.ebiom.2023.104454"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 738
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -738,
+        "2023-06-01",
+        "PGS003738"
+      ],
+      "pre_rank": 82
+    },
+    {
+      "pgs_id": "PGS000052",
+      "name": "sPRS161",
+      "trait_reported": "Breast cancer",
+      "variants_number": 161,
+      "weight_type": "NR",
+      "date_release": "2019-12-18",
+      "publication": {
+        "pgp_id": "PGP000037",
+        "pmid": "31186341",
+        "doi": "10.1136/jmedgenet-2019-106072"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EUR"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 585
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -585,
+        "2019-12-18",
+        "PGS000052"
+      ],
+      "pre_rank": 83
+    },
+    {
+      "pgs_id": "PGS000029",
+      "name": "PRS_AS",
+      "trait_reported": "Breast cancer",
+      "variants_number": 76,
+      "weight_type": "log(OR)",
+      "date_release": "2019-10-14",
+      "publication": {
+        "pgp_id": "PGP000018",
+        "pmid": "27565998",
+        "doi": "10.1007/s10549-016-3953-2"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [
+          "EAS"
+        ],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 102
+      },
+      "sort_key": [
+        -1,
+        -1,
+        -102,
+        "2019-10-14",
+        "PGS000029"
+      ],
+      "pre_rank": 84
+    },
+    {
+      "pgs_id": "PGS000051",
+      "name": "PRS67",
+      "trait_reported": "Breast cancer",
+      "variants_number": 67,
+      "weight_type": "NR",
+      "date_release": "2019-12-18",
+      "publication": {
+        "pgp_id": "PGP000036",
+        "pmid": "30180161",
+        "doi": "10.1371/journal.pmed.1002644"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [],
+        "units_with_metrics": 2,
+        "units": 2,
+        "total_evaluation_n": 20040
+      },
+      "sort_key": [
+        0,
+        -2,
+        -20040,
+        "2019-12-18",
+        "PGS000051"
+      ],
+      "pre_rank": 85
+    },
+    {
+      "pgs_id": "PGS000773",
+      "name": "PRS179_BC",
+      "trait_reported": "Breast cancer",
+      "variants_number": 179,
+      "weight_type": "log(OR)",
+      "date_release": "2021-05-28",
+      "publication": {
+        "pgp_id": "PGP000179",
+        "pmid": "33769540",
+        "doi": "10.1093/jnci/djab050"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 19434
+      },
+      "sort_key": [
+        0,
+        -1,
+        -19434,
+        "2021-05-28",
+        "PGS000773"
+      ],
+      "pre_rank": 86
+    },
+    {
+      "pgs_id": "PGS004611",
+      "name": "RORP_PRS",
+      "trait_reported": "Breast cancer",
+      "variants_number": 76,
+      "weight_type": "beta",
+      "date_release": "2024-02-20",
+      "publication": {
+        "pgp_id": "PGP000590",
+        "pmid": "37188791",
+        "doi": "10.1038/s41698-023-00382-z"
+      },
+      "mapped_terms": [
+        "MONDO_0004989"
+      ],
+      "sex_specific": null,
+      "harmonized_builds": [
+        "GRCh37",
+        "GRCh38"
+      ],
+      "ranking_evidence": {
+        "ancestry_groups_with_metrics": [],
+        "units_with_metrics": 1,
+        "units": 1,
+        "total_evaluation_n": 10196
+      },
+      "sort_key": [
+        0,
+        -1,
+        -10196,
+        "2024-02-20",
+        "PGS004611"
+      ],
+      "pre_rank": 87
+    }
+  ],
+  "excluded": [
+    {
+      "pgs_id": "PGS000153",
+      "reasons": [
+        "E4: weight_type 'Odds Ratio over expected risk' is a ratio scale, not log-additive"
+      ]
+    },
+    {
+      "pgs_id": "PGS000332",
+      "reasons": [
+        "E8 (engineering): 6390808 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000335",
+      "reasons": [
+        "E8 (engineering): 1079089 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000473",
+      "reasons": [
+        "E8 (engineering): 1111495 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000475",
+      "reasons": [
+        "E8 (engineering): 30041 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000477",
+      "reasons": [
+        "E8 (engineering): 1111495 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000481",
+      "reasons": [
+        "E8 (engineering): 1111495 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000491",
+      "reasons": [
+        "E8 (engineering): 1119140 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000492",
+      "reasons": [
+        "E8 (engineering): 1120410 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000495",
+      "reasons": [
+        "E8 (engineering): 18866 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000496",
+      "reasons": [
+        "E8 (engineering): 41744 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000499",
+      "reasons": [
+        "E8 (engineering): 1119140 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000500",
+      "reasons": [
+        "E8 (engineering): 1120410 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000503",
+      "reasons": [
+        "E8 (engineering): 61635 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000504",
+      "reasons": [
+        "E8 (engineering): 148560 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000507",
+      "reasons": [
+        "E8 (engineering): 1119140 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000508",
+      "reasons": [
+        "E8 (engineering): 1120410 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000511",
+      "reasons": [
+        "E8 (engineering): 118388 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000512",
+      "reasons": [
+        "E8 (engineering): 286144 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000514",
+      "reasons": [
+        "E8 (engineering): 1119237 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000519",
+      "reasons": [
+        "E8 (engineering): 1115376 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000520",
+      "reasons": [
+        "E8 (engineering): 1116435 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000527",
+      "reasons": [
+        "E8 (engineering): 1115436 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000528",
+      "reasons": [
+        "E8 (engineering): 1116495 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000531",
+      "reasons": [
+        "E8 (engineering): 98026 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000532",
+      "reasons": [
+        "E8 (engineering): 12277 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000535",
+      "reasons": [
+        "E8 (engineering): 1115484 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000536",
+      "reasons": [
+        "E8 (engineering): 1116546 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS000539",
+      "reasons": [
+        "E8 (engineering): 18356 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS002015",
+      "reasons": [
+        "E8 (engineering): 488608 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS002242",
+      "reasons": [
+        "E8 (engineering): 6494889 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS003380",
+      "reasons": [
+        "E8 (engineering): 1142637 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS003758",
+      "reasons": [
+        "E8 (engineering): 46861 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS003759",
+      "reasons": [
+        "E8 (engineering): 17252 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS003983",
+      "reasons": [
+        "E8 (engineering): 1137459 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS003999",
+      "reasons": [
+        "E8 (engineering): 13086 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004025",
+      "reasons": [
+        "E8 (engineering): 1041298 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004040",
+      "reasons": [
+        "E8 (engineering): 1041298 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004053",
+      "reasons": [
+        "E8 (engineering): 869407 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004069",
+      "reasons": [
+        "E8 (engineering): 869407 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004083",
+      "reasons": [
+        "E8 (engineering): 1103877 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004137",
+      "reasons": [
+        "E8 (engineering): 950524 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004153",
+      "reasons": [
+        "E8 (engineering): 1133268 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004441",
+      "reasons": [
+        "E8 (engineering): 1059939 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004511",
+      "reasons": [
+        "E8 (engineering): 1059939 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004579",
+      "reasons": [
+        "E8 (engineering): 1088163 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004688",
+      "reasons": [
+        "E8 (engineering): 1044110 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004737",
+      "reasons": [
+        "E8 (engineering): 3666245 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004738",
+      "reasons": [
+        "E8 (engineering): 3666321 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004869",
+      "reasons": [
+        "E8 (engineering): 872060 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS004893",
+      "reasons": [
+        "E8 (engineering): 56943 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005345",
+      "reasons": [
+        "E8 (engineering): 435538 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005346",
+      "reasons": [
+        "E8 (engineering): 961355 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005347",
+      "reasons": [
+        "E8 (engineering): 941932 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005348",
+      "reasons": [
+        "E8 (engineering): 789305 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005349",
+      "reasons": [
+        "E8 (engineering): 5387266 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005378",
+      "reasons": [
+        "E8 (engineering): 2321840 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005379",
+      "reasons": [
+        "E8 (engineering): 175173 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS005396",
+      "reasons": [
+        "E8 (engineering): 139306 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018526",
+      "reasons": [
+        "E8 (engineering): 939812 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018527",
+      "reasons": [
+        "E8 (engineering): 71127 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018528",
+      "reasons": [
+        "E8 (engineering): 983772 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018529",
+      "reasons": [
+        "E8 (engineering): 160802 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018530",
+      "reasons": [
+        "E2: trait_reported 'Breast cancer female' is not the resolved outcome"
+      ]
+    },
+    {
+      "pgs_id": "PGS018531",
+      "reasons": [
+        "E2: trait_reported 'Breast cancer female' is not the resolved outcome",
+        "E8 (engineering): 939795 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018532",
+      "reasons": [
+        "E2: trait_reported 'Breast cancer female' is not the resolved outcome",
+        "E8 (engineering): 79735 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018533",
+      "reasons": [
+        "E2: trait_reported 'Breast cancer female' is not the resolved outcome",
+        "E8 (engineering): 983749 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018534",
+      "reasons": [
+        "E2: trait_reported 'Breast cancer female' is not the resolved outcome",
+        "E8 (engineering): 212543 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018535",
+      "reasons": [
+        "E2: trait_reported 'Malignant neoplasm of female breast' is not the resolved outcome"
+      ]
+    },
+    {
+      "pgs_id": "PGS018536",
+      "reasons": [
+        "E2: trait_reported 'Malignant neoplasm of female breast' is not the resolved outcome",
+        "E8 (engineering): 939800 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018537",
+      "reasons": [
+        "E2: trait_reported 'Malignant neoplasm of female breast' is not the resolved outcome",
+        "E8 (engineering): 83711 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018538",
+      "reasons": [
+        "E2: trait_reported 'Malignant neoplasm of female breast' is not the resolved outcome",
+        "E8 (engineering): 983756 variants > 10000"
+      ]
+    },
+    {
+      "pgs_id": "PGS018539",
+      "reasons": [
+        "E2: trait_reported 'Malignant neoplasm of female breast' is not the resolved outcome",
+        "E8 (engineering): 173509 variants > 10000"
+      ]
+    }
+  ],
+  "selected": [
+    "PGS000004",
+    "PGS001804",
+    "PGS001336"
+  ],
+  "catalog": {
+    "mode": "snapshot",
+    "release": "2026-09-17",
+    "api_version": "1.8.6"
+  },
+  "frozen_at": "2026-09-26T22:00:23+00:00",
+  "digest": "sha256:13d58f1fd3116bf1ce7cc060a3471c04b33f941d90d3baf5a01c6b1a7569d619"
+}

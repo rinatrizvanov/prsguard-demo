@@ -1,0 +1,1953 @@
+{
+  "schema": "prsguard.pgs_snapshot.v1",
+  "api_base": "https://www.pgscatalog.org/rest",
+  "api_version": "1.8.6",
+  "catalog_release": "2026-09-17",
+  "created_by": "prsguard",
+  "files": {
+    "PGS000001/PGS000001_hmPOS_GRCh37.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000001/ScoringFiles/Harmonized/PGS000001_hmPOS_GRCh37.txt.gz",
+      "sha256": "5a3069e1a1844df02f3d24e889f97dfad03ee0c40888fc5ecf5f44dc5c36ffc3",
+      "retrieved_at": "2026-09-25T16:28:27+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000001/PGS000001_hmPOS_GRCh38.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000001/ScoringFiles/Harmonized/PGS000001_hmPOS_GRCh38.txt.gz",
+      "sha256": "27ce4c57928a9dc40ddb982c899012d66b88d2d3fcae8f84aecdc48279f5615e",
+      "retrieved_at": "2026-09-26T20:33:06+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000001/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000001&limit=100",
+      "sha256": "cd2b065dda5b271a8c658dbd48b53098f5c32e00aaf59fe46ca93c74f1ca9387",
+      "retrieved_at": "2026-09-26T20:23:57+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000001/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000001",
+      "sha256": "bc0e4e06f6b02bfdda97f4c01d6c56a1746abb041d74fc2bc76dd8e97071114c",
+      "retrieved_at": "2026-09-26T20:23:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000004/PGS000004_hmPOS_GRCh37.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000004/ScoringFiles/Harmonized/PGS000004_hmPOS_GRCh37.txt.gz",
+      "sha256": "84f00bd8ed6254c8ab11bc971fbe2d4370c6ec47aa1a9cf1cb36b17a04541243",
+      "retrieved_at": "2026-09-25T17:54:06+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000004/PGS000004_hmPOS_GRCh38.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000004/ScoringFiles/Harmonized/PGS000004_hmPOS_GRCh38.txt.gz",
+      "sha256": "68d7894cec4ddc5294c3b24294aae021b8187350ba589ea8acde8ba88d33c191",
+      "retrieved_at": "2026-09-26T20:33:04+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000004/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000004&limit=100",
+      "sha256": "75051879891bf76e97e73cd12e85807c830e6990347a3b6e6015fb89de2858bd",
+      "retrieved_at": "2026-09-26T20:24:10+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000004/performance_search_p2.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?limit=100&offset=100&pgs_id=PGS000004",
+      "sha256": "ca40d8be25eac8267defa63c7f20269cae7eb8149f48896b72b01e1358cc4b29",
+      "retrieved_at": "2026-09-26T20:24:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000004/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000004",
+      "sha256": "290098feab9666441248a3af39669bca7795bf7a0a042d39f10626bfce5ac94e",
+      "retrieved_at": "2026-09-26T20:24:00+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000007/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000007&limit=100",
+      "sha256": "ed6e6a2a7d8ebf9ad11d0b74bb2c516711e45d66a912c7a2b56d569ee49c436a",
+      "retrieved_at": "2026-09-26T20:24:14+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000007/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000007",
+      "sha256": "c5a2c725eba179229627a17788cc655e4ead862f76996fd4ebee7413ed551dea",
+      "retrieved_at": "2026-09-26T20:24:13+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000015/PGS000015_hmPOS_GRCh37.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000015/ScoringFiles/Harmonized/PGS000015_hmPOS_GRCh37.txt.gz",
+      "sha256": "0d0e8324233dc70d02900a18bc46ef91f770273421880f552e859d944157d935",
+      "retrieved_at": "2026-09-26T20:33:06+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000015/PGS000015_hmPOS_GRCh38.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000015/ScoringFiles/Harmonized/PGS000015_hmPOS_GRCh38.txt.gz",
+      "sha256": "835f01a9b611dfeabe4d89630f954a7c689f7974981cf63d9eca8463b2dea787",
+      "retrieved_at": "2026-09-26T20:33:07+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000015/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000015&limit=100",
+      "sha256": "0cc0bfbd2f88fcc3b9f9a007e95ba6ae7755264b66ee7fe9e6b103c6bfb13113",
+      "retrieved_at": "2026-09-26T20:24:18+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000015/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000015",
+      "sha256": "566bcecff079fa33ce02c844e579b982322518d715516dcb8ac6bd72ed1a5e92",
+      "retrieved_at": "2026-09-26T20:24:17+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000028/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000028&limit=100",
+      "sha256": "78d1b667b2f413f45267ba80c066e5daf6a43dea5a743cd7fed268285d1afd36",
+      "retrieved_at": "2026-09-26T20:24:21+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000028/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000028",
+      "sha256": "a5f8665d741e0c9be526ed689f4708fdb4160e27abe3690c9472c2ceb97a9ff5",
+      "retrieved_at": "2026-09-26T20:24:20+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000029/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000029&limit=100",
+      "sha256": "c5ad22e371a9db091dfde0d3b09882cd8cfb3ba424c1e468db0e37ebe6220912",
+      "retrieved_at": "2026-09-26T20:24:24+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000029/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000029",
+      "sha256": "ed4099eed785e8e7f65119bb7f421d2e1ac00c8029cd866abe065b50119cab99",
+      "retrieved_at": "2026-09-26T20:24:24+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000045/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000045&limit=100",
+      "sha256": "75a6822f678635a806febae0cf20d27b52a9e46396252c7c4b90690397a2adf3",
+      "retrieved_at": "2026-09-26T20:24:28+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000045/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000045",
+      "sha256": "40aa1999a7edb8a600945c4d9d65331e7569e6d3e1e084cb02710f5fbe5afb9d",
+      "retrieved_at": "2026-09-26T20:24:27+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000050/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000050&limit=100",
+      "sha256": "82dfae5c7cdd9ce2da485f79e813af1f4abe91d67f67805e31a4b40acceda11a",
+      "retrieved_at": "2026-09-26T20:24:31+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000050/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000050",
+      "sha256": "124902857a747e2469b121c959e8246d50bd2699aeccff8905a3a55b5be5883a",
+      "retrieved_at": "2026-09-26T20:24:30+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000051/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000051&limit=100",
+      "sha256": "411da6d868fa475fbf08a307e775a1189ffbcaeda5c5fc3db82c90f211698f53",
+      "retrieved_at": "2026-09-26T20:24:34+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000051/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000051",
+      "sha256": "544cf10abb8e0ca2f01c6841ba05715843c5ad98e407309678f9bb9e9f893895",
+      "retrieved_at": "2026-09-26T20:24:34+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000052/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000052&limit=100",
+      "sha256": "c8f23c30c12e9b345304413017e08eae8020960ce5dd3b9caab736dc88b57c1d",
+      "retrieved_at": "2026-09-26T20:24:37+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000052/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000052",
+      "sha256": "f9df42f999737e000c83938488b5d15cd8eda5e9057668a6311ff11eab4e5783",
+      "retrieved_at": "2026-09-26T20:24:37+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000072/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000072&limit=100",
+      "sha256": "793371e5dcbdf8c4789f2e445a4828b515401576ae29c4c90ac4ef2de0987e82",
+      "retrieved_at": "2026-09-26T20:24:41+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000072/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000072",
+      "sha256": "433991fdfa36bdb11e14a6f1fd05b227ced8c7aa7ff5032d64135da9b776301e",
+      "retrieved_at": "2026-09-26T20:24:40+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000153/PGS000153_hmPOS_GRCh37.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000153/ScoringFiles/Harmonized/PGS000153_hmPOS_GRCh37.txt.gz",
+      "sha256": "bee7c3397bcae8dc08a07c627f6bbdbe803efc1a76a908c05f391de52d9d6ed7",
+      "retrieved_at": "2026-09-25T17:43:02+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000153/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000153&limit=100",
+      "sha256": "757f31bffa4be68c10df1b1765d7b8628d5609d4e1cc1852dc0cc48b4dd9d099",
+      "retrieved_at": "2026-09-25T17:43:00+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000153/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000153",
+      "sha256": "e579b882e5f93c7a7c96531be28e46fe1b4623ad0862726aa98b650e21801687",
+      "retrieved_at": "2026-09-25T17:42:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000317/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000317&limit=100",
+      "sha256": "283e603c73b1da29c2dc27f594df54c1ad01af812a550d7e8f0e7832894c4694",
+      "retrieved_at": "2026-09-26T20:24:44+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000317/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000317",
+      "sha256": "5866078c44970c34802988f6bbbc4868a8ef7b55522b75b0399b2c8b700201a7",
+      "retrieved_at": "2026-09-26T20:24:43+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000332/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000332&limit=100",
+      "sha256": "0ad5ba03bfa66e87e7e92761a0f2b4c082750e0cbb0aaf0ff503bd6f264b3a41",
+      "retrieved_at": "2026-09-26T20:24:47+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000332/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000332",
+      "sha256": "9df562cd557c33e38dc32a90812cabe10c88eccdd55aa17ed97420e1e522b47c",
+      "retrieved_at": "2026-09-26T20:24:46+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000335/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000335&limit=100",
+      "sha256": "6a1e8d70c8dc059aacee19730fa57311328a1038ced8420c52cbec3926c13948",
+      "retrieved_at": "2026-09-26T20:24:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000335/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000335",
+      "sha256": "bd4824ef8639372bd5182798b73ded49392c399c609f00bf75c763b22cde475e",
+      "retrieved_at": "2026-09-26T20:24:49+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000344/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000344&limit=100",
+      "sha256": "ee6312b3ecebee82f8cd99caf0fc8af0bf861cd58e3c3342d7193f03fc0ce4fd",
+      "retrieved_at": "2026-09-26T20:24:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000344/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000344",
+      "sha256": "9a698082b7521cfe942bfc6c692d37664cff04a2a7947ab9fddbc592e4cef6b1",
+      "retrieved_at": "2026-09-26T20:24:52+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000345/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000345&limit=100",
+      "sha256": "dc2c231f7b915897b7deef3482a4aafba6e2072ef9687563b8c6acbe4b409954",
+      "retrieved_at": "2026-09-26T20:24:57+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000345/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000345",
+      "sha256": "5f16bb3dcb0ec588c4b8565b39fe16bfcfde7b4fe6ceb1c275f5caa960b36207",
+      "retrieved_at": "2026-09-26T20:24:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000472/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000472&limit=100",
+      "sha256": "a5727a1d0a3c44d84ea1dbea8535b23e5875448d6813f74b19c674f6ed7b28c8",
+      "retrieved_at": "2026-09-26T20:25:00+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000472/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000472",
+      "sha256": "1e14e1085c227681ef63ad924d5167add8e4d81c1a623460990f1a716e9363a4",
+      "retrieved_at": "2026-09-26T20:24:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000473/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000473&limit=100",
+      "sha256": "ffd2b58647eb11c847a9d72d3c20a5ccdf0c744e2c296849bf4e93082331844b",
+      "retrieved_at": "2026-09-26T20:25:03+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000473/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000473",
+      "sha256": "3fc7f5f08f37d40397f8ef4da88f05633827d5ea53e40dc25b2385e73ac93d0b",
+      "retrieved_at": "2026-09-26T20:25:03+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000474/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000474&limit=100",
+      "sha256": "4d004b536bffab216367524cee95fec17fffd64cf3d9ad34e0856c3cb0c26bb4",
+      "retrieved_at": "2026-09-26T20:25:06+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000474/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000474",
+      "sha256": "c95601573e1bd31b8d371620e03b6e62753a0364015f628a5a8800850aa1c032",
+      "retrieved_at": "2026-09-26T20:25:06+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000475/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000475&limit=100",
+      "sha256": "187b0f4936bc3b65bbd570882806b8826f9b3f98d5ff8b004f770ed6190b70ad",
+      "retrieved_at": "2026-09-26T20:25:10+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000475/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000475",
+      "sha256": "d2af1dada4f6de15e63daefc389801f88cf91702811579a61c06d4eb7e23e3d2",
+      "retrieved_at": "2026-09-26T20:25:09+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000476/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000476&limit=100",
+      "sha256": "eb6c15d450d21bf335cb3a0062a04a7f949c9e289b7d2a69fe3a222f5ae87a6c",
+      "retrieved_at": "2026-09-26T20:25:13+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000476/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000476",
+      "sha256": "7c866756607db6dfb9e2ef1623b786952a5102d61f7262c33283f65682431e94",
+      "retrieved_at": "2026-09-26T20:25:12+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000477/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000477&limit=100",
+      "sha256": "2ae65b8f806bff544c2aa2545b7a5a2a44d6f3cf752ab31f9a32eef5a13d38ce",
+      "retrieved_at": "2026-09-26T20:25:16+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000477/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000477",
+      "sha256": "b2aaf50ffeec44c73813f977b698d0e7962d81891ec247badf1f0732a3d8ebd8",
+      "retrieved_at": "2026-09-26T20:25:15+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000478/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000478&limit=100",
+      "sha256": "8ec79dc8539ba3da9edcba89adc5d67a5dae0dd7a636d8708d0b7de295873fcc",
+      "retrieved_at": "2026-09-26T20:25:19+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000478/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000478",
+      "sha256": "d074a2fbfbd188ecfa2700b0855a8a717132babced19602137dd6c1331757e8f",
+      "retrieved_at": "2026-09-26T20:25:18+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000479/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000479&limit=100",
+      "sha256": "317de91a9f34243780d856a496f716e2e471d9a0bc7bdaceb6645a641fd5de89",
+      "retrieved_at": "2026-09-26T20:25:23+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000479/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000479",
+      "sha256": "8cf02ad63cc8bbd75a2b6e562bfa8a83d0bffa1a01a2047cf6777090ba0eeafc",
+      "retrieved_at": "2026-09-26T20:25:22+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000480/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000480&limit=100",
+      "sha256": "d4fc21c3b950280c313d0ea901ca61ebcc0607aa68f0174f244c8ddd0ca1c26a",
+      "retrieved_at": "2026-09-26T20:25:26+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000480/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000480",
+      "sha256": "9daf9a42f6fcc42c0c3187b680c7fa399071953f4eb5fb70b476d8ae553b1ead",
+      "retrieved_at": "2026-09-26T20:25:25+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000481/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000481&limit=100",
+      "sha256": "8197c18dc8ff65f8ee9bf2ce9e4046cdc14cf781d00da60a50db46bb3fb9e527",
+      "retrieved_at": "2026-09-26T20:25:29+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000481/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000481",
+      "sha256": "e18b6b856cfb4df1bc32a7e13772a6aa46d18cdebf416671cedd841e0387604b",
+      "retrieved_at": "2026-09-26T20:25:28+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000482/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000482&limit=100",
+      "sha256": "617239c46271f931bf3fad41e9fd68ea80192af97ca9405401de3901e1020d34",
+      "retrieved_at": "2026-09-26T20:25:32+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000482/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000482",
+      "sha256": "0c8729c8d6a3f70295a7c31359170e9c78af0fd6d81a34b58faf29651deb925e",
+      "retrieved_at": "2026-09-26T20:25:31+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000483/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000483&limit=100",
+      "sha256": "8554d0da32066eeae714d4877f841b924f1886f40c572101742ddf53c713e565",
+      "retrieved_at": "2026-09-26T20:25:35+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000483/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000483",
+      "sha256": "3d7f70c987fa9a0d8c2ec82d967fc14fd4d5d5a27292d2adaa8d39842033454e",
+      "retrieved_at": "2026-09-26T20:25:34+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000484/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000484&limit=100",
+      "sha256": "cdffb2d6683354c89ff0e5eca9e4e5f84d6e656534eef380a30018d44ace5bde",
+      "retrieved_at": "2026-09-26T20:25:38+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000484/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000484",
+      "sha256": "d9087b1f49168f1fe5da8aff5b9e84485165586f8ae9163dc5363c340242b620",
+      "retrieved_at": "2026-09-26T20:25:37+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000485/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000485&limit=100",
+      "sha256": "8da666f477ca180642f3a41aa6a072b297d58fc1299cad90e05c8424278e01ac",
+      "retrieved_at": "2026-09-26T20:25:41+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000485/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000485",
+      "sha256": "9f743249cbf13c4340c7b2353acbd7fae814938a77c26d282390c5e4e58405e9",
+      "retrieved_at": "2026-09-26T20:25:41+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000486/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000486&limit=100",
+      "sha256": "365b1ccce3b61b7dceb69611237a9174ed41f80d6d9005cc7b661f92d6ebfd45",
+      "retrieved_at": "2026-09-26T20:25:44+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000486/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000486",
+      "sha256": "fa65b806905a8a77eaacf36460a1227d9ea38c1d8fe460f142d87fabbbd2bc77",
+      "retrieved_at": "2026-09-26T20:25:44+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000487/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000487&limit=100",
+      "sha256": "7c8144490b09a29d55324210d245f1a16f6da6614b6df526700015541629d543",
+      "retrieved_at": "2026-09-26T20:25:47+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000487/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000487",
+      "sha256": "1cb516c8a769e26a557152d474f662e1e3949a50bd9c04c60184ee696473712f",
+      "retrieved_at": "2026-09-26T20:25:47+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000488/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000488&limit=100",
+      "sha256": "6f6f3d5446346d14d82360c279ede233d4140f08b5ed1d7bd2a84e34f7d4bb2a",
+      "retrieved_at": "2026-09-26T20:25:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000488/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000488",
+      "sha256": "58c8d73f2cfec6d508ec81710a158fb7acc656bbcf938e02f03364b56f3f3966",
+      "retrieved_at": "2026-09-26T20:25:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000489/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000489&limit=100",
+      "sha256": "8d834dfa81bb595b14d39a38b3dadec2eb6097cbab3720d785500cf573e26b7c",
+      "retrieved_at": "2026-09-26T20:25:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000489/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000489",
+      "sha256": "3b5ee034a11ae9445736e00715c18a67f140aaa44cbc34a5c38ea7c92f0ccfab",
+      "retrieved_at": "2026-09-26T20:25:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000490/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000490&limit=100",
+      "sha256": "1de2a41a99f4a6f6e009732b63861d623cdb28ecfffe8026b71adcf5c97f3642",
+      "retrieved_at": "2026-09-26T20:25:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000490/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000490",
+      "sha256": "85b7385ff5463dc6f8f6dcb3c9f6646d59d03223ae50a483aaac4b171754ca23",
+      "retrieved_at": "2026-09-26T20:25:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000491/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000491&limit=100",
+      "sha256": "5f8da5919c4c37dfc0f2a076a0f8be2e1b9751e23b701f878ae9e0d9ae6f3d37",
+      "retrieved_at": "2026-09-26T20:26:00+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000491/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000491",
+      "sha256": "046211af022a7aff4f8a53a54b7bdc65f8d085023e0dbf66e248c2fb436cbbcf",
+      "retrieved_at": "2026-09-26T20:25:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000492/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000492&limit=100",
+      "sha256": "ad48cf0dc9dc6e33fcf1cb7aa57808620924dc3c2b6e5bec1bbd9f6ba97fc842",
+      "retrieved_at": "2026-09-26T20:26:03+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000492/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000492",
+      "sha256": "3c034ffe4ffd215c5713d6f34abbd81615fe1acc37afb221d965f4ac11470c6f",
+      "retrieved_at": "2026-09-26T20:26:02+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000493/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000493&limit=100",
+      "sha256": "7205f87eecc3f9a9403bb23a9ed39eee328c9641ad53aaed1a7efc1fcc7c0136",
+      "retrieved_at": "2026-09-26T20:26:06+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000493/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000493",
+      "sha256": "be53254577259149ff5728251732540b5ad3ae6d5cdd0c8b0d4d353465e3051e",
+      "retrieved_at": "2026-09-26T20:26:05+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000494/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000494&limit=100",
+      "sha256": "8dfadb102399418afcdcd84b79d781bf46e45b40f34d8ef4c5ab7fe2cbe8525f",
+      "retrieved_at": "2026-09-26T20:26:09+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000494/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000494",
+      "sha256": "64ec1852677e3d493a5acfe90317fbd084450fe381257a0b2653644664eddaef",
+      "retrieved_at": "2026-09-26T20:26:08+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000495/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000495&limit=100",
+      "sha256": "7f3f6df6aff12f7514e97c9a12101f765c9ca9cd0f1e13787ea9ead8cc055e4f",
+      "retrieved_at": "2026-09-26T20:26:12+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000495/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000495",
+      "sha256": "e8a9c11ea8209b0d94559984cd74acd80a24ee91825bd4336bb09e1da34ee105",
+      "retrieved_at": "2026-09-26T20:26:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000496/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000496&limit=100",
+      "sha256": "b6fb65bf4227508bfaec6df3fb1496aa2ac5e74dfe6f40220b47001c6eda15af",
+      "retrieved_at": "2026-09-26T20:26:15+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000496/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000496",
+      "sha256": "db873c33d7a9d1155c979d78bbb34bf0c03dc8fa453f9b871b88f98625e8bf22",
+      "retrieved_at": "2026-09-26T20:26:14+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000497/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000497&limit=100",
+      "sha256": "7c96cd2b1ca86197f59a2bc4f97550177e24aafe43ccdfbcf4409ad65c6499da",
+      "retrieved_at": "2026-09-26T20:26:18+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000497/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000497",
+      "sha256": "d37abcd7cea94472b8282298f6d2e0fc8ac49d30694c6e6a01eb236ae829f31a",
+      "retrieved_at": "2026-09-26T20:26:17+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000498/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000498&limit=100",
+      "sha256": "8bd18f2126849f6a0f678585bc8a97662bcdb91fafbe34489ad9ded15b3c027f",
+      "retrieved_at": "2026-09-26T20:26:21+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000498/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000498",
+      "sha256": "6cece098abe6dc86a5e40b8dfa9ba945b8c436fb0a8fb44a30106e1bdb401862",
+      "retrieved_at": "2026-09-26T20:26:20+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000499/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000499&limit=100",
+      "sha256": "bebac75e864f607aa98412ae29cc854e3cb38445e293f7a3c7c895a929354a8a",
+      "retrieved_at": "2026-09-26T20:26:24+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000499/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000499",
+      "sha256": "0d3d72dbca4425037f331cbdaf82c0a0a32841fdbf5e0d3f13716ac932d5135f",
+      "retrieved_at": "2026-09-26T20:26:23+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000500/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000500&limit=100",
+      "sha256": "f2eae0b9454cf02edf03e0d586fa715ef1802b768b28e242d8d4ce2cf06a65eb",
+      "retrieved_at": "2026-09-26T20:26:27+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000500/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000500",
+      "sha256": "fc048e11f5e3777d4700bc93d4ba8417cdaca85cb9b749557289c6c14885769e",
+      "retrieved_at": "2026-09-26T20:26:26+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000501/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000501&limit=100",
+      "sha256": "8116d59d3cb820a20b19c7b4d6095c61c936f83dc3f6225ca3a4f0058c40f6d7",
+      "retrieved_at": "2026-09-26T20:26:30+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000501/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000501",
+      "sha256": "c88ac8ba4f88ea1d5c5f6d62ce09dbb38c3d839a95b831cc76b6598f5b2541c2",
+      "retrieved_at": "2026-09-26T20:26:29+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000502/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000502&limit=100",
+      "sha256": "89a043b9cf5cc68dfa5457e7c3bc6fbf87c2290aed1c09aa4e10a3a04d3c5446",
+      "retrieved_at": "2026-09-26T20:26:33+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000502/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000502",
+      "sha256": "6be51815815dc793435ec371c51d66dba66320752129efd58e0d2c8d7d7df830",
+      "retrieved_at": "2026-09-26T20:26:32+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000503/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000503&limit=100",
+      "sha256": "25de23f6ff15b991f72fb226ce78603aef17c96045b46976184ab63256704143",
+      "retrieved_at": "2026-09-26T20:26:36+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000503/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000503",
+      "sha256": "d118acd43fe422e41fd4273f584a50d90c1544077f78028c31c69e600b825cbc",
+      "retrieved_at": "2026-09-26T20:26:35+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000504/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000504&limit=100",
+      "sha256": "7dc5d35b80166e9d1998a2e922a3100cc1760b1a6b3678e417354e31fbb36dbf",
+      "retrieved_at": "2026-09-26T20:26:39+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000504/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000504",
+      "sha256": "5caabf8eb399318218f71972cf7d0ca31f0ad6a58d560d1ce204b03ada287801",
+      "retrieved_at": "2026-09-26T20:26:38+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000505/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000505&limit=100",
+      "sha256": "df4b3d50891e413689465492ecb0901bbdb77209a2366e60fe9ef307db7c32da",
+      "retrieved_at": "2026-09-26T20:26:42+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000505/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000505",
+      "sha256": "3271ba3484040e076724a21d0a4356020c4b9433a82b66770d7b0e8c3585883a",
+      "retrieved_at": "2026-09-26T20:26:41+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000506/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000506&limit=100",
+      "sha256": "9c1c1c02dc20ce67339a216c37380b616927cbfe43b673cc7410c499d94f2476",
+      "retrieved_at": "2026-09-26T20:26:45+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000506/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000506",
+      "sha256": "7f7294063e5b2bafda8ef9e30872d68e53f54e4f3bd52714e1e0b257bfe74bbd",
+      "retrieved_at": "2026-09-26T20:26:44+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000507/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000507&limit=100",
+      "sha256": "41b9d5a566482664be3dab76c68acd389ab536351ba99892ef28c1deeb839734",
+      "retrieved_at": "2026-09-26T20:26:48+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000507/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000507",
+      "sha256": "93d841174fcebe769392df4fa5ef9b52ead466d4e76c9154e9a0c7276681c1c8",
+      "retrieved_at": "2026-09-26T20:26:47+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000508/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000508&limit=100",
+      "sha256": "3f9a07a3a221a0273621a8493eaaa6c22867df22985386f84d6abd875fe5782f",
+      "retrieved_at": "2026-09-26T20:26:51+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000508/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000508",
+      "sha256": "0391a77d21da891852e5eb0966952d242d456331aace55375d93314a83c6f8b5",
+      "retrieved_at": "2026-09-26T20:26:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000509/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000509&limit=100",
+      "sha256": "71b2e5e04cbf1c32bf19be20faadd9cf10d8f423e6d08766485ff1e19fd65087",
+      "retrieved_at": "2026-09-26T20:26:54+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000509/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000509",
+      "sha256": "6bf92f6cd315625340b3cc7d1d78a5e1b3d9066e4f78bc7d106aca92cc4d3a7d",
+      "retrieved_at": "2026-09-26T20:26:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000510/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000510&limit=100",
+      "sha256": "6797854dfc9773818367deaba2ab33446af24670402f9ffe5a51339d4f44cb14",
+      "retrieved_at": "2026-09-26T20:26:57+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000510/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000510",
+      "sha256": "33c271973ca8984f2911adb3d057f6b9a4c4d62e599f59cb635647086c0fe597",
+      "retrieved_at": "2026-09-26T20:26:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000511/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000511&limit=100",
+      "sha256": "f55002af04d23dd2424ea4630eceff70fb2032942b4e2cdba29d906f421a5519",
+      "retrieved_at": "2026-09-26T20:27:00+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000511/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000511",
+      "sha256": "77c3c5462c14e9c304926f4bc0699d32448185c7847b5de3af70c363a0445df8",
+      "retrieved_at": "2026-09-26T20:26:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000512/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000512&limit=100",
+      "sha256": "02b0817d333b85d125b71239e9d1531ca1d7ae6b0a90c0f21905b442fefd62ec",
+      "retrieved_at": "2026-09-26T20:27:03+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000512/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000512",
+      "sha256": "6d832b0c9904e3e397df4e7c103a83ce58d1a51e882b188a6442ef3f433c7dcf",
+      "retrieved_at": "2026-09-26T20:27:02+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000513/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000513&limit=100",
+      "sha256": "e754a94f8880d3c5cee8c8ce84ddc5add67ba91b3d2342bc29a37e14be6fb0d5",
+      "retrieved_at": "2026-09-26T20:27:07+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000513/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000513",
+      "sha256": "52a3a3ca03891c665642a532f9674acc69ab62e3d044033246dfbcd09cc8830d",
+      "retrieved_at": "2026-09-26T20:27:06+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000514/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000514&limit=100",
+      "sha256": "c36baca4b2e1661b828b247d4dc06f3d9638a1d770f065940dbc838b504a5a92",
+      "retrieved_at": "2026-09-26T20:27:10+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000514/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000514",
+      "sha256": "99f241abd31335e3f13015be001aa6644db347cb5f46b459205ce2ce1cc0ffce",
+      "retrieved_at": "2026-09-26T20:27:09+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000515/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000515&limit=100",
+      "sha256": "684c5d4bdceeda5ffa485fa2dec84d6ff55fa008f7b4dd2c20329b982053f6e7",
+      "retrieved_at": "2026-09-26T20:27:13+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000515/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000515",
+      "sha256": "79a327de757d1411372e1dc7efeb1b278e978433711f1ce0ca7e3a32205953d3",
+      "retrieved_at": "2026-09-26T20:27:12+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000516/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000516&limit=100",
+      "sha256": "7a15cda6ec7139f7033f02fc119ba5b848807ebe99d6211e6178b9f915ec12d1",
+      "retrieved_at": "2026-09-26T20:27:16+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000516/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000516",
+      "sha256": "82726d265d58d3446f343e80f20ff86027bd154c2f3dcb4a6bf352391b3cda13",
+      "retrieved_at": "2026-09-26T20:27:15+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000517/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000517&limit=100",
+      "sha256": "9876954b1823ca96a05e5d835ab0d686cad5b8a1e2cccbb809ec3b83345cf8a7",
+      "retrieved_at": "2026-09-26T20:27:19+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000517/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000517",
+      "sha256": "13c3b16e6e53b4eaf3ce1686870d34eb9d7d3c9902460c8d247a7ddcd4501686",
+      "retrieved_at": "2026-09-26T20:27:18+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000518/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000518&limit=100",
+      "sha256": "80a4534657d66ea46a84c6e3aa6dc7b235bf179b1a7161780e31833d410af351",
+      "retrieved_at": "2026-09-26T20:27:22+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000518/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000518",
+      "sha256": "a72f6c0375fb286f5a76f1f8727b333f975824a08668ecc178278c9c8a8fdcc7",
+      "retrieved_at": "2026-09-26T20:27:22+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000519/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000519&limit=100",
+      "sha256": "680a2481bde00ef37638580ba923d950a459f0840b547a01bd2595c54f0412e9",
+      "retrieved_at": "2026-09-26T20:27:25+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000519/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000519",
+      "sha256": "f1738a3352b8e7c67a430ec2d17ed3f1399b944cf4451b961a67fe909cd052f2",
+      "retrieved_at": "2026-09-26T20:27:25+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000520/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000520&limit=100",
+      "sha256": "74b2b06a1383e8ec7925fcac95fb1bcbe4903f6ccef12b3ad646b8553464243c",
+      "retrieved_at": "2026-09-26T20:27:29+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000520/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000520",
+      "sha256": "ecf06d807b553ab9d348b4d87f235c85b86f3e358064e21f63768b3f165adcdb",
+      "retrieved_at": "2026-09-26T20:27:28+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000521/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000521&limit=100",
+      "sha256": "a58e90c38c0c223463469765b96d533c7b20be865a662c20339c5f517735180f",
+      "retrieved_at": "2026-09-26T20:27:32+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000521/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000521",
+      "sha256": "6a7ff5726c6235e8ef88c1335908a07d2c6ab7e5a01744b0b019aa6884e01633",
+      "retrieved_at": "2026-09-26T20:27:31+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000522/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000522&limit=100",
+      "sha256": "97f4820d9981643973a5632eb2a182a825e0b5e496cb2bb2c89d31c4d668454e",
+      "retrieved_at": "2026-09-26T20:27:35+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000522/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000522",
+      "sha256": "b15360797af0c9760b4b8dc4943764c06448be00516972cec72efd1269f01c71",
+      "retrieved_at": "2026-09-26T20:27:34+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000523/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000523&limit=100",
+      "sha256": "af71f525859c635611679ac212e7ba41f77de9f7f323a7e5ab867de8c9123bdc",
+      "retrieved_at": "2026-09-26T20:27:38+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000523/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000523",
+      "sha256": "8eb110eeee32ae9294ac170036cfd7bdc77e88a16d9e893a8ceeac4c58b0c466",
+      "retrieved_at": "2026-09-26T20:27:37+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000524/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000524&limit=100",
+      "sha256": "b3a66198be8e9d6a2abaca9fe4db18a0fc54f4ef1180916c0373ea1a5411eb30",
+      "retrieved_at": "2026-09-26T20:27:41+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000524/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000524",
+      "sha256": "82eded607338092e936f183b1915c4ed9df5c1eb3d5cc5693786245dc26ff3d9",
+      "retrieved_at": "2026-09-26T20:27:40+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000525/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000525&limit=100",
+      "sha256": "8b48faea91b868a08f80536f73f676f2d07aa39c0dc6fa931e4f30bf4c3a5ece",
+      "retrieved_at": "2026-09-26T20:27:44+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000525/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000525",
+      "sha256": "5acd556e0b92fe0eab8a1c47a8c49ca05474f2c637d96512d18d84b03b8c66cc",
+      "retrieved_at": "2026-09-26T20:27:43+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000526/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000526&limit=100",
+      "sha256": "d43e5873d1aa23b3a5c69a11f49dc23a9c71f5966e7b889a20e2dc5477fecdc3",
+      "retrieved_at": "2026-09-26T20:27:47+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000526/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000526",
+      "sha256": "5c9afe6d47d34da19ecd8f5755ad1bdfff828feaed8e384f7c1b1154b28bf755",
+      "retrieved_at": "2026-09-26T20:27:46+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000527/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000527&limit=100",
+      "sha256": "c04dde9edf5b963e1e5d4342a8cf119689b9614dd3143eb4a8e61e071b2298a3",
+      "retrieved_at": "2026-09-26T20:27:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000527/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000527",
+      "sha256": "f136185fa2e938d07445b6408c55090444be185b363c9b1a18b774f83ebe86a1",
+      "retrieved_at": "2026-09-26T20:27:49+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000528/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000528&limit=100",
+      "sha256": "33fde5fd11f04edde0095ab9f641ecbcfdd6d20b2cfbcb02277729017f9d3c0a",
+      "retrieved_at": "2026-09-26T20:27:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000528/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000528",
+      "sha256": "32bc4cf1fa9412509f5300cb3cf86860a62e91048871887aadddd37a595dbda7",
+      "retrieved_at": "2026-09-26T20:27:52+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000529/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000529&limit=100",
+      "sha256": "a5c888934b8d274520934bb87db5155ad2c9ccb29adf45c075a32866b9f47f6a",
+      "retrieved_at": "2026-09-26T20:27:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000529/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000529",
+      "sha256": "391715bfa6aae562ee95d793e15459830a168f1388640f9f7bc68f85d9731351",
+      "retrieved_at": "2026-09-26T20:27:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000530/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000530&limit=100",
+      "sha256": "821040cc8d1129c434755d5d79f89e3ce9f0c2defbd491d37cad201015bc7718",
+      "retrieved_at": "2026-09-26T20:27:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000530/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000530",
+      "sha256": "aeb8089a5b1ad6b53476d4a8160151a413ef9d5f63b9c8715b5fbe7affc0eb01",
+      "retrieved_at": "2026-09-26T20:27:58+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000531/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000531&limit=100",
+      "sha256": "71e2cea1a5ecf728092e982fe6f89b2f25a0deb3a38aa9a52502524d70c527f6",
+      "retrieved_at": "2026-09-26T20:28:02+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000531/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000531",
+      "sha256": "004cafe7c5e00e3941fe5a0f554934201ced2b236df8f6a6cc638868efc9541f",
+      "retrieved_at": "2026-09-26T20:28:01+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000532/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000532&limit=100",
+      "sha256": "7c0ab685c48d9a686c9e44eae238be347d0de02d0bf9cf8a7427a0d48a990f65",
+      "retrieved_at": "2026-09-26T20:28:05+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000532/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000532",
+      "sha256": "3f9fca8dcd664ad3a65a557cebb905e02e1ca9285798b04facb06f06a5764b61",
+      "retrieved_at": "2026-09-26T20:28:04+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000533/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000533&limit=100",
+      "sha256": "2b8159f42e11fa7427ba6791682b758227ae95bdd1ba72bbb57ba527207ee2b3",
+      "retrieved_at": "2026-09-26T20:28:08+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000533/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000533",
+      "sha256": "69047620a2cfe23f14c18a2b5ce9062ff86719e298837246bc58885b90de2f3b",
+      "retrieved_at": "2026-09-26T20:28:08+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000534/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000534&limit=100",
+      "sha256": "c4815dcff6dfc48eb2edba80e93a75afc1327d865325f793b3a47d259a8a8beb",
+      "retrieved_at": "2026-09-26T20:28:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000534/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000534",
+      "sha256": "021a4370f27cf1bf3440ba28b794b98976c40333b97d3401faff89d6cef740f9",
+      "retrieved_at": "2026-09-26T20:28:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000535/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000535&limit=100",
+      "sha256": "8b763c974ee756908fd745672e0dd0cc84a3396f44091b9e622dc1d973a2473c",
+      "retrieved_at": "2026-09-26T20:28:15+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000535/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000535",
+      "sha256": "fcaef9f7cf7d272f57d686c1cfb611e2c3b4f00ea12efac4bdddace561931a76",
+      "retrieved_at": "2026-09-26T20:28:14+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000536/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000536&limit=100",
+      "sha256": "83b9e50ce53c4a7cfe4205af69e71bb2ed775155e3cc27981330d8f3c1d63e1e",
+      "retrieved_at": "2026-09-26T20:28:18+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000536/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000536",
+      "sha256": "180d8f689d20ecf6a70781ef9b13f9d1dab8c19e35fbf4730a3b32908c9231f3",
+      "retrieved_at": "2026-09-26T20:28:17+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000537/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000537&limit=100",
+      "sha256": "87b161973ca2e879c770d3c54088df0a80d31a0ebcfaefd4e4b553dc2946a1ed",
+      "retrieved_at": "2026-09-26T20:28:21+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000537/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000537",
+      "sha256": "bacd2f43c3c9983913cf88a51870980e08a25223845e355d50d690ff06452aa6",
+      "retrieved_at": "2026-09-26T20:28:20+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000538/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000538&limit=100",
+      "sha256": "bf6bd3defc8e732314e4e371684c4b82bbdecc2f1eb6e9efd6e8a2b03bf421fa",
+      "retrieved_at": "2026-09-26T20:28:24+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000538/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000538",
+      "sha256": "0d811187e199d2ab63d41fe6aa546a6b2f9c3da23a05ea9c87a55c312d264b33",
+      "retrieved_at": "2026-09-26T20:28:23+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000539/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000539&limit=100",
+      "sha256": "05f4c12ae33661ac8d2eb12d3bcae8a2444a3e5ae65cd4b88727105580dc9e91",
+      "retrieved_at": "2026-09-26T20:28:27+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000539/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000539",
+      "sha256": "b62101ccab139f61ed993e5ff54a57235aaf10970a02d328d24b47bd8ce4583e",
+      "retrieved_at": "2026-09-26T20:28:26+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000540/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000540&limit=100",
+      "sha256": "a13e740785e89be515d42fc44123c35ea781d745a52b645eec19f484adc3cbdd",
+      "retrieved_at": "2026-09-26T20:28:30+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000540/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000540",
+      "sha256": "60e88e92abb58893a615d8b58e6ab7cb515506b58267a71fb3bd1b268ee44f7c",
+      "retrieved_at": "2026-09-26T20:28:29+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000764/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000764&limit=100",
+      "sha256": "75196b454b47c591272fc94fe1aaedacc22668929e951f576f5ab6282ca89231",
+      "retrieved_at": "2026-09-25T17:42:57+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000764/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000764",
+      "sha256": "f2b9592726ac80c76213bf6ebc890e7bf12c29d8510032bbebed7ef601c287aa",
+      "retrieved_at": "2026-09-25T17:42:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000773/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000773&limit=100",
+      "sha256": "621698c725e88141dc3673c46081d2417a85fd0c8ae0fea730b28d397a0e05cb",
+      "retrieved_at": "2026-09-26T20:28:34+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000773/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000773",
+      "sha256": "b5a243f03ddaa1f35468e080b77ffd384d3294c9dc60f318c12f94b283d76d3f",
+      "retrieved_at": "2026-09-26T20:28:33+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000783/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000783&limit=100",
+      "sha256": "bbfe8bdbbc388c1a115aba36a3807ffff1e8fd6eec833ffaeb3280668fc7d656",
+      "retrieved_at": "2026-09-26T20:28:37+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000783/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000783",
+      "sha256": "ab239b5fc28b31527c265038d8be223f9085f27e33b587a8d8c50dc611907d1a",
+      "retrieved_at": "2026-09-26T20:28:36+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000873/PGS000873_hmPOS_GRCh37.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000873/ScoringFiles/Harmonized/PGS000873_hmPOS_GRCh37.txt.gz",
+      "sha256": "6e2bb9e10e2575a65b95e0fa80a7e72027a8ea480321cbc967e1b0f0f8554b09",
+      "retrieved_at": "2026-09-25T17:54:12+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS000873/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000873&limit=100",
+      "sha256": "d85be0d1bb9f45a2c78bfb292d2babdbd54719a91359f6f7a6bbc29f292fe95d",
+      "retrieved_at": "2026-09-26T20:28:40+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000873/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000873",
+      "sha256": "417acc873c84c4796ae3b12833e0b4812605d0bc835257d6c37a9a6d93d203ab",
+      "retrieved_at": "2026-09-26T20:28:39+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS001336/PGS001336_hmPOS_GRCh37.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS001336/ScoringFiles/Harmonized/PGS001336_hmPOS_GRCh37.txt.gz",
+      "sha256": "5bc8a921d2499faac5011561368f830a816ed49b0975c644dbbe8fb358e1da11",
+      "retrieved_at": "2026-09-26T20:33:05+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS001336/PGS001336_hmPOS_GRCh38.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS001336/ScoringFiles/Harmonized/PGS001336_hmPOS_GRCh38.txt.gz",
+      "sha256": "f3f21fbfb71a7f7f12cc5defa98a402b56fff41e29aae916c6d8d67fedfa1eb5",
+      "retrieved_at": "2026-09-26T20:33:05+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS001336/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS001336&limit=100",
+      "sha256": "76c8edab00ed97b9105cea040b6def4b98cd912e3a36d3da7f0c677bdbe0483d",
+      "retrieved_at": "2026-09-26T20:28:43+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS001336/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS001336",
+      "sha256": "591760bacda2426a64f25edcf664f1ed36e06489c0bc2e0f66061293e3e55fd6",
+      "retrieved_at": "2026-09-26T20:28:42+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS001778/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS001778&limit=100",
+      "sha256": "70a5e67de85622d19e73ae6a4020090850b5db6672ea92e5e620eac1adc65279",
+      "retrieved_at": "2026-09-26T20:28:46+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS001778/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS001778",
+      "sha256": "b950202442145b4adeb45fde0fa70bdeee7d2c62c566c269c778b81e43678fa4",
+      "retrieved_at": "2026-09-26T20:28:45+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS001804/PGS001804_hmPOS_GRCh37.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS001804/ScoringFiles/Harmonized/PGS001804_hmPOS_GRCh37.txt.gz",
+      "sha256": "117006a91a71e01b92301f57d302693ad24048377abe9cd5bf6a2fae205222e6",
+      "retrieved_at": "2026-09-26T20:33:04+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS001804/PGS001804_hmPOS_GRCh38.txt.gz": {
+      "url": "https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS001804/ScoringFiles/Harmonized/PGS001804_hmPOS_GRCh38.txt.gz",
+      "sha256": "c8253f75697b32096e428dbce5e0d5c2d8e063ed08676c7fa53a7a10a24716e2",
+      "retrieved_at": "2026-09-26T20:33:05+00:00",
+      "kind": "scoring_file"
+    },
+    "PGS001804/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS001804&limit=100",
+      "sha256": "aebc40081306f546dd4e8d72182dea61c59fc15e0bb532d9ac90a7c28eeb749e",
+      "retrieved_at": "2026-09-26T20:28:49+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS001804/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS001804",
+      "sha256": "1d61e89617ee576a61e9e12720caf826d02e232727260d4e2a21249100048974",
+      "retrieved_at": "2026-09-26T20:28:48+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS002015/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS002015&limit=100",
+      "sha256": "e416efee5ee820b855eab5ac170d7adeb033d515398c715a2df2d9952a41cdbd",
+      "retrieved_at": "2026-09-26T20:28:52+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS002015/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS002015",
+      "sha256": "d2fc925a0c5bbe8a58487f73671fdaf958156e9c3c886d7f090a05562abdffdd",
+      "retrieved_at": "2026-09-26T20:28:51+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS002242/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS002242&limit=100",
+      "sha256": "d10c8aae7955206e530f48ef2430f302fb774fbd6b1c91eb6c9c52eb0d6510d1",
+      "retrieved_at": "2026-09-26T20:28:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS002242/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS002242",
+      "sha256": "86ce0df00e54c3e44a2ffcd5339f709198f08ff9add00a42defe1fef64cd1917",
+      "retrieved_at": "2026-09-26T20:28:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS002294/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS002294&limit=100",
+      "sha256": "efce10486cf13d5fc89405e05d454d48af4aff243f3a19b350f0881f7efef332",
+      "retrieved_at": "2026-09-26T20:28:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS002294/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS002294",
+      "sha256": "75e912220b1c0890a54be775c9469181da960ceb31924cb562f6fb888d69bea8",
+      "retrieved_at": "2026-09-26T20:28:58+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003380/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003380&limit=100",
+      "sha256": "fa47c45ea89edd6da835e444b0bd13de8baa094d18a1e85fcdd323ccfa75b377",
+      "retrieved_at": "2026-09-26T20:29:02+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003380/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003380",
+      "sha256": "eec96c2206ec3f8f75210aa4069322faf140a85654e3081f237bf9ec984510de",
+      "retrieved_at": "2026-09-26T20:29:01+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003396/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003396&limit=100",
+      "sha256": "0e825e7bf94814fdda3fd67223b19ff44374eb2336db6c3ea89ced54817e9ce4",
+      "retrieved_at": "2026-09-26T20:29:05+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003396/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003396",
+      "sha256": "78ef840f50339cc866e06b8720ed62930d0fc950d96b0dadf2480faf8bf17f8d",
+      "retrieved_at": "2026-09-26T20:29:04+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003397/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003397&limit=100",
+      "sha256": "8f1f1b7ad6bc8bcb9f0d60498c254dcf35bf9d49c32e0cefec7ffe6e914512f4",
+      "retrieved_at": "2026-09-26T20:29:08+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003397/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003397",
+      "sha256": "e65c3deb32aa732a6e9b8b7392396dc34558b1ffb7050bf4cd587e27307ee33f",
+      "retrieved_at": "2026-09-26T20:29:07+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003398/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003398&limit=100",
+      "sha256": "18643f9e735d58d73eac31b07e6748ec6c30f10f41f3aeee18d16032d0e15aa2",
+      "retrieved_at": "2026-09-26T20:29:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003398/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003398",
+      "sha256": "f18da4fc5ec14d06de3963377eee84161582b86f31880b4bdce634f21bce8ddd",
+      "retrieved_at": "2026-09-26T20:29:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003399/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003399&limit=100",
+      "sha256": "fcf2468b07d01845e96ac577224e243091b382804a8cc1dde1513607986e9e94",
+      "retrieved_at": "2026-09-26T20:29:14+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003399/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003399",
+      "sha256": "6d533f519f8e4e72a7089f1fa7de7ee2f422b9a387dfffef8445ed543dbdf909",
+      "retrieved_at": "2026-09-26T20:29:14+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003725/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003725&limit=100",
+      "sha256": "07802c8c1e8e8b4627014db06a3cbc4e2f0db8659467618407c5e8cc2fad3af0",
+      "retrieved_at": "2026-09-25T17:42:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003725/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003725",
+      "sha256": "7b1507f1ae759357b56e078638706ddaa27c7ae9fdd822c2adc6d4559ad4f944",
+      "retrieved_at": "2026-09-25T17:42:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003738/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003738&limit=100",
+      "sha256": "ce9ee5d4610e2d69c7c8de1e1bc41f0dbc47b16601743ce3794009021eb86ad2",
+      "retrieved_at": "2026-09-26T20:29:17+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003738/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003738",
+      "sha256": "6a35cbd775c4e5f3f493dbb47b40a7ac768a15ff6ae8ee2e4ba9df3ce0591239",
+      "retrieved_at": "2026-09-26T20:29:17+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003758/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003758&limit=100",
+      "sha256": "c0aba501d58dc4300bbdd80565fa585030c34db7201dc5efa74f1fcbc3d18d89",
+      "retrieved_at": "2026-09-26T20:29:20+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003758/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003758",
+      "sha256": "aca2e0fd9326bd8c7926cfea1a4fb00525be96ec390f67993115e2a445d7e58f",
+      "retrieved_at": "2026-09-26T20:29:20+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003759/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003759&limit=100",
+      "sha256": "d52fb4ea7ae2eb306a4fe68782aa239540d70b79ca30a1f0b43520ee56907971",
+      "retrieved_at": "2026-09-26T20:29:24+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003759/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003759",
+      "sha256": "fdf01aa27817b0c278b9146239487ff84bfc28cb4f7a61167cdce4ca4236defb",
+      "retrieved_at": "2026-09-26T20:29:23+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003983/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003983&limit=100",
+      "sha256": "09aea14d82367854b0594d6071e6ba6a7dabc0dd7373833c5b5f1cf000d237ec",
+      "retrieved_at": "2026-09-26T20:29:27+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003983/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003983",
+      "sha256": "027b330b73faa23804b89f3336a5fa9c270e4811c5adc75bebab6ed75c4fec31",
+      "retrieved_at": "2026-09-26T20:29:26+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003999/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS003999&limit=100",
+      "sha256": "cd5d59cb0537cc973bd9871ff7bf09cc6e655ea0b850ed07daad28ffab9b5615",
+      "retrieved_at": "2026-09-26T20:29:30+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS003999/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS003999",
+      "sha256": "6d331ac8734487dad5281251359a45c111eb81f66eaba444bfee681e100d5ae7",
+      "retrieved_at": "2026-09-26T20:29:29+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004025/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004025&limit=100",
+      "sha256": "e2bb795cd177f75732fe8f2a25e449b0c2638e8e09b1e2692a6d84fc80685d66",
+      "retrieved_at": "2026-09-26T20:29:33+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004025/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004025",
+      "sha256": "4667415219b4fecc2af283d1f61a8ec478d2dc2591d546fb82c235a746503b21",
+      "retrieved_at": "2026-09-26T20:29:32+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004040/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004040&limit=100",
+      "sha256": "73b8033604bff7d80b5c46678a8bbe92d2625352b0eb2dfda6ec5684cd6e9d54",
+      "retrieved_at": "2026-09-26T20:29:36+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004040/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004040",
+      "sha256": "be4de9da32ca7c04cdeaa005c8025654666994203dee53a540f5d386a059da01",
+      "retrieved_at": "2026-09-26T20:29:35+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004053/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004053&limit=100",
+      "sha256": "1f81905f65f48d4f9a03c99dfc5f2d8210e906a6c120cb78081bcdbe133704fd",
+      "retrieved_at": "2026-09-26T20:29:39+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004053/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004053",
+      "sha256": "c1089917fcf284ce82441a585515ece01cd1fdab3b463abcfa1a9161ee73a5ae",
+      "retrieved_at": "2026-09-26T20:29:39+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004069/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004069&limit=100",
+      "sha256": "081d1e673ccd9d05d9b6ee964daeab26a693e5e8913ea0300e87df4d88c2cca2",
+      "retrieved_at": "2026-09-26T20:29:43+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004069/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004069",
+      "sha256": "b7c03641bd50489935ddb2a112c04facc7613c5f2475ed2a912ef07db498a6a3",
+      "retrieved_at": "2026-09-26T20:29:42+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004083/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004083&limit=100",
+      "sha256": "c374320b52b54ee52cebe6b5ec568934623f3286cdae9ec27bf951ea8fee7a6d",
+      "retrieved_at": "2026-09-26T20:29:46+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004083/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004083",
+      "sha256": "3ed2240403fad632c8f2298b666ad53d048468dae37d76451decca791e79cc83",
+      "retrieved_at": "2026-09-26T20:29:45+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004107/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004107&limit=100",
+      "sha256": "29bafd784b6d22067efae7ab32af6a5ae941fe554a3f5f0eb22648d82e340273",
+      "retrieved_at": "2026-09-26T20:29:49+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004107/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004107",
+      "sha256": "37b91ff7ce2ca4c02534548d15fbc507430130625b9d9709c855153c67f93177",
+      "retrieved_at": "2026-09-26T20:29:48+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004123/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004123&limit=100",
+      "sha256": "278351018b1b2c3300fe3954ffb4bcce83cb050ea4be492891c9c35e9bde4c21",
+      "retrieved_at": "2026-09-26T20:29:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004123/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004123",
+      "sha256": "068b26f6762e49fde1c80a8b19fa6e38a9b75d9d66b38892e50551b5879a1abe",
+      "retrieved_at": "2026-09-26T20:29:52+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004137/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004137&limit=100",
+      "sha256": "1413d93fd273786f1361629dbf05613f1f943ddae8115f3007e98dbb86ed84a0",
+      "retrieved_at": "2026-09-26T20:29:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004137/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004137",
+      "sha256": "b36c0190b5c3361e58491f1ac4f8c5aeec3683f4be2de25346906a4ab6ba8753",
+      "retrieved_at": "2026-09-26T20:29:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004153/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004153&limit=100",
+      "sha256": "bbd21ddca3341eb8507870ed268927e3cf374c7bca580500179edba50458954e",
+      "retrieved_at": "2026-09-26T20:29:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004153/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004153",
+      "sha256": "8cccb939c8ec491ed69acb9c4d273304a4cc43a4fbc957bba4276dae24612eaf",
+      "retrieved_at": "2026-09-26T20:29:58+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004166/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004166&limit=100",
+      "sha256": "8e22e623f81a87117fba628207fb3964284c14715dc9e018663762b81afdefb6",
+      "retrieved_at": "2026-09-26T20:30:02+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004166/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004166",
+      "sha256": "23158e80f0a61586e4e906e509f815212a3cfe0f0fb4e7e39f24fcc83642e5ca",
+      "retrieved_at": "2026-09-26T20:30:01+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004167/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004167&limit=100",
+      "sha256": "9ff6efd39a0810165cbde633e6dec81875541e31e59276912b92b0bda506a633",
+      "retrieved_at": "2026-09-26T20:30:05+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004167/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004167",
+      "sha256": "83936856027eff4cca6ff7e39024abf7acd137f2feb6d820bf2cdae060ce9264",
+      "retrieved_at": "2026-09-26T20:30:04+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004168/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004168&limit=100",
+      "sha256": "a2cb82cc0cb9b976ce18ddf32bb3812ba5252aa309c5c5632c6363446947fb46",
+      "retrieved_at": "2026-09-26T20:30:08+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004168/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004168",
+      "sha256": "dc2308d898aca6ea1284a0c0a5af46084634a670c24647c3ffcb49ac25cb7403",
+      "retrieved_at": "2026-09-26T20:30:07+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004169/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004169&limit=100",
+      "sha256": "fa4d0a2e71e3ed61a0bb20ed47706b38430c111af6d37217a63878da8d7eae20",
+      "retrieved_at": "2026-09-26T20:30:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004169/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004169",
+      "sha256": "0b7acd2c4abba25d4c90030433d1a623ee9112fbd86a981319b4a51b43dc6b29",
+      "retrieved_at": "2026-09-26T20:30:11+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004170/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004170&limit=100",
+      "sha256": "551ef9201494e58f0cdf3d4ec6e3de2a799b715890ed5bf368c5eff0eca02da2",
+      "retrieved_at": "2026-09-26T20:30:15+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004170/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004170",
+      "sha256": "03778092e9e53ebc9807e00242415fb3267c4846c25c105e139ec83d0f9f6f40",
+      "retrieved_at": "2026-09-26T20:30:14+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004242/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004242&limit=100",
+      "sha256": "d33f0a3ddc60e36f79789a41f05417670cbf83ed8ab5e602f73424b4c42e7f35",
+      "retrieved_at": "2026-09-26T20:30:18+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004242/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004242",
+      "sha256": "48cb58e8d861d08fcb8b2e0761f39c41c31285d48cd7f0debe2d85c3501f484c",
+      "retrieved_at": "2026-09-26T20:30:17+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004295/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004295&limit=100",
+      "sha256": "ea19ccfbbc2eac9984f580954afd9512b819e8c39b5cba16040bfe614af86486",
+      "retrieved_at": "2026-09-26T20:30:21+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004295/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004295",
+      "sha256": "2bee07bcfa25f89035522c0482d0af154dfb6e4c1dc0ff9b89322be39ff52494",
+      "retrieved_at": "2026-09-26T20:30:20+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004296/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004296&limit=100",
+      "sha256": "5a95e0b637aaf9905231c7c9ab7531a7b96c64a52bda6e57161dee090b7e4924",
+      "retrieved_at": "2026-09-26T20:30:24+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004296/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004296",
+      "sha256": "c6884bdd244485465a1e4f86069116c80c266a5d76774a660eb81a88acd20a85",
+      "retrieved_at": "2026-09-26T20:30:23+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004297/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004297&limit=100",
+      "sha256": "591973a08363eaf4c893c3c988a4b98ddd79b83e192c70376214df0e8952d62d",
+      "retrieved_at": "2026-09-26T20:30:27+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004297/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004297",
+      "sha256": "ab0db2579fada4214f3ff568d393372252275d061736504cb51e69cb1a87ab5c",
+      "retrieved_at": "2026-09-26T20:30:26+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004298/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004298&limit=100",
+      "sha256": "d072a261bcb72f326cdfbb2c31401027c5a64ce00f0b364e019e7e202ec5624d",
+      "retrieved_at": "2026-09-26T20:30:30+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004298/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004298",
+      "sha256": "d5c7b3642b7a0da7d712371e6554bf4efc0fd9ec00adb8609f8ab14b52f9ace5",
+      "retrieved_at": "2026-09-26T20:30:30+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004299/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004299&limit=100",
+      "sha256": "ac87bdf3b452766dcde2f4e706d5031be717be7a37d84d520ae85dab7ccffa2e",
+      "retrieved_at": "2026-09-26T20:30:34+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004299/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004299",
+      "sha256": "7df7f4a230869f8c84888139d23feea85858605cc4e2b8ecdb5b49b6c4c6b5a5",
+      "retrieved_at": "2026-09-26T20:30:33+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004441/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004441&limit=100",
+      "sha256": "3b8f6f14c9d8dc1115a44a0cc08048554fc59b4a7176422b8d44e951db1eb25b",
+      "retrieved_at": "2026-09-26T20:30:37+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004441/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004441",
+      "sha256": "68415a5f13e27d077e368a7f522cef58f4dc73289aa86af98b15d9c8d0480e88",
+      "retrieved_at": "2026-09-26T20:30:36+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004511/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004511&limit=100",
+      "sha256": "9b1bee3abe5e95c4c93ca1e1964d7163a1f26b4e467047c8a992152544a8f284",
+      "retrieved_at": "2026-09-26T20:30:40+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004511/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004511",
+      "sha256": "d925aa58dd0577976f3025202328af384c1bbca5647966ff310e3cb01d55e84f",
+      "retrieved_at": "2026-09-26T20:30:39+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004579/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004579&limit=100",
+      "sha256": "d783a7db8ab4d90ecf066ddbd038dc75fbe8e67fd0b3120190770ee3623d32aa",
+      "retrieved_at": "2026-09-26T20:30:44+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004579/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004579",
+      "sha256": "2580c41ef30986f2c574ab1c4e01fdf9140ef9f94b9ac60c04c83bb16b111748",
+      "retrieved_at": "2026-09-26T20:30:43+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004611/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004611&limit=100",
+      "sha256": "af96d384e39938b2f3b2df80143b3aeb19723d40792087497d832ce499cb73cc",
+      "retrieved_at": "2026-09-26T20:30:47+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004611/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004611",
+      "sha256": "61300f72872495a972d2b94988329cf65594c9024762c5c329dc4c46c40fa9d2",
+      "retrieved_at": "2026-09-26T20:30:46+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004688/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004688&limit=100",
+      "sha256": "398b0370094d48812fa9b6ba9bb4c407b8bd780b7828a3b9b4f1350fe5e0ac66",
+      "retrieved_at": "2026-09-26T20:30:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004688/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004688",
+      "sha256": "d1eb63d70dd611e342b2cfb6583b88562f58891e5ac50f93c51a02c2560a203d",
+      "retrieved_at": "2026-09-26T20:30:49+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004737/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004737&limit=100",
+      "sha256": "e61695c4cd399213e0e1e57287e5abd7b66585383261bb70c98b6d3cde8250ad",
+      "retrieved_at": "2026-09-26T20:30:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004737/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004737",
+      "sha256": "d866f25e76c7e0b5e27852856e88a9c6bc470ab3551b7c350517b8175a887fa6",
+      "retrieved_at": "2026-09-26T20:30:52+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004738/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004738&limit=100",
+      "sha256": "38d7333d94742f61032664e8a8a23e88513c5f06627ecb28247fc16947fe0b17",
+      "retrieved_at": "2026-09-26T20:30:57+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004738/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004738",
+      "sha256": "1af299c4ef1c97fe48ade3ffa90fc83e0249358ff732f97bfbda3620da7beab6",
+      "retrieved_at": "2026-09-26T20:30:56+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004865/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004865&limit=100",
+      "sha256": "b41e4bddff64f3f52d1322457bbe9aeb0134e77b5b9c28f67c00edba3bc41316",
+      "retrieved_at": "2026-09-26T20:31:00+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004865/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004865",
+      "sha256": "3c084d8952223fe660a70af8179db64d5b4dde936e06c1287cf140af63a261c5",
+      "retrieved_at": "2026-09-26T20:30:59+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004869/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004869&limit=100",
+      "sha256": "2d33775f99c547f38badebcf0eecc8069a79aaadfe6446fae0cb53f9d254963c",
+      "retrieved_at": "2026-09-26T20:31:04+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004869/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004869",
+      "sha256": "df15ff9506ebde06fac2c61df69e697d756236c3aae8059186eda2a79ffe8230",
+      "retrieved_at": "2026-09-26T20:31:03+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004893/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS004893&limit=100",
+      "sha256": "676b55806ec36033092da255d5cdf1a9211915b92c2ea97b18847a3d09eeb768",
+      "retrieved_at": "2026-09-26T20:31:07+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS004893/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS004893",
+      "sha256": "a2143485d1aa1070dc69f7d7bf043f9159441ad8807d60ed3cb5b1470f825b1b",
+      "retrieved_at": "2026-09-26T20:31:06+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005104/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005104&limit=100",
+      "sha256": "2b2a35cbb824f4c1e03172cee8850f30df8d99285a6a217e16e6aace2554fae9",
+      "retrieved_at": "2026-09-26T20:31:10+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005104/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005104",
+      "sha256": "0e334dd29ebe104cecdc6c5a6faef9b9d8c505ec31b4412274594b7c39ef6f09",
+      "retrieved_at": "2026-09-26T20:31:09+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005164/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005164&limit=100",
+      "sha256": "3e7b49707cde917de61f8c7b78456abc156689b6868d05ad155ce037a5df3e1e",
+      "retrieved_at": "2026-09-26T20:31:13+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005164/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005164",
+      "sha256": "f749adc16a1b438c83a30bd2d8be2e966290291a4c5152ee38875291eef018e7",
+      "retrieved_at": "2026-09-26T20:31:12+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005345/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005345&limit=100",
+      "sha256": "fbd5869414a33ef2239ec8a8c382d5990194316beeeb6e5b1851ea85c9dc1c5d",
+      "retrieved_at": "2026-09-26T20:31:16+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005345/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005345",
+      "sha256": "0e3e90a557331ba4316fa313bef6ca0d68b66848df83ed6bcc657365f436af70",
+      "retrieved_at": "2026-09-26T20:31:15+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005346/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005346&limit=100",
+      "sha256": "0b25f8cd246c8b2fed185e515a0b3388bf4660359b11f3f09b60aa31d4317be8",
+      "retrieved_at": "2026-09-26T20:31:19+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005346/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005346",
+      "sha256": "e0b8920c04ba670064706095e449e422b4ceac9a03fef861923369f07e108ed4",
+      "retrieved_at": "2026-09-26T20:31:18+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005347/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005347&limit=100",
+      "sha256": "700b711b62336fd39899bc66b1566b4d361845be3972e08890770639f86151a4",
+      "retrieved_at": "2026-09-26T20:31:22+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005347/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005347",
+      "sha256": "fc7d5fc9bb39c8cd09b1cda9ea88753fd4a644b39492aebe3e2d79f747f22074",
+      "retrieved_at": "2026-09-26T20:31:21+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005348/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005348&limit=100",
+      "sha256": "812416b209416cb5a7048edcbf923add7fe4d35b2b08622536a31ab496e51e0d",
+      "retrieved_at": "2026-09-26T20:31:26+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005348/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005348",
+      "sha256": "3acbfa89d50cec3b124e1acad5480f6ce9684b4187a33b8228ce546825e648b4",
+      "retrieved_at": "2026-09-26T20:31:25+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005349/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005349&limit=100",
+      "sha256": "bdc9a24cab6d387e7c4f3f730b1863cc1b458225fc56fa8c83e61340cfcbeed8",
+      "retrieved_at": "2026-09-26T20:31:29+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005349/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005349",
+      "sha256": "dbb324a404227a3ce95a0ddc7d4306d48952b893ab3a4d35479d4e36790f832f",
+      "retrieved_at": "2026-09-26T20:31:28+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005378/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005378&limit=100",
+      "sha256": "699e4a51d29353cefdc1b2e1ee529a020bec313a0b13594569ec9b6f4cfab091",
+      "retrieved_at": "2026-09-26T20:31:32+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005378/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005378",
+      "sha256": "3f9f8201d803a8d1595818f71c9fe102f0c1b60414ba4aa3a1cf6d2470b562d3",
+      "retrieved_at": "2026-09-26T20:31:31+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005379/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005379&limit=100",
+      "sha256": "4b574435bfde04937abf60ef9279eaa1a8bc6207e7ed58d6bb07936afad396bf",
+      "retrieved_at": "2026-09-26T20:31:35+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005379/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005379",
+      "sha256": "04c7e5572943f5a7876057d17cc993c467fbb3572de2ea578688249ccee94a66",
+      "retrieved_at": "2026-09-26T20:31:34+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005396/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS005396&limit=100",
+      "sha256": "94aac80bf540ca6298595ffb087e1cb06106d4d14e2d3aceed4955f4f16a9776",
+      "retrieved_at": "2026-09-26T20:31:38+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS005396/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS005396",
+      "sha256": "4ee63f4edf8d04fa73ebce5ea0b81947f80fda2da4989899136153f0c228beff",
+      "retrieved_at": "2026-09-26T20:31:37+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018525/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS018525&limit=100",
+      "sha256": "46e4c6cf233161f08615b76d0d762d9238c42fa76b87f5e0b42f039226eed978",
+      "retrieved_at": "2026-09-26T20:31:41+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018525/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS018525",
+      "sha256": "40ef9d97f26c87c547189791b84cd8a699e3477bd035f02d795315f5d84f7ce7",
+      "retrieved_at": "2026-09-26T20:31:40+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018526/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS018526&limit=100",
+      "sha256": "da94660e84765eee5bc2f8f53c2c272280cd92fe63bd6cb1fe1285f3b4be26ec",
+      "retrieved_at": "2026-09-26T20:31:44+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018526/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS018526",
+      "sha256": "6bba072ad3b7b2949af2b8d9debe4700f56c2b21030d8b8891f6263620d738d4",
+      "retrieved_at": "2026-09-26T20:31:43+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018527/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS018527&limit=100",
+      "sha256": "d03965ad3e7be0af5d8dab977104e9680ccb111f85543b6266c1f55447768753",
+      "retrieved_at": "2026-09-26T20:31:48+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018527/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS018527",
+      "sha256": "7dd365abe4f58d742b21049e33fd00ca006a8a3dbe7e7e5088393f6756f4303f",
+      "retrieved_at": "2026-09-26T20:31:46+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018528/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS018528&limit=100",
+      "sha256": "c8c995f6286d991d43af145ab6215ae9c86348813cc36aca7dac54093750c546",
+      "retrieved_at": "2026-09-26T20:31:51+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018528/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS018528",
+      "sha256": "5c0f634da53c2ba7a7efdaf61b2d072a73dcfd776af7b3fe74838e107b619013",
+      "retrieved_at": "2026-09-26T20:31:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018529/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS018529&limit=100",
+      "sha256": "0fbcc55b07270a7757a90a8f206e65f854d78ccaa127b7136b72921210f310ed",
+      "retrieved_at": "2026-09-26T20:31:54+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS018529/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS018529",
+      "sha256": "0aa343a02471347b908f010fe1ed94ff3beadeb862f060683807cc85370d5896",
+      "retrieved_at": "2026-09-26T20:31:53+00:00",
+      "kind": "pgs_rest"
+    },
+    "ancestry_categories.json": {
+      "url": "https://www.pgscatalog.org/rest/ancestry_categories",
+      "sha256": "e923777a5bef784c95e7f1c47aa6a5b584645e10492165c9e819aef4f3024518",
+      "retrieved_at": "2026-09-26T20:31:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "info.json": {
+      "url": "https://www.pgscatalog.org/rest/info",
+      "sha256": "ff42b64a93422925138246cbfc8f7f589322c0008115dcfffaf497c669141c1f",
+      "retrieved_at": "2026-09-26T20:31:55+00:00",
+      "kind": "pgs_rest"
+    },
+    "trait_lookup/MONDO_0007254.json": {
+      "url": "https://www.pgscatalog.org/rest/trait/MONDO_0007254?include_children=1",
+      "sha256": "8bfb3ddd6f748fe11eb2a179748c87afae31a9437b08ec890f394910fc1bd2aa",
+      "retrieved_at": "2026-09-26T20:23:51+00:00",
+      "kind": "pgs_rest"
+    },
+    "trait_lookup/search_breast_cancer_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/trait/search?term=breast+cancer&limit=50",
+      "sha256": "a4de00f382b5981aaed8ae6173006ad9eb46d364b02acf7118a2ba224f0ef654",
+      "retrieved_at": "2026-09-26T20:23:50+00:00",
+      "kind": "pgs_rest"
+    },
+    "trait_search/MONDO_0004379_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/score/search?trait_id=MONDO_0004379&limit=250",
+      "sha256": "f046f81b04254177f392fab769bd5951129f0e9453daf06f74611918ca9617d8",
+      "retrieved_at": "2026-09-26T20:23:52+00:00",
+      "kind": "pgs_rest"
+    },
+    "trait_search/MONDO_0004989_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/score/search?trait_id=MONDO_0004989&limit=250",
+      "sha256": "d6a2ea5152147a32f10ec9d658a3fd8b4068104d57ffaaf4408b036b9f230907",
+      "retrieved_at": "2026-09-26T20:23:54+00:00",
+      "kind": "pgs_rest"
+    },
+    "trait_search/MONDO_0007254_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/score/search?trait_id=MONDO_0007254&limit=250",
+      "sha256": "a33625cd69ff4bdad0653d95a7980d63db78e18fa64ffc630ad171b3a04a4d49",
+      "retrieved_at": "2026-09-26T20:23:51+00:00",
+      "kind": "pgs_rest"
+    }
+  }
+}

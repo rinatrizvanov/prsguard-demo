@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import shlex
 import statistics
 import sys
@@ -29,20 +30,41 @@ from pathlib import Path
 import requests
 
 SKILL_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SKILL_DIR.parent.parent
-for p in (str(SKILL_DIR), str(PROJECT_ROOT)):
-    if p not in sys.path:
+
+
+def find_clawbio_root() -> Path | None:
+    """Locate the ClawBio checkout that provides ``clawbio.common``.
+
+    The skill lives in several layouts: physically inside ``ClawBio/skills/``,
+    symlinked there from PRSGuard (``Path.resolve()`` then points back into
+    PRSGuard), or run straight from the PRSGuard repo, whose pinned checkout is
+    ``vendor/ClawBio``. ``CLAWBIO_DIR`` overrides all of them.
+    """
+    unresolved = Path(os.path.abspath(__file__)).parent   # keeps a symlinked location
+    candidates = [os.environ.get("CLAWBIO_DIR"), unresolved.parent.parent, SKILL_DIR.parent.parent,
+                  SKILL_DIR.parent.parent / "vendor" / "ClawBio"]
+    for c in candidates:
+        if c and (Path(c) / "clawbio" / "common" / "reproducibility.py").is_file():
+            return Path(c).resolve()
+    return None
+
+
+CLAWBIO_ROOT = find_clawbio_root()
+for p in (str(SKILL_DIR), str(CLAWBIO_ROOT) if CLAWBIO_ROOT else None):
+    if p and p not in sys.path:
         sys.path.insert(0, p)
 
 from equity_lit_extract import audit_paper  # noqa: E402
 from equity_lit_geo import ANCESTRY_GROUPS, REGION_POPULATION_2022, load_countries  # noqa: E402
 from equity_lit_literature import (  # noqa: E402
-    EuropePMCClient, FixtureClient, collect_papers, paper_from_publication, parse_seed,
+    EPMC_BASE, EuropePMCClient, FixtureClient, collect_papers, paper_from_publication, parse_seed,
 )
 from equity_lit_pgs import (  # noqa: E402
-    STAGES, PGSCatalogClient, PGSFixtureClient, PGSResult, curated_records, gather, stage_ancestry,
+    PGS_API, STAGES, PGSCatalogClient, PGSFixtureClient, PGSResult, curated_records, gather, stage_ancestry,
 )
-from equity_lit_render import heatmap_html, heatmap_png, pgs_stage_png, representation_png  # noqa: E402
+from equity_lit_render import (  # noqa: E402
+    SYNTHETIC_LABEL, heatmap_html, heatmap_png, pgs_stage_png, representation_png,
+)
 
 try:
     from clawbio.common.report import DISCLAIMER, write_result_json
@@ -51,12 +73,46 @@ except ImportError:  # standalone use outside the ClawBio checkout
     DISCLAIMER = ("ClawBio is a research and educational tool. It is not a medical device and does not "
                   "provide clinical diagnoses. Consult a healthcare professional before making any medical decisions.")
     write_result_json = write_checksums = write_commands_sh = write_environment_yml = None
+    print("warning: ClawBio checkout not found (set CLAWBIO_DIR or run scripts/setup.sh); "
+          "result.json is written without the ClawBio envelope and no reproducibility/ bundle is produced.",
+          file=sys.stderr)
 
 SKILL_NAME = "equity-lit-auditor"
-SKILL_VERSION = "0.1.0"
+SKILL_VERSION = "0.2.0"
 DEMO_FIXTURE = SKILL_DIR / "examples" / "demo_epmc_fixture.json"
 DEMO_QUERY = "type 2 diabetes genome-wide association (synthetic demo)"
 DEMO_PGS_TRAIT = "type 2 diabetes"
+
+# The per-paper 0-100 equity score describes how the literature reports and samples
+# populations. It is context for a human reader. It says nothing about whether a
+# polygenic score is valid or transferable for a given person, so it must never be an
+# input to an applicability decision (PRSGuard keeps it out of its gate by contract).
+EQUITY_SCORE_SEMANTICS = {
+    "role": "context_only",
+    "feeds_applicability_decision": False,
+    "scale": "0-100 per-paper rubric of population reporting and sampling in the literature",
+    "note": ("Context only. The literature equity score describes how the audited papers report and sample "
+             "populations; it is not a measure of any polygenic score's validity, accuracy or transferability "
+             "to a person and must never be used as an input to a PRS applicability decision."),
+}
+
+
+def provenance_block(demo: bool, pgs_used: bool, cache: Path | None) -> dict:
+    """Machine-readable provenance, repeated in result.json, every table and every figure."""
+    if demo:
+        return {"synthetic": True, "data_provenance": SYNTHETIC_LABEL,
+                "sources": {"literature": f"SYNTHETIC DEMO fixture ({DEMO_FIXTURE.relative_to(SKILL_DIR)})",
+                            "pgs_catalog": f"SYNTHETIC DEMO fixture ({DEMO_FIXTURE.relative_to(SKILL_DIR)})"},
+                "retrieved_at": None, "cache_dir": None,
+                "note": "Every paper, cohort and number is synthetic. Not real literature; do not cite or reuse."}
+    sources = {"literature": f"Europe PMC REST API ({EPMC_BASE})"}
+    if pgs_used:
+        sources["pgs_catalog"] = f"PGS Catalog REST API ({PGS_API})"
+    return {"synthetic": False, "data_provenance": "LIVE", "sources": sources,
+            "retrieved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "cache_dir": str(cache) if cache else None,
+            "note": ("Live public APIs." + (" Responses already in --cache-dir were replayed, not re-fetched."
+                                            if cache else ""))}
 
 
 def parse_args(argv=None):
@@ -185,12 +241,25 @@ def _pct(x: float) -> str:
     return f"{x:.1%}" if 0 < x < 0.01 else f"{x:.0%}"
 
 
-def pgs_section(ps: dict) -> list[str]:
+def _heading(text: str, demo: bool) -> str:
+    """Section heading; in demo mode every heading carries the synthetic label, so an
+    excerpt copied out of the report still says where it came from."""
+    return f"{text} ({SYNTHETIC_LABEL})" if demo else text
+
+
+def pgs_section(ps: dict, demo: bool = False, traits: list | None = None) -> list[str]:
     from equity_lit_geo import ANCESTRY_GROUPS as AG
-    L = ["## PGS Catalog: who the scores were built and tested on", "",
+    L = [_heading("## PGS Catalog: who the scores were built and tested on", demo), "",
          "Curated sample metadata from the [PGS Catalog](https://www.pgscatalog.org/browse/scores/) for every linked "
-         "score, by stage. A GWAS reused by several scores is counted once.", "",
-         "![PGS stage ancestry](figures/pgs_stage_ancestry.png)", "",
+         "score, by stage. A GWAS reused by several scores is counted once.", ""]
+    for t in traits or []:
+        avail = t.get("scores_available")
+        L.append(f"- Trait **{t.get('label')}** (`{t.get('id')}`), matched by {t.get('match', 'n/a')}; "
+                 f"{avail if avail is not None else 'unknown number of'} score(s) available in the Catalog "
+                 "(including child traits).")
+    L += [f"- **{len(ps['scores'])}** score(s) audited (`--pgs-max-scores` caps this; the Catalog returns scores in "
+          "PGS ID order, so a cap keeps the oldest scores).", "",
+          "![PGS stage ancestry](figures/pgs_stage_ancestry.png)", "",
          "| Stage | Participants | " + " | ".join(AG) + " |", "|---|---:|" + "---:|" * len(AG)]
     for st, counts in ps["stages"].items():
         tot = sum(counts.values())
@@ -205,7 +274,7 @@ def pgs_section(ps: dict) -> list[str]:
         L.append(f"| {link} | {r['name']} | {r['trait']} | {r['variants']} | {r['gwas_ancestry'] or 'NR'} | "
                  f"{r['evaluation_ancestry'] or '—'} |")
     chk = ps["check"]["summary"]
-    L += ["", "### Extraction check against PGS Catalog curation", ""]
+    L += ["", _heading("### Extraction check against PGS Catalog curation", demo), ""]
     if chk["papers"]:
         L.append(f"The text extractor recovered **{chk['recovered']} of {chk['curated_groups']}** curated ancestry groups "
                  f"(recall {chk['recall']:.0%}) across {chk['papers']} papers with curated samples. Misses usually mean the "
@@ -220,26 +289,45 @@ def pgs_section(ps: dict) -> list[str]:
     return L
 
 
-def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict | None = None) -> str:
+def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict | None = None,
+                 provenance: dict | None = None, retrieval_warnings: list[str] | None = None,
+                 pgs_traits: list | None = None) -> str:
     in_scope, with_pop, country_rows, share, anc_n, anc_papers, region_participants, stats = agg
     audit_by_key = {a.key: a for a in audits}
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    L = [f"# Genomic Equity Literature Audit", "",
+    provenance = provenance or {}
+    if demo:
+        source = "bundled SYNTHETIC fixture (demo mode, no real papers)"
+    else:
+        source = "; ".join(provenance.get("sources", {}).values()) or "Europe PMC (PubMed + PMC open-access full text)"
+    L = [_heading("# Genomic Equity Literature Audit", demo), "",
+         f"**Data provenance**: {provenance.get('data_provenance', SYNTHETIC_LABEL if demo else 'LIVE')}  ",
          f"**Query / seeds**: {label}  ",
          f"**Date**: {now}  ",
-         f"**Source**: {'bundled SYNTHETIC fixture (demo mode, no real papers)' if demo else 'Europe PMC (PubMed + PMC open-access full text)'}  ",
+         f"**Source**: {source}  ",
          f"**Cascade**: {args.cascade}" + (f", depth {args.depth}, ≤{args.per_paper} per paper" if args.cascade != 'none' else ""), ""]
     if demo:
-        L += ["> **Demo mode.** Every paper below is synthetic and exists only to exercise the pipeline.", ""]
+        L += [f"> **Demo mode ({SYNTHETIC_LABEL}).** Every paper below is synthetic and exists only to exercise the "
+              "pipeline. It is not real literature: do not cite it, map it or reuse its numbers.", ""]
+    if provenance.get("cache_dir"):
+        L += [f"> Responses already cached in `{provenance['cache_dir']}` were replayed rather than re-fetched.", ""]
+    if retrieval_warnings:
+        L += [_heading("## Data availability", demo), "",
+              f"**{len(retrieval_warnings)}** lookup(s) failed during retrieval, so the results below are incomplete "
+              "(nothing was substituted for the missing data):", ""]
+        L += [f"- {w}" for w in retrieval_warnings[:20]]
+        if len(retrieval_warnings) > 20:
+            L.append(f"- … {len(retrieval_warnings) - 20} more in `result.json` (`summary.retrieval_warnings`)")
+        L.append("")
 
-    L += ["## Summary", "",
+    L += [_heading("## Summary", demo), "",
           f"- **{stats['papers_total']}** papers retrieved; **{stats['papers_in_scope']}** describe human genomic data; "
           f"**{stats['papers_with_population_data']}** state where or whom the data came from.",
           f"- **{stats['papers_european_only']}** of {stats['papers_with_population_data']} "
           f"({_pct(stats['papers_european_only'] / max(1, stats['papers_with_population_data']))}) "
           f"report European-ancestry participants only.",
           f"- Median equity score **{stats['median_equity_score']}** / 100 (mean {stats['mean_equity_score']}) "
-          f"across papers that describe their participants.",
+          f"across papers that describe their participants (context only; see below).",
           f"- **{stats['participants_extracted']:,}** participants with an extractable sample size, "
           f"from **{stats['countries']}** countries."]
     eur = share.get("EUR")
@@ -254,7 +342,7 @@ def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict
     L += ["", "![Population heat map](figures/population_heatmap.png)", "",
           f"*Heat-map value: {stats['heatmap_metric']}. Interactive version: `figures/population_map.html`.*", ""]
 
-    L += ["## Where the data came from (by country)", "",
+    L += [_heading("## Where the data came from (by country)", demo), "",
           "| Country | UN region | Income | Participants (extracted) | Papers |", "|---|---|---|---:|---:|"]
     for r in country_rows[:25]:
         L.append(f"| {r['name']} | {r['un_region']} | {'HIC' if r['high_income'] else 'LMIC'} | "
@@ -264,7 +352,7 @@ def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict
     L.append("")
 
     world_total = sum(p for _, p in REGION_POPULATION_2022.values())
-    L += ["## Who the participants were (by ancestry)", "",
+    L += [_heading("## Who the participants were (by ancestry)", demo), "",
           "![Ancestry representation](figures/ancestry_representation.png)", "",
           "| Ancestry group | Participants | Share | Papers | World pop. share of matching UN region (2022) |",
           "|---|---:|---:|---:|---:|"]
@@ -277,11 +365,12 @@ def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict
     L += ["", "*Geography is not ancestry: the world-population column is coarse context only.*", ""]
 
     if pgs_summary and pgs_summary["scores"]:
-        L += pgs_section(pgs_summary)
+        L += pgs_section(pgs_summary, demo, pgs_traits)
 
-    L += ["## Paper-level equity scores", "",
+    L += [_heading("## Paper-level equity scores", demo), "",
           "Rubric (0-100): ancestry reporting 20, participant diversity 30, cross-ancestry analysis 15, "
           "limitations acknowledged 10, descriptor practice 10, local capacity & engagement 15.", "",
+          f"> **{EQUITY_SCORE_SEMANTICS['note']}**", "",
           "| Score | Paper | Year | Via | Populations found | Source | Flags |", "|---:|---|---|---|---|---|---|"]
     ranked = sorted(with_pop, key=lambda pa: -pa[1].score)
     for p, a in ranked:
@@ -308,7 +397,7 @@ def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict
               "from the map: " + "; ".join(p.title for p in skipped[:8]) + ("…" if len(skipped) > 8 else "")]
     L.append("")
 
-    L += ["## Score breakdown and evidence", ""]
+    L += [_heading("## Score breakdown and evidence", demo), ""]
     for p, a in ranked:
         L += [f"### {a.score}/100 · {p.title}", ""]
         for name, c in a.components.items():
@@ -328,7 +417,7 @@ def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict
             L.append(f"- Reference panels noted (not counted): {', '.join(a.reference_panels)}")
         L.append("")
 
-    L += ["## Methods", "",
+    L += [_heading("## Methods", demo), "",
           "1. **Retrieval**: Europe PMC REST API (`resultType=core`), sorted by citation count. "
           "Cascade follows `/references` and/or `/citations` for each paper, breadth-first.",
           "1b. **PGS Catalog** (optional): scores for a trait or by ID; for each, the source GWAS, development and "
@@ -342,14 +431,20 @@ def build_report(label, args, papers, audits, agg, demo: bool, pgs_summary: dict
           "(1000 Genomes, gnomAD, HRC…) are excluded.",
           "4. **Scoring**: transparent rubric; each point is backed by the quoted evidence above.",
           "5. **Map**: participants (or papers) per country on an Equal Earth (equal-area) projection.", "",
-          "## Limitations", "",
+          _heading("## Limitations", demo), "",
           "- Rule-based extraction misses populations described only in tables or supplements, and abstracts often "
           "omit per-group sample sizes; treat counts as a lower bound.",
           "- Per paper, the largest N per group is kept to avoid double counting discovery + replication totals; "
           "the same cohort appearing in several papers is counted once per paper.",
           "- Country of recruitment ≠ ancestry (e.g. UK Biobank is in the UK but multi-ancestry).",
-          "- Income groups follow the World Bank FY2025 classification (editable in `reference/build_countries.py`).", "",
-          "---", "", f"*{DISCLAIMER}*", ""]
+          "- PGS Catalog sample sets with the same stage, ancestry and N within one paper are counted once (the "
+          "Catalog repeats a set per score that reused it, per GWAS Catalog accession and per performance record); "
+          "two genuinely different sets that coincide on all three would be merged.",
+          "- Participant totals are participant-analyses summed over papers, not unique people.",
+          "- Income groups follow the World Bank FY2025 classification (editable in `reference/build_countries.py`).", ""]
+    if demo:
+        L += [f"**{SYNTHETIC_LABEL}: generated from the bundled synthetic fixture. Not real literature.**", ""]
+    L += ["---", "", f"*{DISCLAIMER}*", ""]
     return "\n".join(L)
 
 
@@ -359,14 +454,19 @@ def _fmt_groups(counts: dict[str, int]) -> str:
 
 def summarise_pgs(pgs_res: PGSResult, stages: dict, papers: list, audits: list) -> dict:
     """Tables for the PGS section plus the text-extraction check against curation."""
-    from equity_lit_pgs import broad_to_codes
+    from equity_lit_pgs import broad_to_codes, sample_identity
     scores, links = [], []
     for s in pgs_res.scores:
         mine = [l for l in pgs_res.links if l.pgs_id == s["id"]]
         per_stage = {st: {} for st in STAGES}
+        seen = set()
         for l in mine:
             for smp in l.samples:
                 n = smp.get("sample_number")
+                ident = (l.seed, *sample_identity(l.stage, smp))
+                if ident in seen:   # same sample set listed twice for this score (see sample_identity)
+                    continue
+                seen.add(ident)
                 codes = broad_to_codes(smp.get("ancestry_broad") or "")
                 code = codes[0] if len(codes) == 1 else "OTH"
                 if isinstance(n, (int, float)):
@@ -451,6 +551,7 @@ def main(argv=None) -> int:
 
     cache = Path(args.cache_dir) if args.cache_dir else None
     if args.demo:
+        # The ONLY place the synthetic fixture is loaded. Live mode never falls back to it.
         client = FixtureClient(DEMO_FIXTURE)
         pgs_client = PGSFixtureClient(DEMO_FIXTURE)
         query = DEMO_QUERY
@@ -464,17 +565,32 @@ def main(argv=None) -> int:
         f"PGS Catalog trait '{args.pgs_trait}'" if args.pgs_trait else "",
         f"PGS {', '.join(pgs_ids)}" if pgs_ids else "",
     ] if x)
+    provenance = provenance_block(args.demo, bool(args.pgs_trait or pgs_ids), cache)
+    tag = f"[{SYNTHETIC_LABEL}] " if args.demo else ""
 
-    print(f"Equity Lit Auditor: {label}")
+    # Partial retrieval failures (one reference list, one full text) do not stop the run,
+    # but they are recorded and reported: nothing is ever substituted for missing data.
+    retrieval_warnings: list[str] = []
+
+    def log(msg: str = "") -> None:
+        print(msg)
+        if "warning:" in msg:
+            retrieval_warnings.append(msg.split("warning:", 1)[1].strip())
+
+    print(f"{tag}Equity Lit Auditor: {label}")
     pgs_res = PGSResult()
     try:
         if args.pgs_trait or pgs_ids:
-            pgs_res = gather(pgs_client, args.pgs_trait, pgs_ids, args.pgs_max_scores, not args.no_pgs_eval)
+            pgs_res = gather(pgs_client, args.pgs_trait, pgs_ids, args.pgs_max_scores, not args.no_pgs_eval, log=log)
+            if args.pgs_trait and not pgs_res.traits:
+                print(f"PGS Catalog has no trait matching '{args.pgs_trait}'.", file=sys.stderr)
         papers = collect_papers(client, query, seeds + pgs_res.seeds, args.max_results, args.cascade, args.depth,
-                                args.per_paper, args.max_papers, not args.no_fulltext)
+                                args.per_paper, args.max_papers, not args.no_fulltext, log=log)
     except requests.RequestException as exc:
         print(f"Could not reach Europe PMC / PGS Catalog ({exc.__class__.__name__}): {exc}\n"
-              "Check your internet connection, or run with --demo to see the pipeline offline.", file=sys.stderr)
+              "No report was written: live results are never replaced by demo data. Check your internet "
+              "connection and retry (add --cache-dir to keep what was fetched), or run --demo to see the "
+              "pipeline on synthetic data.", file=sys.stderr)
         return 3
     curated = attach_pgs(papers, pgs_res)
     if not papers:
@@ -485,21 +601,29 @@ def main(argv=None) -> int:
         a.pgs = list(p.pgs)
     agg = aggregate(papers, audits, args.include_non_genomic, args.metric)
     in_scope, with_pop, country_rows, share, anc_n, anc_papers, region_participants, stats = agg
-    print(f"  audited {stats['papers_in_scope']} genomic papers; {stats['countries']} countries on the map")
+    print(f"  {tag}audited {stats['papers_in_scope']} genomic papers; {stats['countries']} countries on the map")
 
     metric_label = "Participants" if stats["heatmap_metric"] == "participants" else "Papers"
     title = "Where the genomic data came from"
     subtitle = (f"{stats['papers_with_population_data']} papers · {label[:90]} · "
-                f"{metric_label.lower()} per country of recruitment" + (" · SYNTHETIC DEMO" if args.demo else ""))
+                f"{metric_label.lower()} per country of recruitment" + (f" · {SYNTHETIC_LABEL}" if args.demo else ""))
     heatmap_png({r["iso3"]: r["value"] for r in country_rows}, metric_label, title, subtitle,
                 out / "figures" / "population_heatmap.png",
-                unknown={r["iso3"] for r in country_rows if r["value"] <= 0})
-    heatmap_html(country_rows, metric_label, title, subtitle, out / "figures" / "population_map.html")
+                unknown={r["iso3"] for r in country_rows if r["value"] <= 0}, synthetic=args.demo)
+    heatmap_html(country_rows, metric_label, title, subtitle, out / "figures" / "population_map.html",
+                 synthetic=args.demo)
     representation_png(share, "extracted N" if stats["participants_extracted"] else "paper mentions",
-                       out / "figures" / "ancestry_representation.png")
+                       out / "figures" / "ancestry_representation.png", synthetic=args.demo)
     pgs_stages = stage_ancestry(pgs_res) if pgs_res.scores else {}
     if pgs_res.scores:
         pgs_stage_png(pgs_stages, out / "figures" / "pgs_stage_ancestry.png", demo=args.demo)
+
+    # Every table carries the provenance in its first column, so a CSV lifted out of the
+    # output folder still says whether its rows are real.
+    prov = provenance["data_provenance"]
+
+    def tagged(rows: list[dict]) -> list[dict]:
+        return [{"data_provenance": prov, **r} for r in rows]
 
     audit_by_key = {a.key: a for a in audits}
     paper_rows = []
@@ -508,7 +632,7 @@ def main(argv=None) -> int:
         row = {"key": p.key, "title": p.title, "year": p.year, "journal": p.journal, "doi": p.doi,
                "pmid": p.pmid, "pmcid": p.pmcid, "url": p.url, "via": p.via, "parent": p.parent,
                "depth": p.depth, "genomic_study": p.is_genomic_study, "fulltext_methods_read": bool(p.methods_text),
-               "equity_score": a.score,
+               "equity_score": a.score, "equity_score_role": EQUITY_SCORE_SEMANTICS["role"],
                "ancestry_groups": ";".join(f"{g}:{n or ''}" for g, n in sorted(a.ancestry_n.items())),
                "countries": ";".join(f"{c}:{n or ''}" for c, n in sorted(a.country_n.items())),
                "author_countries": ";".join(a.affiliation_countries), "flags": " | ".join(a.flags),
@@ -517,34 +641,44 @@ def main(argv=None) -> int:
             row[name] = c["points"]
         paper_rows.append(row)
     comp_names = list(audits[0].components)
-    write_csv(out / "tables" / "papers.csv", paper_rows, list(paper_rows[0]) if paper_rows else [])
+    write_csv(out / "tables" / "papers.csv", tagged(paper_rows),
+              ["data_provenance", *paper_rows[0]] if paper_rows else ["data_provenance"])
     rec_rows = [{"paper": a.key, **r.__dict__} for a in audits for r in a.records]
-    write_csv(out / "tables" / "population_records.csv", rec_rows,
-              ["paper", "ancestry", "iso3", "n", "term", "kind", "section", "confidence", "snippet"])
+    write_csv(out / "tables" / "population_records.csv", tagged(rec_rows),
+              ["data_provenance", "paper", "ancestry", "iso3", "n", "term", "kind", "section", "confidence", "snippet"])
     write_csv(out / "tables" / "country_summary.csv",
-              [{**r, "titles": " | ".join(r["titles"])} for r in country_rows],
-              ["iso3", "name", "un_region", "high_income", "participants", "papers", "titles"])
+              tagged([{**r, "titles": " | ".join(r["titles"])} for r in country_rows]),
+              ["data_provenance", "iso3", "name", "un_region", "high_income", "participants", "papers", "titles"])
     write_csv(out / "tables" / "ancestry_summary.csv",
-              [{"ancestry": g, "label": ANCESTRY_GROUPS[g], "participants": anc_n[g],
-                "share": round(share.get(g, 0), 4), "papers": anc_papers[g]} for g in ANCESTRY_GROUPS if g in anc_papers],
-              ["ancestry", "label", "participants", "share", "papers"])
+              tagged([{"ancestry": g, "label": ANCESTRY_GROUPS[g], "participants": anc_n[g],
+                       "share": round(share.get(g, 0), 4), "papers": anc_papers[g]}
+                      for g in ANCESTRY_GROUPS if g in anc_papers]),
+              ["data_provenance", "ancestry", "label", "participants", "share", "papers"])
 
     pgs_summary = summarise_pgs(pgs_res, pgs_stages, papers, audits)
     if pgs_res.scores:
-        write_csv(out / "tables" / "pgs_scores.csv", pgs_summary["scores"],
-                  ["pgs_id", "name", "trait", "variants", "development_paper", "gwas_papers", "evaluation_papers",
-                   "gwas_ancestry", "development_ancestry", "evaluation_ancestry", "gwas_european_share"])
-        write_csv(out / "tables" / "pgs_links.csv", pgs_summary["links"],
-                  ["pgs_id", "stage", "paper", "participants", "ancestry_broad", "countries", "cohorts"])
+        write_csv(out / "tables" / "pgs_scores.csv", tagged(pgs_summary["scores"]),
+                  ["data_provenance", "pgs_id", "name", "trait", "variants", "development_paper", "gwas_papers",
+                   "evaluation_papers", "gwas_ancestry", "development_ancestry", "evaluation_ancestry",
+                   "gwas_european_share"])
+        write_csv(out / "tables" / "pgs_links.csv", tagged(pgs_summary["links"]),
+                  ["data_provenance", "pgs_id", "stage", "paper", "participants", "ancestry_broad", "countries",
+                   "cohorts"])
     stats["pgs_scores"] = len(pgs_res.scores)
     stats["pgs_publications"] = len(pgs_res.seeds)
     stats["extraction_check"] = pgs_summary["check"]["summary"]
+    stats["retrieval_warnings"] = retrieval_warnings
 
-    report = build_report(label, args, papers, audits, agg, args.demo, pgs_summary)
+    report = build_report(label, args, papers, audits, agg, args.demo, pgs_summary, provenance=provenance,
+                          retrieval_warnings=retrieval_warnings, pgs_traits=pgs_res.traits)
     (out / "report.md").write_text(report, encoding="utf-8")
 
-    stats_json = {**stats, "flags": dict(stats["flags"])}
-    data = {"query": query, "seeds": seeds, "demo": args.demo,
+    stats_json = {"synthetic": provenance["synthetic"], "data_provenance": prov,
+                  "equity_score_role": EQUITY_SCORE_SEMANTICS["role"],
+                  **stats, "flags": dict(stats["flags"])}
+    data = {"synthetic": provenance["synthetic"], "data_provenance": prov, "provenance": provenance,
+            "equity_score_semantics": EQUITY_SCORE_SEMANTICS,
+            "query": query, "seeds": seeds, "demo": args.demo,
             "settings": {k: getattr(args, k) for k in ("max_results", "cascade", "depth", "per_paper",
                                                         "max_papers", "no_fulltext", "include_non_genomic", "metric",
                                                         "pgs_trait", "pgs_ids", "pgs_max_scores", "no_pgs_eval")},
@@ -557,8 +691,13 @@ def main(argv=None) -> int:
                     "extraction_check": pgs_summary["check"]}}
     written = [out / "report.md"]
     if write_result_json:
-        written.append(write_result_json(out, SKILL_NAME, SKILL_VERSION, summary=stats_json, data=data,
-                                         datasets={"literature": "SYNTHETIC fixture" if args.demo else "Europe PMC"}))
+        result_path = write_result_json(out, SKILL_NAME, SKILL_VERSION, summary=stats_json, data=data,
+                                        datasets=provenance["sources"])
+        # Lift the provenance flags to the top of the ClawBio envelope as well.
+        envelope = json.loads(result_path.read_text())
+        envelope = {"synthetic": provenance["synthetic"], "data_provenance": prov, **envelope}
+        result_path.write_text(json.dumps(envelope, indent=2, default=str))
+        written.append(result_path)
         cmd = ["python", "skills/equity-lit-auditor/equity_lit_auditor.py"] + (list(argv) if argv else sys.argv[1:])
         written.append(write_commands_sh(out, shlex.join(cmd)))
         deps = []
@@ -572,7 +711,8 @@ def main(argv=None) -> int:
         written += sorted((out / "figures").iterdir()) + sorted((out / "tables").iterdir())
         write_checksums(written, out, anchor=out)
     else:
-        (out / "result.json").write_text(json.dumps({"skill": SKILL_NAME, "summary": stats_json, "data": data},
+        (out / "result.json").write_text(json.dumps({"synthetic": provenance["synthetic"], "data_provenance": prov,
+                                                     "skill": SKILL_NAME, "summary": stats_json, "data": data},
                                                     indent=2, default=str))
     print(f"Report: {out / 'report.md'}")
     print(f"Heat map: {out / 'figures' / 'population_heatmap.png'}")

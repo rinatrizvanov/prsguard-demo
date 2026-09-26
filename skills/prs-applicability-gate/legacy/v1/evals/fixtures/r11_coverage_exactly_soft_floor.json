@@ -1,0 +1,43 @@
+{
+  "description": "Coverage exactly on the soft floor passes",
+  "expected": {
+    "decision": "PERCENTILE_SUPPORTED",
+    "reason_code": "P_SUPPORTED",
+    "rule_fired": "R11"
+  },
+  "input": {
+    "schema_version": "1.0",
+    "target": {
+      "ancestry_label": "EUR",
+      "ancestry_confidence": 0.95
+    },
+    "prs": {
+      "raw_score": 4.61,
+      "variants_matched": 90,
+      "variants_in_score": 100,
+      "percentile_reference_population": "EUR",
+      "candidate_percentile": 76.1
+    },
+    "pgs": {
+      "pgs_id": "PGS000001",
+      "trait": "Breast cancer",
+      "publication": "Mavaddat N 2015, J Natl Cancer Inst",
+      "eval_ancestry": [
+        {
+          "label": "EUR",
+          "fraction": 0.727
+        },
+        {
+          "label": "EAS",
+          "fraction": 0.091
+        },
+        {
+          "label": "NR",
+          "fraction": 0.182
+        }
+      ],
+      "eval_sample_set_count": 11
+    },
+    "extraction_notes": []
+  }
+}

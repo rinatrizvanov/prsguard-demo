@@ -1,0 +1,43 @@
+{
+  "description": "Non-zero eval fractions but zero evaluation sample sets",
+  "expected": {
+    "decision": "ABSTAIN",
+    "reason_code": "A_METADATA_CONTRADICTION",
+    "rule_fired": "R2"
+  },
+  "input": {
+    "schema_version": "1.0",
+    "target": {
+      "ancestry_label": "EUR",
+      "ancestry_confidence": 0.95
+    },
+    "prs": {
+      "raw_score": 4.61,
+      "variants_matched": 74,
+      "variants_in_score": 77,
+      "percentile_reference_population": "EUR",
+      "candidate_percentile": 76.1
+    },
+    "pgs": {
+      "pgs_id": "PGS000001",
+      "trait": "Breast cancer",
+      "publication": "Mavaddat N 2015, J Natl Cancer Inst",
+      "eval_ancestry": [
+        {
+          "label": "EUR",
+          "fraction": 0.727
+        },
+        {
+          "label": "EAS",
+          "fraction": 0.091
+        },
+        {
+          "label": "NR",
+          "fraction": 0.182
+        }
+      ],
+      "eval_sample_set_count": 0
+    },
+    "extraction_notes": []
+  }
+}

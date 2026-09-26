@@ -1,0 +1,23 @@
+{
+  "name": "1000g_pca",
+  "purpose": "fixed projection space for reference placement",
+  "selection": {
+    "bin_bp": 400000,
+    "per_bin": 1,
+    "min_maf": 0.05,
+    "palindromic": "excluded",
+    "variant_type": "biallelic SNV, alleles concordant with Ensembl GRCh37",
+    "chip_content": "rsIDs assayed on both ClawBio genome-compare 23andMe files (NCBI36 files; positions re-mapped with Ensembl GRCh37 REST)",
+    "candidates": 13347,
+    "ensembl_mapped": 13342,
+    "fetched": 13182,
+    "allele_concordant": 13182
+  },
+  "retrieved_at": "2026-09-26T20:32:58+00:00",
+  "vcf_url_template": "ALL.chr{chrom}.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz",
+  "n_variants": 6557,
+  "n_samples": 2504,
+  "build": "GRCh37",
+  "source": "https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502",
+  "sha256": "b11b9274bcf24f750f60a1eff1364d2bcf4df96211415311fd96385ae9718b40"
+}

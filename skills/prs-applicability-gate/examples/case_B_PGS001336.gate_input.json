@@ -1,0 +1,434 @@
+{
+  "schema": "prs-applicability-gate.input.v2",
+  "candidate": {
+    "pgs_id": "PGS001336",
+    "pre_rank": 3,
+    "trait_reported": "Breast cancer",
+    "sex_specific": null
+  },
+  "score_file": {
+    "name": "PGS001336_hmPOS_GRCh37.txt.gz",
+    "sha256": "5bc8a921d2499faac5011561368f830a816ed49b0975c644dbbe8fb358e1da11",
+    "build": "GRCh37",
+    "weight_type": "NR",
+    "ratio_weight_type": false,
+    "unsupported_features": [],
+    "n_parse_problems": 0,
+    "variants_interactions": 0
+  },
+  "genotype": {
+    "file_sha256": "0480a540351a0779b061da218ed27b9a6824736242c985515c7a40ebb24c3c6d",
+    "format": "vcf",
+    "n_calls": 10281,
+    "n_called": 10281,
+    "build": "GRCh37",
+    "build_evidence": {
+      "header_declared": "GRCh37",
+      "user_declared": null,
+      "grch37_rsid_sites_checked": 6557,
+      "grch37_position_agreement": 1.0,
+      "grch38_rsid_sites_checked": 6557,
+      "grch38_position_agreement": 0.0072,
+      "rule": "a build is confirmed if >= 90% of >= 20 anchor rsIDs agree and refuted if <= 10%; otherwise the declared build if unambiguous and not refuted",
+      "method": "empirical (rsID anchor positions) + declaration"
+    }
+  },
+  "person": {
+    "sex": "female"
+  },
+  "harmonisation": {
+    "n_variants": 555,
+    "n_matched": 467,
+    "status_counts": {
+      "matched": 467,
+      "matched_flipped": 0,
+      "missing": 37,
+      "no_call": 0,
+      "allele_mismatch": 2,
+      "palindromic_excluded": 38,
+      "duplicate_excluded": 0,
+      "position_conflict": 0,
+      "non_snv_excluded": 0,
+      "non_autosomal_excluded": 11,
+      "build_unresolved": 0
+    },
+    "n_located": 507,
+    "allele_mismatch_fraction": 0.0039,
+    "weight_loss_by_status": {
+      "missing": 0.0539,
+      "palindromic_excluded": 0.0534,
+      "non_autosomal_excluded": 0.0146,
+      "allele_mismatch": 0.0068
+    },
+    "fraction_matched": 0.8414,
+    "fraction_abs_weight_matched": 0.8713,
+    "top5pct_weight_variants_missing": 1,
+    "position_matching": true,
+    "notes": []
+  },
+  "scoreability": {
+    "r": 0.9756,
+    "method": "reference_panel_correlation",
+    "r_unadjusted": 0.9905,
+    "spearman": 0.9885,
+    "panel_variance_share": 0.9702,
+    "measured_in": "EUR",
+    "n_samples": 502,
+    "fraction_scoring_variants_in_panel": 0.9099
+  },
+  "placement": {
+    "status": "RESOLVED",
+    "placement": "EUR",
+    "nearest_reference": "EUR",
+    "placement_stability": 1.0,
+    "n_sites_used": 6557,
+    "detail": "inside the EUR reference cloud in 100% of bootstrap replicates"
+  },
+  "catalog_metadata": {
+    "status": "resolved",
+    "failed_checks": [],
+    "detail": "metadata resolved; all blocking consistency checks passed",
+    "warnings": []
+  },
+  "evaluation": {
+    "reported": true,
+    "unit": "(publication, sample set) pairs",
+    "units": [
+      {
+        "pgp_id": "PGP000244",
+        "pss_id": "PSS007616",
+        "code": "AFR",
+        "pooled": false,
+        "component_codes": [
+          "AFR"
+        ],
+        "n": 6497,
+        "cases": 126,
+        "percent_male": null,
+        "countries": [
+          "UK"
+        ],
+        "covariates": [
+          "age, sex, UKB array type, Genotype PCs"
+        ],
+        "metrics": [
+          {
+            "name": "AUROC",
+            "group": "class_acc",
+            "estimate": 0.79293,
+            "ci_lower": 0.76728,
+            "ci_upper": 0.81858,
+            "null": 0.5,
+            "informative": true
+          },
+          {
+            "name": "R\u00b2",
+            "group": "othermetrics",
+            "estimate": 0.15047,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "Incremental AUROC (full-covars)",
+            "group": "othermetrics",
+            "estimate": 0.01474,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS R2 (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.00598,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS AUROC (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.56918,
+            "ci_lower": 0.51783,
+            "ci_upper": 0.62054,
+            "null": null,
+            "informative": null
+          }
+        ]
+      },
+      {
+        "pgp_id": "PGP000244",
+        "pss_id": "PSS007617",
+        "code": "EAS",
+        "pooled": false,
+        "component_codes": [
+          "EAS"
+        ],
+        "n": 1704,
+        "cases": 53,
+        "percent_male": null,
+        "countries": [
+          "UK"
+        ],
+        "covariates": [
+          "age, sex, UKB array type, Genotype PCs"
+        ],
+        "metrics": [
+          {
+            "name": "AUROC",
+            "group": "class_acc",
+            "estimate": 0.7602,
+            "ci_lower": 0.71475,
+            "ci_upper": 0.80565,
+            "null": 0.5,
+            "informative": true
+          },
+          {
+            "name": "R\u00b2",
+            "group": "othermetrics",
+            "estimate": 0.14344,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "Incremental AUROC (full-covars)",
+            "group": "othermetrics",
+            "estimate": 0.01509,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS R2 (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.01507,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS AUROC (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.59411,
+            "ci_lower": 0.51563,
+            "ci_upper": 0.67258,
+            "null": null,
+            "informative": null
+          }
+        ]
+      },
+      {
+        "pgp_id": "PGP000244",
+        "pss_id": "PSS007618",
+        "code": "EUR",
+        "pooled": false,
+        "component_codes": [
+          "EUR"
+        ],
+        "n": 24905,
+        "cases": 954,
+        "percent_male": null,
+        "countries": [
+          "UK"
+        ],
+        "covariates": [
+          "age, sex, UKB array type, Genotype PCs"
+        ],
+        "metrics": [
+          {
+            "name": "AUROC",
+            "group": "class_acc",
+            "estimate": 0.80561,
+            "ci_lower": 0.79545,
+            "ci_upper": 0.81577,
+            "null": 0.5,
+            "informative": true
+          },
+          {
+            "name": "R\u00b2",
+            "group": "othermetrics",
+            "estimate": 0.18447,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "Incremental AUROC (full-covars)",
+            "group": "othermetrics",
+            "estimate": 0.01345,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS R2 (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.01264,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS AUROC (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.58544,
+            "ci_lower": 0.56669,
+            "ci_upper": 0.6042,
+            "null": null,
+            "informative": null
+          }
+        ]
+      },
+      {
+        "pgp_id": "PGP000244",
+        "pss_id": "PSS007619",
+        "code": "SAS",
+        "pooled": false,
+        "component_codes": [
+          "SAS"
+        ],
+        "n": 7831,
+        "cases": 161,
+        "percent_male": null,
+        "countries": [
+          "UK"
+        ],
+        "covariates": [
+          "age, sex, UKB array type, Genotype PCs"
+        ],
+        "metrics": [
+          {
+            "name": "AUROC",
+            "group": "class_acc",
+            "estimate": 0.83564,
+            "ci_lower": 0.81289,
+            "ci_upper": 0.85838,
+            "null": 0.5,
+            "informative": true
+          },
+          {
+            "name": "R\u00b2",
+            "group": "othermetrics",
+            "estimate": 0.18535,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "Incremental AUROC (full-covars)",
+            "group": "othermetrics",
+            "estimate": 0.00869,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS R2 (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.00739,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS AUROC (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.5725,
+            "ci_lower": 0.52745,
+            "ci_upper": 0.61755,
+            "null": null,
+            "informative": null
+          }
+        ]
+      },
+      {
+        "pgp_id": "PGP000244",
+        "pss_id": "PSS007620",
+        "code": "EUR",
+        "pooled": false,
+        "component_codes": [
+          "EUR"
+        ],
+        "n": 67425,
+        "cases": 2471,
+        "percent_male": null,
+        "countries": [
+          "UK"
+        ],
+        "covariates": [
+          "age, sex, UKB array type, Genotype PCs"
+        ],
+        "metrics": [
+          {
+            "name": "AUROC",
+            "group": "class_acc",
+            "estimate": 0.80961,
+            "ci_lower": 0.80348,
+            "ci_upper": 0.81573,
+            "null": 0.5,
+            "informative": true
+          },
+          {
+            "name": "R\u00b2",
+            "group": "othermetrics",
+            "estimate": 0.1894,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "Incremental AUROC (full-covars)",
+            "group": "othermetrics",
+            "estimate": 0.02139,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS R2 (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.01602,
+            "ci_lower": null,
+            "ci_upper": null,
+            "null": null,
+            "informative": null
+          },
+          {
+            "name": "PGS AUROC (no covariates)",
+            "group": "othermetrics",
+            "estimate": 0.59627,
+            "ci_lower": 0.58498,
+            "ci_upper": 0.60756,
+            "null": null,
+            "informative": null
+          }
+        ]
+      }
+    ]
+  },
+  "reference_distribution": {
+    "available": true,
+    "reference_group": "EUR",
+    "reference_n": 502,
+    "n_intersection": 467,
+    "reference_sensitive": false,
+    "reference_sensitive_pairs": [],
+    "detail": null
+  },
+  "input_digest": "sha256:cea74c94a95a33e55443f36c5bafd1e63a4369efc77a21ee237a8458acf14bca"
+}

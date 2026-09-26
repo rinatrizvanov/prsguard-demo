@@ -1,0 +1,34 @@
+{
+  "schema": "prsguard.pgs_snapshot.v1",
+  "api_base": "https://www.pgscatalog.org/rest",
+  "api_version": "1.8.6",
+  "catalog_release": "2026-09-17",
+  "created_by": "deliberately corrupted copy of fixtures/pgs_catalog",
+  "files": {
+    "PGS000001/performance_search_p1.json": {
+      "url": "https://www.pgscatalog.org/rest/performance/search?pgs_id=PGS000001&limit=100",
+      "sha256": "cd2b065dda5b271a8c658dbd48b53098f5c32e00aaf59fe46ca93c74f1ca9387",
+      "retrieved_at": "2026-09-25T16:28:25+00:00",
+      "kind": "pgs_rest"
+    },
+    "PGS000001/score.json": {
+      "url": "https://www.pgscatalog.org/rest/score/PGS000001",
+      "sha256": "e12f60dd54f36c235988a9eb473faa47b635bbb336f64f52c4c2bd422fcdb82e",
+      "retrieved_at": "2026-09-25T16:28:23+00:00",
+      "kind": "pgs_rest",
+      "note": "DELIBERATELY CORRUPTED TEST FIXTURE: ancestry_distribution.eval.dist relabels the East Asian (EAS) evaluation as South Asian (SAS); performance records still say East Asian (TPMI, PSS012310). Not real PGS Catalog content."
+    },
+    "ancestry_categories.json": {
+      "url": "https://www.pgscatalog.org/rest/ancestry_categories",
+      "sha256": "e923777a5bef784c95e7f1c47aa6a5b584645e10492165c9e819aef4f3024518",
+      "retrieved_at": "2026-09-25T16:28:26+00:00",
+      "kind": "pgs_rest"
+    },
+    "info.json": {
+      "url": "https://www.pgscatalog.org/rest/info",
+      "sha256": "ff42b64a93422925138246cbfc8f7f589322c0008115dcfffaf497c669141c1f",
+      "retrieved_at": "2026-09-25T16:28:27+00:00",
+      "kind": "pgs_rest"
+    }
+  }
+}

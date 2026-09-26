@@ -1,0 +1,2000 @@
+{
+ "source_skill": "equity-lit-auditor",
+ "skill_version": "0.2.0",
+ "synthetic": false,
+ "data_provenance": "LIVE",
+ "role": "context_only",
+ "feeds_applicability_decision": false,
+ "query": {
+  "pgs_ids": [
+   "PGS000004",
+   "PGS001804",
+   "PGS001336"
+  ]
+ },
+ "semantics": {
+  "role": "context_only",
+  "feeds_applicability_decision": false,
+  "scale": "0-100 per-paper rubric of population reporting and sampling in the literature",
+  "note": "Context only. The literature equity score describes how the audited papers report and sample populations; it is not a measure of any polygenic score's validity, accuracy or transferability to a person and must never be used as an input to a PRS applicability decision."
+ },
+ "provenance": {
+  "synthetic": false,
+  "data_provenance": "LIVE",
+  "sources": {
+   "literature": "Europe PMC REST API (https://www.ebi.ac.uk/europepmc/webservices/rest)",
+   "pgs_catalog": "PGS Catalog REST API (https://www.pgscatalog.org/rest)"
+  },
+  "retrieved_at": "2026-09-26T22:00:22+00:00",
+  "note": "Live public APIs. Responses already in --cache-dir were replayed, not re-fetched."
+ },
+ "completed_at": "2026-09-26T22:00:23.598089+00:00",
+ "summary": {
+  "papers_total": 31,
+  "papers_with_population_data": 31,
+  "papers_european_only": 16,
+  "median_equity_score": 30,
+  "mean_equity_score": 37.0,
+  "countries": 40,
+  "participants_extracted": 11303305,
+  "ancestry_share_basis": "extracted sample sizes",
+  "flags": {
+   "European-ancestry participants only": 16,
+   "ancestry not reported": 2
+  },
+  "extraction_check": {
+   "papers": 29,
+   "curated_groups": 50,
+   "recovered": 33,
+   "recall": 0.66
+  },
+  "retrieval_warnings": []
+ },
+ "ancestry_share": {
+  "EUR": 0.9870563521023276,
+  "AFR": 0.004106586524914616,
+  "EAS": 0.0012216780844186723,
+  "ASN": 0.004629088571882295,
+  "NR": 0.001189740522793997,
+  "AMR": 0.0008163099199747331,
+  "SAS": 0.0009389289238855361,
+  "MID": 4.131534980255775e-05
+ },
+ "stage_ancestry": {
+  "GWAS": {
+   "EUR": 158648
+  },
+  "development": {
+   "EUR": 671272
+  },
+  "evaluation": {
+   "EUR": 10604622,
+   "ASN": 52324,
+   "AFR": 46418,
+   "NR": 13448,
+   "OTH": 214873,
+   "AMR": 9227,
+   "EAS": 13809,
+   "SAS": 10613,
+   "MID": 467
+  }
+ },
+ "countries": [
+  {
+   "iso3": "USA",
+   "name": "United States",
+   "participants": 5429294,
+   "papers": 15
+  },
+  {
+   "iso3": "GBR",
+   "name": "United Kingdom",
+   "participants": 2999292,
+   "papers": 14
+  },
+  {
+   "iso3": "AUS",
+   "name": "Australia",
+   "participants": 311323,
+   "papers": 8
+  },
+  {
+   "iso3": "NLD",
+   "name": "Netherlands",
+   "participants": 419578,
+   "papers": 8
+  },
+  {
+   "iso3": "SWE",
+   "name": "Sweden",
+   "participants": 206288,
+   "papers": 8
+  },
+  {
+   "iso3": "DNK",
+   "name": "Denmark",
+   "participants": 0,
+   "papers": 7
+  },
+  {
+   "iso3": "DEU",
+   "name": "Germany",
+   "participants": 0,
+   "papers": 6
+  },
+  {
+   "iso3": "CAN",
+   "name": "Canada",
+   "participants": 0,
+   "papers": 5
+  },
+  {
+   "iso3": "FIN",
+   "name": "Finland",
+   "participants": 122978,
+   "papers": 5
+  },
+  {
+   "iso3": "ESP",
+   "name": "Spain",
+   "participants": 0,
+   "papers": 5
+  },
+  {
+   "iso3": "BEL",
+   "name": "Belgium",
+   "participants": 0,
+   "papers": 4
+  },
+  {
+   "iso3": "FRA",
+   "name": "France",
+   "participants": 0,
+   "papers": 4
+  },
+  {
+   "iso3": "GRC",
+   "name": "Greece",
+   "participants": 0,
+   "papers": 4
+  },
+  {
+   "iso3": "ITA",
+   "name": "Italy",
+   "participants": 0,
+   "papers": 4
+  },
+  {
+   "iso3": "NOR",
+   "name": "Norway",
+   "participants": 0,
+   "papers": 3
+  },
+  {
+   "iso3": "POL",
+   "name": "Poland",
+   "participants": 0,
+   "papers": 3
+  },
+  {
+   "iso3": "AUT",
+   "name": "Austria",
+   "participants": 0,
+   "papers": 2
+  },
+  {
+   "iso3": "IRL",
+   "name": "Ireland",
+   "participants": 0,
+   "papers": 2
+  },
+  {
+   "iso3": "JPN",
+   "name": "Japan",
+   "participants": 8001,
+   "papers": 2
+  },
+  {
+   "iso3": "RUS",
+   "name": "Russian Federation",
+   "participants": 0,
+   "papers": 2
+  },
+  {
+   "iso3": "BLR",
+   "name": "Belarus",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "CMR",
+   "name": "Cameroon",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "GHA",
+   "name": "Ghana",
+   "participants": 2529,
+   "papers": 1
+  },
+  {
+   "iso3": "HKG",
+   "name": "Hong Kong",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "HUN",
+   "name": "Hungary",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "ISL",
+   "name": "Iceland",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "ISR",
+   "name": "Israel",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "LVA",
+   "name": "Latvia",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "LTU",
+   "name": "Lithuania",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "MYS",
+   "name": "Malaysia",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "NZL",
+   "name": "New Zealand",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "NGA",
+   "name": "Nigeria",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "MKD",
+   "name": "North Macedonia",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "PRT",
+   "name": "Portugal",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "PRI",
+   "name": "Puerto Rico",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "QAT",
+   "name": "Qatar",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "SGP",
+   "name": "Singapore",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "KOR",
+   "name": "South Korea",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "TWN",
+   "name": "Taiwan",
+   "participants": 0,
+   "papers": 1
+  },
+  {
+   "iso3": "UGA",
+   "name": "Uganda",
+   "participants": 0,
+   "papers": 1
+  }
+ ],
+ "rubric": [
+  {
+   "key": "ancestry_reporting",
+   "max": 20
+  },
+  {
+   "key": "participant_diversity",
+   "max": 30
+  },
+  {
+   "key": "cross_ancestry_analysis",
+   "max": 15
+  },
+  {
+   "key": "limitations_acknowledged",
+   "max": 10
+  },
+  {
+   "key": "descriptor_practice",
+   "max": 10
+  },
+  {
+   "key": "local_capacity_engagement",
+   "max": 15
+  }
+ ],
+ "papers": [
+  {
+   "id": "38741014",
+   "pmid": "38741014",
+   "doi": "10.1038/s41588-024-01736-4",
+   "title": "Genome-wide association analyses of breast cancer in women of African ancestry identify new susceptibility loci and improve risk prediction.",
+   "year": "2024",
+   "journal": "Nature genetics",
+   "first_author": "Jia G",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 45,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 15,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "AFR": 7096
+   },
+   "country_n": {},
+   "total_n": 22104
+  },
+  {
+   "id": "38704641",
+   "pmid": "38704641",
+   "doi": "10.1016/j.xhgg.2024.100302",
+   "title": "Generalizability of PGS313 for breast cancer risk in a Los Angeles biobank.",
+   "year": "2024",
+   "journal": "HGG advances",
+   "first_author": "Shang H",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 68,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 13,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 15,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 10,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "AFR": 1156,
+    "EUR": 11873,
+    "EAS": 2010,
+    "AMR": 3303
+   },
+   "country_n": {
+    "USA": 18342
+   },
+   "total_n": null
+  },
+  {
+   "id": "38672660",
+   "pmid": "38672660",
+   "doi": "10.3390/cancers16081578",
+   "title": "Breast Cancer Polygenic Risk Score Validation and Effects of Variable Imputation.",
+   "year": "2024",
+   "journal": "Cancers",
+   "first_author": "Beck JJ",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 4805
+   },
+   "country_n": {
+    "USA": null,
+    "NLD": null
+   },
+   "total_n": 4337
+  },
+  {
+   "id": "38454124",
+   "pmid": "38454124",
+   "doi": "10.1038/s41591-024-02837-7",
+   "title": "Polygenic risk scores, radiation treatment exposures and subsequent cancer risk in childhood cancer survivors.",
+   "year": "2024",
+   "journal": "Nature medicine",
+   "first_author": "Gibson TM",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 11220
+   },
+   "country_n": {},
+   "total_n": null
+  },
+  {
+   "id": "38263039",
+   "pmid": "38263039",
+   "doi": "10.1186/s13058-024-01765-1",
+   "title": "A genome-wide association study of contralateral breast cancer in the Women's Environmental Cancer and Radiation Epidemiology Study.",
+   "year": "2024",
+   "journal": "Breast cancer research : BCR",
+   "first_author": "Sun X",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 2483
+   },
+   "country_n": {
+    "USA": null,
+    "CAN": null,
+    "DNK": null
+   },
+   "total_n": 2829
+  },
+  {
+   "id": "38153744",
+   "pmid": "38153744",
+   "doi": "10.1001/jamaoncol.2023.5468",
+   "title": "The Potential of Genetics in Identifying Women at Lower Risk of Breast Cancer.",
+   "year": "2024",
+   "journal": "JAMA oncology",
+   "first_author": "Bolze A",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 43,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 8,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 10,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "NR": 929,
+    "AMR": 3728,
+    "EUR": 19484,
+    "EAS": 951,
+    "AFR": 499
+   },
+   "country_n": {
+    "USA": null
+   },
+   "total_n": 25591
+  },
+  {
+   "id": "37284538",
+   "pmid": "37284538",
+   "doi": "10.1089/heq.2023.0011",
+   "title": "Predicting Breast Cancer Risk for Women Veterans of African Ancestry in the Million Veteran Program.",
+   "year": "2023",
+   "journal": "Health equity",
+   "first_author": "Luoh SW",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 40,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 10,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "AFR": 10717,
+    "EUR": 19939
+   },
+   "country_n": {
+    "USA": 30656
+   },
+   "total_n": null
+  },
+  {
+   "id": "37243694",
+   "pmid": "37243694",
+   "doi": "10.1093/jnci/djad101",
+   "title": "Prediction of breast cancer risk for sisters of women attending screening.",
+   "year": "2023",
+   "journal": "Journal of the National Cancer Institute",
+   "first_author": "Mao X",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 17835
+   },
+   "country_n": {
+    "SWE": 17835
+   },
+   "total_n": 70877
+  },
+  {
+   "id": "36862830",
+   "pmid": "36862830",
+   "doi": "10.1158/1940-6207.capr-22-0460",
+   "title": "Validation of an Abridged Breast Cancer Risk Prediction Model for the General Population.",
+   "year": "2023",
+   "journal": "Cancer prevention research (Philadelphia, Pa.)",
+   "first_author": "Spaeth EL",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 200195
+   },
+   "country_n": {
+    "GBR": 200195
+   },
+   "total_n": null
+  },
+  {
+   "id": "36689693",
+   "pmid": "36689693",
+   "doi": "10.1200/jco.22.01978",
+   "title": "Associations of a Breast Cancer Polygenic Risk Score With Tumor Characteristics and Survival.",
+   "year": "2023",
+   "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+   "first_author": "Lopes Cardozo JMN",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 46,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 16,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "EUR": 683,
+    "ASN": 12920
+   },
+   "country_n": {},
+   "total_n": 98397
+  },
+  {
+   "id": "36538246",
+   "pmid": "36538246",
+   "doi": "10.1007/s10549-022-06843-6",
+   "title": "Development and validation of genome-wide polygenic risk scores for predicting breast cancer incidence in Japanese females: a population-based case-cohort study.",
+   "year": "2023",
+   "journal": "Breast cancer research and treatment",
+   "first_author": "Ohbe H",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 45,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 15,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "EAS": 8001
+   },
+   "country_n": {
+    "JPN": 8001
+   },
+   "total_n": 260
+  },
+  {
+   "id": "36271417",
+   "pmid": "36271417",
+   "doi": "10.1186/s13058-022-01567-3",
+   "title": "PredictCBC-2.0: a contralateral breast cancer risk prediction model developed and validated in ~ 200,000 patients.",
+   "year": "2022",
+   "journal": "Breast cancer research : BCR",
+   "first_author": "Giardiello D",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 33,
+   "components": {
+    "ancestry_reporting": {
+     "points": 10,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 13,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "EUR": null,
+    "ASN": null
+   },
+   "country_n": {
+    "NLD": null,
+    "BEL": null,
+    "GBR": null,
+    "DNK": null,
+    "POL": null,
+    "SWE": null,
+    "DEU": null,
+    "FIN": null,
+    "USA": null,
+    "ESP": null,
+    "AUS": null
+   },
+   "total_n": 207510
+  },
+  {
+   "id": "35681745",
+   "pmid": "35681745",
+   "doi": "10.3390/cancers14112767",
+   "title": "Genetic Aspects of Mammographic Density Measures Associated with Breast Cancer Risk.",
+   "year": "2022",
+   "journal": "Cancers",
+   "first_author": "Li S",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 20,
+   "components": {
+    "ancestry_reporting": {
+     "points": 10,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "ancestry not reported"
+   ],
+   "ancestry_n": {
+    "NR": 2559
+   },
+   "country_n": {
+    "AUT": null,
+    "AUS": 2559
+   },
+   "total_n": 2559
+  },
+  {
+   "id": "35324888",
+   "pmid": "35324888",
+   "doi": "10.1371/journal.pgen.1010105",
+   "title": "Significant sparse polygenic risk scores across 813 traits in UK Biobank.",
+   "year": "2022",
+   "journal": "PLoS genetics",
+   "first_author": "Tanigawa Y",
+   "linked_scores": [
+    "PGS001336 (development)",
+    "PGS001336 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 53,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 3,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 15,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 10,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "AFR": 6497,
+    "EUR": 269704,
+    "EAS": 1704,
+    "SAS": 7831
+   },
+   "country_n": {
+    "GBR": 269704
+   },
+   "total_n": null
+  },
+  {
+   "id": "35150601",
+   "pmid": "35150601",
+   "doi": "10.1016/s1470-2045(21)00752-x",
+   "title": "Genetic predisposition to cancer across people of different ancestries in Qatar: a population-based, cohort study.",
+   "year": "2022",
+   "journal": "The Lancet. Oncology",
+   "first_author": "Saad M",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 40,
+   "components": {
+    "ancestry_reporting": {
+     "points": 10,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 15,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 10,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "ancestry not reported"
+   ],
+   "ancestry_n": {
+    "NR": 5023
+   },
+   "country_n": {
+    "QAT": null
+   },
+   "total_n": 6218
+  },
+  {
+   "id": "34999890",
+   "pmid": "34999890",
+   "doi": "10.1093/ije/dyab036",
+   "title": "Prospective evaluation of a breast-cancer risk model integrating classical risk factors and polygenic risk in 15 cohorts from six countries.",
+   "year": "2022",
+   "journal": "International journal of epidemiology",
+   "first_author": "Hurson AN",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 8763519
+   },
+   "country_n": {
+    "GBR": 1401091,
+    "NLD": 408679,
+    "SWE": 188453,
+    "USA": 5328392,
+    "DEU": null,
+    "AUS": 302425
+   },
+   "total_n": 239340
+  },
+  {
+   "id": "34995502",
+   "pmid": "34995502",
+   "doi": "10.1016/j.ajhg.2021.11.008",
+   "title": "Portability of 245 polygenic scores when derived from the UK Biobank and applied to 9 ancestry groups from the same cohort.",
+   "year": "2022",
+   "journal": "American journal of human genetics",
+   "first_author": "Priv\u00e9 F",
+   "linked_scores": [
+    "PGS001804 (development)",
+    "PGS001804 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 46,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 1,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 15,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "EUR": 391124,
+    "EAS": 1143,
+    "AFR": 3517,
+    "MID": 467,
+    "SAS": 2782
+   },
+   "country_n": {
+    "GBR": 391124
+   },
+   "total_n": null
+  },
+  {
+   "id": "34320204",
+   "pmid": "34320204",
+   "doi": "10.1093/jnci/djab147",
+   "title": "Breast and Prostate Cancer Risks for Male BRCA1 and BRCA2 Pathogenic Variant Carriers Using Polygenic Risk Scores.",
+   "year": "2022",
+   "journal": "Journal of the National Cancer Institute",
+   "first_author": "Barnes DR",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 1590
+   },
+   "country_n": {
+    "AUT": null,
+    "HUN": null,
+    "NLD": null,
+    "DEU": null,
+    "FRA": null,
+    "DNK": null,
+    "CAN": null,
+    "USA": null,
+    "FIN": null,
+    "PRT": null,
+    "ISL": null,
+    "AUS": null,
+    "BEL": null,
+    "GRC": null,
+    "ITA": null,
+    "GBR": null,
+    "LTU": null,
+    "LVA": null,
+    "SWE": null,
+    "ESP": null
+   },
+   "total_n": 1318
+  },
+  {
+   "id": "34347061",
+   "pmid": "34347061",
+   "doi": "10.1001/jamanetworkopen.2021.19084",
+   "title": "Generalizability of Polygenic Risk Scores for Breast Cancer Among Women With European, African, and Latinx Ancestry.",
+   "year": "2021",
+   "journal": "JAMA network open",
+   "first_author": "Liu C",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 66,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 6,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 15,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 10,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 10,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "AFR": 3801,
+    "EUR": 33954,
+    "AMR": 2196
+   },
+   "country_n": {
+    "USA": 39951
+   },
+   "total_n": 39591
+  },
+  {
+   "id": "34298747",
+   "pmid": "34298747",
+   "doi": "10.3390/cancers13143533",
+   "title": "Genomic Risk Prediction for Breast Cancer in Older Women.",
+   "year": "2021",
+   "journal": "Cancers",
+   "first_author": "Lacaze P",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 6339
+   },
+   "country_n": {
+    "AUS": 6339,
+    "USA": 2411
+   },
+   "total_n": 19114
+  },
+  {
+   "id": "33769540",
+   "pmid": "33769540",
+   "doi": "10.1093/jnci/djab050",
+   "title": "Evaluating Polygenic Risk Scores for Breast Cancer in Women of African Ancestry.",
+   "year": "2021",
+   "journal": "Journal of the National Cancer Institute",
+   "first_author": "Du Z",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 50,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 15,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 10,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "AFR": 12071
+   },
+   "country_n": {
+    "USA": 9542,
+    "PRI": null,
+    "GHA": 2529,
+    "NGA": null,
+    "UGA": null,
+    "CMR": null
+   },
+   "total_n": 10193
+  },
+  {
+   "id": "32785646",
+   "pmid": "32785646",
+   "doi": "10.1093/jnci/djaa101",
+   "title": "Common Susceptibility Loci for Male Breast Cancer.",
+   "year": "2021",
+   "journal": "Journal of the National Cancer Institute",
+   "first_author": "Maguire S",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 5714
+   },
+   "country_n": {
+    "GBR": null,
+    "USA": null
+   },
+   "total_n": 3620
+  },
+  {
+   "id": "33318493",
+   "pmid": "33318493",
+   "doi": "10.1038/s41467-020-19966-5",
+   "title": "The role of polygenic risk and susceptibility genes in breast cancer over the course of life.",
+   "year": "2020",
+   "journal": "Nature communications",
+   "first_author": "Mars N",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 122978
+   },
+   "country_n": {
+    "FIN": 122978
+   },
+   "total_n": 122978
+  },
+  {
+   "id": "33022221",
+   "pmid": "33022221",
+   "doi": "10.1016/j.ajhg.2020.09.001",
+   "title": "Breast Cancer Polygenic Risk Score and Contralateral Breast Cancer Risk.",
+   "year": "2020",
+   "journal": "American journal of human genetics",
+   "first_author": "Kramer I",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 40,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 5,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 10,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "EUR": 284505,
+    "ASN": 38004
+   },
+   "country_n": {
+    "NLD": null,
+    "POL": null,
+    "MKD": null,
+    "DEU": null,
+    "BLR": null,
+    "HKG": null,
+    "DNK": null,
+    "CAN": null,
+    "USA": null,
+    "RUS": null,
+    "KOR": null,
+    "MYS": null,
+    "IRL": null,
+    "FIN": null,
+    "TWN": null,
+    "AUS": null,
+    "BEL": null,
+    "GRC": null,
+    "ITA": null,
+    "GBR": null,
+    "SWE": null,
+    "SGP": null,
+    "NOR": null,
+    "ESP": null,
+    "JPN": null
+   },
+   "total_n": 56068
+  },
+  {
+   "id": "32820175",
+   "pmid": "32820175",
+   "doi": "10.1038/s41467-020-17374-3",
+   "title": "Polygenic background modifies penetrance of monogenic variants for tier 1 genomic conditions.",
+   "year": "2020",
+   "journal": "Nature communications",
+   "first_author": "Fahed AC",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 33,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 3,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [],
+   "ancestry_n": {
+    "AFR": 1064,
+    "EUR": 38458,
+    "NR": 4937,
+    "ASN": 1400
+   },
+   "country_n": {
+    "GBR": null
+   },
+   "total_n": 80928
+  },
+  {
+   "id": "32665703",
+   "pmid": "32665703",
+   "doi": "10.1038/s41436-020-0862-x",
+   "title": "Polygenic risk scores and breast and epithelial ovarian cancer risks for carriers of BRCA1 and BRCA2 pathogenic variants.",
+   "year": "2020",
+   "journal": "Genetics in medicine : official journal of the American College of Medical Genetics",
+   "first_author": "Barnes DR",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 55184
+   },
+   "country_n": {
+    "GBR": null,
+    "DNK": null,
+    "SWE": null,
+    "CAN": null,
+    "FRA": null,
+    "AUS": null
+   },
+   "total_n": 297
+  },
+  {
+   "id": "32624571",
+   "pmid": "32624571",
+   "doi": "10.1038/s41436-020-0884-4",
+   "title": "Validation of the BOADICEA model and a 313-variant polygenic risk score for breast cancer risk prediction in a Dutch prospective cohort.",
+   "year": "2020",
+   "journal": "Genetics in medicine : official journal of the American College of Medical Genetics",
+   "first_author": "Lakeman IMM",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 10899
+   },
+   "country_n": {
+    "NLD": 10899
+   },
+   "total_n": 14926
+  },
+  {
+   "id": "32596635",
+   "pmid": "32596635",
+   "doi": "10.1093/jncics/pkaa021",
+   "title": "Evaluating the Utility of Polygenic Risk Scores in Identifying High-Risk Individuals for Eight Common Cancers.",
+   "year": "2020",
+   "journal": "JNCI cancer spectrum",
+   "first_author": "Jia G",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 400812
+   },
+   "country_n": {
+    "GBR": 400812
+   },
+   "total_n": 500000
+  },
+  {
+   "id": "32424353",
+   "pmid": "32424353",
+   "doi": "10.1038/s41588-020-0609-2",
+   "title": "Genome-wide association study identifies 32 novel breast cancer susceptibility loci from overall and subtype-specific analyses.",
+   "year": "2020",
+   "journal": "Nature genetics",
+   "first_author": "Zhang H",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 117585
+   },
+   "country_n": {
+    "NOR": null,
+    "NLD": null,
+    "POL": null,
+    "DEU": null,
+    "FRA": null,
+    "DNK": null,
+    "CAN": null,
+    "USA": null,
+    "RUS": null,
+    "IRL": null,
+    "ISR": null,
+    "FIN": null,
+    "AUS": null,
+    "BEL": null,
+    "NZL": null,
+    "GRC": null,
+    "ITA": null,
+    "GBR": null,
+    "SWE": null,
+    "ESP": null
+   },
+   "total_n": 133384
+  },
+  {
+   "id": "31899501",
+   "pmid": "31899501",
+   "doi": "10.1093/jnci/djz241",
+   "title": "Genetic Factors, Adherence to Healthy Lifestyle Behavior, and Risk of Invasive Breast Cancer Among Women in the UK Biobank.",
+   "year": "2020",
+   "journal": "Journal of the National Cancer Institute",
+   "first_author": "Arthur RS",
+   "linked_scores": [
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 146326
+   },
+   "country_n": {
+    "GBR": 146326
+   },
+   "total_n": 146326
+  },
+  {
+   "id": "30554720",
+   "pmid": "30554720",
+   "doi": "10.1016/j.ajhg.2018.11.002",
+   "title": "Polygenic Risk Scores for Prediction of Breast Cancer and Breast Cancer Subtypes.",
+   "year": "2019",
+   "journal": "American journal of human genetics",
+   "first_author": "Mavaddat N",
+   "linked_scores": [
+    "PGS000004 (GWAS)",
+    "PGS000004 (development)",
+    "PGS000004 (evaluation)"
+   ],
+   "source": "PGS Catalog (curated)",
+   "equity_score": 30,
+   "components": {
+    "ancestry_reporting": {
+     "points": 20,
+     "max": 20
+    },
+    "participant_diversity": {
+     "points": 0,
+     "max": 30
+    },
+    "cross_ancestry_analysis": {
+     "points": 0,
+     "max": 15
+    },
+    "limitations_acknowledged": {
+     "points": 0,
+     "max": 10
+    },
+    "descriptor_practice": {
+     "points": 5,
+     "max": 10
+    },
+    "local_capacity_engagement": {
+     "points": 5,
+     "max": 15
+    }
+   },
+   "flags": [
+    "European-ancestry participants only"
+   ],
+   "ancestry_n": {
+    "EUR": 219791
+   },
+   "country_n": {
+    "GBR": 190040,
+    "GRC": null,
+    "ESP": null,
+    "ITA": null,
+    "NLD": null,
+    "DNK": null,
+    "SWE": null,
+    "NOR": null,
+    "USA": null,
+    "DEU": null,
+    "FRA": null
+   },
+   "total_n": 190040
+  }
+ ]
+}

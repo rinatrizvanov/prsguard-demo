@@ -129,7 +129,8 @@ class Handler(BaseHTTPRequestHandler):
                             candidates=DEMO_CANDIDATES if demo else None,
                             literature_context=DEMO_LITERATURE if demo and DEMO_LITERATURE.exists() else None,
                             case={"provenance": "local upload (analysed on this machine, then deleted)"},
-                            command=["prsguard", "serve", "(upload)"])
+                            command=["prsguard", "serve", "(upload)"],
+                            orchestrated_by="PRSGuard local server (deterministic scripted orchestrator)")
             try:
                 result = run(cfg)
             except SystemExit as exc:

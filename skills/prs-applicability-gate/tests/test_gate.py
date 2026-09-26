@@ -223,3 +223,28 @@ def test_cli_demo_output_contract(tmp_path):
     assert statuses == {"SUPPORTED", "RAW_ONLY", "ABSTAIN"}, statuses
     for r in summary["results"]:
         assert (out / f"{r['pgs_id']}_gate.json").exists() or True
+
+
+def test_non_canonical_config_is_labelled(tmp_path):
+    alt = tmp_path / "alt.yaml"
+    alt.write_text((SKILL / "config" / "calibration.yaml").read_text().replace("r_min: 0.90", "r_min: 0.80"))
+    cfg = gate.load_config(alt)
+    res = gate.evaluate(base_input(), cfg)
+    assert res["provenance"]["config_canonical"] is False
+    assert "NON-CANONICAL CALIBRATION" in gate.render_report(res)
+    assert gate.evaluate(base_input(), CFG)["provenance"]["config_canonical"] is True
+
+
+def test_inverse_association_is_not_supporting_evidence():
+    """A CI entirely below the null (e.g. a case-only subtype comparison, OR 0.86 [0.82, 0.89]) is not evidence
+    for interpreting the score, even though it excludes the null."""
+    gi = base_input()
+    gi["evaluation"]["units"][0]["metrics"] = [{"name": "OR", "estimate": 0.86, "ci_lower": 0.82, "ci_upper": 0.89,
+                                                "null": 1.0}]
+    res = run(gi)
+    assert "EVALUATION_NOT_INFORMATIVE" in res["reason_codes"] and res["status"] == "RAW_ONLY"
+
+
+def test_disclaimer_states_supported_is_not_clinical():
+    text = run(base_input())["disclaimer"]
+    assert "not a clinical recommendation" in text and "discrimination or calibration" in text

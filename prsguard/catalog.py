@@ -560,10 +560,13 @@ def _metric_null(name: str, name_long: str | None = None) -> float | None:
 
 
 def performance_metrics(rec: dict) -> list[dict]:
-    """Every reported metric with its estimate, 95% interval and whether that interval excludes the null.
+    """Every reported metric with its estimate, 95% interval and whether that interval lies above the null.
 
-    ``informative``: True if a CI exists and excludes the metric's null (OR/HR/RR=1, beta=0, AUC/C=0.5),
-    False if the CI includes it, None if there is no CI or the metric has no defined null (e.g. R², E/O).
+    ``informative``: True if a CI exists and lies entirely ABOVE the metric's null (OR/HR/RR=1, beta=0,
+    AUC/C=0.5, r=0), i.e. evidence of association in the direction the score is built for (higher score, higher
+    risk); False if the CI includes the null or lies below it (an inverse association, e.g. case-only subtype
+    comparisons); None if there is no CI or the metric has no defined null (e.g. R², E/O). ``direction`` says which.
+    Evidence of association is not evidence of clinically useful discrimination or calibration.
     """
     pm = rec.get("performance_metrics") if isinstance(rec.get("performance_metrics"), dict) else {}
     out = []
@@ -574,12 +577,13 @@ def performance_metrics(rec: dict) -> list[dict]:
             name = m.get("name_short") or m.get("name_long")
             est, lo, hi = (m.get(k) if _is_num(m.get(k)) else None for k in ("estimate", "ci_lower", "ci_upper"))
             null = _metric_null(str(name), m.get("name_long"))
-            informative = None
+            informative = direction = None
             if null is not None and lo is not None and hi is not None:
-                informative = not (lo <= null <= hi)
+                direction = "above_null" if lo > null else "below_null" if hi < null else "includes_null"
+                informative = direction == "above_null"
             out.append({"group": group, "name": name, "name_long": m.get("name_long"), "estimate": est,
                         "ci_lower": lo, "ci_upper": hi, "se": m.get("se") if _is_num(m.get("se")) else None,
-                        "null": null, "informative": informative})
+                        "null": null, "informative": informative, "direction": direction})
     return out
 
 

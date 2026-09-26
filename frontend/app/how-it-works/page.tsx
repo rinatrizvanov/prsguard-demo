@@ -9,7 +9,7 @@ import { IconCheck, IconX } from "@/components/Icons";
 export const metadata: Metadata = {
   title: "How PRSGuard works",
   description:
-    "Architecture of PRSGuard: agent orchestration, deterministic science, and context-only evidence, and what the agent may and may not do.",
+    "Architecture of PRSGuard: orchestration (LLM agent or scripted CLI), deterministic science, and context-only evidence, and what orchestration may and may not do.",
 };
 
 /** Rule texts are read from a committed demo result at build time so the page always matches the pipeline. */
@@ -44,7 +44,7 @@ interface Box {
 type Row = { kind: "cells"; cells: Partial<Record<Lane, Box[]>> } | { kind: "divider"; text: string; wall?: boolean };
 
 const LANE_NAME: Record<Lane, string> = {
-  agent: "Agent orchestration",
+  agent: "Orchestration (LLM agent or scripted CLI)",
   det: "Deterministic science",
   ctx: "Context only",
 };
@@ -196,14 +196,14 @@ function Diagram() {
     <div
       className="arch"
       role="img"
-      aria-label="Architecture: three lanes. Agent orchestration receives the request, resolves the trait, searches the PGS Catalog and explains the result. Deterministic science resolves the build, applies the router rules and freezes candidates, then performs placement, harmonisation, evidence audit, reference distribution, the applicability gate and the cross-PGS check. Context only: equity-scorer and equity-lit-auditor, attached to the report and never used by the gate."
+      aria-label="Architecture: three lanes. Orchestration (an LLM agent, or the deterministic scripted PRSGuard CLI orchestrator) receives the request, resolves the trait, searches the PGS Catalog and explains the result. Deterministic science resolves the build, applies the router rules and freezes candidates, then performs placement, harmonisation, evidence audit, reference distribution, the applicability gate and the cross-PGS check. Context only: equity-scorer and equity-lit-auditor, attached to the report and never used by the gate."
     >
       {LANES.map((l, i) => (
         <div key={l} className={`lane-head ${l}`} style={{ gridColumn: i + 1, gridRow: 1 }}>
           {l === "ctx" ? "CONTEXT ONLY" : LANE_NAME[l]}
           <small>
             {l === "agent"
-              ? "gathers evidence, calls tools, explains"
+              ? "gathers evidence, calls tools, explains; never decides applicability"
               : l === "det"
                 ? "fixed code decides what may be claimed"
                 : "never used by the applicability gate"}
@@ -252,8 +252,10 @@ export default function HowItWorksPage() {
         <h1 id="hiw-title">How PRSGuard works</h1>
         <p className="thesis">
           <strong>
-            The agent gathers evidence and orchestrates tools. Deterministic code decides what claims are allowed.
+            Orchestration gathers evidence and calls tools. Deterministic code alone decides what claims are allowed.
           </strong>{" "}
+          Orchestration is performed by an LLM agent when one drives PRSGuard, and otherwise by the deterministic
+          scripted PRSGuard CLI orchestrator (as in every demo result here); both are bound by the same rules.
           PRSGuard starts from the trait, not from the genome: candidate scores are selected and frozen before any
           personal genotype is scored, and each one must then pass an evidence gate before anything is interpreted.
         </p>
@@ -262,11 +264,11 @@ export default function HowItWorksPage() {
       <section className="section" aria-labelledby="arch-h">
         <div className="section-head">
           <h2 id="arch-h">Architecture</h2>
-          <p>Three lanes, read top to bottom. Every result page shows the same steps as its agent trace.</p>
+          <p>Three lanes, read top to bottom. Every result page shows the same steps in its orchestration trace.</p>
         </div>
         <div className="panel">
           <div className="trace-legend">
-            <ActorBadge actor="AGENT_ACTION" />
+            <ActorBadge actor="ORCHESTRATION" />
             <ActorBadge actor="DETERMINISTIC_DECISION" />
             <ContextOnlyLabel />
           </div>
@@ -276,11 +278,11 @@ export default function HowItWorksPage() {
 
       <section className="section" aria-labelledby="may-h">
         <div className="section-head">
-          <h2 id="may-h">What the agent may and may not do</h2>
+          <h2 id="may-h">What orchestration (LLM agent or scripted CLI) may and may not do</h2>
         </div>
         <div className="may-grid">
           <div className="panel">
-            <h3 className="subhead">The agent may</h3>
+            <h3 className="subhead">Orchestration may</h3>
             <ul className="may-list">
               {MAY.map((m) => (
                 <li key={m}>
@@ -293,7 +295,7 @@ export default function HowItWorksPage() {
             </ul>
           </div>
           <div className="panel">
-            <h3 className="subhead">The agent may not</h3>
+            <h3 className="subhead">Orchestration may not</h3>
             <ul className="may-list">
               {MAY_NOT.map((m) => (
                 <li key={m}>
@@ -335,7 +337,9 @@ export default function HowItWorksPage() {
                 <td>released, with intervals</td>
                 <td>never</td>
                 <td style={{ minWidth: 260 }}>
-                  Scoreable, stably placed, informatively evaluated in the person&apos;s reference group.
+                  Scoreable, stably placed, and with evidence of association (95% CI above the null) in an evaluation
+                  of the person&apos;s reference group. A research reportability state: not evidence of clinically
+                  useful discrimination or calibration, and not a clinical recommendation.
                 </td>
               </tr>
               <tr>

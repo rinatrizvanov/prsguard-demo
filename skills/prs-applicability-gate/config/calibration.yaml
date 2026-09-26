@@ -3,7 +3,7 @@
 # The gate refuses to run if any parameter is missing or out of range. The agent must never edit this file
 # to change a result; a change requires a new calibration_version and re-running the benchmarks.
 
-calibration_version: "2026.09.26-1"
+calibration_version: "2026.09.26-2"
 
 scoreability:
   # Minimum correlation, in the placed 1000 Genomes reference group, between the score computed on the
@@ -31,8 +31,11 @@ placement:
 
 evaluation:
   # Qualitative rule, no fraction or sample-size cut-off: at least one single-ancestry PGS Catalog evaluation
-  # unit in the person's placed group reporting a performance metric whose 95% CI excludes the metric's null
-  # (OR/HR = 1, beta = 0, AUROC/C-index = 0.5). Pooled multi-ancestry units do not count as group-specific.
+  # unit in the person's placed group reporting a performance metric whose 95% CI lies entirely ABOVE the
+  # metric's null (OR/HR/RR > 1, beta > 0, AUROC/C-index > 0.5, r > 0): evidence of association in the direction
+  # the score is built for. Inverse associations (e.g. case-only subtype comparisons) and pooled multi-ancestry
+  # units do not count. This is evidence of association only, NOT of clinically useful discrimination or
+  # calibration; SUPPORTED is a research-prototype reportability state, not a clinical recommendation.
   require_ci_excluding_null: true
 
 reference_distribution:

@@ -75,16 +75,21 @@ applied as-is:
 3. Runs ClawBio's `scripts/generate_catalog.py`.
 4. Re-derives the public counts from the new catalogue.
 5. Writes the `equity-lit-auditor` row in `docs/data-handling.md`.
-6. Verifies by importing `clawbio.cli` and reading the catalogue. `prs-gate` is reported as *pending*
-   (exit 0, or 1 with `--strict`) while its source folder lacks `SKILL.md` or its script.
+6. Verifies by importing `clawbio.cli` and reading the catalogue. A skill whose source folder lacks `SKILL.md`
+   or its script is reported as *pending* (exit 0, or 1 with `--strict`); in the final repository both skills are
+   complete and nothing is pending.
 
 Idempotency was checked by hashing `git diff` before and after a second run (identical), on
 `vendor/ClawBio` and on a fresh `--no-local` clone at the pin, in copy mode, symlink mode and when switching
 between them. The fresh-clone result equals the vendor result for every tracked file.
 
-`prs-gate` is registered with only `--input`, `--output` and `--demo` (the runner's own flags). Its
-current CLI also has `--config`; forwarding that through `clawbio.py run` would need `"--config"` in
-`allowed_extra_flags` and `extra_path_flags` in `SKILL_ENTRIES` in the installer.
+`prs-gate` is registered with only `--input`, `--output` and `--demo` (the runner's own flags). **Its
+`--config` flag is deliberately not forwarded.** `clawbio.py run` is the interface an LLM agent uses, and the
+project's boundary is that orchestration may not change thresholds; the ClawBio runner drops unregistered flags,
+so a run through ClawBio always uses the shipped `config/calibration.yaml`. Alternative calibrations are for
+calibration research through the gate's own CLI, and such results carry `config_canonical: false` and a
+NON-CANONICAL CALIBRATION banner. `tests/test_clawbio_registration.py` checks both the registration and that
+`clawbio.py run prs-gate --config <anything>` still reports the shipped config's SHA-256.
 
 **After editing either skill's SKILL.md, re-run the installer**: the catalogue copies the frontmatter, and
 ClawBio's `test_checked_in_catalog_is_current` fails until it is regenerated.
@@ -231,13 +236,16 @@ to a gate result as clearly labelled literature context.
 
 ## 7. Tests
 
+Final results (re-run 2026-09-26 on the final code; commands from the PRSGuard root unless noted):
+
 | Suite | Result |
 |---|---|
-| `.venv/bin/python -m pytest skills/equity-lit-auditor/tests -q` (PRSGuard root) | 118 passed, 3 skipped (live). Was 81 passed, 2 failed (relocation) before the fixes; the teammate's 83 tests are unchanged |
-| Same, with `RUN_LIVE_TESTS=1 -m network` | 3 passed |
-| ClawBio registry tests after install (generate_catalog, public_claims, data_handling_doc, licence_policy, cli_smoke, packaging, namespace_collisions, core_skill_intents, scaffold_skill, approve_skills_only, nightly_demo_sweep) + the skill through ClawBio's `skills/*/tests` glob | 250 passed, 3 skipped |
-| ClawBio `tests/` + `clawbio/tests/` (not network/integration/slow) | 654 passed, 4 failed, 1 collection error: identical before and after installation (fine-mapping benchmark needs its extra; `test_providers.py` needs `openai`) |
-| `skills/prs-applicability-gate/tests` | 36 passed, 1 failed: `test_cli_demo_output_contract`; the script rejects `--demo` ("give --input or --demo"), also from the PRSGuard root. The skill is being rewritten; it was not edited here |
+| `.venv/bin/python -m pytest skills/equity-lit-auditor/tests -q` | 120 passed, 3 skipped (live). Before the integration fixes: 81 passed, 2 failed (relocation); the teammate's 83 original tests are unchanged |
+| Same, with `RUN_LIVE_TESTS=1 -m network` | 3 passed (live Europe PMC and PGS Catalog; run during the integration) |
+| `.venv/bin/python -m pytest skills/prs-applicability-gate/tests -q` | 40 passed |
+| `.venv/bin/python -m pytest tests/test_clawbio_registration.py -q` | 2 passed (registration; `--config` cannot replace the calibration through `clawbio.py run`) |
+| In `vendor/ClawBio`: ClawBio registry tests (approve_skills_only, cli_smoke, core_skill_intents, data_handling_doc, generate_catalog, licence_policy, nightly_demo_sweep, public_claims, scaffold_skill, skill_namespace_collisions) + both PRSGuard skill suites | 285 passed, 3 skipped |
+| In `vendor/ClawBio`: `tests/` + `clawbio/tests/` (not network/integration/slow, `--continue-on-collection-errors`) | 654 passed, 4 failed, 1 collection error, 1 xfailed. Pre-existing upstream and identical with or without the PRSGuard skills installed: 4 fine-mapping benchmark tests need the fine-mapping extra; `clawbio/tests/test_providers.py` needs `openai` |
 
 ## 8. Files
 

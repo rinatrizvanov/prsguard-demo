@@ -1,6 +1,6 @@
 /**
  * Human-readable glossary for reason codes and statuses. Mirrors the descriptions in
- * skills/prs-applicability-gate (gate v2.0.0). Used only for labels and tooltips: every
+ * skills/prs-applicability-gate (gate v2.1.0). Used only for labels and tooltips: every
  * decision shown in the UI is read from the result JSON, never re-derived here.
  */
 
@@ -24,7 +24,8 @@ export const REASON_CODES: Record<string, string> = {
   TARGET_REFERENCE_UNRESOLVED:
     "The person could not be placed stably inside one reference group (intermediate/admixed, unstable, or too few sites).",
   NO_RELEVANT_EVALUATION: "No single-ancestry evaluation in the person's reference group reports a metric.",
-  EVALUATION_NOT_INFORMATIVE: "Relevant evaluations exist but no metric's 95% CI excludes the null.",
+  EVALUATION_NOT_INFORMATIVE:
+    "Relevant evaluations exist but none shows evidence of association in the score's direction (no metric's 95% CI lies entirely above the null).",
   REFERENCE_DISTRIBUTION_UNAVAILABLE: "No reference distribution on the person's matched variant set.",
   REFERENCE_SENSITIVE: "The percentile depends on which reference population is chosen within the group.",
 };

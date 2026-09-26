@@ -117,7 +117,8 @@
             "ci_lower": 0.76728,
             "ci_upper": 0.81858,
             "null": 0.5,
-            "informative": true
+            "informative": true,
+            "direction": "above_null"
           },
           {
             "name": "R\u00b2",
@@ -126,7 +127,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "Incremental AUROC (full-covars)",
@@ -135,7 +137,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS R2 (no covariates)",
@@ -144,7 +147,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS AUROC (no covariates)",
@@ -153,7 +157,8 @@
             "ci_lower": 0.51783,
             "ci_upper": 0.62054,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           }
         ]
       },
@@ -182,7 +187,8 @@
             "ci_lower": 0.71475,
             "ci_upper": 0.80565,
             "null": 0.5,
-            "informative": true
+            "informative": true,
+            "direction": "above_null"
           },
           {
             "name": "R\u00b2",
@@ -191,7 +197,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "Incremental AUROC (full-covars)",
@@ -200,7 +207,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS R2 (no covariates)",
@@ -209,7 +217,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS AUROC (no covariates)",
@@ -218,7 +227,8 @@
             "ci_lower": 0.51563,
             "ci_upper": 0.67258,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           }
         ]
       },
@@ -247,7 +257,8 @@
             "ci_lower": 0.79545,
             "ci_upper": 0.81577,
             "null": 0.5,
-            "informative": true
+            "informative": true,
+            "direction": "above_null"
           },
           {
             "name": "R\u00b2",
@@ -256,7 +267,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "Incremental AUROC (full-covars)",
@@ -265,7 +277,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS R2 (no covariates)",
@@ -274,7 +287,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS AUROC (no covariates)",
@@ -283,7 +297,8 @@
             "ci_lower": 0.56669,
             "ci_upper": 0.6042,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           }
         ]
       },
@@ -312,7 +327,8 @@
             "ci_lower": 0.81289,
             "ci_upper": 0.85838,
             "null": 0.5,
-            "informative": true
+            "informative": true,
+            "direction": "above_null"
           },
           {
             "name": "R\u00b2",
@@ -321,7 +337,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "Incremental AUROC (full-covars)",
@@ -330,7 +347,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS R2 (no covariates)",
@@ -339,7 +357,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS AUROC (no covariates)",
@@ -348,7 +367,8 @@
             "ci_lower": 0.52745,
             "ci_upper": 0.61755,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           }
         ]
       },
@@ -377,7 +397,8 @@
             "ci_lower": 0.80348,
             "ci_upper": 0.81573,
             "null": 0.5,
-            "informative": true
+            "informative": true,
+            "direction": "above_null"
           },
           {
             "name": "R\u00b2",
@@ -386,7 +407,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "Incremental AUROC (full-covars)",
@@ -395,7 +417,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS R2 (no covariates)",
@@ -404,7 +427,8 @@
             "ci_lower": null,
             "ci_upper": null,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           },
           {
             "name": "PGS AUROC (no covariates)",
@@ -413,7 +437,8 @@
             "ci_lower": 0.58498,
             "ci_upper": 0.60756,
             "null": null,
-            "informative": null
+            "informative": null,
+            "direction": null
           }
         ]
       }
@@ -428,5 +453,5 @@
     "reference_sensitive_pairs": null,
     "detail": "no resolved reference group for this person"
   },
-  "input_digest": "sha256:22c0fed476fcdffa3aa45bc22299b71b636c8124189a796481f19d321e2660b5"
+  "input_digest": "sha256:da085a56eb717effb961ce196c8e0cba16e6562545773d25d8c9a2127ba2ef46"
 }

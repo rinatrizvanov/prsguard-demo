@@ -12,7 +12,7 @@ import { SectionBoundary } from "./ErrorBoundary";
 
 const SECTIONS = [
   { id: "interpretation", label: "Interpretation" },
-  { id: "trace", label: "Agent trace" },
+  { id: "trace", label: "Orchestration trace" },
   { id: "placement", label: "Reference placement" },
   { id: "candidates", label: "Candidates & evidence" },
   { id: "cross-pgs", label: "Cross-PGS" },
@@ -96,13 +96,14 @@ export function ResultView({ result, source }: { result: PrsGuardResult; source:
 
       <section className="section" id="trace" aria-labelledby="h-trace">
         <div className="section-head">
-          <h2 id="h-trace">Agent trace</h2>
+          <h2 id="h-trace">Orchestration and decision trace</h2>
           <p>
-            The agent gathers evidence and orchestrates tools. Deterministic code decides what claims are allowed. The
-            candidate list is frozen (digest) before any personal genotype is scored.
+            Orchestration (an LLM agent, or here the deterministic scripted PRSGuard CLI orchestrator) gathers evidence
+            and calls tools. Deterministic code alone decides what claims are allowed. The candidate list is frozen
+            (digest) before any personal genotype is scored.
           </p>
         </div>
-        <SectionBoundary key={`t-${resultKey}`} name="agent trace">
+        <SectionBoundary key={`t-${resultKey}`} name="orchestration trace">
           <AgentTrace result={result} />
         </SectionBoundary>
       </section>

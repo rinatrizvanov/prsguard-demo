@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s · PRSGuard",
   },
   description:
-    "Research prototype: a trait-first, evidence-aware polygenic score router. The agent gathers evidence and orchestrates tools; deterministic code decides what claims are allowed. Not a medical device.",
+    "Research prototype: a trait-first, evidence-aware polygenic score router. Orchestration gathers evidence and calls tools; deterministic code decides what claims are allowed. Not a medical device.",
   robots: { index: true, follow: true },
   referrer: "no-referrer",
 };

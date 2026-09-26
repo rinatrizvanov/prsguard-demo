@@ -89,7 +89,7 @@ def evaluation_block(audit: dict) -> dict:
                       "covariates": sorted({p.get("covariates") for p in u.get("performance") or []
                                             if p.get("covariates")}),
                       "metrics": [{k: m.get(k) for k in ("name", "group", "estimate", "ci_lower", "ci_upper",
-                                                         "null", "informative")} for m in metrics]})
+                                                         "null", "informative", "direction")} for m in metrics]})
     return {"reported": ev.get("reported"), "unit": ev.get("unit"), "units": units}
 
 

@@ -11,8 +11,8 @@ export default function HomePage() {
         <h1 id="hero-q">{HERO_QUESTION}</h1>
         <p className="thesis">
           PRSGuard decides not only which polygenic score can be <em>calculated</em> from a genotype file, but whether
-          its interpretation is <em>supported</em> for this individual. The agent gathers evidence and orchestrates
-          tools; deterministic code decides what claims are allowed.
+          its interpretation is <em>supported</em> for this individual. Orchestration (an LLM agent or the scripted
+          PRSGuard CLI) gathers evidence and calls tools; deterministic code alone decides what claims are allowed.
         </p>
         <ul className="principles" aria-label="Principles">
           <li>

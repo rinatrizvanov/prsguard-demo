@@ -64,11 +64,11 @@ export function StatusBadge({
 }
 
 export function ActorBadge({ actor }: { actor: string }) {
-  if (actor === "AGENT_ACTION") {
+  if (actor === "ORCHESTRATION" || actor === "AGENT_ACTION") {
     return (
       <span className="badge agent">
         <IconAgent size={13} />
-        AGENT ACTION
+        ORCHESTRATION
       </span>
     );
   }

@@ -1,6 +1,10 @@
 # Architecture
 
-> The agent gathers evidence and orchestrates tools. Deterministic code decides what claims are allowed.
+> Orchestration gathers evidence and calls tools. Deterministic code alone decides what claims are allowed.
+>
+> Orchestration = an **LLM agent** when one drives PRSGuard, otherwise the **deterministic scripted PRSGuard CLI
+> orchestrator** (`prsguard run/demo/serve`). Results record which (`orchestration.kind`, `performed_by`). The
+> scripted orchestrator is not an agent; both are bound by the same rules below.
 
 ```mermaid
 flowchart TB
@@ -11,7 +15,7 @@ flowchart TB
         S["Sex (only when relevant)"]
     end
 
-    subgraph AG["AGENT ORCHESTRATION (may plan, call tools, recover from non-scientific failures, explain)"]
+    subgraph AG["ORCHESTRATION: LLM agent or scripted PRSGuard CLI (may plan, call tools, recover from non-scientific failures, explain; never decides applicability)"]
         A1["Resolve trait to ontology term + scope<br/>PGS Catalog /trait/search"]
         A2["Search PGS Catalog, collect score metadata<br/>/score/search, /score, /performance"]
         A3["Call skills in order; log provenance"]
@@ -58,7 +62,7 @@ flowchart TB
 
 | Part | May | Must not |
 |---|---|---|
-| Agent (LLM or the scripted `prsguard` CLI) | resolve traits, query the PGS Catalog and Europe PMC with trait text and PGS IDs, plan, retry transient failures, call skills, compare SUPPORTED scores, explain, report, log provenance | change thresholds or the config, re-run until SUPPORTED, pick a score by its personal result, invent or infer missing evidence, choose a reference population for a nicer result, convert a raw PRS into clinical or absolute risk, override the gate, send genotypes anywhere |
+| Orchestration (an LLM agent, or the deterministic scripted `prsguard` CLI orchestrator) | resolve traits, query the PGS Catalog and Europe PMC with trait text and PGS IDs, plan, retry transient failures, call skills, compare SUPPORTED scores, explain, report, log provenance | change thresholds or the config, re-run until SUPPORTED, pick a score by its personal result, invent or infer missing evidence, choose a reference population for a nicer result, convert a raw PRS into clinical or absolute risk, override the gate, send genotypes anywhere |
 | Router | apply E1-E8 and R1-R5 to Catalog metadata; freeze with a digest | read the person's genotypes (only the build and the declared sex, which decide file availability and E3) |
 | Placement | place the person once against fixed labelled references | cluster, pick k, call a bootstrap frequency an ancestry percentage, equate genetic placement with ethnicity or identity |
 | Gate | decide SUPPORTED / RAW_ONLY / ABSTAIN for one candidate from normalised evidence | search, rank, infer ancestry, compute scores, choose a primary score, use randomness or the network |

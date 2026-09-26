@@ -12,6 +12,9 @@ export function releasedNumber(v: ReleasedValue | null | undefined): number | nu
 }
 
 export const GATE_SENTENCE = "No percentile is released unless the evidence gate supports it.";
+export const SUPPORTED_MEANING =
+  "SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of " +
+  "association in a relevant evaluation group, which is not evidence of clinically useful discrimination or calibration.";
 
 function withheldCodes(c: Candidate, item: string): string[] {
   const w = c.interpretation.withheld;
@@ -104,6 +107,7 @@ export function InterpretationTiles({ candidate }: { candidate: Candidate }) {
       <p className="gate-sentence">
         <IconShield size={15} /> {GATE_SENTENCE}
       </p>
+      <p className="tiny muted">{SUPPORTED_MEANING}</p>
     </div>
   );
 }

@@ -1,10 +1,11 @@
 """PRSGuard end-to-end run: one person, one trait.
 
-The steps below are the plan an agent follows. Steps marked AGENT_ACTION gather evidence and call tools;
-steps marked DETERMINISTIC_DECISION are made by fixed code (router rules, placement, harmonisation, the
-prs-applicability-gate skill). In this CLI the plan is scripted; an LLM agent may execute the same tools, but
-it can never change a threshold, re-run until SUPPORTED, pick a score by its personal result, choose a reference
-population, or override the gate.
+Steps marked ORCHESTRATION gather evidence, call tools and report; steps marked DETERMINISTIC_DECISION are made
+by fixed code (router rules, placement, harmonisation, the prs-applicability-gate skill). Orchestration is
+performed either by an LLM agent driving these tools or, by default, by this deterministic scripted PRSGuard CLI
+orchestrator; the result records which. Whoever orchestrates can never change a threshold, re-run until SUPPORTED,
+pick a score by its personal result, choose a reference population, or override the gate: orchestration never
+decides applicability.
 
 The person's genotypes never leave this machine: only trait text and PGS identifiers are sent to the PGS Catalog
 (and, for optional literature context, to Europe PMC).
@@ -43,8 +44,11 @@ GATE_PATH = REPO_ROOT / "skills" / "prs-applicability-gate" / "prs_applicability
 PLACEMENT_NOTE = "Genetic reference placement is not ethnicity or identity."
 GEOGRAPHY_NOTE = "Geography is not ancestry: countries are where participants were recruited."
 DISCLAIMER = ("PRSGuard is RESEARCH SOFTWARE / a PROTOTYPE, not a medical device. It does not diagnose, and it never "
-              "converts a polygenic score into absolute risk. " + PLACEMENT_NOTE)
-AGENT, DET = "AGENT_ACTION", "DETERMINISTIC_DECISION"
+              "converts a polygenic score into absolute risk. SUPPORTED is a research-prototype reportability state, "
+              "not a clinical recommendation: it requires evidence of association in a relevant evaluation group, "
+              "not clinically useful discrimination or calibration. " + PLACEMENT_NOTE)
+ORCH, DET = "ORCHESTRATION", "DETERMINISTIC_DECISION"
+SCRIPTED_ORCHESTRATOR = "PRSGuard CLI (deterministic scripted orchestrator)"
 
 
 def _now() -> str:
@@ -83,6 +87,8 @@ class RunConfig:
     case: dict = field(default_factory=dict)  # demo labels {id, title, provenance, synthetic}
     literature_context: Path | None = None
     command: list[str] = field(default_factory=list)
+    orchestrated_by: str | None = None       # who orchestrated; default: the scripted CLI
+    orchestrator_kind: str = "scripted_cli"   # "scripted_cli" or "llm_agent"
 
 
 class Trace:
@@ -179,7 +185,8 @@ def population_evidence(audit: dict) -> dict:
             "pgp_id": u.get("pgp_id"), "pss_id": u.get("pss_id"), "code": u.get("code"), "pooled": u.get("pooled"),
             "n": u.get("n"), "cases": u.get("cases"), "percent_male": u.get("percent_male"),
             "countries": u.get("countries") or [],
-            "metrics": [{k: m.get(k) for k in ("name", "estimate", "ci_lower", "ci_upper", "null", "informative")}
+            "metrics": [{k: m.get(k) for k in ("name", "estimate", "ci_lower", "ci_upper", "null", "informative",
+                                               "direction")}
                         for p in u.get("performance") or [] for m in p.get("metrics") or []],
             "covariates": sorted({p.get("covariates") for p in u.get("performance") or [] if p.get("covariates")})})
     return {
@@ -254,10 +261,10 @@ def run(cfg: RunConfig) -> dict:
     pca = load_panel(PCA_PANEL)
     pgs_panel = load_panel(PGS_PANEL)
 
-    # 1 AGENT: validate inputs locally
+    # 1 ORCHESTRATION: validate inputs locally
     t0 = _now()
     gs = load_genotypes(cfg.genotype)
-    trace.step(AGENT, "Receive the request and read the genotype file locally", "prsguard.genotypes.load_genotypes",
+    trace.step(ORCH, "Receive the request and read the genotype file locally", "prsguard.genotypes.load_genotypes",
                f"{gs.fmt} file with {len(gs.calls):,} records ({gs.n_called:,} called); trait '{cfg.trait}', "
                f"sex {cfg.sex or 'not given'}, declared build {cfg.declared_build or 'not given'}. The genotype "
                "never leaves this machine.", {"sha256": gs.sha256, "format": gs.fmt}, t0)
@@ -270,7 +277,7 @@ def run(cfg: RunConfig) -> dict:
     trace.step(DET, "Resolve the genome build (never assumed)", "prsguard.genotypes.resolve_build",
                f"build {gs.build}: {gs.build_evidence.get('method')}", gs.build_evidence, t0)
 
-    # 3-5 AGENT + DET: trait, catalog search, eligibility/pre-rank/freeze
+    # 3-5 ORCHESTRATION + DET: trait, catalog search, eligibility/pre-rank/freeze
     source = catalog.open_source(cfg.catalog_mode, cfg.snapshot_dir)
     t0 = _now()
     router_build = gs.build if gs.build in ("GRCh37", "GRCh38") else None
@@ -293,14 +300,14 @@ def run(cfg: RunConfig) -> dict:
         how = f"routed from the PGS Catalog ({source.mode})"
     router.write_frozen(cset, cfg.out_dir / "candidates.frozen.json")
     trait = cset["trait"]
-    trace.step(AGENT, "Resolve the trait to an ontology term and scope", "PGS Catalog /trait/search",
+    trace.step(ORCH, "Resolve the trait to an ontology term and scope", "PGS Catalog /trait/search",
                (f"'{cfg.trait}' -> {trait['term']['id']} {trait['term']['label']} ({trait['detail']}); scope "
                 f"{len(trait['scope'])} terms, {len(trait.get('excluded_children') or [])} sub-phenotypes excluded")
                if trait.get("term") else f"trait unresolved: {trait.get('detail')}",
                {"term": trait.get("term"), "scope": [s["id"] for s in trait.get("scope") or []]}, t0)
     if cset.get("status") != "FROZEN":
         raise SystemExit(f"trait '{cfg.trait}' could not be resolved: {trait.get('detail')}")
-    trace.step(AGENT, "Search the PGS Catalog and collect score metadata", "PGS Catalog /score/search",
+    trace.step(ORCH, "Search the PGS Catalog and collect score metadata", "PGS Catalog /score/search",
                f"{cset['n_found']} scores mapped to the in-scope terms ({how})",
                {"n_found": cset["n_found"], "catalog": cset.get("catalog")}, t0)
     trace.step(DET, "Apply eligibility rules, pre-rank, and FREEZE before any personal scoring",
@@ -391,7 +398,7 @@ def run(cfg: RunConfig) -> dict:
                         "outputs": {c["pgs_id"]: c["gate"]["status"] for c in cands},
                         "started_at": t7, "finished_at": _now()})
 
-    # 10 AGENT: cross-PGS, primary, context, report
+    # 10 ORCHESTRATION: cross-PGS, primary, context, report
     t0 = _now()
     cross = cross_pgs.compare(items, pgs_panel, excluded)
     supported = sorted((c for c in cands if c["gate"]["status"] == "SUPPORTED"), key=lambda c: c["pre_rank"])
@@ -401,7 +408,7 @@ def run(cfg: RunConfig) -> dict:
         lit = json.loads(Path(cfg.literature_context).read_text())
         if lit.get("synthetic") or lit.get("data_provenance") != "LIVE":
             raise SystemExit("refusing to attach synthetic or non-live literature context to a result")
-    trace.step(AGENT, "Cross-PGS check, choose the primary score, attach context, report",
+    trace.step(ORCH, "Cross-PGS check, choose the primary score, attach context, report",
                "prsguard.cross_pgs + report", f"cross-PGS {cross['status']}; primary "
                f"{primary or 'none (no candidate SUPPORTED)'} by the fixed rule 'highest pre-ranked SUPPORTED'",
                {"cross_pgs": cross["status"], "primary": primary}, t0)
@@ -417,6 +424,11 @@ def run(cfg: RunConfig) -> dict:
                   "genotype": {"file": gs.path, "format": gs.fmt, "sha256": "sha256:" + gs.sha256,
                                "n_records": len(gs.calls), "n_called": gs.n_called}},
         "build": {"build": gs.build, **gs.build_evidence},
+        "orchestration": {
+            "kind": cfg.orchestrator_kind,
+            "performed_by": cfg.orchestrated_by or SCRIPTED_ORCHESTRATOR,
+            "note": "ORCHESTRATION steps gather evidence, call tools and report; DETERMINISTIC_DECISION steps are "
+                    "made by fixed code. Orchestration (LLM agent or scripted CLI) never decides applicability."},
         "trace": trace.steps,
         "router": {k: cset.get(k) for k in ("trait", "options", "eligibility_rules", "ranking_rules", "n_found",
                                             "n_eligible", "selected", "digest", "frozen_at", "catalog")}
@@ -476,7 +488,7 @@ def _headline(cands: list[dict], primary: str | None, placement: dict) -> dict:
         p = c["interpretation"]["percentile"]
         text = (f"Yes, for {primary}: its percentile is supported for this person - {ordinal(p['value'])} percentile "
                 f"of the {p['reference_group']} reference (95% interval {p['combined_interval'][0]:.0f}-"
-                f"{p['combined_interval'][1]:.0f}). Not an absolute risk.")
+                f"{p['combined_interval'][1]:.0f}). Not an absolute risk and not a clinical recommendation.")
         answer = "SUPPORTED"
     elif counts["RAW_ONLY"]:
         codes = sorted({code for c in cands for code in c["gate"]["reason_codes"]})
@@ -549,7 +561,9 @@ def render_report(r: dict) -> str:
         L += [f"**Case {r['label']['case_id']}: {r['label']['case_title']}** - data: {r['label']['data_provenance']}"
               + (" - **SYNTHETIC**" if r["label"]["synthetic"] else ""), ""]
     L += [f"> {r['question']}", "", f"**{r['headline']['answer']}** - {r['headline']['text']}", "",
-          "## Agent trace", "", "| # | Actor | Step | Result |", "|---|---|---|---|"]
+          "## Orchestration and decision trace", "",
+          f"Orchestration performed by: {r['orchestration']['performed_by']}", "",
+          "| # | Actor | Step | Result |", "|---|---|---|---|"]
     L += [f"| {s['step']} | {s['actor']} | {s['title']} | {s['summary']} |" for s in r["trace"]]
     pl = r["placement"]
     L += ["", "## Reference placement", "", f"{pl['status']}: {pl.get('detail')}. *{PLACEMENT_NOTE}*", "",

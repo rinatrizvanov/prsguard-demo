@@ -7,7 +7,7 @@ and whether interpreting them is supported for that individual.
 > **Research software / prototype. Not a medical device.** It does not diagnose, and it never converts a polygenic
 > score into absolute risk. Genetic reference placement is not ethnicity or identity.
 
-The core rule: *the agent gathers evidence and orchestrates tools; deterministic code decides what claims are
+The core rule: *orchestration (an LLM agent, or the deterministic scripted PRSGuard CLI) gathers evidence and calls tools; deterministic code alone decides what claims are
 allowed.* The UI only renders what a result JSON releases. It never computes a percentile, standardized score or
 risk of its own. A withheld value is shown as **withheld**, together with the gate's reason codes.
 
@@ -93,7 +93,7 @@ Pages origin. To add another origin (for example, a static preview of `out/`), p
 
 ```
 app/                 layout, landing + analysis page, /how-it-works
-components/          UI: result header, agent trace, PCA plot, candidate table and evidence tabs,
+components/          UI: result header, orchestration trace, PCA plot, candidate table and evidence tabs,
                      stage chart, world map, literature context, cross-PGS, reproducibility
 lib/                 types, formatting, ancestry palette, reason-code glossary, data + local-server clients
 scripts/             build-iso3-map.mjs (generator), smoke-check.mjs

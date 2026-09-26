@@ -11,7 +11,19 @@
 export type GateStatus = "SUPPORTED" | "RAW_ONLY" | "ABSTAIN";
 export type PlacementStatus = "RESOLVED" | "INTERMEDIATE" | "UNSTABLE" | "UNRESOLVED";
 export type CrossPgsStatus = "NOT_COMPARABLE" | "CONSISTENT" | "DISCORDANT";
-export type Actor = "AGENT_ACTION" | "DETERMINISTIC_DECISION";
+/** "AGENT_ACTION" is the pre-1.0.1 name of ORCHESTRATION; still accepted for older results. */
+export type Actor = "ORCHESTRATION" | "DETERMINISTIC_DECISION" | "AGENT_ACTION";
+
+export function isOrchestration(actor: string): boolean {
+  return actor === "ORCHESTRATION" || actor === "AGENT_ACTION";
+}
+
+/** Who performed the orchestration steps: an LLM agent, or the deterministic scripted PRSGuard orchestrator. */
+export interface OrchestrationInfo {
+  kind: "scripted_cli" | "llm_agent" | string;
+  performed_by: string;
+  note?: string;
+}
 export type RuleOutcome = "pass" | "fail" | "not_applicable";
 export type Interval = [number, number];
 export type PC3 = [number, number, number];
@@ -372,6 +384,8 @@ export interface EvaluationMetric {
   ci_upper: number | null;
   null: number | null;
   informative: boolean | null;
+  /** above_null = evidence of association in the score's direction; below_null = inverse association. */
+  direction?: "above_null" | "below_null" | "includes_null" | null;
 }
 
 export interface EvaluationUnit {
@@ -584,6 +598,7 @@ export interface PrsGuardResult {
   headline: Headline;
   input: InputInfo;
   build: BuildInfo;
+  orchestration?: OrchestrationInfo;
   trace: TraceStep[];
   router: RouterInfo;
   placement: Placement;

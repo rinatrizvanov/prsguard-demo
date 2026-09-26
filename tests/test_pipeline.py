@@ -54,7 +54,8 @@ EXPECTED = {  # the committed demo outcomes; a change here is a scientific chang
 def test_demo_case_outcomes(case, tmp_root):
     r = result(case, tmp_root)
     assert statuses(r) == EXPECTED[case]
-    assert [s["actor"] for s in r["trace"]].count("AGENT_ACTION") >= 4
+    assert [s["actor"] for s in r["trace"]].count("ORCHESTRATION") >= 4
+    assert r["orchestration"]["kind"] == "scripted_cli" and "scripted" in r["orchestration"]["performed_by"]
     assert len(r["trace"]) == 10
 
 

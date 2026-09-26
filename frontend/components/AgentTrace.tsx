@@ -1,4 +1,4 @@
-import type { PrsGuardResult, TraceStep } from "@/lib/types";
+import { isOrchestration, type PrsGuardResult, type TraceStep } from "@/lib/types";
 import { fmtTimestamp, shortHash } from "@/lib/format";
 import { ActorBadge } from "./Badges";
 import { IconSnowflake } from "./Icons";
@@ -14,7 +14,8 @@ function isPersonalScoringStep(s: TraceStep): boolean {
 export function AgentTrace({ result }: { result: PrsGuardResult }) {
   const steps = [...(result.trace ?? [])].sort((a, b) => a.step - b.step);
   const scoring = steps.find(isPersonalScoringStep);
-  const nAgent = steps.filter((s) => s.actor === "AGENT_ACTION").length;
+  const nAgent = steps.filter((s) => isOrchestration(s.actor)).length;
+  const performedBy = result.orchestration?.performed_by ?? "PRSGuard CLI (deterministic scripted orchestrator)";
   const nDet = steps.length - nAgent;
 
   return (
@@ -24,8 +25,8 @@ export function AgentTrace({ result }: { result: PrsGuardResult }) {
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
             <circle cx="9" cy="9" r="7.5" fill="#f1edfb" stroke="#5a3fb3" strokeWidth="1.5" strokeDasharray="3 2" />
           </svg>
-          <ActorBadge actor="AGENT_ACTION" />
-          <span className="muted">gathers evidence, calls tools, explains ({nAgent})</span>
+          <ActorBadge actor="ORCHESTRATION" />
+          <span className="muted">gathers evidence, calls tools, explains; never decides applicability ({nAgent})</span>
         </span>
         <span className="item">
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -36,9 +37,14 @@ export function AgentTrace({ result }: { result: PrsGuardResult }) {
         </span>
       </div>
 
+      <p className="tiny muted" style={{ margin: "0 0 10px" }}>
+        Orchestration in this result was performed by <strong>{performedBy}</strong>. An LLM agent driving the same
+        tools would perform these steps under the same restrictions.
+      </p>
+
       <ol className="timeline">
         {steps.map((s) => {
-          const agent = s.actor === "AGENT_ACTION";
+          const agent = isOrchestration(s.actor);
           const freeze = isFreezeStep(s);
           const outputs = s.outputs && Object.keys(s.outputs).length > 0 ? s.outputs : null;
           return (

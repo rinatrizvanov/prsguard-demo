@@ -29,7 +29,7 @@ const REQUIRED = [
   "CONTEXT ONLY",
 ];
 for (const s of REQUIRED) check(html.includes(s), `index.html lacks: ${s}`);
-for (const s of ["Agent orchestration", "Deterministic science", "CONTEXT ONLY", "The agent may not"]) {
+for (const s of ["Orchestration (LLM agent or scripted CLI)", "Deterministic science", "CONTEXT ONLY", "Orchestration may not"]) {
   check(how.includes(s), `how-it-works lacks: ${s}`);
 }
 

@@ -24,7 +24,7 @@ from typing import Any
 
 import yaml
 
-GATE_VERSION = "2.0.0"
+GATE_VERSION = "2.1.0"
 INPUT_SCHEMA = "prs-applicability-gate.input.v2"
 OUTPUT_SCHEMA = "prs-applicability-gate.output.v2"
 SKILL_DIR = Path(__file__).resolve().parent
@@ -53,7 +53,8 @@ REASON_CODES = {
     "TARGET_REFERENCE_UNRESOLVED": "The person could not be placed stably inside one reference group "
                                    "(intermediate/admixed, unstable, or too few sites).",
     "NO_RELEVANT_EVALUATION": "No single-ancestry evaluation in the person's reference group reports a metric.",
-    "EVALUATION_NOT_INFORMATIVE": "Relevant evaluations exist but no metric's 95% CI excludes the null.",
+    "EVALUATION_NOT_INFORMATIVE": "Relevant evaluations exist but none shows evidence of association in the score's "
+                                  "direction (no metric's 95% CI lies entirely above the null).",
     "REFERENCE_DISTRIBUTION_UNAVAILABLE": "No reference distribution on the person's matched variant set.",
     "REFERENCE_SENSITIVE": "The percentile depends on which reference population is chosen within the group.",
 }
@@ -61,8 +62,11 @@ LOSS_CODES = {"palindromic_excluded": "PALINDROMIC_VARIANT_UNRESOLVED", "missing
               "no_call": "VARIANTS_MISSING", "allele_mismatch": "ALLELE_HARMONIZATION_FAILED",
               "duplicate_excluded": "DUPLICATE_OR_CONFLICTING_VARIANTS",
               "position_conflict": "DUPLICATE_OR_CONFLICTING_VARIANTS", "build_unresolved": "BUILD_UNRESOLVED"}
-DISCLAIMER = ("Research software, not a medical device. A polygenic score is not a diagnosis, and PRSGuard never "
-              "converts a score into absolute risk. Genetic reference placement is not ethnicity or identity.")
+DISCLAIMER = ("Research software, not a medical device. SUPPORTED is a research-prototype reportability state, not a "
+              "clinical recommendation: it requires evidence of association in a relevant evaluation group, which is "
+              "not evidence of clinically useful discrimination or calibration. A polygenic score is not a diagnosis, "
+              "and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity "
+              "or identity.")
 
 
 # ---------------------------------------------------------------------------
@@ -100,6 +104,8 @@ def load_config(path: Path = DEFAULT_CONFIG) -> dict:
     if problems:
         raise ValueError("config invalid: " + "; ".join(problems))
     cfg["_sha256"] = _sha256_bytes(raw)
+    # A non-shipped calibration is allowed for calibration research (direct CLI only) but is always labelled.
+    cfg["_canonical"] = cfg["_sha256"] == _sha256_bytes(DEFAULT_CONFIG.read_bytes())
     return cfg
 
 
@@ -149,6 +155,10 @@ def validate_input(gi: Any) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
+G9_QUESTION = ("Is there evidence of association (95% CI above the null) in an evaluation of the person's group? "
+               "(Association only: not clinically useful discrimination or calibration.)")
+
+
 class Trace:
     def __init__(self):
         self.rules: list[dict] = []
@@ -169,11 +179,16 @@ class Trace:
 
 
 def _metric_ok(m: dict) -> bool | None:
-    """True if the 95% CI excludes the null; None if it cannot be assessed."""
+    """True if the 95% CI lies entirely above the null (association in the direction the score is built for:
+    OR/HR/RR > 1, beta > 0, AUROC/C-index > 0.5, r > 0); None if it cannot be assessed.
+
+    An inverse association (CI entirely below the null, e.g. a case-only subtype comparison) is not evidence
+    for interpreting the score. Evidence of association is NOT evidence of clinically useful discrimination or
+    calibration."""
     lo, hi, null = m.get("ci_lower"), m.get("ci_upper"), m.get("null")
     if not all(isinstance(x, (int, float)) for x in (lo, hi, null)):
         return None
-    return not (lo <= null <= hi)
+    return lo > null
 
 
 def evaluate(gi: dict, cfg: dict) -> dict:
@@ -283,7 +298,7 @@ def evaluate(gi: dict, cfg: dict) -> dict:
     # G9 evaluation ------------------------------------------------------------------------------------------
     units = gi["evaluation"]["units"]
     if pst != "RESOLVED":
-        t.add("G9", "EVALUATION", "Was the score evaluated, informatively, in the person's reference group?",
+        t.add("G9", "EVALUATION", G9_QUESTION,
               "not_applicable", detail="no resolved reference group to match evaluations against")
     else:
         rel = [u for u in units if u.get("code") == group and not u.get("pooled")]
@@ -294,19 +309,19 @@ def evaluate(gi: dict, cfg: dict) -> dict:
         t.use("evaluation.relevant_units_informative", len(informative), False)
         n_rel = sum(u.get("n") or 0 for u in rel)
         if not with_metric:
-            t.add("G9", "EVALUATION", "Was the score evaluated, informatively, in the person's reference group?",
+            t.add("G9", "EVALUATION", G9_QUESTION,
                   "fail", RAW_ONLY, ["NO_RELEVANT_EVALUATION"],
                   f"0 single-ancestry {group} evaluation units with a reported metric "
                   f"({len(units)} units in total)",
                   f"a published evaluation of this score in a {group} cohort, deposited in the PGS Catalog")
         elif not informative:
-            t.add("G9", "EVALUATION", "Was the score evaluated, informatively, in the person's reference group?",
+            t.add("G9", "EVALUATION", G9_QUESTION,
                   "fail", RAW_ONLY, ["EVALUATION_NOT_INFORMATIVE"],
-                  f"{len(with_metric)} {group} units with metrics, none with a 95% CI excluding the null",
-                  f"a {group} evaluation with enough cases to exclude no association")
+                  f"{len(with_metric)} {group} units with metrics, none with a 95% CI entirely above the null",
+                  f"a {group} evaluation showing association in the score's direction")
         else:
-            t.add("G9", "EVALUATION", "Was the score evaluated, informatively, in the person's reference group?",
-                  "pass", detail=f"{len(informative)} informative {group} evaluation units "
+            t.add("G9", "EVALUATION", G9_QUESTION,
+                  "pass", detail=f"{len(informative)} {group} evaluation units with a 95% CI above the null "
                                  f"({len(with_metric)} with metrics; {n_rel:,} individuals)")
         # G10 evaluation sex -----------------------------------------------------------------------------
         if sex and informative:
@@ -384,6 +399,7 @@ def _finish(gi: Any, cfg: dict, t: Trace) -> dict:
                                      for r in failed],
         "provenance": {"gate": "prs-applicability-gate", "gate_version": GATE_VERSION,
                        "config_sha256": cfg.get("_sha256"),
+                       "config_canonical": cfg.get("_canonical"),
                        "input_digest": canonical_digest({k: v for k, v in body.items() if k != "input_digest"}),
                        "deterministic": True},
         "disclaimer": DISCLAIMER,
@@ -413,6 +429,9 @@ def render_report(result: dict) -> str:
     if result["what_would_change_result"]:
         lines += ["", "## What would change the result", ""]
         lines += [f"- {w['code']}: {w['change']}" for w in result["what_would_change_result"]]
+    if result["provenance"].get("config_canonical") is False:
+        lines += ["", "**NON-CANONICAL CALIBRATION**: this result used a configuration other than the shipped "
+                      "config/calibration.yaml (calibration research only; not a PRSGuard result)."]
     lines += ["", f"Calibration {result['calibration_version']}; gate {result['provenance']['gate_version']}; "
                   f"input {result['provenance']['input_digest']}", "", f"*{result['disclaimer']}*", ""]
     return "\n".join(lines)
@@ -446,7 +465,7 @@ def main(argv: list[str] | None = None) -> int:
                         "reason_codes": res["reason_codes"]})
         print(f"{Path(path).name}: {res['status']} {res['reason_codes']}")
     summary = {"calibration_version": cfg["calibration_version"], "gate_version": GATE_VERSION,
-               "config_sha256": cfg["_sha256"], "results": results}
+               "config_sha256": cfg["_sha256"], "config_canonical": cfg["_canonical"], "results": results}
     (args.output / "result.json").write_text(json.dumps(summary, indent=2) + "\n")
     (args.output / "report.md").write_text("# PRS applicability gate\n\n" + "\n".join(
         f"- {r['input']}: **{r['status']}** {', '.join(r['reason_codes'])}" for r in results) +

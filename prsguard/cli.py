@@ -32,7 +32,9 @@ def _run(args) -> int:
                     declared_build=args.build, catalog_mode=args.catalog,
                     snapshot_dir=Path(args.snapshot), candidates=Path(args.candidates) if args.candidates else None,
                     top_k=args.top_k, max_variants=args.max_variants,
-                    literature_context=Path(args.literature) if args.literature else None, command=sys.argv)
+                    literature_context=Path(args.literature) if args.literature else None, command=sys.argv,
+                    orchestrated_by=args.orchestrated_by,
+                    orchestrator_kind="llm_agent" if args.orchestrated_by else "scripted_cli")
     r = run(cfg)
     print(f"{r['headline']['answer']}: {r['headline']['text']}")
     for c in r["candidates"]:
@@ -116,6 +118,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--build", choices=("GRCh37", "GRCh38", "NCBI36"), help="build declared by the user")
     p.add_argument("--candidates", help="reuse a frozen candidate set (digest verified)")
     p.add_argument("--literature", help="precomputed equity-lit-auditor JSON to attach as context")
+    p.add_argument("--orchestrated-by", help="set by an LLM agent driving PRSGuard (e.g. 'LLM agent: <name>'); "
+                                             "default: the deterministic scripted PRSGuard CLI orchestrator")
     p.add_argument("--out", required=True)
     p.set_defaults(func=_run)
 

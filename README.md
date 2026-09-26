@@ -14,8 +14,8 @@ Built for the ClawBio Hackathon (Challenge 3) on top of [ClawBio](https://github
 **Can this PGS result actually be interpreted for this person?**
 
 A raw polygenic score is always computable. A percentile is a different claim: that the score computed from *this*
-file is the published score, that it has been shown to work in people like *this* person, and that there is a
-defensible reference population to compare them with. PRSGuard checks each of those with evidence and releases only
+file is the published score, that an evaluation in people like *this* person showed evidence of association, and
+that there is a defensible reference population to compare them with. PRSGuard checks each of those with evidence and releases only
 what the evidence supports:
 
 | Gate status | What may be shown |
@@ -24,27 +24,32 @@ what the evidence supports:
 | **RAW_ONLY** | raw score only (no relative or clinical interpretation) |
 | **ABSTAIN** | nothing: the score cannot be faithfully computed or checked from this input |
 
-Absolute risk is never provided.
+Absolute risk is never provided. **SUPPORTED is a research-prototype reportability state, not a clinical
+recommendation.** Its evaluation requirement (a 95% CI entirely above the metric's null in a single-ancestry
+evaluation of the person's group) establishes evidence of association in a relevant group; it does not establish
+clinically useful discrimination or calibration.
 
 ## Core principle
 
-**The agent gathers evidence and orchestrates tools. Deterministic code decides what claims are allowed.**
+**Orchestration gathers evidence and calls tools. Deterministic code alone decides what claims are allowed.**
 
-The agent (an LLM, or the scripted `prsguard` CLI) resolves the trait, queries the PGS Catalog, plans, calls tools,
-recovers from non-scientific failures, compares SUPPORTED scores and explains. It may not change thresholds, re-run
-until SUPPORTED, choose a score by its personal result, invent or infer missing evidence, choose a reference
-population for a nicer result, convert a raw score into risk, or override the gate.
+Orchestration is performed by an **LLM agent** when one drives PRSGuard (it declares itself with
+`prsguard run --orchestrated-by "LLM agent: <name>"`), and otherwise by the **deterministic scripted PRSGuard CLI
+orchestrator**, as in every demo result; each result records which. Orchestration resolves the trait, queries the
+PGS Catalog, plans, calls tools, recovers from non-scientific failures, compares SUPPORTED scores and explains. It
+may not change thresholds, re-run until SUPPORTED, choose a score by its personal result, invent or infer missing
+evidence, choose a reference population for a nicer result, convert a raw score into risk, or override the gate.
 
 ```
 input (genotype + trait + build + sex)
-  AGENT      1 read genotype locally            -> DETERMINISTIC 2 resolve build (never assumed)
-  AGENT      3 resolve trait -> ontology scope   4 search PGS Catalog
+  ORCHESTRATION 1 read genotype locally          -> DETERMINISTIC 2 resolve build (never assumed)
+  ORCHESTRATION 3 resolve trait -> ontology scope   4 search PGS Catalog
   DETERMINISTIC 5 eligibility E1-E8, pre-rank R1-R5, FREEZE candidates (SHA-256) before any personal scoring
   DETERMINISTIC 6 reference placement ONCE per person (1000 Genomes, fixed references, bootstrap uncertainty)
   DETERMINISTIC 7 harmonise + raw score (+ ClawBio gwas-prs cross-check)
   DETERMINISTIC 8 normalised PGS Catalog evidence + reference distribution on the matched variants
   DETERMINISTIC 9 prs-applicability-gate per candidate -> SUPPORTED / RAW_ONLY / ABSTAIN
-  AGENT      10 cross-PGS check (SUPPORTED only), primary = highest pre-ranked SUPPORTED, context, report
+  ORCHESTRATION 10 cross-PGS check (SUPPORTED only), primary = highest pre-ranked SUPPORTED, context, report
   CONTEXT ONLY: equity-scorer (FST, representation), equity-lit-auditor (literature equity)
 ```
 
@@ -120,7 +125,8 @@ calibration_version, rule_trace, what_would_change_result, provenance` and `allo
 No hackathon threshold survives unexamined. Coverage floors (50%/90%), ancestry confidence 0.80, the 5% evaluation
 fraction, n >= 500 and the 20-point spread were removed and replaced by calibrated or explicitly argued rules:
 LD-aware scoreability r >= 0.90 measured in the reference panel, held-out-calibrated reference placement,
-informative single-ancestry evaluations, and interval-based reference sensitivity. See
+single-ancestry evaluations showing association in the score's direction, and interval-based reference
+sensitivity. See
 [docs/calibration.md](docs/calibration.md) and the generated [docs/benchmarks.md](docs/benchmarks.md). Live API
 checks and spot checks against the PGS Catalog web pages: [docs/live-validation.md](docs/live-validation.md).
 

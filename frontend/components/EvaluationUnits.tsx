@@ -15,15 +15,20 @@ function ciText(m: EvaluationMetric): string {
 function NullVerdict({ m }: { m: EvaluationMetric }) {
   if (m.informative === true) {
     return (
-      <span title={`95% CI excludes the null value ${m.null ?? ""}`} style={{ color: "var(--ok-text)" }}>
-        <IconCheck size={12} /> CI excludes null{isNum(m.null) ? ` (${m.null})` : ""}
+      <span title={`95% CI lies entirely above the null value ${m.null ?? ""}`} style={{ color: "var(--ok-text)" }}>
+        <IconCheck size={12} /> CI above null{isNum(m.null) ? ` (${m.null})` : ""}
       </span>
     );
   }
   if (m.informative === false) {
     return (
-      <span title="95% CI includes the null value" style={{ color: "var(--no-text)" }}>
-        <IconX size={12} /> CI includes null{isNum(m.null) ? ` (${m.null})` : ""}
+      <span
+        title={m.direction === "below_null" ? "95% CI lies entirely below the null: an inverse association"
+          : "95% CI includes the null value"}
+        style={{ color: "var(--no-text)" }}
+      >
+        <IconX size={12} /> {m.direction === "below_null" ? "CI below null (inverse)" : "CI includes null"}
+        {isNum(m.null) ? ` (${m.null})` : ""}
       </span>
     );
   }
@@ -161,8 +166,10 @@ export function EvaluationUnitsTable({
         </table>
       </div>
       <p className="tiny muted" style={{ marginTop: 6 }}>
-        &ldquo;CI excludes null&rdquo; is the Catalog-derived <code>informative</code> flag used by the gate (G9): the
-        metric&apos;s 95% CI does not contain its null value (e.g. OR/HR = 1, AUROC = 0.5).
+        &ldquo;CI above null&rdquo; is the evidence rule used by the gate (G9): the metric&apos;s 95% CI lies entirely
+        above its null value (OR/HR &gt; 1, &beta; &gt; 0, AUROC &gt; 0.5, r &gt; 0). It shows evidence of{" "}
+        <strong>association</strong> in that evaluation group only, not clinically useful discrimination or
+        calibration. Inverse associations (e.g. case-only subtype comparisons) do not count.
       </p>
     </div>
   );

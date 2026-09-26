@@ -7,7 +7,7 @@ description: >-
   change the result. Never produces absolute risk.
 license: MIT
 metadata:
-  version: "2.0.0"
+  version: "2.1.0"
   author: PRSGuard team (ClawBio Hackathon Challenge 3)
   domain: genomics
   tags:
@@ -134,6 +134,11 @@ python skills/prs-applicability-gate/prs_applicability_gate.py --demo --output /
 python clawbio.py run prs-gate --demo          # after scripts/install_into_clawbio.py
 ```
 
+`--config` (an alternative calibration file) exists only on the direct CLI, for calibration research; results
+then carry `config_canonical: false` and a NON-CANONICAL CALIBRATION banner. It is deliberately **not** forwarded
+by `clawbio.py run prs-gate`, the interface an LLM agent uses, so orchestration cannot swap thresholds (the
+ClawBio runner drops unregistered flags; a regression test proves the shipped calibration is used).
+
 ## Demo
 
 ```bash
@@ -155,8 +160,8 @@ PGS001336 (SUPPORTED), an admixed ASW genome (RAW_ONLY, TARGET_REFERENCE_UNRESOL
 | G6 SEX_SCORE | Sex-specific score used for that sex? | SEX_POPULATION_MISMATCH (ABSTAIN), SEX_NOT_PROVIDED (RAW_ONLY) | |
 | G7 METADATA | PGS Catalog record resolved and consistent? | METADATA_CONTRADICTION, EVALUATION_METADATA_UNAVAILABLE | RAW_ONLY |
 | G8 PLACEMENT | Person stably inside one reference group? | TARGET_REFERENCE_UNRESOLVED | RAW_ONLY |
-| G9 EVALUATION | Single-ancestry evaluation in that group with a metric whose 95% CI excludes the null? | NO_RELEVANT_EVALUATION, EVALUATION_NOT_INFORMATIVE | RAW_ONLY |
-| G10 SEX_EVALUATION | Do informative evaluations include the person's sex? | SEX_POPULATION_MISMATCH | RAW_ONLY |
+| G9 EVALUATION | Single-ancestry evaluation in that group with a metric whose 95% CI lies entirely above the null (evidence of association in the score's direction)? | NO_RELEVANT_EVALUATION, EVALUATION_NOT_INFORMATIVE | RAW_ONLY |
+| G10 SEX_EVALUATION | Do those evaluations include the person's sex? | SEX_POPULATION_MISMATCH | RAW_ONLY |
 | G11 REFERENCE_DISTRIBUTION | Reference distribution on the person's matched variants? | REFERENCE_DISTRIBUTION_UNAVAILABLE | RAW_ONLY |
 | G12 REFERENCE_SENSITIVITY | Percentile robust across equally defensible reference populations? | REFERENCE_SENSITIVE | RAW_ONLY |
 
@@ -165,10 +170,17 @@ PGS001336 (SUPPORTED), an admixed ASW genome (RAW_ONLY, TARGET_REFERENCE_UNRESOL
   association), with its consequences for percentile error measured by masking experiments in 1000 Genomes.
 - `max_mismatch_fraction = 0.05`: detected allele mismatches estimate a similar rate of undetectable wrong calls,
   which attenuate the score roughly as r ~ 1 - e; all real, correctly built public files tested show <= 0.4%.
-- Evaluation rule: qualitative (at least one informative single-ancestry evaluation in the placed group); no
-  arbitrary sample-size or fraction cut-off.
+- Evaluation rule: qualitative (at least one single-ancestry evaluation in the placed group whose metric CI lies
+  entirely above its null); no arbitrary sample-size or fraction cut-off. Inverse associations do not count.
 - Placement parameters (`min_sites = 200`, `min_stability = 0.95`, cloud quantile 0.999) are calibrated by the
   held-out 1000 Genomes benchmark and recorded in the config so a change bumps `calibration_version`.
+
+### What SUPPORTED means (and does not)
+
+- G9 establishes **evidence of association** in a relevant evaluation group. It does **not** establish clinically
+  useful discrimination (an AUROC of 0.55 with a CI above 0.5 passes) or calibration.
+- SUPPORTED is a **research-prototype reportability state**: the percentile may be shown with its intervals. It is
+  not a clinical recommendation and never an absolute risk.
 
 ## Example Queries
 
@@ -193,7 +205,7 @@ PGS001336 (SUPPORTED), an admixed ASW genome (RAW_ONLY, TARGET_REFERENCE_UNRESOL
 |---|---|---|---|
 | G5 SCOREABILITY | Does the computable score represent the published score (r >= r_min)? | pass | r = 0.97 ... |
 | G8 PLACEMENT | Is the person placed stably inside one reference group? | pass | RESOLVED: inside the EUR reference cloud in 100% of bootstrap replicates |
-| G9 EVALUATION | Was the score evaluated, informatively, in the person's reference group? | pass | 2 informative EUR evaluation units ... |
+| G9 EVALUATION | Is there evidence of association (95% CI above the null) in an evaluation of the person's group? | pass | 2 EUR evaluation units with a 95% CI above the null ... |
 ```
 
 (Full outputs for all three statuses are produced by `--demo`; see `examples/`.)
@@ -226,7 +238,10 @@ Output fields: `status`, `primary_reason`, `reason_codes`, `allowed_claims`, `ev
   units never count as group-specific evidence (G9).
 - **You will want to read "percent of variants matched" as scoreability.** Do not; a few heavily weighted
   variants can matter more than hundreds of small ones. The gate uses r(full, reduced) measured with LD.
-- **You will want to treat MAE/NR evaluations or an AUROC without a CI as informative.** Do not; they are not.
+- **You will want to treat MAE/NR evaluations, an AUROC without a CI, or an inverse association (CI below the
+  null, e.g. a case-only subtype comparison) as supporting evidence.** Do not; they are not.
+- **You will want to describe a passed G9 as "the score performs well" or "is clinically useful".** Do not; it
+  shows association only.
 - **You will want to fill a missing field with a plausible default.** Do not; missing stays in
   `evidence_missing` and the affected rule fails.
 - **You will want to present a percentile as a risk.** Never. `absolute_risk` is always false.
@@ -242,7 +257,8 @@ Output fields: `status`, `primary_reason`, `reason_codes`, `allowed_claims`, `ev
 
 The agent (LLM) may gather evidence, call this skill, and explain its output. The agent must NOT change thresholds,
 edit the config, re-run until SUPPORTED, choose a score or a reference population by the personal result, fill in
-missing evidence, convert a raw score into clinical or absolute risk, or override the status.
+missing evidence, convert a raw score into clinical or absolute risk, or override the status. The same limits
+bind the deterministic scripted PRSGuard CLI orchestrator, which runs the same plan without an LLM.
 
 ## Integration with Bio Orchestrator
 

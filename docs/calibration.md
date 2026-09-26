@@ -1,6 +1,6 @@
 # Calibration: every number PRSGuard uses, and why
 
-Calibration version **2026.09.26-1** (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
+Calibration version **2026.09.26-2** (gate 2.1.0) (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
 below come from `docs/benchmarks.md`, which is generated from `benchmarks/results/*.json` by
 `python benchmarks/report.py`. Re-running `benchmarks/ancestry_benchmark.py`, `benchmarks/scoreability_benchmark.py`
 and `benchmarks/harmonisation_benchmark.py` regenerates every table from public data.
@@ -19,7 +19,7 @@ Each parameter is one of three kinds:
 |---|---|---|---|
 | Coverage hard floor 50% / soft floor 90% of variants | v1 `thresholds.yaml` | **Removed** | r(full, reduced) >= 0.90: weight- and LD-aware scoreability measured in the reference panel (section 3) |
 | Ancestry confidence >= 0.80 | v1 `thresholds.yaml` | **Removed** | Placement inside a fixed reference cloud (chi-squared, 4 df, 0.999), >= 200 sites and bootstrap stability >= 0.95, all calibrated on held-out samples (section 4) |
-| Evaluation fraction >= 5% in the target ancestry | v1 `thresholds.yaml` | **Removed** | Qualitative rule: at least one single-ancestry evaluation in the placed group whose 95% CI excludes the metric's null (section 5) |
+| Evaluation fraction >= 5% in the target ancestry | v1 `thresholds.yaml` | **Removed** | Qualitative rule: at least one single-ancestry evaluation in the placed group whose 95% CI lies entirely above the metric's null: evidence of association, not of clinical utility (section 5) |
 | Evaluation n >= 500 | hackathon gate | **Removed** | Same rule: the CI already accounts for sample size, so a separate N cut-off is redundant and arbitrary |
 | 20-percentile-point spread between references | hackathon panel | **Removed** | REFERENCE_SENSITIVE: disjoint 95% percentile intervals between equally defensible 1000 Genomes populations (section 6) |
 | Fraction-sum tolerance 0.05 | v1 input validation | Kept only as input validation in legacy v1 | v2 validates types and ranges and verifies the input digest |
@@ -105,12 +105,26 @@ Genetic reference placement is not ethnicity or identity.
 ## 5. Evaluation evidence (qualitative rule, no numeric cut-off)
 
 A score passes G9 only if the PGS Catalog lists at least one **single-ancestry** evaluation (publication, sample
-set) in the person's placed group reporting a metric whose 95% CI excludes the metric's null: OR/HR/RR = 1,
-beta = 0, AUROC/C-index = 0.5, correlation (including partial-r) = 0. Pooled multi-ancestry units (MAE/MAO) and
-NR units never count as group-specific evidence. R-squared and other variance-explained metrics have no usable
-null (they cannot be negative, and their bootstrap intervals exclude 0 almost by construction), so they never make
-an evaluation "informative" on their own. Missing CIs make a metric uninformative. This replaced both the 5%
-fraction and the n >= 500 rule, because a CI that excludes the null already reflects sample size.
+set) in the person's placed group reporting a metric whose 95% CI lies **entirely above** the metric's null:
+OR/HR/RR > 1, beta > 0, AUROC/C-index > 0.5, correlation (including partial-r) > 0. For every metric type the gate
+recognises, a higher score means higher risk, so this is evidence of association in the direction the score is
+built for. Pooled multi-ancestry units (MAE/MAO) and NR units never count as group-specific evidence. R-squared and
+other variance-explained metrics have no usable null (they cannot be negative, and their bootstrap intervals exclude
+0 almost by construction), so they never count on their own. Missing CIs make a metric uninformative. This
+replaced both the 5% fraction and the n >= 500 rule, because a CI already reflects sample size.
+
+**What this rule does and does not establish.** It establishes evidence of association in a relevant evaluation
+group. It does **not** establish clinically useful discrimination (an AUROC of 0.55 with a CI above 0.5 passes) or
+calibration, and the gate never claims it does. SUPPORTED is a research-prototype reportability state (a percentile
+may be shown with its intervals), not a clinical recommendation. A discrimination or calibration requirement would
+need a threshold (what AUROC is "useful"?) that cannot be derived from the Catalog data, so none is imposed.
+
+**Direction (gate 2.1.0).** Gate 2.0.0 accepted any CI excluding the null, so an inverse association counted too.
+The Catalog snapshot contains four such evaluations for PGS000004, all case-only subtype comparisons (e.g. OR 0.86
+[0.82, 0.89] for ER-negative status among cases; OR 0.80 [0.65, 0.99] for grade 3 vs grade 1 tumours). They are not
+evidence for interpreting a breast-cancer risk score, so 2.1.0 requires the CI to lie above the null. No demo
+outcome changed (other evaluations already supported the same scores). Phenotype definitions of evaluations
+(subtype-only or case-only analyses) are otherwise not adjudicated; see the README's prototype assumptions.
 
 Found during this work: the auditor originally knew nulls only for OR/HR/beta/AUROC, so PGS001804 (evaluated with
 partial-r, e.g. 0.110 [0.091, 0.129] in Europeans) was wrongly treated as uninformative. Fixed and tested.

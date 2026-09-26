@@ -42,10 +42,15 @@
     "rule": "a build is confirmed if >= 90% of >= 20 anchor rsIDs agree and refuted if <= 10%; otherwise the declared build if unambiguous and not refuted",
     "method": "empirical (rsID anchor positions) + declaration"
   },
+  "orchestration": {
+    "kind": "scripted_cli",
+    "performed_by": "PRSGuard CLI (deterministic scripted orchestrator)",
+    "note": "ORCHESTRATION steps gather evidence, call tools and report; DETERMINISTIC_DECISION steps are made by fixed code. Orchestration (LLM agent or scripted CLI) never decides applicability."
+  },
   "trace": [
     {
       "step": 1,
-      "actor": "AGENT_ACTION",
+      "actor": "ORCHESTRATION",
       "title": "Receive the request and read the genotype file locally",
       "tool": "prsguard.genotypes.load_genotypes",
       "summary": "vcf file with 10,281 records (10,281 called); trait 'breast cancer', sex female, declared build not given. The genotype never leaves this machine.",
@@ -53,8 +58,8 @@
         "sha256": "9b960780247bf696d36a2b5aa048a7a7aa8aae8030364b4b5c40117796f39957",
         "format": "vcf"
       },
-      "started_at": "2026-09-26T22:00:41+00:00",
-      "finished_at": "2026-09-26T22:00:41+00:00"
+      "started_at": "2026-09-26T22:34:10+00:00",
+      "finished_at": "2026-09-26T22:34:10+00:00"
     },
     {
       "step": 2,
@@ -72,12 +77,12 @@
         "rule": "a build is confirmed if >= 90% of >= 20 anchor rsIDs agree and refuted if <= 10%; otherwise the declared build if unambiguous and not refuted",
         "method": "empirical (rsID anchor positions) + declaration"
       },
-      "started_at": "2026-09-26T22:00:41+00:00",
-      "finished_at": "2026-09-26T22:00:41+00:00"
+      "started_at": "2026-09-26T22:34:10+00:00",
+      "finished_at": "2026-09-26T22:34:10+00:00"
     },
     {
       "step": 3,
-      "actor": "AGENT_ACTION",
+      "actor": "ORCHESTRATION",
       "title": "Resolve the trait to an ontology term and scope",
       "tool": "PGS Catalog /trait/search",
       "summary": "'breast cancer' -> MONDO_0007254 breast cancer (exact label match); scope 3 terms, 7 sub-phenotypes excluded",
@@ -92,12 +97,12 @@
           "MONDO_0004989"
         ]
       },
-      "started_at": "2026-09-26T22:00:41+00:00",
-      "finished_at": "2026-09-26T22:00:41+00:00"
+      "started_at": "2026-09-26T22:34:10+00:00",
+      "finished_at": "2026-09-26T22:34:10+00:00"
     },
     {
       "step": 4,
-      "actor": "AGENT_ACTION",
+      "actor": "ORCHESTRATION",
       "title": "Search the PGS Catalog and collect score metadata",
       "tool": "PGS Catalog /score/search",
       "summary": "160 scores mapped to the in-scope terms (reused frozen candidate set breast_cancer_female_GRCh37.frozen.json)",
@@ -109,8 +114,8 @@
           "api_version": "1.8.6"
         }
       },
-      "started_at": "2026-09-26T22:00:41+00:00",
-      "finished_at": "2026-09-26T22:00:41+00:00"
+      "started_at": "2026-09-26T22:34:10+00:00",
+      "finished_at": "2026-09-26T22:34:10+00:00"
     },
     {
       "step": 5,
@@ -127,8 +132,8 @@
         "digest": "sha256:13d58f1fd3116bf1ce7cc060a3471c04b33f941d90d3baf5a01c6b1a7569d619",
         "frozen_at": "2026-09-26T22:00:23+00:00"
       },
-      "started_at": "2026-09-26T22:00:41+00:00",
-      "finished_at": "2026-09-26T22:00:41+00:00"
+      "started_at": "2026-09-26T22:34:10+00:00",
+      "finished_at": "2026-09-26T22:34:10+00:00"
     },
     {
       "step": 6,
@@ -143,8 +148,8 @@
         "placement_stability": 1.0,
         "n_sites_used": 6557
       },
-      "started_at": "2026-09-26T22:00:41+00:00",
-      "finished_at": "2026-09-26T22:00:46+00:00"
+      "started_at": "2026-09-26T22:34:10+00:00",
+      "finished_at": "2026-09-26T22:34:14+00:00"
     },
     {
       "step": 7,
@@ -153,8 +158,8 @@
       "tool": "prsguard.harmonize (+ ClawBio gwas-prs cross-check)",
       "summary": "PGS000004 274/313 matched, r = 0.9506; PGS001804 2984/2984 matched, r = 1.0; PGS001336 467/555 matched, r = 0.9745",
       "outputs": {},
-      "started_at": "2026-09-26T22:00:46+00:00",
-      "finished_at": "2026-09-26T22:00:46+00:00"
+      "started_at": "2026-09-26T22:34:14+00:00",
+      "finished_at": "2026-09-26T22:34:14+00:00"
     },
     {
       "step": 8,
@@ -163,8 +168,8 @@
       "tool": "prsguard.catalog + prsguard.reference.distribution",
       "summary": "PGS000004 metadata resolved; PGS001804 metadata resolved; PGS001336 metadata resolved",
       "outputs": {},
-      "started_at": "2026-09-26T22:00:46+00:00",
-      "finished_at": "2026-09-26T22:00:46+00:00"
+      "started_at": "2026-09-26T22:34:14+00:00",
+      "finished_at": "2026-09-26T22:34:14+00:00"
     },
     {
       "step": 9,
@@ -177,12 +182,12 @@
         "PGS001804": "RAW_ONLY",
         "PGS001336": "RAW_ONLY"
       },
-      "started_at": "2026-09-26T22:00:46+00:00",
-      "finished_at": "2026-09-26T22:00:46+00:00"
+      "started_at": "2026-09-26T22:34:14+00:00",
+      "finished_at": "2026-09-26T22:34:14+00:00"
     },
     {
       "step": 10,
-      "actor": "AGENT_ACTION",
+      "actor": "ORCHESTRATION",
       "title": "Cross-PGS check, choose the primary score, attach context, report",
       "tool": "prsguard.cross_pgs + report",
       "summary": "cross-PGS NOT_COMPARABLE; primary none (no candidate SUPPORTED) by the fixed rule 'highest pre-ranked SUPPORTED'",
@@ -190,8 +195,8 @@
         "cross_pgs": "NOT_COMPARABLE",
         "primary": null
       },
-      "started_at": "2026-09-26T22:00:46+00:00",
-      "finished_at": "2026-09-26T22:00:46+00:00"
+      "started_at": "2026-09-26T22:34:14+00:00",
+      "finished_at": "2026-09-26T22:34:14+00:00"
     }
   ],
   "router": {
@@ -9065,7 +9070,7 @@
           "placement.placement_stability": 1.0
         },
         "evidence_missing": [],
-        "calibration_version": "2026.09.26-1",
+        "calibration_version": "2026.09.26-2",
         "rule_trace": [
           {
             "rule": "G1",
@@ -9160,7 +9165,7 @@
           {
             "rule": "G9",
             "name": "EVALUATION",
-            "question": "Was the score evaluated, informatively, in the person's reference group?",
+            "question": "Is there evidence of association (95% CI above the null) in an evaluation of the person's group? (Association only: not clinically useful discrimination or calibration.)",
             "outcome": "not_applicable",
             "effect": null,
             "codes": [],
@@ -9197,12 +9202,13 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.0.0",
-          "config_sha256": "sha256:fabf6fcfc8a00bab82404846327846a8e001fc272320a40a0bd50f6297fa0ae5",
-          "input_digest": "sha256:fbe12daedb15b44cd446f9a851308fa14ea72bdab2f5d9998fd42bf423daf845",
+          "gate_version": "2.1.0",
+          "config_sha256": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
+          "config_canonical": true,
+          "input_digest": "sha256:0c568b4f4407f773036bab1461a2c9967039148c3919d6bfeb15f749cfbb74e6",
           "deterministic": true
         },
-        "disclaimer": "Research software, not a medical device. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
+        "disclaimer": "Research software, not a medical device. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, which is not evidence of clinically useful discrimination or calibration. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
       },
       "interpretation": {
         "status": "RAW_ONLY",
@@ -9923,7 +9929,8 @@
                 "ci_lower": 1.57,
                 "ci_upper": 1.65,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -9931,7 +9938,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -9956,7 +9964,8 @@
                 "ci_lower": 1.54,
                 "ci_upper": 1.64,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10002,7 +10011,8 @@
                 "ci_lower": 1.38,
                 "ci_upper": 1.6,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -10010,7 +10020,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": []
@@ -10054,7 +10065,8 @@
                 "ci_lower": 1.75,
                 "ci_upper": 1.86,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -10062,7 +10074,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": []
@@ -10106,7 +10119,8 @@
                 "ci_lower": 1.55,
                 "ci_upper": 1.71,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -10114,7 +10128,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": []
@@ -10158,7 +10173,8 @@
                 "ci_lower": 1.6,
                 "ci_upper": 1.77,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -10166,7 +10182,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": []
@@ -10210,7 +10227,8 @@
                 "ci_lower": 1.31,
                 "ci_upper": 1.44,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -10218,7 +10236,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": []
@@ -10241,7 +10260,8 @@
                 "ci_lower": 1.52,
                 "ci_upper": 1.58,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10249,7 +10269,8 @@
                 "ci_lower": 1.57,
                 "ci_upper": 1.64,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10282,7 +10303,8 @@
                 "ci_lower": 1.52,
                 "ci_upper": 1.6,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10290,7 +10312,8 @@
                 "ci_lower": 1.52,
                 "ci_upper": 1.6,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10322,7 +10345,8 @@
                 "ci_lower": 1.02,
                 "ci_upper": 1.29,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10330,7 +10354,8 @@
                 "ci_lower": 1.02,
                 "ci_upper": 1.29,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10374,7 +10399,8 @@
                 "ci_lower": 1.26,
                 "ci_upper": 1.35,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10382,7 +10408,8 @@
                 "ci_lower": 1.13,
                 "ci_upper": 1.7,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10390,7 +10417,8 @@
                 "ci_lower": 1.26,
                 "ci_upper": 1.35,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10398,7 +10426,8 @@
                 "ci_lower": 1.13,
                 "ci_upper": 1.7,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10443,7 +10472,8 @@
                 "ci_lower": 1.8,
                 "ci_upper": 1.84,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10451,7 +10481,8 @@
                 "ci_lower": 1.59,
                 "ci_upper": 1.76,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10459,7 +10490,8 @@
                 "ci_lower": 1.8,
                 "ci_upper": 1.84,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -10467,7 +10499,8 @@
                 "ci_lower": 1.59,
                 "ci_upper": 1.76,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10510,7 +10543,8 @@
                 "ci_lower": 1.18,
                 "ci_upper": 1.33,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -10518,7 +10552,8 @@
                 "ci_lower": 0.547,
                 "ci_upper": 0.586,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -10526,7 +10561,8 @@
                 "ci_lower": 0.591,
                 "ci_upper": 0.629,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -10534,7 +10570,8 @@
                 "ci_lower": 1.18,
                 "ci_upper": 1.33,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -10542,7 +10579,8 @@
                 "ci_lower": 0.547,
                 "ci_upper": 0.586,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -10550,7 +10588,8 @@
                 "ci_lower": 0.591,
                 "ci_upper": 0.629,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10593,7 +10632,8 @@
                 "ci_lower": 1.23,
                 "ci_upper": 1.55,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -10601,7 +10641,8 @@
                 "ci_lower": 1.23,
                 "ci_upper": 1.55,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10643,7 +10684,8 @@
                 "ci_lower": 1.16,
                 "ci_upper": 1.32,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -10651,7 +10693,8 @@
                 "ci_lower": 1.16,
                 "ci_upper": 1.32,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10674,7 +10717,8 @@
                 "ci_lower": 1.17,
                 "ci_upper": 1.23,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10697,7 +10741,8 @@
                 "ci_lower": 1.05,
                 "ci_upper": 1.13,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10720,7 +10765,8 @@
                 "ci_lower": 1.35,
                 "ci_upper": 1.54,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10743,7 +10789,8 @@
                 "ci_lower": 1.26,
                 "ci_upper": 1.36,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10766,7 +10813,8 @@
                 "ci_lower": 1.1,
                 "ci_upper": 1.29,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10789,7 +10837,8 @@
                 "ci_lower": 1.3,
                 "ci_upper": 1.43,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10822,7 +10871,8 @@
                 "ci_lower": 1.17,
                 "ci_upper": 1.57,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10847,7 +10897,8 @@
                 "ci_lower": 0.62,
                 "ci_upper": 0.637,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -10855,7 +10906,8 @@
                 "ci_lower": 0.624,
                 "ci_upper": 0.641,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10882,7 +10934,8 @@
                 "ci_lower": 1.45,
                 "ci_upper": 1.66,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Odds Ratio (OR, top 20% vs. bottom 20%)",
@@ -10890,7 +10943,8 @@
                 "ci_lower": 3.07,
                 "ci_upper": 4.87,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "OR",
@@ -10898,7 +10952,8 @@
                 "ci_lower": 1.42,
                 "ci_upper": 1.61,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Odds Ratio (OR, top 20% vs. bottom 20%)",
@@ -10906,7 +10961,8 @@
                 "ci_lower": 2.74,
                 "ci_upper": 4.18,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": []
@@ -10927,7 +10983,8 @@
                 "ci_lower": 1.19,
                 "ci_upper": 1.74,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Odds Ratio (OR, top 20% vs bottom 20%)",
@@ -10935,7 +10992,8 @@
                 "ci_lower": 1.61,
                 "ci_upper": 5.73,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "OR",
@@ -10943,7 +11001,8 @@
                 "ci_lower": 1.49,
                 "ci_upper": 1.65,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10966,7 +11025,8 @@
                 "ci_lower": 1.52,
                 "ci_upper": 1.7,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -10996,7 +11056,8 @@
                 "ci_lower": 1.23,
                 "ci_upper": 1.31,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Odds Ratio (OR, top 10% vs. middle 20%)",
@@ -11004,7 +11065,8 @@
                 "ci_lower": 1.38,
                 "ci_upper": 1.72,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "AUROC",
@@ -11012,7 +11074,8 @@
                 "ci_lower": 0.562,
                 "ci_upper": 0.579,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11054,7 +11117,8 @@
                 "ci_lower": 1.06,
                 "ci_upper": 1.85,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -11062,7 +11126,8 @@
                 "ci_lower": 1.05,
                 "ci_upper": 1.84,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -11070,7 +11135,8 @@
                 "ci_lower": 1.07,
                 "ci_upper": 1.95,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11114,7 +11180,8 @@
                 "ci_lower": 1.15,
                 "ci_upper": 1.52,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -11122,7 +11189,8 @@
                 "ci_lower": 1.15,
                 "ci_upper": 1.52,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -11130,7 +11198,8 @@
                 "ci_lower": 1.18,
                 "ci_upper": 1.57,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11158,7 +11227,8 @@
                 "ci_lower": 1.18,
                 "ci_upper": 1.73,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -11166,7 +11236,8 @@
                 "ci_lower": 0.59,
                 "ci_upper": 0.71,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Hazard Ratio (HR, top 20% vs bottom 20%)",
@@ -11174,7 +11245,8 @@
                 "ci_lower": 1.21,
                 "ci_upper": 3.86,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "HR",
@@ -11182,7 +11254,8 @@
                 "ci_lower": 1.22,
                 "ci_upper": 1.91,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -11190,7 +11263,8 @@
                 "ci_lower": 1.34,
                 "ci_upper": 1.61,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -11198,7 +11272,8 @@
                 "ci_lower": 0.59,
                 "ci_upper": 0.65,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Odds Ratio (OR, top 20% vs bottom 20%)",
@@ -11206,7 +11281,8 @@
                 "ci_lower": 2.26,
                 "ci_upper": 4.49,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "OR",
@@ -11214,7 +11290,8 @@
                 "ci_lower": 1.08,
                 "ci_upper": 1.8,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "OR",
@@ -11222,7 +11299,8 @@
                 "ci_lower": 1.33,
                 "ci_upper": 1.63,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11249,7 +11327,8 @@
                 "ci_lower": 1.1,
                 "ci_upper": 1.44,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -11257,7 +11336,8 @@
                 "ci_lower": 0.51,
                 "ci_upper": 0.58,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "R\u00b2",
@@ -11265,7 +11345,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11290,7 +11371,8 @@
                 "ci_lower": 1.35,
                 "ci_upper": 1.45,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -11298,7 +11380,8 @@
                 "ci_lower": 0.59,
                 "ci_upper": 0.61,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "R\u00b2",
@@ -11306,7 +11389,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11331,7 +11415,8 @@
                 "ci_lower": 1.08,
                 "ci_upper": 1.57,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -11339,7 +11424,8 @@
                 "ci_lower": 0.5,
                 "ci_upper": 0.6,
                 "null": 0.5,
-                "informative": false
+                "informative": false,
+                "direction": "includes_null"
               },
               {
                 "name": "R\u00b2",
@@ -11347,7 +11433,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11372,7 +11459,8 @@
                 "ci_lower": 1.333,
                 "ci_upper": 1.538,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -11380,7 +11468,8 @@
                 "ci_lower": 0.581,
                 "ci_upper": 0.62,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": []
@@ -11404,7 +11493,8 @@
                 "ci_lower": 0.61,
                 "ci_upper": 0.651,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Calibration (E/O)",
@@ -11412,7 +11502,8 @@
                 "ci_lower": 0.7,
                 "ci_upper": 1.0,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "AUROC",
@@ -11420,7 +11511,8 @@
                 "ci_lower": 0.62,
                 "ci_upper": 0.66,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11449,7 +11541,8 @@
                 "ci_lower": 0.614,
                 "ci_upper": 0.63,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Calibration (E/O)",
@@ -11457,7 +11550,8 @@
                 "ci_lower": 0.7,
                 "ci_upper": 1.3,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "AUROC",
@@ -11465,7 +11559,8 @@
                 "ci_lower": 0.632,
                 "ci_upper": 0.647,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11490,7 +11585,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11515,7 +11611,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11540,7 +11637,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11565,7 +11663,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11590,7 +11689,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11615,7 +11715,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11640,7 +11741,8 @@
                 "ci_lower": 0.017,
                 "ci_upper": 0.105,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "\u03b2",
@@ -11648,7 +11750,8 @@
                 "ci_lower": 0.016,
                 "ci_upper": 0.104,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "\u03b2",
@@ -11656,7 +11759,8 @@
                 "ci_lower": 0.037,
                 "ci_upper": 0.125,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "\u03b2",
@@ -11664,7 +11768,8 @@
                 "ci_lower": 0.016,
                 "ci_upper": 0.101,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11699,7 +11804,8 @@
                 "ci_lower": 1.31,
                 "ci_upper": 1.39,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11724,7 +11830,8 @@
                 "ci_lower": 1.4,
                 "ci_upper": 1.49,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -11732,7 +11839,8 @@
                 "ci_lower": 0.556,
                 "ci_upper": 0.577,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": []
@@ -11755,7 +11863,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "Improvement in C-index from age-only model",
@@ -11763,7 +11872,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "Hazard ratio (HR, high vs low tertile)",
@@ -11771,7 +11881,8 @@
                 "ci_lower": 1.25,
                 "ci_upper": 2.86,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -11796,7 +11907,8 @@
                 "ci_lower": 0.522,
                 "ci_upper": 0.636,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": []
@@ -11819,7 +11931,8 @@
                 "ci_lower": 0.58,
                 "ci_upper": 0.664,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": []
@@ -11842,7 +11955,8 @@
                 "ci_lower": 1.52,
                 "ci_upper": 1.84,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -11850,7 +11964,8 @@
                 "ci_lower": 1.42,
                 "ci_upper": 1.65,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -11858,7 +11973,8 @@
                 "ci_lower": 1.04,
                 "ci_upper": 1.55,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -11866,7 +11982,8 @@
                 "ci_lower": 1.07,
                 "ci_upper": 1.44,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11889,7 +12006,8 @@
                 "ci_lower": 0.82,
                 "ci_upper": 0.89,
                 "null": 1.0,
-                "informative": true
+                "informative": false,
+                "direction": "below_null"
               },
               {
                 "name": "OR",
@@ -11897,7 +12015,8 @@
                 "ci_lower": 0.86,
                 "ci_upper": 0.94,
                 "null": 1.0,
-                "informative": true
+                "informative": false,
+                "direction": "below_null"
               }
             ],
             "covariates": []
@@ -11918,7 +12037,8 @@
                 "ci_lower": 0.65,
                 "ci_upper": 0.99,
                 "null": 1.0,
-                "informative": true
+                "informative": false,
+                "direction": "below_null"
               },
               {
                 "name": "OR",
@@ -11926,7 +12046,8 @@
                 "ci_lower": 0.65,
                 "ci_upper": 0.99,
                 "null": 1.0,
-                "informative": true
+                "informative": false,
+                "direction": "below_null"
               },
               {
                 "name": "OR",
@@ -11934,7 +12055,8 @@
                 "ci_lower": 0.71,
                 "ci_upper": 1.0,
                 "null": 1.0,
-                "informative": false
+                "informative": false,
+                "direction": "includes_null"
               }
             ],
             "covariates": []
@@ -11957,7 +12079,8 @@
                 "ci_lower": 0.59,
                 "ci_upper": 0.68,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -11965,7 +12088,8 @@
                 "ci_lower": 0.6,
                 "ci_upper": 0.7,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -11991,7 +12115,8 @@
                 "ci_lower": 1.4,
                 "ci_upper": 1.74,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -11999,7 +12124,8 @@
                 "ci_lower": 1.72,
                 "ci_upper": 4.37,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -12007,7 +12133,8 @@
                 "ci_lower": 1.52,
                 "ci_upper": 2.0,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -12015,7 +12142,8 @@
                 "ci_lower": 1.08,
                 "ci_upper": 1.55,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -12023,7 +12151,8 @@
                 "ci_lower": 1.4,
                 "ci_upper": 1.77,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "HR",
@@ -12031,7 +12160,8 @@
                 "ci_lower": 1.01,
                 "ci_upper": 2.01,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -12039,7 +12169,8 @@
                 "ci_lower": 0.58,
                 "ci_upper": 0.69,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -12047,7 +12178,8 @@
                 "ci_lower": 0.61,
                 "ci_upper": 0.73,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "C-index",
@@ -12055,7 +12187,8 @@
                 "ci_lower": 0.48,
                 "ci_upper": 0.62,
                 "null": 0.5,
-                "informative": false
+                "informative": false,
+                "direction": "includes_null"
               }
             ],
             "covariates": [
@@ -12080,7 +12213,8 @@
                 "ci_lower": 1.91,
                 "ci_upper": 2.16,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Hazard ratio (HR, top PRS tertile vs. bottom PRS tertile)",
@@ -12088,7 +12222,8 @@
                 "ci_lower": 2.27,
                 "ci_upper": 2.77,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -12113,7 +12248,8 @@
                 "ci_lower": 1.89,
                 "ci_upper": 2.42,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "Hazard ratio (HR, top PRS tertile vs. bottom PRS tertile)",
@@ -12121,7 +12257,8 @@
                 "ci_lower": 2.17,
                 "ci_upper": 3.22,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -12144,7 +12281,8 @@
                 "ci_lower": 1.24,
                 "ci_upper": 1.4,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -12152,7 +12290,8 @@
                 "ci_lower": 0.56,
                 "ci_upper": 0.6,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -12175,7 +12314,8 @@
                 "ci_lower": 0.29,
                 "ci_upper": 0.52,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": []
@@ -12196,7 +12336,8 @@
                 "ci_lower": 1.27,
                 "ci_upper": 1.58,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -12222,7 +12363,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "AUROC",
@@ -12230,7 +12372,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": 0.5,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "R\u00b2",
@@ -12238,7 +12381,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -12265,7 +12409,8 @@
                 "ci_lower": 1.14,
                 "ci_upper": 1.36,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -12290,7 +12435,8 @@
                 "ci_lower": 1.05,
                 "ci_upper": 1.64,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -12298,7 +12444,8 @@
                 "ci_lower": 0.56,
                 "ci_upper": 0.65,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -12323,7 +12470,8 @@
                 "ci_lower": 1.23,
                 "ci_upper": 1.72,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -12331,7 +12479,8 @@
                 "ci_lower": 0.69,
                 "ci_upper": 0.71,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -12356,7 +12505,8 @@
                 "ci_lower": 1.23,
                 "ci_upper": 1.61,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -12364,7 +12514,8 @@
                 "ci_lower": 0.6,
                 "ci_upper": 0.68,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -12389,7 +12540,8 @@
                 "ci_lower": 1.31,
                 "ci_upper": 1.75,
                 "null": 1.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "AUROC",
@@ -12397,7 +12549,8 @@
                 "ci_lower": 0.65,
                 "ci_upper": 0.71,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -12800,7 +12953,7 @@
             "retrieved_at": "2026-09-26T20:31:55+00:00"
           }
         ],
-        "gate_input_digest": "sha256:fbe12daedb15b44cd446f9a851308fa14ea72bdab2f5d9998fd42bf423daf845"
+        "gate_input_digest": "sha256:0c568b4f4407f773036bab1461a2c9967039148c3919d6bfeb15f749cfbb74e6"
       }
     },
     {
@@ -12910,7 +13063,7 @@
           "placement.placement_stability": 1.0
         },
         "evidence_missing": [],
-        "calibration_version": "2026.09.26-1",
+        "calibration_version": "2026.09.26-2",
         "rule_trace": [
           {
             "rule": "G1",
@@ -13005,7 +13158,7 @@
           {
             "rule": "G9",
             "name": "EVALUATION",
-            "question": "Was the score evaluated, informatively, in the person's reference group?",
+            "question": "Is there evidence of association (95% CI above the null) in an evaluation of the person's group? (Association only: not clinically useful discrimination or calibration.)",
             "outcome": "not_applicable",
             "effect": null,
             "codes": [],
@@ -13042,12 +13195,13 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.0.0",
-          "config_sha256": "sha256:fabf6fcfc8a00bab82404846327846a8e001fc272320a40a0bd50f6297fa0ae5",
-          "input_digest": "sha256:e667f7527aef62bed6518b337c369fce891b7a2b80efa72fd784c4c109474101",
+          "gate_version": "2.1.0",
+          "config_sha256": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
+          "config_canonical": true,
+          "input_digest": "sha256:3053148bf7fa8c92b3f1bf694a0c58a291305e9dcda08349d143a586167075c9",
           "deterministic": true
         },
-        "disclaimer": "Research software, not a medical device. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
+        "disclaimer": "Research software, not a medical device. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, which is not evidence of clinically useful discrimination or calibration. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
       },
       "interpretation": {
         "status": "RAW_ONLY",
@@ -13175,7 +13329,8 @@
                 "ci_lower": -0.0097,
                 "ci_upper": 0.0927,
                 "null": 0.0,
-                "informative": false
+                "informative": false,
+                "direction": "includes_null"
               }
             ],
             "covariates": [
@@ -13200,7 +13355,8 @@
                 "ci_lower": 0.0401,
                 "ci_upper": 0.1559,
                 "null": 0.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -13225,7 +13381,8 @@
                 "ci_lower": 0.0301,
                 "ci_upper": 0.1044,
                 "null": 0.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -13250,7 +13407,8 @@
                 "ci_lower": -0.0155,
                 "ci_upper": 0.1687,
                 "null": 0.0,
-                "informative": false
+                "informative": false,
+                "direction": "includes_null"
               }
             ],
             "covariates": [
@@ -13275,7 +13433,8 @@
                 "ci_lower": 0.0795,
                 "ci_upper": 0.1453,
                 "null": 0.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -13300,7 +13459,8 @@
                 "ci_lower": 0.0454,
                 "ci_upper": 0.132,
                 "null": 0.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -13325,7 +13485,8 @@
                 "ci_lower": 0.0446,
                 "ci_upper": 0.1237,
                 "null": 0.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -13350,7 +13511,8 @@
                 "ci_lower": 0.0908,
                 "ci_upper": 0.1292,
                 "null": 0.0,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               }
             ],
             "covariates": [
@@ -13517,7 +13679,7 @@
             "retrieved_at": "2026-09-26T20:31:55+00:00"
           }
         ],
-        "gate_input_digest": "sha256:e667f7527aef62bed6518b337c369fce891b7a2b80efa72fd784c4c109474101"
+        "gate_input_digest": "sha256:3053148bf7fa8c92b3f1bf694a0c58a291305e9dcda08349d143a586167075c9"
       }
     },
     {
@@ -13636,7 +13798,7 @@
           "placement.placement_stability": 1.0
         },
         "evidence_missing": [],
-        "calibration_version": "2026.09.26-1",
+        "calibration_version": "2026.09.26-2",
         "rule_trace": [
           {
             "rule": "G1",
@@ -13731,7 +13893,7 @@
           {
             "rule": "G9",
             "name": "EVALUATION",
-            "question": "Was the score evaluated, informatively, in the person's reference group?",
+            "question": "Is there evidence of association (95% CI above the null) in an evaluation of the person's group? (Association only: not clinically useful discrimination or calibration.)",
             "outcome": "not_applicable",
             "effect": null,
             "codes": [],
@@ -13768,12 +13930,13 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.0.0",
-          "config_sha256": "sha256:fabf6fcfc8a00bab82404846327846a8e001fc272320a40a0bd50f6297fa0ae5",
-          "input_digest": "sha256:dc740c1a531eba7879aa21abff5665d4e0e61d9676fe27de18f599b6b95d1c18",
+          "gate_version": "2.1.0",
+          "config_sha256": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
+          "config_canonical": true,
+          "input_digest": "sha256:6c06b78eee4893149e97eb8653061bd1b84fcb10f1dd586821bb55fe32526030",
           "deterministic": true
         },
-        "disclaimer": "Research software, not a medical device. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
+        "disclaimer": "Research software, not a medical device. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, which is not evidence of clinically useful discrimination or calibration. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
       },
       "interpretation": {
         "status": "RAW_ONLY",
@@ -13897,7 +14060,8 @@
                 "ci_lower": 0.76728,
                 "ci_upper": 0.81858,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "R\u00b2",
@@ -13905,7 +14069,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "Incremental AUROC (full-covars)",
@@ -13913,7 +14078,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS R2 (no covariates)",
@@ -13921,7 +14087,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS AUROC (no covariates)",
@@ -13929,7 +14096,8 @@
                 "ci_lower": 0.51783,
                 "ci_upper": 0.62054,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -13954,7 +14122,8 @@
                 "ci_lower": 0.71475,
                 "ci_upper": 0.80565,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "R\u00b2",
@@ -13962,7 +14131,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "Incremental AUROC (full-covars)",
@@ -13970,7 +14140,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS R2 (no covariates)",
@@ -13978,7 +14149,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS AUROC (no covariates)",
@@ -13986,7 +14158,8 @@
                 "ci_lower": 0.51563,
                 "ci_upper": 0.67258,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -14011,7 +14184,8 @@
                 "ci_lower": 0.79545,
                 "ci_upper": 0.81577,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "R\u00b2",
@@ -14019,7 +14193,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "Incremental AUROC (full-covars)",
@@ -14027,7 +14202,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS R2 (no covariates)",
@@ -14035,7 +14211,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS AUROC (no covariates)",
@@ -14043,7 +14220,8 @@
                 "ci_lower": 0.56669,
                 "ci_upper": 0.6042,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -14068,7 +14246,8 @@
                 "ci_lower": 0.81289,
                 "ci_upper": 0.85838,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "R\u00b2",
@@ -14076,7 +14255,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "Incremental AUROC (full-covars)",
@@ -14084,7 +14264,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS R2 (no covariates)",
@@ -14092,7 +14273,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS AUROC (no covariates)",
@@ -14100,7 +14282,8 @@
                 "ci_lower": 0.52745,
                 "ci_upper": 0.61755,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -14125,7 +14308,8 @@
                 "ci_lower": 0.80348,
                 "ci_upper": 0.81573,
                 "null": 0.5,
-                "informative": true
+                "informative": true,
+                "direction": "above_null"
               },
               {
                 "name": "R\u00b2",
@@ -14133,7 +14317,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "Incremental AUROC (full-covars)",
@@ -14141,7 +14326,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS R2 (no covariates)",
@@ -14149,7 +14335,8 @@
                 "ci_lower": null,
                 "ci_upper": null,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               },
               {
                 "name": "PGS AUROC (no covariates)",
@@ -14157,7 +14344,8 @@
                 "ci_lower": 0.58498,
                 "ci_upper": 0.60756,
                 "null": null,
-                "informative": null
+                "informative": null,
+                "direction": null
               }
             ],
             "covariates": [
@@ -14324,7 +14512,7 @@
             "retrieved_at": "2026-09-26T20:31:55+00:00"
           }
         ],
-        "gate_input_digest": "sha256:dc740c1a531eba7879aa21abff5665d4e0e61d9676fe27de18f599b6b95d1c18"
+        "gate_input_digest": "sha256:6c06b78eee4893149e97eb8653061bd1b84fcb10f1dd586821bb55fe32526030"
       }
     }
   ],
@@ -16342,7 +16530,7 @@
   },
   "reproducibility": {
     "prsguard_version": "1.0.0",
-    "git_commit": "4244a3302dd48db24980ac772d0025079a9e9202",
+    "git_commit": "56b79d184fc5feea8f329f218883430d367f3bc2",
     "git_dirty": true,
     "clawbio_commit": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
     "clawbio_pinned": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
@@ -16361,10 +16549,10 @@
       "pca_panel": "sha256:b11b9274bcf24f750f60a1eff1364d2bcf4df96211415311fd96385ae9718b40",
       "pgs_panel": "sha256:c25c47690db2b847e08ad56ff3f8ba758b42c439104aeaebd325705538bc6955",
       "catalog_snapshot_manifest": "sha256:dcbc6e44adc3522872db1bc7219d92b29aae56894af3432efa6bc77f5024e9ea",
-      "gate_config": "sha256:fabf6fcfc8a00bab82404846327846a8e001fc272320a40a0bd50f6297fa0ae5",
+      "gate_config": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
       "candidate_set": "sha256:13d58f1fd3116bf1ce7cc060a3471c04b33f941d90d3baf5a01c6b1a7569d619"
     },
-    "calibration_version": "2026.09.26-1",
+    "calibration_version": "2026.09.26-2",
     "seeds": {
       "placement_bootstrap": 20260926,
       "reference_subset": 1000
@@ -16374,9 +16562,9 @@
       "release": "2026-09-17",
       "api_version": "1.8.6"
     },
-    "started_at": "2026-09-26T22:00:41+00:00",
-    "finished_at": "2026-09-26T22:00:46+00:00",
+    "started_at": "2026-09-26T22:34:10+00:00",
+    "finished_at": "2026-09-26T22:34:14+00:00",
     "command": "prsguard demo --case E --out runs/demo"
   },
-  "disclaimer": "PRSGuard is RESEARCH SOFTWARE / a PROTOTYPE, not a medical device. It does not diagnose, and it never converts a polygenic score into absolute risk. Genetic reference placement is not ethnicity or identity."
+  "disclaimer": "PRSGuard is RESEARCH SOFTWARE / a PROTOTYPE, not a medical device. It does not diagnose, and it never converts a polygenic score into absolute risk. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, not clinically useful discrimination or calibration. Genetic reference placement is not ethnicity or identity."
 }

@@ -1,0 +1,250 @@
+iso3,iso_numeric,name,un_region,high_income,lat,lon,aliases,demonyms,demonym_ancestry
+ABW,533,Aruba,Latin America & Caribbean,1,12.521,-69.983,Aruba,,
+AFG,004,Afghanistan,Central & Southern Asia,0,33.835,66.005,Afghanistan,,
+AGO,024,Angola,Sub-Saharan Africa,0,-12.332,17.565,Angola,,
+AIA,660,Anguilla,Latin America & Caribbean,0,18.224,-63.066,Anguilla,,
+ALA,248,Åland Islands,Europe & Northern America,0,60.232,19.944,Åland Islands,,
+ALB,008,Albania,Europe & Northern America,0,41.142,20.050,Albania,,
+AND,020,Andorra,Europe & Northern America,1,42.542,1.561,Andorra,,
+ARE,784,United Arab Emirates,Northern Africa & Western Asia,1,23.903,54.307,UAE|United Arab Emirates,Emirati,MID
+ARG,032,Argentina,Latin America & Caribbean,0,-35.180,-65.156,Argentina,Argentine|Argentinian,
+ARM,051,Armenia,Northern Africa & Western Asia,0,40.290,44.929,Armenia,,
+ASM,016,American Samoa,Oceania,0,-14.305,-170.718,American Samoa,,
+ATA,010,Antarctica,Europe & Northern America,0,-79.442,-47.800,Antarctica,,
+ATF,260,French Southern Territories,Europe & Northern America,0,-49.304,69.496,French Southern Territories,,
+ATG,028,Antigua and Barbuda,Latin America & Caribbean,1,17.078,-61.790,Antigua and Barbuda,,
+AUS,036,Australia,Oceania,1,-12.430,123.584,Australia,Australian,
+AUT,040,Austria,Europe & Northern America,1,47.586,14.126,Austria,,
+AZE,031,Azerbaijan,Northern Africa & Western Asia,0,40.344,47.664,Azerbaijan,,
+BDI,108,Burundi,Sub-Saharan Africa,0,-3.359,29.875,Burundi,,
+BEL,056,Belgium,Europe & Northern America,1,50.639,4.639,Belgium,,
+BEN,204,Benin,Sub-Saharan Africa,0,9.642,2.328,Benin,,
+BES,535,Bonaire,Latin America & Caribbean,0,,,Bonaire,,
+BFA,854,Burkina Faso,Sub-Saharan Africa,0,12.270,-1.754,Burkina Faso,,
+BGD,050,Bangladesh,Central & Southern Asia,0,23.898,90.224,Bangladesh,Bangladeshi,SAS
+BGR,100,Bulgaria,Europe & Northern America,1,42.769,25.215,Bulgaria,,
+BHR,048,Bahrain,Northern Africa & Western Asia,1,26.042,50.542,Bahrain,,
+BHS,044,Bahamas,Latin America & Caribbean,1,24.701,-78.038,Bahamas,,
+BIH,070,Bosnia and Herzegovina,Europe & Northern America,0,44.174,17.769,Bosnia and Herzegovina,,
+BLM,652,Saint Barthélemy,Latin America & Caribbean,0,17.899,-62.841,Saint Barthélemy,,
+BLR,112,Belarus,Europe & Northern America,0,53.531,28.033,Belarus,,
+BLZ,084,Belize,Latin America & Caribbean,0,17.195,-88.718,Belize,,
+BMU,060,Bermuda,Europe & Northern America,1,32.313,-64.756,Bermuda,,
+BOL,068,Bolivia,Latin America & Caribbean,0,-16.708,-64.685,Bolivia,,
+BRA,076,Brazil,Latin America & Caribbean,0,-10.840,-53.117,Brazil,Brazilian,
+BRB,052,Barbados,Latin America & Caribbean,1,13.181,-59.560,Barbados,,
+BRN,096,Brunei Darussalam,Eastern & South-Eastern Asia,1,4.491,114.592,Brunei|Brunei Darussalam,,
+BTN,064,Bhutan,Central & Southern Asia,0,27.411,90.402,Bhutan,,
+BVT,074,Bouvet Island,Europe & Northern America,0,,,Bouvet Island,,
+BWA,072,Botswana,Sub-Saharan Africa,0,-22.184,23.798,Botswana,Botswanan|Batswana,AFR
+CAF,140,Central African Republic,Sub-Saharan Africa,0,6.568,20.468,Central African Republic,,
+CAN,124,Canada,Europe & Northern America,1,57.934,-102.365,Canada,Canadian,
+CCK,166,Cocos (Keeling) Islands,Europe & Northern America,0,,,Cocos (Keeling) Islands,,
+CHE,756,Switzerland,Europe & Northern America,1,46.798,8.208,Switzerland,,
+CHL,152,Chile,Latin America & Caribbean,1,-35.747,-71.311,Chile,Chilean,
+CHN,156,China,Eastern & South-Eastern Asia,0,36.617,103.797,China,Chinese|Han Chinese,EAS
+CIV,384,Côte d'Ivoire,Sub-Saharan Africa,0,7.629,-5.570,Cote d'Ivoire|Côte d'Ivoire|Ivory Coast,,
+CMR,120,Cameroon,Sub-Saharan Africa,0,5.691,12.739,Cameroon,Cameroonian,AFR
+COD,180,DR Congo,Sub-Saharan Africa,0,-2.877,23.644,DR Congo|DRC|Democratic Republic of the Congo,,
+COG,178,Republic of the Congo,Sub-Saharan Africa,0,-0.838,15.220,Republic of the Congo,,
+COK,184,Cook Islands,Oceania,0,-21.220,-159.787,Cook Islands,,
+COL,170,Colombia,Latin America & Caribbean,0,3.914,-73.081,Colombia,Colombian,AMR
+COM,174,Comoros,Sub-Saharan Africa,0,-11.654,43.339,Comoros,,
+CPV,132,Cabo Verde,Sub-Saharan Africa,0,15.083,-23.637,Cabo Verde|Cape Verde,,
+CRI,188,Costa Rica,Latin America & Caribbean,0,9.977,-84.192,Costa Rica,,
+CUB,192,Cuba,Latin America & Caribbean,0,21.614,-78.944,Cuba,,
+CUW,531,Curaçao,Latin America & Caribbean,1,12.196,-68.972,Curaçao,,
+CXR,162,Christmas Island,Europe & Northern America,0,,,Christmas Island,,
+CYM,136,Cayman Islands,Latin America & Caribbean,1,19.321,-81.286,Cayman Islands,,
+CYP,196,Cyprus,Northern Africa & Western Asia,1,34.917,33.006,Cyprus,,
+CZE,203,Czechia,Europe & Northern America,1,49.733,15.312,Czech Republic|Czechia,,
+DEU,276,Germany,Europe & Northern America,1,51.088,10.372,Germany,German,EUR
+DJI,262,Djibouti,Sub-Saharan Africa,0,11.749,42.561,Djibouti,,
+DMA,212,Dominica,Latin America & Caribbean,0,15.439,-61.358,,,
+DNK,208,Denmark,Europe & Northern America,1,56.241,9.356,Denmark,Danish,EUR
+DOM,214,Dominican Republic,Latin America & Caribbean,0,18.894,-70.506,Dominican Republic,,
+DZA,012,Algeria,Northern Africa & Western Asia,0,28.159,2.617,Algeria,,
+ECU,218,Ecuador,Latin America & Caribbean,0,-1.446,-78.389,Ecuador,,
+EGY,818,Egypt,Northern Africa & Western Asia,0,26.496,29.862,Egypt,Egyptian,MID
+ERI,232,Eritrea,Sub-Saharan Africa,0,15.359,38.838,Eritrea,,
+ESH,732,Western Sahara,Northern Africa & Western Asia,0,24.230,-12.219,Western Sahara,,
+ESP,724,Spain,Europe & Northern America,1,40.400,-3.563,Spain,Spanish,EUR
+EST,233,Estonia,Europe & Northern America,1,58.686,25.832,Estonia,Estonian,EUR
+ETH,231,Ethiopia,Sub-Saharan Africa,0,8.623,39.601,Ethiopia,Ethiopian,AFR
+FIN,246,Finland,Europe & Northern America,1,64.505,26.283,Finland,Finnish,EUR
+FJI,242,Fiji,Oceania,0,-16.522,-29.175,Fiji,,
+FLK,238,Falkland Islands (Malvinas),Latin America & Caribbean,0,-51.745,-58.761,Falkland Islands (Malvinas),,
+FRA,250,France,Europe & Northern America,1,46.620,2.453,France,French,EUR
+FRO,234,Faroe Islands,Europe & Northern America,1,62.170,-6.885,Faroe Islands,,
+FSM,583,Micronesia,Oceania,0,6.886,158.232,Micronesia,,
+GAB,266,Gabon,Sub-Saharan Africa,0,-0.587,11.788,Gabon,,
+GBR,826,United Kingdom,Europe & Northern America,1,53.938,-2.507,Britain|England|Great Britain|Northern Ireland|Scotland|U.K.|UK|United Kingdom|Wales,British|English|Scottish|Welsh,
+GEO,268,Georgia,Northern Africa & Western Asia,0,42.169,43.508,Republic of Georgia,,
+GGY,831,Guernsey,Europe & Northern America,0,49.468,-2.573,Guernsey,,
+GHA,288,Ghana,Sub-Saharan Africa,0,7.953,-1.217,Ghana,Ghanaian,AFR
+GIB,292,Gibraltar,Europe & Northern America,1,,,Gibraltar,,
+GIN,324,Guinea,Sub-Saharan Africa,0,10.436,-10.941,Republic of Guinea|Guinea-Conakry,,
+GLP,312,Guadeloupe,Latin America & Caribbean,0,,,Guadeloupe,,
+GMB,270,Gambia,Sub-Saharan Africa,0,13.450,-15.396,Gambia,Gambian,AFR
+GNB,624,Guinea-Bissau,Sub-Saharan Africa,0,12.064,-14.924,Guinea-Bissau,,
+GNQ,226,Equatorial Guinea,Sub-Saharan Africa,0,1.565,10.471,Equatorial Guinea,,
+GRC,300,Greece,Europe & Northern America,1,39.479,22.585,Greece,Greek,EUR
+GRD,308,Grenada,Latin America & Caribbean,0,12.117,-61.682,Grenada,,
+GRL,304,Greenland,Europe & Northern America,1,74.718,-41.356,Greenland,,
+GTM,320,Guatemala,Latin America & Caribbean,0,15.694,-90.365,Guatemala,,
+GUF,254,French Guiana,Latin America & Caribbean,0,,,French Guiana,,
+GUM,316,Guam,Oceania,1,13.441,144.767,Guam,,
+GUY,328,Guyana,Latin America & Caribbean,0,4.794,-58.982,Guyana,,
+HKG,344,Hong Kong,Eastern & South-Eastern Asia,1,22.439,114.140,Hong Kong,,
+HMD,334,Heard Island and McDonald Islands,Europe & Northern America,0,-53.087,73.520,Heard Island and McDonald Islands,,
+HND,340,Honduras,Latin America & Caribbean,0,14.824,-86.616,Honduras,,
+HRV,191,Croatia,Europe & Northern America,1,45.160,16.424,Croatia,,
+HTI,332,Haiti,Latin America & Caribbean,0,18.928,-72.676,Haiti,,
+HUN,348,Hungary,Europe & Northern America,1,47.163,19.396,Hungary,,
+IDN,360,Indonesia,Eastern & South-Eastern Asia,0,-0.191,114.014,Indonesia,Indonesian,EAS
+IMN,833,Isle of Man,Europe & Northern America,1,54.224,-4.538,Isle of Man,,
+IND,356,India,Central & Southern Asia,0,22.909,79.585,India,Indian,SAS
+IOT,086,British Indian Ocean Territory,Europe & Northern America,0,-7.331,72.445,British Indian Ocean Territory,,
+IRL,372,Ireland,Europe & Northern America,1,53.174,-8.135,Ireland,Irish,EUR
+IRN,364,Iran,Central & Southern Asia,0,32.580,54.273,Iran,Iranian|Persian,MID
+IRQ,368,Iraq,Northern Africa & Western Asia,0,33.040,43.744,Iraq,,
+ISL,352,Iceland,Europe & Northern America,1,64.996,-18.574,Iceland,Icelandic|Icelander|Icelanders,EUR
+ISR,376,Israel,Northern Africa & Western Asia,1,31.461,35.004,Israel,Israeli,
+ITA,380,Italy,Europe & Northern America,1,43.530,12.148,Italy,Italian|Sardinian,EUR
+JAM,388,Jamaica,Latin America & Caribbean,0,18.157,-77.315,Jamaica,,
+JEY,832,Jersey,Europe & Northern America,0,49.218,-2.127,Jersey,,
+JOR,400,Jordan,Northern Africa & Western Asia,0,31.246,36.771,Hashemite Kingdom of Jordan,,
+JPN,392,Japan,Eastern & South-Eastern Asia,1,36.650,137.986,Japan,Japanese,EAS
+KAZ,398,Kazakhstan,Central & Southern Asia,0,48.157,67.293,Kazakhstan,,
+KEN,404,Kenya,Sub-Saharan Africa,0,0.601,37.795,Kenya,Kenyan,AFR
+KGZ,417,Kyrgyzstan,Central & Southern Asia,0,41.458,74.532,Kyrgyzstan,,
+KHM,116,Cambodia,Eastern & South-Eastern Asia,0,12.721,104.908,Cambodia,,
+KIR,296,Kiribati,Oceania,0,1.854,-157.374,Kiribati,,
+KNA,659,Saint Kitts and Nevis,Latin America & Caribbean,1,17.327,-62.747,Saint Kitts and Nevis,,
+KOR,410,South Korea,Eastern & South-Eastern Asia,1,36.461,127.871,Korea|Republic of Korea|South Korea,Korean,EAS
+KWT,414,Kuwait,Northern Africa & Western Asia,1,29.317,47.562,Kuwait,,
+LAO,418,Laos,Eastern & South-Eastern Asia,0,18.502,103.738,Laos,,
+LBN,422,Lebanon,Northern Africa & Western Asia,0,33.923,35.880,Lebanon,Lebanese,MID
+LBR,430,Liberia,Sub-Saharan Africa,0,6.453,-9.322,Liberia,,
+LBY,434,Libya,Northern Africa & Western Asia,0,27.031,18.008,Libya,,
+LCA,662,Saint Lucia,Latin America & Caribbean,0,13.895,-60.970,Saint Lucia,,
+LIE,438,Liechtenstein,Europe & Northern America,1,47.137,9.536,Liechtenstein,,
+LKA,144,Sri Lanka,Central & Southern Asia,0,7.609,80.703,Sri Lanka,Sri Lankan,SAS
+LSO,426,Lesotho,Sub-Saharan Africa,0,-29.580,28.227,Lesotho,,
+LTU,440,Lithuania,Europe & Northern America,1,55.326,23.892,Lithuania,,
+LUX,442,Luxembourg,Europe & Northern America,1,49.767,6.072,Luxembourg,,
+LVA,428,Latvia,Europe & Northern America,1,56.851,24.912,Latvia,,
+MAC,446,Macao,Eastern & South-Eastern Asia,1,22.223,113.509,Macao|Macau,,
+MAF,663,Saint Martin (French part),Latin America & Caribbean,1,18.089,-63.060,Saint Martin (French part),,
+MAR,504,Morocco,Northern Africa & Western Asia,0,29.837,-8.456,Morocco,Moroccan,MID
+MCO,492,Monaco,Europe & Northern America,1,43.753,7.407,Monaco,,
+MDA,498,Moldova,Europe & Northern America,0,47.195,28.457,Moldova,,
+MDG,450,Madagascar,Sub-Saharan Africa,0,-19.375,46.703,Madagascar,,
+MDV,462,Maldives,Central & Southern Asia,0,4.197,73.503,Maldives,,
+MEX,484,Mexico,Latin America & Caribbean,0,23.941,-102.505,Mexico,Mexican,AMR
+MHL,584,Marshall Islands,Oceania,0,7.106,171.188,Marshall Islands,,
+MKD,807,North Macedonia,Europe & Northern America,0,41.595,21.682,North Macedonia,,
+MLI,466,Mali,Sub-Saharan Africa,0,17.346,-3.543,Mali,,
+MLT,470,Malta,Europe & Northern America,1,35.890,14.444,Malta,,
+MMR,104,Myanmar,Eastern & South-Eastern Asia,0,21.222,96.489,Myanmar,,
+MNE,499,Montenegro,Europe & Northern America,0,42.789,19.239,Montenegro,,
+MNG,496,Mongolia,Eastern & South-Eastern Asia,0,46.827,103.053,Mongolia,,
+MNP,580,Northern Mariana Islands,Oceania,1,15.181,145.744,Northern Mariana Islands,,
+MOZ,508,Mozambique,Sub-Saharan Africa,0,-17.272,35.534,Mozambique,,
+MRT,478,Mauritania,Sub-Saharan Africa,0,20.257,-10.347,Mauritania,,
+MSR,500,Montserrat,Latin America & Caribbean,0,16.740,-62.186,Montserrat,,
+MTQ,474,Martinique,Latin America & Caribbean,0,,,Martinique,,
+MUS,480,Mauritius,Sub-Saharan Africa,0,-20.278,57.571,Mauritius,,
+MWI,454,Malawi,Sub-Saharan Africa,0,-13.220,34.288,Malawi,Malawian,AFR
+MYS,458,Malaysia,Eastern & South-Eastern Asia,0,3.615,114.724,Malaysia,Malaysian,EAS
+MYT,175,Mayotte,Sub-Saharan Africa,0,,,Mayotte,,
+NAM,516,Namibia,Sub-Saharan Africa,0,-22.130,17.210,Namibia,,
+NCL,540,New Caledonia,Oceania,1,-21.325,165.487,New Caledonia,,
+NER,562,Niger,Sub-Saharan Africa,0,17.419,9.386,Niger,,
+NFK,574,Norfolk Island,Oceania,0,-29.052,167.950,Norfolk Island,,
+NGA,566,Nigeria,Sub-Saharan Africa,0,9.595,8.090,Nigeria,Nigerian|Yoruba|Igbo,AFR
+NIC,558,Nicaragua,Latin America & Caribbean,0,12.847,-85.031,Nicaragua,,
+NIU,570,Niue,Oceania,0,-19.049,-169.870,Niue,,
+NLD,528,Netherlands,Europe & Northern America,1,52.282,5.642,Holland|Netherlands|The Netherlands,Dutch,EUR
+NOR,578,Norway,Europe & Northern America,1,64.238,13.909,Norway,Norwegian,EUR
+NPL,524,Nepal,Central & Southern Asia,0,28.249,83.916,Nepal,Nepali|Nepalese,SAS
+NRU,520,Nauru,Oceania,1,-0.519,166.933,Nauru,,
+NZL,554,New Zealand,Oceania,1,-43.974,170.528,New Zealand,New Zealand,
+OMN,512,Oman,Northern Africa & Western Asia,1,20.576,56.085,Oman,,
+PAK,586,Pakistan,Central & Southern Asia,0,29.950,69.340,Pakistan,Pakistani,SAS
+PAN,591,Panama,Latin America & Caribbean,1,8.524,-80.112,Panama,,
+PCN,612,Pitcairn,Oceania,0,-24.365,-128.317,Pitcairn,,
+PER,604,Peru,Latin America & Caribbean,0,-9.153,-74.383,Peru,Peruvian,AMR
+PHL,608,Philippines,Eastern & South-Eastern Asia,0,15.957,121.416,Philippines,Filipino,EAS
+PLW,585,Palau,Oceania,1,7.514,134.581,Palau,,
+PNG,598,Papua New Guinea,Oceania,0,-6.606,144.245,Papua New Guinea,Papua New Guinean,OCE
+POL,616,Poland,Europe & Northern America,1,52.128,19.390,Poland,Polish,EUR
+PRI,630,Puerto Rico,Latin America & Caribbean,1,18.230,-66.482,Puerto Rico,,
+PRK,408,North Korea,Eastern & South-Eastern Asia,0,40.154,127.193,North Korea,,
+PRT,620,Portugal,Europe & Northern America,1,39.677,-7.978,Portugal,,
+PRY,600,Paraguay,Latin America & Caribbean,0,-23.228,-58.400,Paraguay,,
+PSE,275,Palestine,Northern Africa & Western Asia,0,31.948,35.248,Palestine,,
+PYF,258,French Polynesia,Oceania,1,-17.664,-149.420,French Polynesia,,
+QAT,634,Qatar,Northern Africa & Western Asia,1,25.306,51.185,Qatar,Qatari,MID
+REU,638,Réunion,Sub-Saharan Africa,0,,,Réunion,,
+ROU,642,Romania,Europe & Northern America,1,45.853,24.973,Romania,,
+RUS,643,Russian Federation,Europe & Northern America,1,56.382,193.216,Russia|Russian Federation,Russian,EUR
+RWA,646,Rwanda,Sub-Saharan Africa,0,-1.990,29.920,Rwanda,Rwandan,AFR
+SAU,682,Saudi Arabia,Northern Africa & Western Asia,1,24.125,44.539,Saudi Arabia,Saudi,MID
+SDN,729,Sudan,Sub-Saharan Africa,0,15.990,29.940,Sudan,,
+SEN,686,Senegal,Sub-Saharan Africa,0,14.366,-14.473,Senegal,Senegalese,AFR
+SGP,702,Singapore,Eastern & South-Eastern Asia,1,1.359,103.817,Singapore,Singaporean,EAS
+SGS,239,South Georgia and the South Sandwich Islands,Europe & Northern America,0,-54.365,-36.688,South Georgia and the South Sandwich Islands,,
+SHN,654,Saint Helena,Sub-Saharan Africa,0,-15.959,-5.717,Saint Helena,,
+SJM,744,Svalbard and Jan Mayen,Europe & Northern America,0,,,Svalbard and Jan Mayen,,
+SLB,090,Solomon Islands,Oceania,0,-9.625,160.168,Solomon Islands,,
+SLE,694,Sierra Leone,Sub-Saharan Africa,0,8.572,-11.785,Sierra Leone,,
+SLV,222,El Salvador,Latin America & Caribbean,0,13.739,-88.872,El Salvador,,
+SMR,674,San Marino,Europe & Northern America,1,43.942,12.459,San Marino,,
+SOM,706,Somalia,Sub-Saharan Africa,0,4.751,45.707,Somalia,,
+SPM,666,Saint Pierre and Miquelon,Europe & Northern America,0,46.945,-56.327,Saint Pierre and Miquelon,,
+SRB,688,Serbia,Europe & Northern America,0,44.222,20.789,Serbia,,
+SSD,728,South Sudan,Sub-Saharan Africa,0,7.309,30.248,South Sudan,,
+STP,678,Sao Tome and Principe,Sub-Saharan Africa,0,0.238,6.606,Sao Tome and Principe,,
+SUR,740,Suriname,Latin America & Caribbean,0,4.131,-55.912,Suriname,,
+SVK,703,Slovakia,Europe & Northern America,1,48.705,19.479,Slovakia,,
+SVN,705,Slovenia,Europe & Northern America,1,46.116,14.805,Slovenia,,
+SWE,752,Sweden,Europe & Northern America,1,62.825,16.735,Sweden,Swedish,EUR
+SWZ,748,Eswatini,Sub-Saharan Africa,0,-26.559,31.482,Eswatini|Swaziland,,
+SXM,534,Sint Maarten (Dutch part),Latin America & Caribbean,1,18.051,-63.057,Sint Maarten (Dutch part),,
+SYC,690,Seychelles,Sub-Saharan Africa,1,-4.660,55.476,Seychelles,,
+SYR,760,Syria,Northern Africa & Western Asia,0,35.025,38.508,Syria,,
+TCA,796,Turks and Caicos Islands,Latin America & Caribbean,1,21.811,-71.740,Turks and Caicos Islands,,
+TCD,148,Chad,Sub-Saharan Africa,0,15.333,18.645,,,
+TGO,768,Togo,Sub-Saharan Africa,0,8.525,0.963,Togo,,
+THA,764,Thailand,Eastern & South-Eastern Asia,0,15.135,101.007,Thailand,Thai,EAS
+TJK,762,Tajikistan,Central & Southern Asia,0,38.529,71.014,Tajikistan,,
+TKL,772,Tokelau,Oceania,0,,,Tokelau,,
+TKM,795,Turkmenistan,Central & Southern Asia,0,39.116,59.373,Turkmenistan,,
+TLS,626,Timor-Leste,Eastern & South-Eastern Asia,0,-8.810,125.923,Timor-Leste,,
+TON,776,Tonga,Oceania,0,-21.167,-175.217,Tonga,,
+TTO,780,Trinidad and Tobago,Latin America & Caribbean,1,10.421,-61.293,Trinidad and Tobago,,
+TUN,788,Tunisia,Northern Africa & Western Asia,0,34.120,9.548,Tunisia,Tunisian,MID
+TUR,792,Türkiye,Northern Africa & Western Asia,0,38.991,35.422,Turkey|Türkiye,Turkish,MID
+TUV,798,Tuvalu,Oceania,0,,,Tuvalu,,
+TWN,158,Taiwan,Eastern & South-Eastern Asia,1,23.751,120.962,Taiwan,Taiwanese,EAS
+TZA,834,Tanzania,Sub-Saharan Africa,0,-6.277,34.798,Tanzania,Tanzanian,AFR
+UGA,800,Uganda,Sub-Saharan Africa,0,1.275,32.369,Uganda,Ugandan,AFR
+UKR,804,Ukraine,Europe & Northern America,0,49.160,31.253,Ukraine,,
+UMI,581,United States Minor Outlying Islands,Europe & Northern America,0,,,United States Minor Outlying Islands,,
+URY,858,Uruguay,Latin America & Caribbean,1,-32.800,-56.018,Uruguay,,
+USA,840,United States,Europe & Northern America,1,39.526,-99.144,U.S.|U.S.A.|US|USA|United States|United States of America,American,
+UZB,860,Uzbekistan,Central & Southern Asia,0,41.757,63.133,Uzbekistan,,
+VAT,336,Holy See (Vatican City State),Europe & Northern America,0,41.902,12.434,Holy See (Vatican City State),,
+VCT,670,Saint Vincent and the Grenadines,Latin America & Caribbean,0,13.254,-61.195,Saint Vincent and the Grenadines,,
+VEN,862,Venezuela,Latin America & Caribbean,0,7.119,-66.187,Venezuela,,
+VGB,092,British Virgin Islands,Latin America & Caribbean,1,18.423,-64.622,British Virgin Islands,,
+VIR,850,US Virgin Islands,Latin America & Caribbean,1,17.741,-64.772,US Virgin Islands,,
+VNM,704,Vietnam,Eastern & South-Eastern Asia,0,16.651,106.301,Viet Nam|Vietnam,Vietnamese,EAS
+VUT,548,Vanuatu,Oceania,0,-15.226,166.849,Vanuatu,,
+WLF,876,Wallis and Futuna,Oceania,0,-14.286,-178.130,Wallis and Futuna,,
+WSM,882,Samoa,Oceania,0,-13.631,-172.437,Samoa,,
+YEM,887,Yemen,Northern Africa & Western Asia,0,15.936,47.541,Yemen,,
+ZAF,710,South Africa,Sub-Saharan Africa,0,-29.010,25.157,South Africa,South African,
+ZMB,894,Zambia,Sub-Saharan Africa,0,-13.458,27.775,Zambia,,
+ZWE,716,Zimbabwe,Sub-Saharan Africa,0,-19.004,29.851,Zimbabwe,Zimbabwean,AFR

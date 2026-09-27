@@ -7,7 +7,7 @@ description: >-
   change the result. Never produces absolute risk.
 license: MIT
 metadata:
-  version: "2.1.0"
+  version: "2.1.1"
   author: PRSGuard team (ClawBio Hackathon Challenge 3)
   domain: genomics
   tags:
@@ -181,6 +181,8 @@ PGS001336 (SUPPORTED), an admixed ASW genome (RAW_ONLY, TARGET_REFERENCE_UNRESOL
   useful discrimination (an AUROC of 0.55 with a CI above 0.5 passes) or calibration.
 - SUPPORTED is a **research-prototype reportability state**: the percentile may be shown with its intervals. It is
   not a clinical recommendation and never an absolute risk.
+- The rule assumes a score is meant to be read as higher score -> higher phenotype value or risk; the PGS Catalog
+  has no structured direction field, so below-null effects are never accepted as support.
 
 ## Example Queries
 

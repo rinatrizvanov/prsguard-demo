@@ -9,7 +9,8 @@
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "geo:iso3": "node scripts/build-iso3-map.mjs ../skills/equity-lit-auditor/reference/countries.csv lib/geo/iso3.json",
-    "smoke": "node scripts/smoke-check.mjs out"
+    "smoke": "node scripts/smoke-check.mjs out",
+    "test": "node --test scripts/*.test.mjs"
   },
   "engines": {
     "node": ">=18.18"

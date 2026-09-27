@@ -10,7 +10,8 @@ Method (no unsupervised clustering, no arbitrary k):
    missing sites), genotypes standardised with core-reference allele frequencies. K = 4 PCs: five continental
    reference groups span a 4-dimensional between-group space (benchmark over K in docs/calibration.md).
 3. The person is projected and compared with each group's reference cloud by Mahalanobis distance. Inside a
-   cloud = D^2 <= chi^2_{K}(0.999). Outside every cloud = INTERMEDIATE (admixed or not represented).
+   cloud = D^2 <= chi^2_{K}(0.999). RESOLVED requires being inside exactly one cloud; outside every cloud
+   (admixed or not represented) or inside several (ambiguous, typical of sparse inputs) = INTERMEDIATE.
 4. Robustness: the whole fit/projection/placement is repeated on bootstrap resamples of the SNPs. Placement
    stability = share of replicates giving the same placement. It is NOT an ancestry percentage.
 5. Context only: supervised admixture proportions against fixed core-group allele frequencies (EM).
@@ -132,7 +133,10 @@ def place(point: np.ndarray, ref_pcs: np.ndarray, labels: np.ndarray, k: int = K
         d2[g] = float(diff @ np.linalg.solve(cov, diff))
     nearest = min(d2, key=d2.get)
     inside = [g for g in GROUPS if d2[g] <= cut]
-    placement = nearest if d2[nearest] <= cut else "INTERMEDIATE"
+    # RESOLVED requires membership of exactly one core cloud. Inside several clouds, the reference group is
+    # ambiguous (benchmarks/multicloud_benchmark.py: 0/2,504 people at full density, but ~22% at 200 sites), so
+    # the person is not assigned to the nearest one.
+    placement = inside[0] if len(inside) == 1 else "INTERMEDIATE"
     return {"placement": placement, "nearest": nearest, "mahalanobis_d2": {g: round(v, 3) for g, v in d2.items()},
             "inside_clouds": inside, "cloud_cut_d2": round(cut, 3)}
 
@@ -263,8 +267,11 @@ def place_vector(panel: ReferencePanel, target: np.ndarray, policy: PlacementPol
            "variance_explained": [round(float(v), 4) for v in var_expl],
            "detail": {"RESOLVED": f"inside the {main['nearest']} reference cloud in {stability:.0%} of bootstrap "
                                   "replicates",
-                      "INTERMEDIATE": f"outside every reference cloud (nearest {main['nearest']}); consistent with "
-                                      "admixed or unrepresented ancestry",
+                      "INTERMEDIATE": (f"inside more than one reference cloud ({', '.join(main['inside_clouds'])}): "
+                                       "the reference group is ambiguous"
+                                       if len(main["inside_clouds"]) > 1 else
+                                       f"outside every reference cloud (nearest {main['nearest']}); consistent with "
+                                       "admixed or unrepresented ancestry"),
                       "UNSTABLE": f"placement changes across marker bootstraps ({stability:.0%} agreement)"}[status]}
     if with_plot:
         pick = np.arange(len(labels))

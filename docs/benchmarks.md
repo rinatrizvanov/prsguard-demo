@@ -30,13 +30,30 @@ Seed 20260926; 50 marker bootstraps; K = 4 PCs; cloud quantile 0.999; 100 refere
 
 | Sites | n | Resolved | Resolved correct | Resolved wrong | Median stability |
 |---|---|---|---|---|---|
-| 50 | 30 | 4 | 4 | 0 | 0.73 |
-| 100 | 30 | 9 | 9 | 0 | 0.84 |
-| 200 | 30 | 21 | 21 | 0 | 0.98 |
-| 400 | 30 | 29 | 29 | 0 | 1.0 |
-| 800 | 30 | 30 | 30 | 0 | 1.0 |
+| 50 | 30 | 0 | 0 | 0 | 1.0 |
+| 100 | 30 | 1 | 1 | 0 | 0.92 |
+| 200 | 30 | 7 | 7 | 0 | 0.87 |
+| 400 | 30 | 15 | 15 | 0 | 0.95 |
+| 800 | 30 | 23 | 23 | 0 | 1.0 |
 | 1600 | 30 | 30 | 30 | 0 | 1.0 |
 | 3200 | 30 | 30 | 30 | 0 | 1.0 |
+
+### Membership of more than one core reference cloud
+
+Leave-one-out; all 2,504 individuals at full density, 400 random individuals per sparse level. RESOLVED requires membership of exactly one core cloud (`benchmarks/multicloud_benchmark.py`).
+
+| Sites | Kind | n | In no cloud | In one | In 2+ | Combinations (2+) | Resolved (exactly-one rule; 1 bootstrap replicate, production uses 100) |
+|---|---|---|---|---|---|---|---|
+| all | core | 2085 | 13 | 2072 | 0 | - | 2066 |
+| all | admixed | 419 | 215 | 204 | 0 | - | 195 |
+| 200 | core | 329 | 0 | 267 | 62 | AMR+EAS 1, AMR+EUR 1, AMR+EUR+SAS 12, AMR+SAS 3, EUR+SAS 45 | 146 |
+| 200 | admixed | 71 | 4 | 39 | 28 | AMR+EUR 8, AMR+EUR+SAS 10, AMR+SAS 1, EUR+SAS 9 | 19 |
+| 400 | core | 325 | 1 | 314 | 10 | EUR+SAS 10 | 234 |
+| 400 | admixed | 75 | 12 | 49 | 14 | AMR+EUR 9, AMR+EUR+SAS 1, EUR+SAS 4 | 29 |
+| 800 | core | 334 | 2 | 332 | 0 | - | 326 |
+| 800 | admixed | 66 | 18 | 48 | 0 | - | 39 |
+
+Of 114 multi-cloud placements, 64 would give disjoint 95% percentile intervals for at least one demo score depending on which containing group is used as the reference (largest gap 34.34 percentile points): the reference choice would change the interpretation, so such placements are not RESOLVED.
 
 ## Scoreability (masking experiments)
 

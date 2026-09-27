@@ -58,8 +58,8 @@
         "sha256": "c35e7d32380df597e579a144747a6bc759fa7268e447ba76a66dafa84f6fba8d",
         "format": "vcf"
       },
-      "started_at": "2026-09-26T22:34:14+00:00",
-      "finished_at": "2026-09-26T22:34:14+00:00"
+      "started_at": "2026-09-26T23:58:47+00:00",
+      "finished_at": "2026-09-26T23:58:47+00:00"
     },
     {
       "step": 2,
@@ -77,8 +77,8 @@
         "rule": "a build is confirmed if >= 90% of >= 20 anchor rsIDs agree and refuted if <= 10%; otherwise the declared build if unambiguous and not refuted",
         "method": "empirical (rsID anchor positions) + declaration"
       },
-      "started_at": "2026-09-26T22:34:14+00:00",
-      "finished_at": "2026-09-26T22:34:14+00:00"
+      "started_at": "2026-09-26T23:58:47+00:00",
+      "finished_at": "2026-09-26T23:58:47+00:00"
     },
     {
       "step": 3,
@@ -97,8 +97,8 @@
           "MONDO_0004989"
         ]
       },
-      "started_at": "2026-09-26T22:34:14+00:00",
-      "finished_at": "2026-09-26T22:34:14+00:00"
+      "started_at": "2026-09-26T23:58:47+00:00",
+      "finished_at": "2026-09-26T23:58:47+00:00"
     },
     {
       "step": 4,
@@ -114,8 +114,8 @@
           "api_version": "1.8.6"
         }
       },
-      "started_at": "2026-09-26T22:34:14+00:00",
-      "finished_at": "2026-09-26T22:34:14+00:00"
+      "started_at": "2026-09-26T23:58:47+00:00",
+      "finished_at": "2026-09-26T23:58:47+00:00"
     },
     {
       "step": 5,
@@ -132,8 +132,8 @@
         "digest": "sha256:13d58f1fd3116bf1ce7cc060a3471c04b33f941d90d3baf5a01c6b1a7569d619",
         "frozen_at": "2026-09-26T22:00:23+00:00"
       },
-      "started_at": "2026-09-26T22:34:14+00:00",
-      "finished_at": "2026-09-26T22:34:14+00:00"
+      "started_at": "2026-09-26T23:58:47+00:00",
+      "finished_at": "2026-09-26T23:58:47+00:00"
     },
     {
       "step": 6,
@@ -148,8 +148,8 @@
         "placement_stability": 0.98,
         "n_sites_used": 6557
       },
-      "started_at": "2026-09-26T22:34:14+00:00",
-      "finished_at": "2026-09-26T22:34:18+00:00"
+      "started_at": "2026-09-26T23:58:47+00:00",
+      "finished_at": "2026-09-26T23:58:51+00:00"
     },
     {
       "step": 7,
@@ -158,8 +158,8 @@
       "tool": "prsguard.harmonize (+ ClawBio gwas-prs cross-check)",
       "summary": "PGS000004 274/313 matched, r = 0.9543; PGS001804 2984/2984 matched, r = 1.0; PGS001336 467/555 matched, r = 0.972",
       "outputs": {},
-      "started_at": "2026-09-26T22:34:18+00:00",
-      "finished_at": "2026-09-26T22:34:18+00:00"
+      "started_at": "2026-09-26T23:58:51+00:00",
+      "finished_at": "2026-09-26T23:58:51+00:00"
     },
     {
       "step": 8,
@@ -168,8 +168,8 @@
       "tool": "prsguard.catalog + prsguard.reference.distribution",
       "summary": "PGS000004 metadata resolved; PGS001804 metadata resolved; PGS001336 metadata resolved",
       "outputs": {},
-      "started_at": "2026-09-26T22:34:18+00:00",
-      "finished_at": "2026-09-26T22:34:18+00:00"
+      "started_at": "2026-09-26T23:58:51+00:00",
+      "finished_at": "2026-09-26T23:58:51+00:00"
     },
     {
       "step": 9,
@@ -182,8 +182,8 @@
         "PGS001804": "RAW_ONLY",
         "PGS001336": "RAW_ONLY"
       },
-      "started_at": "2026-09-26T22:34:18+00:00",
-      "finished_at": "2026-09-26T22:34:18+00:00"
+      "started_at": "2026-09-26T23:58:51+00:00",
+      "finished_at": "2026-09-26T23:58:51+00:00"
     },
     {
       "step": 10,
@@ -195,8 +195,8 @@
         "cross_pgs": "NOT_COMPARABLE",
         "primary": "PGS000004"
       },
-      "started_at": "2026-09-26T22:34:18+00:00",
-      "finished_at": "2026-09-26T22:34:18+00:00"
+      "started_at": "2026-09-26T23:58:51+00:00",
+      "finished_at": "2026-09-26T23:58:51+00:00"
     }
   ],
   "router": {
@@ -9074,7 +9074,7 @@
           "reference_distribution.reference_sensitive": false
         },
         "evidence_missing": [],
-        "calibration_version": "2026.09.26-2",
+        "calibration_version": "2026.09.26-3",
         "rule_trace": [
           {
             "rule": "G1",
@@ -9214,8 +9214,8 @@
         "what_would_change_result": [],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.1.0",
-          "config_sha256": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
+          "gate_version": "2.1.1",
+          "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
           "input_digest": "sha256:2205e243f3981f3ec279aceacf2f4d6e354da4aaae4323a62362af2fbf0d73b4",
           "deterministic": true
@@ -13122,7 +13122,7 @@
           "reference_distribution.reference_sensitive": false
         },
         "evidence_missing": [],
-        "calibration_version": "2026.09.26-2",
+        "calibration_version": "2026.09.26-3",
         "rule_trace": [
           {
             "rule": "G1",
@@ -13270,8 +13270,8 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.1.0",
-          "config_sha256": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
+          "gate_version": "2.1.1",
+          "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
           "input_digest": "sha256:68f223ac698a7250a3e299176eb003ae0ba46f1dd8fec636ba356ced9aeabe73",
           "deterministic": true
@@ -13883,7 +13883,7 @@
           "reference_distribution.reference_sensitive": false
         },
         "evidence_missing": [],
-        "calibration_version": "2026.09.26-2",
+        "calibration_version": "2026.09.26-3",
         "rule_trace": [
           {
             "rule": "G1",
@@ -14031,8 +14031,8 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.1.0",
-          "config_sha256": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
+          "gate_version": "2.1.1",
+          "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
           "input_digest": "sha256:9b2490f485a01e2c09dcbf1129f55eb362696eeef617a698113fb7e1ddfa9cfa",
           "deterministic": true
@@ -16637,8 +16637,8 @@
     ]
   },
   "reproducibility": {
-    "prsguard_version": "1.0.0",
-    "git_commit": "56b79d184fc5feea8f329f218883430d367f3bc2",
+    "prsguard_version": "1.0.1",
+    "git_commit": "cc9c623f15854c895b99d017b41bec4a082c379c",
     "git_dirty": true,
     "clawbio_commit": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
     "clawbio_pinned": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
@@ -16657,10 +16657,10 @@
       "pca_panel": "sha256:b11b9274bcf24f750f60a1eff1364d2bcf4df96211415311fd96385ae9718b40",
       "pgs_panel": "sha256:c25c47690db2b847e08ad56ff3f8ba758b42c439104aeaebd325705538bc6955",
       "catalog_snapshot_manifest": "sha256:dcbc6e44adc3522872db1bc7219d92b29aae56894af3432efa6bc77f5024e9ea",
-      "gate_config": "sha256:878a8d7e7fd9f570323d446141f71e69a66ffca353f79429754f6053b5655129",
+      "gate_config": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
       "candidate_set": "sha256:13d58f1fd3116bf1ce7cc060a3471c04b33f941d90d3baf5a01c6b1a7569d619"
     },
-    "calibration_version": "2026.09.26-2",
+    "calibration_version": "2026.09.26-3",
     "seeds": {
       "placement_bootstrap": 20260926,
       "reference_subset": 1000
@@ -16670,8 +16670,8 @@
       "release": "2026-09-17",
       "api_version": "1.8.6"
     },
-    "started_at": "2026-09-26T22:34:14+00:00",
-    "finished_at": "2026-09-26T22:34:18+00:00",
+    "started_at": "2026-09-26T23:58:47+00:00",
+    "finished_at": "2026-09-26T23:58:51+00:00",
     "command": "prsguard demo --case F --out runs/demo"
   },
   "disclaimer": "PRSGuard is RESEARCH SOFTWARE / a PROTOTYPE, not a medical device. It does not diagnose, and it never converts a polygenic score into absolute risk. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, not clinically useful discrimination or calibration. Genetic reference placement is not ethnicity or identity."

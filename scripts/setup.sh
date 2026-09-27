@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # PRSGuard development setup. Safe to re-run: every step checks state first.
 #
-#   1. .venv (uv if available, else python3 -m venv), then `pip install -e ".[reference,dev]"`
+#   1. .venv; with uv: `uv sync --frozen` (exact versions from uv.lock); without uv: python3 -m venv +
+#      `pip install -e ".[reference,dev]"` (pyproject lower bounds only, NOT the locked versions)
 #   2. vendor/ClawBio: clone https://github.com/ClawBio/ClawBio and pin it to CLAWBIO_COMMIT
 #   3. make sure the interpreter can run `clawbio.py run` (installs the runner's own deps only if missing)
 #   4. scripts/install_into_clawbio.py: link equity-lit-auditor + prs-applicability-gate into
@@ -54,8 +55,13 @@ fi
 "$VPY" -c 'import sys; sys.exit(0 if sys.version_info >= (3, 11) else 1)' \
   || die "$VENV runs $("$VPY" --version 2>&1); PRSGuard needs Python >= 3.11 (delete .venv and re-run)"
 
-say "installing PRSGuard (editable) with extras [reference,dev]"
-(cd "$REPO_ROOT" && pip_install -e ".[reference,dev]")
+if [ "$HAVE_UV" = 1 ] && [ -f "$REPO_ROOT/uv.lock" ]; then
+  say "installing PRSGuard (editable) + extras [reference,dev] at the versions pinned in uv.lock"
+  (cd "$REPO_ROOT" && UV_PROJECT_ENVIRONMENT="$VENV" uv sync --frozen --extra reference --extra dev)
+else
+  say "installing PRSGuard (editable) + extras [reference,dev] with pip (uv not found: versions are NOT locked)"
+  (cd "$REPO_ROOT" && pip_install -e ".[reference,dev]")
+fi
 
 # --- 2. pinned ClawBio checkout ------------------------------------------------
 if [ ! -e "$CLAWBIO_DIR" ]; then

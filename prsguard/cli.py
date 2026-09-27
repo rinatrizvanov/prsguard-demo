@@ -33,9 +33,15 @@ def _run(args) -> int:
                     snapshot_dir=Path(args.snapshot), candidates=Path(args.candidates) if args.candidates else None,
                     top_k=args.top_k, max_variants=args.max_variants,
                     literature_context=Path(args.literature) if args.literature else None, command=sys.argv,
-                    orchestrated_by=args.orchestrated_by,
+                    orchestrated_by=args.orchestrated_by, sample=args.sample,
                     orchestrator_kind="llm_agent" if args.orchestrated_by else "scripted_cli")
-    r = run(cfg)
+    from prsguard.genotypes import GenotypeInputError
+
+    try:
+        r = run(cfg)
+    except GenotypeInputError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
     print(f"{r['headline']['answer']}: {r['headline']['text']}")
     for c in r["candidates"]:
         print(f"  {c['pre_rank']:>3} {c['pgs_id']} {c['gate']['status']:<9} {', '.join(c['gate']['reason_codes'])}")
@@ -116,6 +122,7 @@ def main(argv: list[str] | None = None) -> int:
     common(p)
     p.add_argument("--genotype", required=True)
     p.add_argument("--build", choices=("GRCh37", "GRCh38", "NCBI36"), help="build declared by the user")
+    p.add_argument("--sample", help="VCF sample to analyse (required when the VCF has several sample columns)")
     p.add_argument("--candidates", help="reuse a frozen candidate set (digest verified)")
     p.add_argument("--literature", help="precomputed equity-lit-auditor JSON to attach as context")
     p.add_argument("--orchestrated-by", help="set by an LLM agent driving PRSGuard (e.g. 'LLM agent: <name>'); "

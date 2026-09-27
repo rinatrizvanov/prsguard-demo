@@ -23,7 +23,9 @@ jobs:
         with:
           python-version: "3.12"
       - uses: astral-sh/setup-uv@v5
-      - name: Set up PRSGuard and the pinned ClawBio checkout
+      - name: Lockfile is current with pyproject.toml
+        run: uv lock --check
+      - name: Set up PRSGuard (uv.lock versions) and the pinned ClawBio checkout
         run: scripts/setup.sh
       - name: Lint (ruff)
         run: .venv/bin/python -m ruff check prsguard benchmarks tests skills/prs-applicability-gate
@@ -56,3 +58,4 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm run smoke
+      - run: npm test

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use PRSGuard, please cite it as below."
+title: "PRSGuard: a trait-first, evidence-aware polygenic score router and applicability gate"
+abstract: >-
+  A trait-first, evidence-aware PGS router that decides not only which polygenic score can be
+  calculated, but whether its interpretation is supported for the individual. Research software /
+  prototype; not a medical device.
+type: software
+authors:
+  - family-names: Rizvanov
+    given-names: Rinat
+version: 1.0.1
+license: MIT
+repository-code: "https://github.com/rinatrizvanov/prsguard-demo"
+url: "https://rinatrizvanov.github.io/prsguard-demo/"
+keywords:
+  - polygenic score
+  - PGS Catalog
+  - applicability
+  - ClawBio

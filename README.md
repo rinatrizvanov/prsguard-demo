@@ -13,7 +13,8 @@ Built for the ClawBio Hackathon (Challenge 3) on top of [ClawBio](https://github
 
 **Can this PGS result actually be interpreted for this person?**
 
-A raw polygenic score is always computable. A percentile is a different claim: that the score computed from *this*
+Software can often produce a PRS number, but whether that score was faithfully computed and can be
+interpreted are separate questions. A percentile is a different claim: that the score computed from *this*
 file is the published score, that an evaluation in people like *this* person showed evidence of association, and
 that there is a defensible reference population to compare them with. PRSGuard checks each of those with evidence and releases only
 what the evidence supports:
@@ -58,7 +59,7 @@ Full diagram and boundaries: [docs/architecture.md](docs/architecture.md).
 ## Quick start
 
 ```bash
-scripts/setup.sh                 # .venv (uv or venv), pip install -e ".[reference,dev]",
+scripts/setup.sh                 # .venv; with uv: exact versions from uv.lock (else pip, unlocked),
                                  # clone ClawBio at the pinned commit into vendor/, register the skills
 source .venv/bin/activate
 
@@ -167,6 +168,10 @@ scripts/                      setup.sh, install_into_clawbio.py
   placement groups at that broad level.
 - Evaluations are taken as reported by the Catalog; overlap between development and evaluation samples, and
   differences in phenotype definition or covariates, are shown but not adjudicated.
+- The evidence rule assumes every score is meant to be read as higher score -> higher phenotype value or risk
+  (the PGS Catalog has no structured direction field). Only associations in that direction count; a score built
+  the other way would be reported RAW_ONLY, never misread. Association is not proof of clinically useful
+  discrimination or calibration.
 - Scoring weights with weight_type "NR" are assumed log-additive, as distributed by the Catalog and as pgsc_calc
   assumes. Sex chromosomes and symbolic alleles are not scored.
 - Strand-ambiguous SNPs are excluded for the person (pgsc_calc default); no imputation is performed.

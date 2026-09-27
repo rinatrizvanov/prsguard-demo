@@ -38,6 +38,24 @@ def main() -> None:
     for n, v in s["sparsity"].items():
         L.append(f"| {n} | {v['n']} | {v['resolved']} | {v['resolved_correct']} | {v['resolved_wrong']} | "
                  f"{v['median_stability']} |")
+    mc = json.loads((RES / "multicloud_benchmark.json").read_text())
+    L += ["", "### Membership of more than one core reference cloud", "",
+          "Leave-one-out; all 2,504 individuals at full density, 400 random individuals per sparse level. RESOLVED "
+          "requires membership of exactly one core cloud (`benchmarks/multicloud_benchmark.py`).", "",
+          "| Sites | Kind | n | In no cloud | In one | In 2+ | Combinations (2+) | "
+          "Resolved (exactly-one rule; 1 bootstrap replicate, production uses 100) |",
+          "|---|---|---|---|---|---|---|---|"]
+    for n, v in mc["summary"].items():
+        for kind in ("core", "admixed"):
+            x = v[kind]
+            combos = ", ".join(f"{k} {c}" for k, c in sorted(x["combinations"].items())) or "-"
+            L.append(f"| {n} | {kind} | {x['n']} | {x['inside_0']} | {x['inside_1']} | {x['inside_2plus']} | "
+                     f"{combos} | {x['resolved_under_exactly_one_rule']} |")
+    L += ["", f"Of {mc['n_multi_cloud']} multi-cloud placements, {mc['n_multi_cloud_with_disjoint_percentiles']} "
+          "would give disjoint 95% percentile intervals for at least one demo score depending on which containing "
+          f"group is used as the reference (largest gap {mc['max_percentile_gap_between_containing_groups']} "
+          "percentile points): the reference choice would change the interpretation, so such placements are not "
+          "RESOLVED."]
     b = json.loads((RES / "scoreability_benchmark.json").read_text())
     L += ["", "## Scoreability (masking experiments)", "",
           f"Scores {', '.join(b['scores'])}; five core groups; masks: simulated consumer array, random retention "

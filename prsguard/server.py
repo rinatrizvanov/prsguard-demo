@@ -43,6 +43,7 @@ def _demo_set_applies(trait: str, sex: str | None, build: str | None) -> bool:
 
 class Handler(BaseHTTPRequestHandler):
     server_version = f"PRSGuard/{prsguard.__version__}"
+    timeout = 120  # seconds of socket inactivity before a stalled upload is abandoned
     origins: set[str] = DEFAULT_ORIGINS
 
     def _host_ok(self) -> bool:
@@ -113,14 +114,22 @@ class Handler(BaseHTTPRequestHandler):
         work = Path(tempfile.mkdtemp(prefix="prsguard_"))
         try:
             src = work / name
+            remaining = length
             with open(src, "wb") as fh:
-                remaining = length
-                while remaining:
-                    chunk = self.rfile.read(min(remaining, 1 << 20))
-                    if not chunk:
-                        break
-                    fh.write(chunk)
-                    remaining -= len(chunk)
+                try:
+                    while remaining:
+                        chunk = self.rfile.read(min(remaining, 1 << 20))
+                        if not chunk:
+                            break
+                        fh.write(chunk)
+                        remaining -= len(chunk)
+                except OSError:  # includes socket timeouts
+                    pass
+            if remaining:
+                # never analyse a partial genotype file; the temporary copy is deleted in `finally`
+                self.close_connection = True
+                return self._send(400, {"error": f"upload incomplete: received {length - remaining} of {length} "
+                                                 "declared bytes; nothing was analysed"})
             from prsguard.pipeline import RunConfig, run
 
             demo = _demo_set_applies(trait, sex, build)
@@ -131,9 +140,11 @@ class Handler(BaseHTTPRequestHandler):
                             case={"provenance": "local upload (analysed on this machine, then deleted)"},
                             command=["prsguard", "serve", "(upload)"],
                             orchestrated_by="PRSGuard local server (deterministic scripted orchestrator)")
+            from prsguard.genotypes import GenotypeInputError
+
             try:
                 result = run(cfg)
-            except SystemExit as exc:
+            except (SystemExit, GenotypeInputError) as exc:
                 return self._send(422, {"error": str(exc)})
             except Exception as exc:  # report, never leak file contents
                 return self._send(500, {"error": f"analysis failed: {type(exc).__name__}"})

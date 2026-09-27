@@ -3,7 +3,7 @@
 # The gate refuses to run if any parameter is missing or out of range. The agent must never edit this file
 # to change a result; a change requires a new calibration_version and re-running the benchmarks.
 
-calibration_version: "2026.09.26-2"
+calibration_version: "2026.09.26-3"
 
 scoreability:
   # Minimum correlation, in the placed 1000 Genomes reference group, between the score computed on the
@@ -24,7 +24,8 @@ allele_harmonisation:
 placement:
   # Reference placement is computed once per person (prsguard.reference.projection). The gate only reads its
   # status; the calibrated placement parameters live with the placement code and are recorded here so that a
-  # change to them changes the calibration version.
+  # change to them changes the calibration version. RESOLVED requires membership of exactly one core cloud
+  # (benchmarks/multicloud_benchmark.py; docs/calibration.md section 4).
   min_sites: 200
   min_stability: 0.95
   cloud_quantile: 0.999

@@ -248,3 +248,62 @@ def test_inverse_association_is_not_supporting_evidence():
 def test_disclaimer_states_supported_is_not_clinical():
     text = run(base_input())["disclaimer"]
     assert "not a clinical recommendation" in text and "discrimination or calibration" in text
+
+
+# ---- fail-closed validation (external review) ------------------------------------------------------------------
+
+def _invalid(res):
+    return res["status"] == "ABSTAIN" and res["reason_codes"] == ["INVALID_GATE_INPUT"]
+
+
+def test_null_mismatch_fraction_with_located_variants_is_invalid_not_a_crash():
+    assert _invalid(run(mutate(harmonisation__allele_mismatch_fraction=None)))
+
+
+def test_null_mismatch_fraction_is_valid_only_when_nothing_located():
+    gi = mutate(harmonisation__allele_mismatch_fraction=None, harmonisation__n_located=0,
+                harmonisation__n_matched=0)
+    res = run(gi)
+    assert "INVALID_GATE_INPUT" not in res["reason_codes"]
+    assert rule(res, "G4")["outcome"] == "not_applicable"
+    assert _invalid(run(mutate(harmonisation__n_located=0, harmonisation__n_matched=0)))  # 0.0 given, must be null
+
+
+@pytest.mark.parametrize("changes", [
+    {"harmonisation__allele_mismatch_fraction": -0.1},
+    {"harmonisation__allele_mismatch_fraction": 1.5},
+    {"harmonisation__allele_mismatch_fraction": "0.01"},
+    {"harmonisation__allele_mismatch_fraction": float("nan")},
+    {"placement__placement_stability": -0.2},
+    {"placement__placement_stability": 1.01},
+    {"scoreability__r": -1.5},
+    {"harmonisation__weight_loss_by_status": {"missing": -0.3}},
+    {"score_file__n_parse_problems": -1},
+    {"candidate__sex_specific": "both"},
+    {"reference_distribution": ["not", "an", "object"]},
+    {"evaluation__units": ["not a unit"]},
+    {"evaluation__units": [{"code": "EUR", "metrics": "not a list"}]},
+])
+def test_out_of_domain_or_malformed_inputs_abstain(changes):
+    assert _invalid(run(mutate(**changes)))
+
+
+def test_negative_correlation_is_valid_input_but_low_scoreability():
+    res = run(mutate(scoreability__r=-0.5))
+    assert res["status"] == "ABSTAIN" and "LOW_SCOREABILITY" in res["reason_codes"]
+
+
+def test_gate_never_raises_on_mutated_inputs():
+    import random
+
+    rng = random.Random(20260926)
+    weird = [None, -1, 2.5, "x", [], {}, True, float("nan"), {"a": [1]}, [None]]
+    base = base_input()
+    paths = [(blk, k) for blk, v in base.items() if isinstance(v, dict) for k in v]
+    for _ in range(400):
+        gi = copy.deepcopy(base)
+        for blk, k in rng.sample(paths, 3):
+            gi[blk][k] = rng.choice(weird)
+        res = run(gi)  # must not raise
+        assert res["status"] in ("SUPPORTED", "RAW_ONLY", "ABSTAIN")
+        assert res["allowed_claims"]["absolute_risk"] is False

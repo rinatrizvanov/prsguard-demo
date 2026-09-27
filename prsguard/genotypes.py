@@ -97,8 +97,33 @@ def _declared_text_build(path: Path) -> str | None:
     return None
 
 
-def _parse_vcf(path: Path) -> tuple[list[Call], str | None]:
+class GenotypeInputError(ValueError):
+    """The genotype file cannot be read unambiguously (e.g. a multi-sample VCF without a chosen sample)."""
+
+
+def _gt_alleles(fmt: str, sample_field: str, table: list[str]) -> tuple[str, ...]:
+    """Called alleles of one sample: GT is located by name in FORMAT (it need not be the first key)."""
+    keys = fmt.split(":")
+    if "GT" not in keys:
+        return ()
+    values = sample_field.split(":")
+    gi = keys.index("GT")
+    if gi >= len(values):          # trailing FORMAT fields may be dropped (VCF 4.x): GT absent = no call
+        return ()
+    idx = re.split(r"[/|]", values[gi])
+    if not idx or not all(i.isdigit() for i in idx) or not all(int(i) < len(table) for i in idx):
+        return ()                  # "./.", ".", malformed or out-of-range allele index: no call
+    return tuple(table[int(i)] for i in idx)
+
+
+def _parse_vcf(path: Path, sample: str | None = None) -> tuple[list[Call], str | None]:
+    """Parse a single-sample VCF, or the explicitly named ``sample`` of a multi-sample VCF.
+
+    A multi-sample VCF without ``sample`` is rejected: silently scoring the first sample column could analyse
+    the wrong person.
+    """
     calls, declared = [], None
+    col: int | None = None
     with _open(path) as fh:
         for line in fh:
             if line.startswith("##"):
@@ -112,22 +137,33 @@ def _parse_vcf(path: Path) -> tuple[list[Call], str | None]:
                                 "GRCh37" if re.search(r"grch37|hg19|b37|hs37d5", low) else None)
                 continue
             if line.startswith("#"):
+                if line.startswith("#CHROM"):
+                    col = _sample_column(line.rstrip("\n").split("\t")[9:], sample, path)
                 continue
             cols = line.rstrip("\n").split("\t")
             if len(cols) < 10:
                 continue
+            if col is None:        # no #CHROM header: decide from the first record
+                col = _sample_column([f"column {i + 10}" for i in range(len(cols) - 9)], sample, path)
             ref, alts = cols[3].upper(), cols[4].upper().split(",")
-            gt = cols[9].split(":", 1)[0].replace("|", "/")
-            idx = gt.split("/")
-            alleles: tuple[str, ...] = ()
-            if idx and all(i.isdigit() for i in idx):
-                table = [ref] + alts
-                if all(int(i) < len(table) for i in idx):
-                    alleles = tuple(table[int(i)] for i in idx)
+            alleles = _gt_alleles(cols[8], cols[col] if col < len(cols) else "", [ref] + alts)
             rsid = cols[2] if cols[2].startswith("rs") else None
             calls.append(Call(rsid, _norm_chrom(cols[0]), int(cols[1]) if cols[1].isdigit() else None, alleles,
                               (ref, *alts)))
     return calls, declared
+
+
+def _sample_column(samples: list[str], sample: str | None, path: Path) -> int:
+    if sample is not None:
+        if sample not in samples:
+            raise GenotypeInputError(f"sample {sample!r} not found in {path.name} "
+                                     f"(samples: {', '.join(samples[:10])})")
+        return 9 + samples.index(sample)
+    if len(samples) != 1:
+        raise GenotypeInputError(
+            f"{path.name} has {len(samples)} sample columns; PRSGuard analyses one person. Choose one with "
+            f"--sample (e.g. --sample {samples[0] if samples else 'NAME'}).")
+    return 9
 
 
 def _parse_array(path: Path) -> tuple[list[Call], str]:
@@ -145,11 +181,13 @@ def _parse_array(path: Path) -> tuple[list[Call], str]:
     return calls, fmt
 
 
-def load_genotypes(path: str | Path) -> GenotypeSet:
+def load_genotypes(path: str | Path, sample: str | None = None) -> GenotypeSet:
     path = Path(path)
     is_vcf = ".vcf" in path.name.lower()
+    if sample is not None and not is_vcf:
+        raise GenotypeInputError("--sample applies only to VCF input")
     if is_vcf:
-        calls, declared = _parse_vcf(path)
+        calls, declared = _parse_vcf(path, sample)
         fmt = "vcf"
     else:
         calls, fmt = _parse_array(path)

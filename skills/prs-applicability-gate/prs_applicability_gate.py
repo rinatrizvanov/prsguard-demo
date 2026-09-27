@@ -24,7 +24,7 @@ from typing import Any
 
 import yaml
 
-GATE_VERSION = "2.1.0"
+GATE_VERSION = "2.1.1"
 INPUT_SCHEMA = "prs-applicability-gate.input.v2"
 OUTPUT_SCHEMA = "prs-applicability-gate.output.v2"
 SKILL_DIR = Path(__file__).resolve().parent
@@ -130,24 +130,58 @@ def validate_input(gi: Any) -> list[str]:
     if isinstance(h.get("n_variants"), int) and isinstance(h.get("n_matched"), int) \
             and h["n_matched"] > h["n_variants"]:
         p.append("harmonisation.n_matched exceeds n_variants")
-    for k, v in (("harmonisation.allele_mismatch_fraction", h.get("allele_mismatch_fraction")),
-                 ("scoreability.r", gi["scoreability"].get("r")),
-                 ("placement.placement_stability", gi["placement"].get("placement_stability"))):
-        if v is not None and (not isinstance(v, (int, float)) or isinstance(v, bool) or not -1.0 <= v <= 1.0):
-            p.append(f"{k}={v!r} is not a number in range")
+    # Numeric domains, each checked on its own. allele_mismatch_fraction is null exactly when no scoring variant
+    # was located (n_located == 0) and a fraction in [0, 1] otherwise.
+    mm = h.get("allele_mismatch_fraction")
+    if isinstance(h.get("n_located"), int) and h["n_located"] == 0:
+        if mm is not None:
+            p.append("harmonisation.allele_mismatch_fraction must be null when n_located == 0")
+    elif not _number_in(mm, 0.0, 1.0):
+        p.append(f"harmonisation.allele_mismatch_fraction={mm!r} must be a number in [0, 1] when variants were located")
+    for k, v, lo, hi in (("scoreability.r", gi["scoreability"].get("r"), -1.0, 1.0),
+                         ("placement.placement_stability", gi["placement"].get("placement_stability"), 0.0, 1.0)):
+        if v is not None and not _number_in(v, lo, hi):
+            p.append(f"{k}={v!r} must be null or a number in [{lo:g}, {hi:g}]")
+    loss = h.get("weight_loss_by_status")
+    if loss is not None and (not isinstance(loss, dict) or not all(_number_in(x, 0.0, 1.0) for x in loss.values())):
+        p.append("harmonisation.weight_loss_by_status must map statuses to fractions in [0, 1]")
+    sf = gi["score_file"]
+    if not isinstance(sf.get("unsupported_features") or [], list):
+        p.append("score_file.unsupported_features must be a list")
+    for k in ("n_parse_problems", "variants_interactions"):
+        if sf.get(k) is not None and (not isinstance(sf[k], int) or isinstance(sf[k], bool) or sf[k] < 0):
+            p.append(f"score_file.{k} must be null or a non-negative integer")
+    if gi["candidate"].get("sex_specific") not in (None, "female", "male"):
+        p.append("candidate.sex_specific must be female, male or null")
+    if not isinstance(gi["catalog_metadata"].get("status"), str):
+        p.append("catalog_metadata.status must be a string")
+    rd = gi.get("reference_distribution")
+    if rd is not None and not isinstance(rd, dict):
+        p.append("reference_distribution must be an object or null")
     if gi["person"].get("sex") not in (None, "female", "male"):
         p.append("person.sex must be female, male or null")
     if gi["placement"].get("status") not in ("RESOLVED", "INTERMEDIATE", "UNSTABLE", "UNRESOLVED"):
         p.append("placement.status invalid")
     if gi["placement"].get("status") == "RESOLVED" and gi["placement"].get("placement") not in GROUPS:
         p.append("placement.placement must be a reference group when RESOLVED")
-    if not isinstance(gi["evaluation"].get("units"), list):
+    units = gi["evaluation"].get("units")
+    if not isinstance(units, list):
         p.append("evaluation.units must be a list")
+    else:
+        for i, u in enumerate(units):
+            if not isinstance(u, dict) or not isinstance(u.get("metrics", []), list) \
+                    or not all(isinstance(m, dict) for m in u.get("metrics", [])):
+                p.append(f"evaluation.units[{i}] must be an object whose metrics are a list of objects")
+                break
     if "input_digest" in gi:
         body = {k: v for k, v in gi.items() if k != "input_digest"}
         if canonical_digest(body) != gi["input_digest"]:
             p.append("input_digest does not match the input (modified after it was built)")
     return p
+
+
+def _number_in(v: Any, lo: float, hi: float) -> bool:
+    return isinstance(v, (int, float)) and not isinstance(v, bool) and v == v and lo <= v <= hi
 
 
 # ---------------------------------------------------------------------------
@@ -192,6 +226,19 @@ def _metric_ok(m: dict) -> bool | None:
 
 
 def evaluate(gi: dict, cfg: dict) -> dict:
+    """Deterministic decision for one gate input. Never raises on malformed input: anything the validator did not
+    anticipate still fails closed as INVALID_GATE_INPUT (ABSTAIN)."""
+    try:
+        return _evaluate(gi, cfg)
+    except (TypeError, KeyError, AttributeError, ValueError, IndexError) as exc:
+        t = Trace()
+        t.add("G1", "INPUT_VALID", "Is the gate input well-formed and unmodified?", "fail", ABSTAIN,
+              ["INVALID_GATE_INPUT"], f"malformed input ({type(exc).__name__} while evaluating rules)",
+              "a gate input produced by prsguard.evidence")
+        return _finish(gi if isinstance(gi, dict) else {}, cfg, t)
+
+
+def _evaluate(gi: dict, cfg: dict) -> dict:
     t = Trace()
     problems = validate_input(gi)
     if problems:

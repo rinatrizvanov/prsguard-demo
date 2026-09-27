@@ -32,6 +32,9 @@ synthetic or non-live literature context to a result.
 
 ## Reproducibility
 
+Python dependencies are pinned in `uv.lock` (installed by `scripts/setup.sh` with `uv sync --frozen`; CI checks
+that the lock matches `pyproject.toml`); frontend dependencies are pinned in `frontend/package-lock.json`.
+
 Every result carries: PRSGuard version, git commit and dirty flag, ClawBio commit (pinned
 `0ba950565ee6a0fe9da3bde2164f6c814bd57dc9`), Python and package versions, SHA-256 of the genotype file, both
 reference panels, the catalog snapshot manifest and the gate config, the calibration version, the candidate-set

@@ -94,7 +94,8 @@ NON-CANONICAL CALIBRATION banner. `tests/test_clawbio_registration.py` checks bo
 **After editing either skill's SKILL.md, re-run the installer**: the catalogue copies the frontmatter, and
 ClawBio's `test_checked_in_catalog_is_current` fails until it is regenerated.
 
-`scripts/setup.sh` wraps all of it: `.venv` via uv (or `python3 -m venv`), `pip install -e ".[reference,dev]"`,
+`scripts/setup.sh` wraps all of it: `.venv` via uv with the exact versions in `uv.lock` (`uv sync --frozen`;
+without uv, `python3 -m venv` + `pip install -e ".[reference,dev]"`, unlocked),
 clone + pin `vendor/ClawBio` (refuses to move a checkout that has local changes), makes sure the runner
 can import (it only needs opentelemetry-sdk and PyYAML, both already PRSGuard dependencies; ClawBio's full
 dependency set, with BigQuery and OpenAI, is not installed), runs the installer, then an offline

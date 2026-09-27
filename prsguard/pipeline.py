@@ -89,6 +89,7 @@ class RunConfig:
     command: list[str] = field(default_factory=list)
     orchestrated_by: str | None = None       # who orchestrated; default: the scripted CLI
     orchestrator_kind: str = "scripted_cli"   # "scripted_cli" or "llm_agent"
+    sample: str | None = None                 # VCF sample to analyse (required for multi-sample VCFs)
 
 
 class Trace:
@@ -240,9 +241,15 @@ def reference_interpretation(gate_result: dict, raw_score: float | None, refdist
 
 
 def _scoring(pid: str, build: str, source) -> Any:
-    rec = json.loads(Path(catalog.contained_path(SNAPSHOT, f"{pid}/score.json")).read_text()) \
-        if (SNAPSHOT / pid / "score.json").exists() else {}
-    url = ((rec.get("ftp_harmonized_scoring_files") or {}).get(build) or {}).get("positions")
+    """Harmonised scoring file of ``pid``, located through the ACTIVE catalog source only.
+
+    The score record (and so the scoring-file URL) comes from the run's own source: the verified snapshot
+    directory in snapshot mode, or the live PGS Catalog (recorded into the run's snapshot directory) in live
+    mode. The bundled default snapshot is never consulted implicitly.
+    """
+    rec = source.fetch(f"score/{pid}").json()
+    files = (rec.get("ftp_harmonized_scoring_files") or {}) if isinstance(rec, dict) else {}
+    url = (files.get(build) or {}).get("positions") if isinstance(files.get(build), dict) else None
     path, entry = catalog.scoring_file(pid, build, source, url)
     return read_scoring_file(path, build), entry
 
@@ -263,7 +270,7 @@ def run(cfg: RunConfig) -> dict:
 
     # 1 ORCHESTRATION: validate inputs locally
     t0 = _now()
-    gs = load_genotypes(cfg.genotype)
+    gs = load_genotypes(cfg.genotype, cfg.sample)
     trace.step(ORCH, "Receive the request and read the genotype file locally", "prsguard.genotypes.load_genotypes",
                f"{gs.fmt} file with {len(gs.calls):,} records ({gs.n_called:,} called); trait '{cfg.trait}', "
                f"sex {cfg.sex or 'not given'}, declared build {cfg.declared_build or 'not given'}. The genotype "
@@ -397,6 +404,9 @@ def run(cfg: RunConfig) -> dict:
                                                 if c['gate']['primary_reason'] else "") for c in cands),
                         "outputs": {c["pgs_id"]: c["gate"]["status"] for c in cands},
                         "started_at": t7, "finished_at": _now()})
+
+    if cfg.catalog_mode == "live":
+        source.save()  # record the score, performance and category responses fetched while scoring
 
     # 10 ORCHESTRATION: cross-PGS, primary, context, report
     t0 = _now()

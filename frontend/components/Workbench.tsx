@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { caseFromLocation, urlWithCase } from "@/lib/caseUrl";
 import type { DemoCaseIndex, PrsGuardResult, ResultSource } from "@/lib/types";
 import { loadDemoCase, loadDemoIndex } from "@/lib/data";
 import { DemoPicker } from "./DemoPicker";
@@ -13,19 +14,12 @@ const DEFAULT_CASE = "B";
 /** The selected demo case lives in ?case=X so in-page anchors (#trace, …) do not lose it. */
 function caseFromUrl(): string | null {
   if (typeof window === "undefined") return null;
-  const q = new URLSearchParams(window.location.search).get("case");
-  if (q && /^[A-Z]$/.test(q)) return q;
-  const m = /(?:^|[#&])case=([A-Z])\b/.exec(window.location.hash);
-  return m ? m[1] : null;
+  return caseFromLocation(window.location.search, window.location.hash);
 }
 
 function setCaseInUrl(id: string | null): void {
   if (typeof window === "undefined") return;
-  const url = new URL(window.location.href);
-  if (id) url.searchParams.set("case", id);
-  else url.searchParams.delete("case");
-  if (/case=/.test(url.hash)) url.hash = "";
-  window.history.replaceState(null, "", url.toString());
+  window.history.replaceState(null, "", urlWithCase(window.location.href, id));
 }
 
 interface Shown {
@@ -52,9 +46,7 @@ export function Workbench() {
       const result = await loadDemoCase(id);
       if (req !== reqRef.current) return;
       setShown({ result, source: { kind: "demo", caseId: id, entry: idx?.cases.find((c) => c.id === id) } });
-      if (typeof window !== "undefined") {
-        window.history.replaceState(null, "", `#case=${id}`);
-      }
+      setCaseInUrl(id);
       if (scroll) resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (e: unknown) {
       if (req !== reqRef.current) return;

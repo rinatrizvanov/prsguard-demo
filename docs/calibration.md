@@ -1,6 +1,6 @@
 # Calibration: every number PRSGuard uses, and why
 
-Calibration version **2026.09.26-2** (gate 2.1.0) (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
+Calibration version **2026.09.26-3** (gate 2.1.1) (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
 below come from `docs/benchmarks.md`, which is generated from `benchmarks/results/*.json` by
 `python benchmarks/report.py`. Re-running `benchmarks/ancestry_benchmark.py`, `benchmarks/scoreability_benchmark.py`
 and `benchmarks/harmonisation_benchmark.py` regenerates every table from public data.
@@ -79,8 +79,8 @@ LOW_SCOREABILITY. The same person with a WGS-like file gets r = 0.95-1.00 (demo 
 
 Method (`prsguard/reference/projection.py`): PCA refit on the person's observed sites, fitted on 100 reference
 samples per core group (fixed seed; 85 PEL); 4 PCs; the person is compared with each group cloud by Mahalanobis
-distance; inside = d^2 <= chi-squared(4) 0.999 quantile (18.47); stability = share of 100 marker bootstraps
-giving the same placement. Admixed 1000 Genomes populations (ASW, ACB, MXL, PUR, CLM) never define axes.
+distance; inside = d^2 <= chi-squared(4) 0.999 quantile (18.47); RESOLVED requires being inside **exactly one**
+core cloud (calibration 2026.09.26-3); stability = share of 100 marker bootstraps giving the same placement. Admixed 1000 Genomes populations (ASW, ACB, MXL, PUR, CLM) never define axes.
 The person's own sample is excluded automatically when present in the panel (genotype concordance >= 0.99 over
 >= 100 sites).
 
@@ -88,8 +88,18 @@ The person's own sample is excluded automatically when present in the panel (gen
 |---|---|---|---|
 | K | 4 PCs | Design | Five reference groups span a 4-dimensional between-group space. |
 | Cloud quantile | 0.999 | Calibrated | Held-out core samples' d^2: median 4.2, 95th 12.9, 99th 17.0 (cut 18.47). 163/168 held-out core samples resolve to their own group; **0 resolve to a wrong group**. |
-| `min_sites` | 200 | Calibrated | With random site subsets, 0 wrong placements at any size; the share resolved rises from 4/30 (50 sites) and 9/30 (100) to 21/30 (200), 29/30 (400), 30/30 (800+). 200 is the smallest size at which most held-out people resolve, with median stability 0.98. |
+| `min_sites` | 200 | Floor, calibrated | With random site subsets, 0 wrong placements at any size. Under the exactly-one-cloud rule the share resolved is 0/30 (50 sites), 1/30 (100), 7/30 (200), 15/30 (400), 23/30 (800) and 30/30 (1,600+). Below 200 sites almost nobody resolves, so placement is not attempted (UNRESOLVED); above it, ambiguous sparse placements are withheld by the exactly-one-cloud and stability rules rather than by this floor. |
 | `min_stability` | 0.95 | Policy, consistent with the 95% level used throughout | Held-out core samples at full density have stability 1.0; unstable outcomes concentrate in admixed individuals near cloud boundaries. |
+
+**More than one cloud (external review, 2026-09-26).** Placement used to RESOLVE to the nearest group even when
+the person was inside several core clouds. `benchmarks/multicloud_benchmark.py` measured this: 0 of 2,504
+individuals at full density and 0 of 400 at 800 sites, but 24 of 400 at 400 sites and 90 of 400 at 200 sites
+(mostly EUR+SAS, also AMR+EUR, AMR+SAS and three-way). For 64 of those 114 multi-cloud placements the percentile
+intervals against the containing groups were disjoint for at least one demo score (gaps up to 34 percentile
+points), so the choice of group would change the interpretation. RESOLVED now requires membership of exactly one
+cloud; otherwise the person is INTERMEDIATE with the containing groups named (TARGET_REFERENCE_UNRESOLVED in the
+gate). Full-density results and all seven demo outcomes are unchanged; sparse inputs resolve less often, never
+wrongly.
 
 **Admixed individuals.** ASW: 20/25 INTERMEDIATE, 1 UNSTABLE, 4 resolved (3 into AFR with an estimated >= 0.90
 AFR component). PUR: 18/25 INTERMEDIATE, 5 UNSTABLE. **Known limitation:** because PEL itself carries European
@@ -122,7 +132,16 @@ need a threshold (what AUROC is "useful"?) that cannot be derived from the Catal
 **Direction (gate 2.1.0).** Gate 2.0.0 accepted any CI excluding the null, so an inverse association counted too.
 The Catalog snapshot contains four such evaluations for PGS000004, all case-only subtype comparisons (e.g. OR 0.86
 [0.82, 0.89] for ER-negative status among cases; OR 0.80 [0.65, 0.99] for grade 3 vs grade 1 tumours). They are not
-evidence for interpreting a breast-cancer risk score, so 2.1.0 requires the CI to lie above the null. No demo
+evidence for interpreting a breast-cancer risk score, so 2.1.0 requires the CI to lie above the null.
+
+**Direction is an assumption, not read from metadata.** PRSGuard is trait-first, so a score could in principle be
+built so that a higher value means a *lower* phenotype or risk. The PGS Catalog offers no structured way to tell:
+score records have no direction field, performance records carry only the estimate, CI and free-text phenotype and
+comments (checked across all 305 score and performance records in the snapshot; the only "inverse" is the weight
+type "Inverse-variance weighting"). The v2 evidence rule therefore **assumes that a score's intended
+interpretation is higher score -> higher phenotype value or risk**. Below-null effects are never accepted as
+support; a score built the other way would be reported RAW_ONLY (EVALUATION_NOT_INFORMATIVE), which is
+conservative rather than misleading. No demo
 outcome changed (other evaluations already supported the same scores). Phenotype definitions of evaluations
 (subtype-only or case-only analyses) are otherwise not adjudicated; see the README's prototype assumptions.
 

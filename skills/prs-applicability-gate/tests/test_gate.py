@@ -221,8 +221,11 @@ def test_cli_demo_output_contract(tmp_path):
     assert (out / "report.md").exists()
     statuses = {r["status"] for r in summary["results"]}
     assert statuses == {"SUPPORTED", "RAW_ONLY", "ABSTAIN"}, statuses
+    assert len({r["output"] for r in summary["results"]}) == len(summary["results"])  # no overwrites
     for r in summary["results"]:
-        assert (out / f"{r['pgs_id']}_gate.json").exists() or True
+        written = json.loads((out / r["output"]).read_text())
+        assert written["status"] == r["status"] and written["pgs_id"] == r["pgs_id"]
+        assert (out / r["output"].replace(".json", ".md")).exists()
 
 
 def test_non_canonical_config_is_labelled(tmp_path):
@@ -307,3 +310,121 @@ def test_gate_never_raises_on_mutated_inputs():
         res = run(gi)  # must not raise
         assert res["status"] in ("SUPPORTED", "RAW_ONLY", "ABSTAIN")
         assert res["allowed_claims"]["absolute_risk"] is False
+
+
+# ---- backport from the ClawBio upstream port (gate 2.2.0) ------------------------------------------------------
+
+RULE_IDS = [f"G{i}" for i in range(1, 13)]
+
+
+def _cli(*args):
+    return subprocess.run([sys.executable, str(SKILL / "prs_applicability_gate.py"), *map(str, args)],
+                          capture_output=True, text=True)
+
+
+def test_demo_cases_sharing_a_pgs_id_keep_separate_outputs(tmp_path):
+    """case_B and case_G both concern PGS001336; the later one used to overwrite the earlier one's files."""
+    out = tmp_path / "demo"
+    assert _cli("--demo", "--output", out).returncode == 0
+    rows = {r["input"]: r for r in json.loads((out / "result.json").read_text())["results"]}
+    b, g = rows["case_B_PGS001336.gate_input.json"], rows["case_G_PGS001336.gate_input.json"]
+    assert b["pgs_id"] == g["pgs_id"] == "PGS001336" and b["output"] != g["output"]
+    assert json.loads((out / b["output"]).read_text())["status"] == "SUPPORTED"
+    assert json.loads((out / g["output"]).read_text())["status"] == "ABSTAIN"
+
+
+def test_same_input_file_name_twice_gets_unique_outputs(tmp_path):
+    (tmp_path / "a").mkdir()
+    (tmp_path / "b").mkdir()
+    for d, r in (("a", 0.98), ("b", 0.5)):
+        (tmp_path / d / "x.gate_input.json").write_text(json.dumps(mutate(scoreability__r=r)))
+    out = tmp_path / "out"
+    assert _cli("--input", tmp_path / "a" / "x.gate_input.json", tmp_path / "b" / "x.gate_input.json",
+                "--output", out).returncode == 0
+    rows = json.loads((out / "result.json").read_text())["results"]
+    assert [r["output"] for r in rows] == ["x_gate.json", "x_2_gate.json"]
+    assert [json.loads((out / r["output"]).read_text())["status"] for r in rows] == ["SUPPORTED", "ABSTAIN"]
+
+
+def test_demo_outputs_are_deterministic(tmp_path):
+    for d in ("one", "two"):
+        assert _cli("--demo", "--output", tmp_path / d).returncode == 0
+    names = sorted(p.name for p in (tmp_path / "one").iterdir())
+    assert names == sorted(p.name for p in (tmp_path / "two").iterdir())
+    for n in names:
+        assert (tmp_path / "one" / n).read_bytes() == (tmp_path / "two" / n).read_bytes(), n
+
+
+@pytest.mark.parametrize("pgs_id", ["../escaped", "../../escaped", "/tmp/prsguard_abs_escape", "a/b/escaped",
+                                    "..\\escaped", "PGS000001/../../escaped", "‥／escaped",
+                                    "‮escaped", "PGS000001\n", "", "." * 300])
+def test_pgs_id_is_data_never_a_path(tmp_path, pgs_id):
+    inputs, out = tmp_path / "inputs", tmp_path / "out"
+    inputs.mkdir()
+    (inputs / "case.gate_input.json").write_text(json.dumps(mutate(candidate__pgs_id=pgs_id)))
+    before = {p for p in tmp_path.rglob("*")}
+    assert _cli("--input", inputs / "case.gate_input.json", "--output", out).returncode == 0
+    created = {p for p in tmp_path.rglob("*")} - before
+    assert created and all(p == out or out in p.parents for p in created), sorted(map(str, created))
+    assert not Path("/tmp/prsguard_abs_escape_gate.json").exists()
+    assert json.loads((out / "case_gate.json").read_text())["pgs_id"] == pgs_id  # kept as data
+
+
+@pytest.mark.parametrize("filename, expected", [
+    ("case_B.gate_input.json", "case_B"), ("..gate_input.json", "input"), ("...hidden.json", "hidden"),
+    ("a b;rm -rf.json", "a_b_rm_-rf"), ("über∕x.json", "_ber_x"), (".json", "input"),
+])
+def test_output_names_are_sanitised(filename, expected):
+    assert gate.output_stem(Path(filename), set()) == expected
+
+
+@pytest.mark.parametrize("content, fragment", [
+    ("", "empty"), ("   \n", "empty"), ("{not json", "not valid JSON"),
+    ('{"schema": "prs-applicability-gate', "not valid JSON"),  # truncated
+    ("[1, 2, 3]", "not a JSON object"), ('"just a string"', "not a JSON object"), ("42", "not a JSON object"),
+    ("null", "not a JSON object"),
+])
+def test_malformed_input_files_fail_closed(tmp_path, content, fragment):
+    f = tmp_path / "bad.gate_input.json"
+    f.write_text(content)
+    out = tmp_path / "out"
+    proc = _cli("--input", f, "--output", out)
+    assert proc.returncode == 0 and "Traceback" not in proc.stderr, proc.stderr
+    res = json.loads((out / "bad_gate.json").read_text())
+    assert res["status"] == "ABSTAIN" and res["reason_codes"] == ["INVALID_GATE_INPUT"]
+    assert fragment in res["primary_reason"]["detail"]
+    assert [r["rule"] for r in res["rule_trace"]] == RULE_IDS
+
+
+def test_unreadable_input_file_fails_closed(tmp_path):
+    out = tmp_path / "out"
+    proc = _cli("--input", tmp_path / "missing.gate_input.json", "--output", out)
+    assert proc.returncode == 0 and "Traceback" not in proc.stderr
+    assert json.loads((out / "missing_gate.json").read_text())["reason_codes"] == ["INVALID_GATE_INPUT"]
+
+
+@pytest.mark.parametrize("changes, status", [
+    ({}, "SUPPORTED"),
+    ({"placement__placement": "SAS"}, "RAW_ONLY"),
+    ({"scoreability__r": 0.5}, "ABSTAIN"),
+    ({"placement__status": "INTERMEDIATE", "placement__placement": None}, "RAW_ONLY"),
+    ({"placement__status": "UNRESOLVED", "placement__placement": None, "person__sex": "female"}, "RAW_ONLY"),
+    ({"schema": "wrong"}, "ABSTAIN"),
+])
+def test_rule_trace_is_complete_and_ordered(changes, status):
+    gi = mutate(**changes) if "schema" not in changes else {**base_input(), "schema": "wrong"}
+    if changes.get("placement__placement") == "SAS":
+        gi["reference_distribution"]["reference_group"] = "SAS"
+    res = run(gi)
+    assert res["status"] == status
+    assert [r["rule"] for r in res["rule_trace"]] == RULE_IDS
+    for r in res["rule_trace"]:
+        assert r["outcome"] in ("pass", "fail", "not_applicable")
+        if r["outcome"] == "not_applicable":
+            assert r["detail"] and r["effect"] is None and r["codes"] == []
+
+
+def test_unresolved_placement_reports_g10_explicitly():
+    res = run(mutate(placement__status="UNRESOLVED", placement__placement=None))
+    g10 = rule(res, "G10")
+    assert g10["outcome"] == "not_applicable" and "no resolved reference group" in g10["detail"]

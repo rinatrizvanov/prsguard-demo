@@ -978,7 +978,7 @@ def open_source(mode: str, snapshot_dir: str | Path) -> Any:
 
 
 def scoring_file_relpath(pgs_id: str, build: str) -> str:
-    if not PGS_ID_RE.match(pgs_id) or build not in ("GRCh37", "GRCh38"):
+    if not isinstance(pgs_id, str) or not PGS_ID_RE.fullmatch(pgs_id) or build not in ("GRCh37", "GRCh38"):
         raise ValueError(f"bad scoring file request {pgs_id!r} {build!r}")
     return f"{pgs_id}/{pgs_id}_hmPOS_{build}.txt.gz"
 

@@ -1,6 +1,6 @@
 # Calibration: every number PRSGuard uses, and why
 
-Calibration version **2026.09.26-3** (gate 2.1.1) (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
+Calibration version **2026.09.26-3** (gate 2.2.0) (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
 below come from `docs/benchmarks.md`, which is generated from `benchmarks/results/*.json` by
 `python benchmarks/report.py`. Re-running `benchmarks/ancestry_benchmark.py`, `benchmarks/scoreability_benchmark.py`
 and `benchmarks/harmonisation_benchmark.py` regenerates every table from public data.

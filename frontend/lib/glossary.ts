@@ -1,6 +1,6 @@
 /**
  * Human-readable glossary for reason codes and statuses. Mirrors the descriptions in
- * skills/prs-applicability-gate (gate v2.1.1). Used only for labels and tooltips: every
+ * skills/prs-applicability-gate (gate v2.2.0). Used only for labels and tooltips: every
  * decision shown in the UI is read from the result JSON, never re-derived here.
  */
 

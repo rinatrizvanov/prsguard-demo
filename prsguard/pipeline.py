@@ -305,6 +305,11 @@ def run(cfg: RunConfig) -> dict:
         if cfg.catalog_mode == "live":
             source.save()
         how = f"routed from the PGS Catalog ({source.mode})"
+    # PGS IDs name the per-candidate gate files below: accept only PGS Catalog identifiers (never paths).
+    bad = [pid for pid in cset.get("selected") or []
+           if not isinstance(pid, str) or not catalog.PGS_ID_RE.fullmatch(pid)]
+    if bad:
+        raise SystemExit(f"candidate set contains invalid PGS identifiers {bad!r}; refusing to run")
     router.write_frozen(cset, cfg.out_dir / "candidates.frozen.json")
     trait = cset["trait"]
     trace.step(ORCH, "Resolve the trait to an ontology term and scope", "PGS Catalog /trait/search",

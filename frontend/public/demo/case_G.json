@@ -58,8 +58,8 @@
         "sha256": "48cf7ab49a4a51f44a9cfec8332164ac6a879c32c6682dc32d3d0c4c2761000f",
         "format": "23andme"
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 2,
@@ -77,8 +77,8 @@
         "rule": "a build is confirmed if >= 90% of >= 20 anchor rsIDs agree and refuted if <= 10%; otherwise the declared build if unambiguous and not refuted",
         "method": "empirical (rsID anchor positions) + declaration"
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 3,
@@ -97,8 +97,8 @@
           "MONDO_0004989"
         ]
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 4,
@@ -114,8 +114,8 @@
           "api_version": "1.8.6"
         }
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 5,
@@ -132,8 +132,8 @@
         "digest": "sha256:13d58f1fd3116bf1ce7cc060a3471c04b33f941d90d3baf5a01c6b1a7569d619",
         "frozen_at": "2026-09-26T22:00:23+00:00"
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 6,
@@ -148,8 +148,8 @@
         "placement_stability": null,
         "n_sites_used": 125
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 7,
@@ -158,8 +158,8 @@
       "tool": "prsguard.harmonize (+ ClawBio gwas-prs cross-check)",
       "summary": "PGS000004 0/313 matched, r = 0.0; PGS001804 23/2984 matched, r = -0.0827; PGS001336 3/555 matched, r = 0.048",
       "outputs": {},
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 8,
@@ -168,8 +168,8 @@
       "tool": "prsguard.catalog + prsguard.reference.distribution",
       "summary": "PGS000004 metadata resolved; PGS001804 metadata resolved; PGS001336 metadata resolved",
       "outputs": {},
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 9,
@@ -182,8 +182,8 @@
         "PGS001804": "ABSTAIN",
         "PGS001336": "ABSTAIN"
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     },
     {
       "step": 10,
@@ -195,8 +195,8 @@
         "cross_pgs": "NOT_COMPARABLE",
         "primary": null
       },
-      "started_at": "2026-09-26T23:58:51+00:00",
-      "finished_at": "2026-09-26T23:58:51+00:00"
+      "started_at": "2026-09-27T22:53:53+00:00",
+      "finished_at": "2026-09-27T22:53:53+00:00"
     }
   ],
   "router": {
@@ -2583,6 +2583,16 @@
             "what_would_change": null
           },
           {
+            "rule": "G10",
+            "name": "SEX_EVALUATION",
+            "question": "Do the informative evaluations include the person's sex?",
+            "outcome": "not_applicable",
+            "effect": null,
+            "codes": [],
+            "detail": "not reached: no resolved reference group, so no relevant evaluations",
+            "what_would_change": null
+          },
+          {
             "rule": "G11",
             "name": "REFERENCE_DISTRIBUTION",
             "question": "Is there a reference distribution on the matched variants?",
@@ -2617,7 +2627,7 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.1.1",
+          "gate_version": "2.2.0",
           "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
           "input_digest": "sha256:e940d01a03743609f37db73ee288bc2974dc6cd112fed31dab0ac8c3631951d8",
@@ -6591,6 +6601,16 @@
             "what_would_change": null
           },
           {
+            "rule": "G10",
+            "name": "SEX_EVALUATION",
+            "question": "Do the informative evaluations include the person's sex?",
+            "outcome": "not_applicable",
+            "effect": null,
+            "codes": [],
+            "detail": "not reached: no resolved reference group, so no relevant evaluations",
+            "what_would_change": null
+          },
+          {
             "rule": "G11",
             "name": "REFERENCE_DISTRIBUTION",
             "question": "Is there a reference distribution on the matched variants?",
@@ -6625,7 +6645,7 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.1.1",
+          "gate_version": "2.2.0",
           "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
           "input_digest": "sha256:9ed64d57aef1b2a4f5c569ac47d67b920c073ccf597b49fd6ede77be4adb3af4",
@@ -7333,6 +7353,16 @@
             "what_would_change": null
           },
           {
+            "rule": "G10",
+            "name": "SEX_EVALUATION",
+            "question": "Do the informative evaluations include the person's sex?",
+            "outcome": "not_applicable",
+            "effect": null,
+            "codes": [],
+            "detail": "not reached: no resolved reference group, so no relevant evaluations",
+            "what_would_change": null
+          },
+          {
             "rule": "G11",
             "name": "REFERENCE_DISTRIBUTION",
             "question": "Is there a reference distribution on the matched variants?",
@@ -7367,7 +7397,7 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.1.1",
+          "gate_version": "2.2.0",
           "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
           "input_digest": "sha256:da085a56eb717effb961ce196c8e0cba16e6562545773d25d8c9a2127ba2ef46",
@@ -9969,8 +9999,8 @@
     ]
   },
   "reproducibility": {
-    "prsguard_version": "1.0.1",
-    "git_commit": "cc9c623f15854c895b99d017b41bec4a082c379c",
+    "prsguard_version": "1.0.2",
+    "git_commit": "0d99a785a2b6237902aa8d1ff1be5ac4cf4e780b",
     "git_dirty": true,
     "clawbio_commit": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
     "clawbio_pinned": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
@@ -10002,8 +10032,8 @@
       "release": "2026-09-17",
       "api_version": "1.8.6"
     },
-    "started_at": "2026-09-26T23:58:51+00:00",
-    "finished_at": "2026-09-26T23:58:51+00:00",
+    "started_at": "2026-09-27T22:53:53+00:00",
+    "finished_at": "2026-09-27T22:53:53+00:00",
     "command": "prsguard demo --case G --out runs/demo"
   },
   "disclaimer": "PRSGuard is RESEARCH SOFTWARE / a PROTOTYPE, not a medical device. It does not diagnose, and it never converts a polygenic score into absolute risk. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, not clinically useful discrimination or calibration. Genetic reference placement is not ethnicity or identity."

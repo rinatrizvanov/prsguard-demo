@@ -18,13 +18,14 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
 
 import yaml
 
-GATE_VERSION = "2.1.1"
+GATE_VERSION = "2.2.0"
 INPUT_SCHEMA = "prs-applicability-gate.input.v2"
 OUTPUT_SCHEMA = "prs-applicability-gate.output.v2"
 SKILL_DIR = Path(__file__).resolve().parent
@@ -193,6 +194,24 @@ G9_QUESTION = ("Is there evidence of association (95% CI above the null) in an e
                "(Association only: not clinically useful discrimination or calibration.)")
 
 
+# Every output lists all twelve rules in this order. A rule that could not run (invalid input, unmet prerequisite)
+# is recorded as "not_applicable" with a "not reached: ..." detail; no evidence is invented for it.
+RULES = (
+    ("G1", "INPUT_VALID", "Is the gate input well-formed and unmodified?"),
+    ("G2", "SCORE_FORMAT", "Is the scoring file a plain additive score on a log scale?"),
+    ("G3", "BUILD", "Is the genotype file's genome build established (never assumed)?"),
+    ("G4", "ALLELES", "Are located variants' alleles consistent with the scoring file?"),
+    ("G5", "SCOREABILITY", "Does the computable score represent the published score (r >= r_min)?"),
+    ("G6", "SEX_SCORE", "Is a sex-specific score applied to a person of that sex?"),
+    ("G7", "METADATA", "Is the PGS Catalog record resolved and internally consistent?"),
+    ("G8", "PLACEMENT", "Is the person placed stably inside one reference group?"),
+    ("G9", "EVALUATION", G9_QUESTION),
+    ("G10", "SEX_EVALUATION", "Do the informative evaluations include the person's sex?"),
+    ("G11", "REFERENCE_DISTRIBUTION", "Is there a reference distribution on the matched variants?"),
+    ("G12", "REFERENCE_SENSITIVITY", "Is the percentile robust to the reference population chosen?"),
+)
+
+
 class Trace:
     def __init__(self):
         self.rules: list[dict] = []
@@ -347,6 +366,8 @@ def _evaluate(gi: dict, cfg: dict) -> dict:
     if pst != "RESOLVED":
         t.add("G9", "EVALUATION", G9_QUESTION,
               "not_applicable", detail="no resolved reference group to match evaluations against")
+        t.add("G10", "SEX_EVALUATION", "Do the informative evaluations include the person's sex?",
+              "not_applicable", detail="not reached: no resolved reference group, so no relevant evaluations")
     else:
         rel = [u for u in units if u.get("code") == group and not u.get("pooled")]
         with_metric = [u for u in rel if u.get("metrics")]
@@ -417,7 +438,21 @@ def _evaluate(gi: dict, cfg: dict) -> dict:
     return _finish(gi, cfg, t)
 
 
+def _complete_trace(t: Trace) -> None:
+    """Add every rule that did not run as not_applicable ("not reached"), and order the trace G1..G12."""
+    seen = {r["rule"] for r in t.rules}
+    g1_failed = any(r["rule"] == "G1" and r["outcome"] == "fail" for r in t.rules)
+    for rid, name, question in RULES:
+        if rid not in seen:
+            t.add(rid, name, question, "not_applicable",
+                  detail="not reached: input invalid (G1), rule not evaluated" if g1_failed else
+                  "not reached: a prerequisite was not met")
+    order = {rid: i for i, (rid, _, _) in enumerate(RULES)}
+    t.rules.sort(key=lambda r: order.get(r["rule"], len(order)))
+
+
 def _finish(gi: Any, cfg: dict, t: Trace) -> dict:
+    _complete_trace(t)
     failed = [r for r in t.rules if r["outcome"] == "fail"]
     status = max((r["effect"] for r in failed), key=SEVERITY.get, default=SUPPORTED)
     primary = next((r for r in failed if r["effect"] == status), None)
@@ -484,14 +519,65 @@ def render_report(result: dict) -> str:
     return "\n".join(lines)
 
 
-def run_one(input_path: Path, out_dir: Path, cfg: dict) -> dict:
-    gi = json.loads(Path(input_path).read_text())
-    result = evaluate(gi, cfg)
+def invalid_input_result(detail: str, cfg: dict) -> dict:
+    """The controlled INVALID_GATE_INPUT / ABSTAIN result for input that is not a readable JSON document."""
+    t = Trace()
+    t.add("G1", "INPUT_VALID", "Is the gate input well-formed and unmodified?", "fail", ABSTAIN,
+          ["INVALID_GATE_INPUT"], detail, "a gate input produced by prsguard.evidence")
+    return _finish({}, cfg, t)
+
+
+def load_input(path: Path) -> tuple[Any, str | None]:
+    """(parsed JSON, None) or (None, reason). Never raises for unreadable, empty or malformed files."""
+    try:
+        text = Path(path).read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as exc:
+        return None, f"input file could not be read ({type(exc).__name__})"
+    if not text.strip():
+        return None, "input file is empty"
+    try:
+        return json.loads(text), None
+    except json.JSONDecodeError as exc:
+        return None, f"input is not valid JSON (line {exc.lineno}, column {exc.colno}: {exc.msg})"
+
+
+_SAFE = re.compile(r"[^A-Za-z0-9._-]+")
+
+
+def output_stem(input_path: Path, taken: set[str]) -> str:
+    """Filesystem-safe, unique output name derived from the INPUT FILE name, never from pgs_id (which is data).
+
+    Anything outside [A-Za-z0-9._-] becomes "_", leading dots are removed (no hidden files, no "..") and the name
+    is shortened; a repeated name gets a numeric suffix so no input's output overwrites another's.
+    """
+    name = Path(str(input_path)).name
+    for suffix in (".json", ".gate_input"):
+        if name.endswith(suffix):
+            name = name[: -len(suffix)]
+    stem = _SAFE.sub("_", name).lstrip(".")[:100] or "input"
+    candidate, n = stem, 2
+    while candidate in taken:
+        candidate, n = f"{stem}_{n}", n + 1
+    taken.add(candidate)
+    return candidate
+
+
+def _write_inside(out_dir: Path, filename: str, text: str) -> Path:
+    path = (out_dir / filename).resolve()
+    if path.parent != out_dir.resolve():
+        raise ValueError(f"refusing to write outside {out_dir}: {filename!r}")
+    path.write_text(text, encoding="utf-8")
+    return path
+
+
+def run_one(input_path: Path, out_dir: Path, cfg: dict, taken: set[str] | None = None) -> tuple[dict, str]:
+    gi, problem = load_input(input_path)
+    result = invalid_input_result(problem, cfg) if problem else evaluate(gi, cfg)
     out_dir.mkdir(parents=True, exist_ok=True)
-    stem = result["pgs_id"] or Path(input_path).stem
-    (out_dir / f"{stem}_gate.json").write_text(json.dumps(result, indent=2) + "\n")
-    (out_dir / f"{stem}_gate.md").write_text(render_report(result))
-    return result
+    stem = output_stem(input_path, set() if taken is None else taken)
+    _write_inside(out_dir, f"{stem}_gate.json", json.dumps(result, indent=2) + "\n")
+    _write_inside(out_dir, f"{stem}_gate.md", render_report(result))
+    return result, stem
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -505,11 +591,11 @@ def main(argv: list[str] | None = None) -> int:
     inputs = sorted((SKILL_DIR / "examples").glob("*.gate_input.json")) if args.demo else (args.input or [])
     if not inputs:
         ap.error("give --input or --demo")
-    results = []
+    results, taken = [], set()
     for path in inputs:
-        res = run_one(path, args.output, cfg)
-        results.append({"input": Path(path).name, "pgs_id": res["pgs_id"], "status": res["status"],
-                        "reason_codes": res["reason_codes"]})
+        res, stem = run_one(path, args.output, cfg, taken)
+        results.append({"input": Path(path).name, "output": f"{stem}_gate.json", "pgs_id": res["pgs_id"],
+                        "status": res["status"], "reason_codes": res["reason_codes"]})
         print(f"{Path(path).name}: {res['status']} {res['reason_codes']}")
     summary = {"calibration_version": cfg["calibration_version"], "gate_version": GATE_VERSION,
                "config_sha256": cfg["_sha256"], "config_canonical": cfg["_canonical"], "results": results}

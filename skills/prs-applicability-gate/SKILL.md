@@ -7,7 +7,7 @@ description: >-
   change the result. Never produces absolute risk.
 license: MIT
 metadata:
-  version: "2.1.1"
+  version: "2.2.0"
   author: PRSGuard team (ClawBio Hackathon Challenge 3)
   domain: genomics
   tags:
@@ -118,11 +118,17 @@ Gate inputs are produced by `prsguard.evidence.build_gate_input` in the PRSGuard
 
 ## Workflow
 
-1. **Validate** the input schema, types, ranges and digest (G1). Invalid input is ABSTAIN.
-2. **Evaluate** rules G2-G12 in order (all of them, so the trace is complete).
+1. **Validate** the input file and document: an unreadable, empty or non-JSON file, a non-object document, or a
+   schema, type, range or digest problem is INVALID_GATE_INPUT (ABSTAIN), never a traceback (G1).
+2. **Evaluate** rules G2-G12 in order. The trace always lists all twelve rules, G1-G12 in order; a rule that could
+   not run (invalid input, unresolved placement) is `not_applicable` with a "not reached: ..." or explicit
+   reason, and no evidence is invented for it.
 3. **Decide**: ABSTAIN if any ABSTAIN rule failed, else RAW_ONLY if any RAW_ONLY rule failed, else SUPPORTED.
    The primary reason is the first failing rule at the decisive severity.
-4. **Report**: write `<pgs_id>_gate.json` and `<pgs_id>_gate.md`, and a summary `result.json` / `report.md`.
+4. **Report**: write `<input>_gate.json` and `<input>_gate.md` per input, and a summary `result.json` /
+   `report.md`. File names come from the input file name (sanitised to `[A-Za-z0-9._-]`, made unique), never from
+   `pgs_id`, which is data: two inputs about the same score never overwrite each other, and no identifier can
+   write outside `--output`.
 
 Freedom level: none. The agent may explain the output; it may not reinterpret it.
 
@@ -218,8 +224,8 @@ PGS001336 (SUPPORTED), an admixed ASW genome (RAW_ONLY, TARGET_REFERENCE_UNRESOL
 output_directory/
 ├── result.json            # summary: calibration version, gate version, config hash, one row per input
 ├── report.md              # summary report
-├── <pgs_id>_gate.json     # full decision per input (schema prs-applicability-gate.output.v2)
-└── <pgs_id>_gate.md       # rule trace per input
+├── <input>_gate.json      # full decision per input (schema prs-applicability-gate.output.v2)
+└── <input>_gate.md        # rule trace per input
 ```
 
 Output fields: `status`, `primary_reason`, `reason_codes`, `allowed_claims`, `evidence_used`,

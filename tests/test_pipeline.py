@@ -57,6 +57,8 @@ def test_demo_case_outcomes(case, tmp_root):
     assert [s["actor"] for s in r["trace"]].count("ORCHESTRATION") >= 4
     assert r["orchestration"]["kind"] == "scripted_cli" and "scripted" in r["orchestration"]["performed_by"]
     assert len(r["trace"]) == 10
+    for c in r["candidates"]:  # the gate's rule trace is complete even when placement is unresolved
+        assert [x["rule"] for x in c["gate"]["rule_trace"]] == [f"G{i}" for i in range(1, 13)]
 
 
 def test_each_ancestry_is_placed(tmp_root):
@@ -153,3 +155,22 @@ def test_synthetic_literature_context_is_refused(tmp_root, tmp_path):
     with pytest.raises(SystemExit):
         run(RunConfig(genotype=DEMO / c["file"], trait="breast cancer", out_dir=tmp_path / "o", sex="female",
                       candidates=DEMO_CANDIDATES, literature_context=fake))
+
+
+@pytest.mark.parametrize("bad", ["../escaped", "/tmp/prsguard_abs_escape", "PGS000001/../x", "PGS000001\n"])
+def test_candidate_set_with_path_like_pgs_id_is_refused(tmp_path, bad):
+    from prsguard import router
+
+    cset = json.loads(DEMO_CANDIDATES.read_text())
+    cset["selected"] = [bad, *cset["selected"][1:]]
+    tampered = tmp_path / "cands.frozen.json"
+    tampered.write_text(json.dumps(router.freeze(cset)))   # digest is valid: the check must not rely on it
+    c = CASES["B"]
+    out = tmp_path / "out"
+    before = set(tmp_path.rglob("*"))
+    with pytest.raises(SystemExit, match="invalid PGS identifiers"):
+        run(RunConfig(genotype=DEMO / c["file"], trait="breast cancer", out_dir=out, sex="female",
+                      candidates=tampered))
+    created = set(tmp_path.rglob("*")) - before
+    assert all(p == out or out in p.parents for p in created)
+    assert not (tmp_path / "escaped").exists() and not (tmp_path.parent / "escaped").exists()

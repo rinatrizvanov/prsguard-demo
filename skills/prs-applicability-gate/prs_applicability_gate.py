@@ -25,7 +25,7 @@ from typing import Any
 
 import yaml
 
-GATE_VERSION = "2.2.0"
+GATE_VERSION = "2.2.1"
 INPUT_SCHEMA = "prs-applicability-gate.input.v2"
 OUTPUT_SCHEMA = "prs-applicability-gate.output.v2"
 SKILL_DIR = Path(__file__).resolve().parent
@@ -58,6 +58,9 @@ REASON_CODES = {
                                   "direction (no metric's 95% CI lies entirely above the null).",
     "REFERENCE_DISTRIBUTION_UNAVAILABLE": "No reference distribution on the person's matched variant set.",
     "REFERENCE_SENSITIVE": "The percentile depends on which reference population is chosen within the group.",
+    "REFERENCE_SENSITIVITY_UNVERIFIED": "Whether the percentile depends on the reference population chosen was not "
+                                        "established: reference_sensitive is not true/false (e.g. fewer than two "
+                                        "defensible reference populations could be compared).",
 }
 LOSS_CODES = {"palindromic_excluded": "PALINDROMIC_VARIANT_UNRESOLVED", "missing": "VARIANTS_MISSING",
               "no_call": "VARIANTS_MISSING", "allele_mismatch": "ALLELE_HARMONIZATION_FAILED",
@@ -218,9 +221,11 @@ class Trace:
         self.used: dict[str, Any] = {}
         self.missing: list[str] = []
 
-    def use(self, path: str, value: Any, needed: bool = True) -> Any:
+    def use(self, path: str, value: Any, needed: bool = True, usable: Any = None) -> Any:
+        """Record a field read; it is missing if needed and null (or, with ``usable``, not of a usable form)."""
         self.used[path] = value
-        if value is None and needed and path not in self.missing:
+        unusable = value is None if usable is None else not usable(value)
+        if unusable and needed and path not in self.missing:
             self.missing.append(path)
         return value
 
@@ -423,15 +428,28 @@ def _evaluate(gi: dict, cfg: dict) -> dict:
               (f"{rd.get('reference_n')} {group} reference individuals scored on {rd.get('n_intersection')} "
                "matched variants") if ok else f"unavailable: {rd.get('detail')}",
               "reference-panel genotypes at this score's variants")
-        sens = t.use("reference_distribution.reference_sensitive", rd.get("reference_sensitive"), ok)
-        if ok:
+        # Tri-state, fail closed: only an explicit boolean counts. false = compared and not sensitive (pass);
+        # true = compared and sensitive; null / missing / anything else = not established -> RAW_ONLY.
+        sens = t.use("reference_distribution.reference_sensitive", rd.get("reference_sensitive"), ok,
+                     usable=lambda v: isinstance(v, bool))
+        if ok and sens is True:
             pairs = rd.get("reference_sensitive_pairs") or []
             t.add("G12", "REFERENCE_SENSITIVITY", "Is the percentile robust to the reference population chosen?",
-                  "fail" if sens else "pass", RAW_ONLY, ["REFERENCE_SENSITIVE"],
-                  ("disjoint 95% intervals between " + ", ".join("/".join(p) for p in pairs)) if sens else
-                  f"percentile intervals overlap across {group} reference populations",
+                  "fail", RAW_ONLY, ["REFERENCE_SENSITIVE"],
+                  "disjoint 95% intervals between " + ", ".join("/".join(p) for p in pairs),
                   "a reference distribution matched more finely to the person (not a choice the agent may make "
                   "to obtain a preferred percentile)")
+        elif ok and sens is not False:
+            why = rd.get("reference_sensitivity_detail")
+            t.add("G12", "REFERENCE_SENSITIVITY", "Is the percentile robust to the reference population chosen?",
+                  "fail", RAW_ONLY, ["REFERENCE_SENSITIVITY_UNVERIFIED"],
+                  f"reference_sensitive {sens!r} is not reported as true/false"
+                  + (f" ({why})" if isinstance(why, str) and why else ""),
+                  "at least two defensible reference populations for this person, so that the percentile's "
+                  "dependence on the reference can be checked (reference_sensitive true or false)")
+        elif ok:
+            t.add("G12", "REFERENCE_SENSITIVITY", "Is the percentile robust to the reference population chosen?",
+                  "pass", detail=f"percentile intervals overlap across {group} reference populations")
         else:
             t.add("G12", "REFERENCE_SENSITIVITY", "Is the percentile robust to the reference population chosen?",
                   "not_applicable", detail="no reference distribution")

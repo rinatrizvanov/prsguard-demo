@@ -174,3 +174,36 @@ def test_candidate_set_with_path_like_pgs_id_is_refused(tmp_path, bad):
     created = set(tmp_path.rglob("*")) - before
     assert all(p == out or out in p.parents for p in created)
     assert not (tmp_path / "escaped").exists() and not (tmp_path.parent / "escaped").exists()
+
+
+def test_supported_results_rest_on_an_evaluated_sensitivity_check(tmp_root):
+    n = 0
+    for case in EXPECTED:
+        for c in result(case, tmp_root)["candidates"]:
+            if c["gate"]["status"] == "SUPPORTED":
+                assert c["gate"]["evidence_used"]["reference_distribution.reference_sensitive"] is False
+                n += 1
+    assert n == 10  # B, C, D (3 each) and F (PGS000004)
+
+
+def test_single_defensible_reference_end_to_end_is_unverified_not_supported(tmp_path, monkeypatch):
+    """Case F with only PEL as a defensible reference: sensitivity cannot be checked, so no percentile."""
+    from prsguard import pipeline as pl
+
+    real = pl.projection.run_placement
+
+    def only_pel(*a, **kw):
+        out = real(*a, **kw)
+        out["consistent_populations"] = ["PEL"]
+        return out
+
+    monkeypatch.setattr(pl.projection, "run_placement", only_pel)
+    c = CASES["F"]
+    r = run(RunConfig(genotype=DEMO / c["file"], trait="breast cancer", out_dir=tmp_path / "F", sex="female",
+                      candidates=DEMO_CANDIDATES))
+    pgs4 = next(x for x in r["candidates"] if x["pgs_id"] == "PGS000004")
+    assert pgs4["gate"]["status"] == "RAW_ONLY"
+    assert pgs4["gate"]["reason_codes"] == ["REFERENCE_SENSITIVITY_UNVERIFIED"]
+    assert pgs4["interpretation"]["percentile"]["released"] is False
+    gi = json.loads((tmp_path / "F" / "gate" / "PGS000004.input.json").read_text())["reference_distribution"]
+    assert gi["reference_sensitive"] is None and gi["reference_sensitivity_assessable"] is False

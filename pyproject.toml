@@ -1,6 +1,6 @@
 [project]
 name = "prsguard"
-version = "1.0.2"
+version = "1.0.3"
 description = "Trait-first, evidence-aware polygenic score router and applicability gate built on ClawBio"
 readme = "README.md"
 requires-python = ">=3.11"

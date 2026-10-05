@@ -428,3 +428,51 @@ def test_unresolved_placement_reports_g10_explicitly():
     res = run(mutate(placement__status="UNRESOLVED", placement__placement=None))
     g10 = rule(res, "G10")
     assert g10["outcome"] == "not_applicable" and "no resolved reference group" in g10["detail"]
+
+
+# ---- G12 tri-state: true = compared & sensitive, false = compared & not sensitive, else not established -------------
+
+def test_reference_sensitive_false_passes_g12():
+    res = run(base_input())  # reference_sensitive: false = a comparison was made and found not sensitive
+    assert res["status"] == "SUPPORTED" and rule(res, "G12")["outcome"] == "pass"
+
+
+def test_reference_sensitive_true_is_raw_only():
+    res = run(mutate(reference_distribution__reference_sensitive=True,
+                     reference_distribution__reference_sensitive_pairs=[["FIN", "TSI"]]))
+    assert res["status"] == "RAW_ONLY" and res["reason_codes"] == ["REFERENCE_SENSITIVE"]
+
+
+@pytest.mark.parametrize("value", [None, "false", "False", 0, 1, [], {}, "not evaluable"])
+def test_unestablished_reference_sensitivity_is_never_supported(value):
+    gi = mutate(reference_distribution__reference_sensitive=value,
+                reference_distribution__reference_sensitive_pairs=None)
+    res = run(gi)
+    assert res["status"] == "RAW_ONLY", res["rule_trace"]
+    assert res["reason_codes"] == ["REFERENCE_SENSITIVITY_UNVERIFIED"]
+    assert rule(res, "G12")["outcome"] == "fail"
+    assert "reference_distribution.reference_sensitive" in res["evidence_missing"]
+    assert res["allowed_claims"]["percentile"] is False
+
+
+def test_missing_reference_sensitive_key_is_never_supported():
+    gi = base_input()
+    del gi["reference_distribution"]["reference_sensitive"]
+    res = run(gi)
+    assert res["status"] == "RAW_ONLY" and res["reason_codes"] == ["REFERENCE_SENSITIVITY_UNVERIFIED"]
+
+
+def test_unverified_g12_explains_why_when_the_producer_says_so():
+    gi = mutate(reference_distribution__reference_sensitive=None,
+                reference_distribution__reference_sensitivity_assessable=False,
+                reference_distribution__reference_sensitivity_detail="not evaluable: 1 defensible reference "
+                                                                     "population(s) with >= 20 individuals (PEL)")
+    detail = rule(run(gi), "G12")["detail"]
+    assert "not evaluable" in detail and "PEL" in detail
+
+
+def test_g12_not_applicable_without_a_resolved_group_regardless_of_sensitivity():
+    res = run(mutate(placement__status="INTERMEDIATE", placement__placement=None,
+                     reference_distribution__reference_sensitive=None))
+    assert rule(res, "G12")["outcome"] == "not_applicable"
+    assert res["reason_codes"] == ["TARGET_REFERENCE_UNRESOLVED"]

@@ -9,7 +9,7 @@ type: software
 authors:
   - family-names: Rizvanov
     given-names: Rinat
-version: 1.0.2
+version: 1.0.3
 license: MIT
 repository-code: "https://github.com/rinatrizvanov/prsguard-demo"
 url: "https://rinatrizvanov.github.io/prsguard-demo/"

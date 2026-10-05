@@ -1,6 +1,6 @@
 # Calibration: every number PRSGuard uses, and why
 
-Calibration version **2026.09.26-3** (gate 2.2.0) (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
+Calibration version **2026.09.26-3** (gate 2.2.1) (`skills/prs-applicability-gate/config/calibration.yaml`). Numbers quoted
 below come from `docs/benchmarks.md`, which is generated from `benchmarks/results/*.json` by
 `python benchmarks/report.py`. Re-running `benchmarks/ancestry_benchmark.py`, `benchmarks/scoreability_benchmark.py`
 and `benchmarks/harmonisation_benchmark.py` regenerates every table from public data.
@@ -161,6 +161,10 @@ differences, not from risk, which is why PRSGuard never uses a reference the per
 - Missing variants: 95% prediction interval of the full score given the reduced score in the reference group.
 - Reference sensitivity (`REFERENCE_SENSITIVE`): percentiles against every 1000 Genomes population of the placed
   superpopulation whose cloud contains the person; disjoint 95% intervals fail G12. No point-spread cut-off.
+  The result is tri-state: `true` (compared, sensitive), `false` (compared, not sensitive) or `null` when fewer
+  than two such populations (with >= 20 individuals) are available, so nothing could be compared. `null` is never
+  read as "not sensitive": G12 fails as REFERENCE_SENSITIVITY_UNVERIFIED (RAW_ONLY). Before gate 2.2.1 an
+  unevaluated check was serialised as `false` and passed.
 - Absolute risk is never computed.
 
 ## 7. Allele reconciliation (`max_mismatch_fraction = 0.05`)

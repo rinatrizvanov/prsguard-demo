@@ -451,7 +451,9 @@
     "n_intersection": 3,
     "reference_sensitive": null,
     "reference_sensitive_pairs": null,
+    "reference_sensitivity_assessable": null,
+    "reference_sensitivity_detail": null,
     "detail": "no resolved reference group for this person"
   },
-  "input_digest": "sha256:da085a56eb717effb961ce196c8e0cba16e6562545773d25d8c9a2127ba2ef46"
+  "input_digest": "sha256:cd4cc51705ca8fda1b88490e2741903320fd869db20e4736dd3bda34b117ee65"
 }

@@ -3108,7 +3108,9 @@
     "n_intersection": 274,
     "reference_sensitive": null,
     "reference_sensitive_pairs": null,
+    "reference_sensitivity_assessable": null,
+    "reference_sensitivity_detail": null,
     "detail": "no resolved reference group for this person"
   },
-  "input_digest": "sha256:0c568b4f4407f773036bab1461a2c9967039148c3919d6bfeb15f749cfbb74e6"
+  "input_digest": "sha256:3be6efc59dd0fd59bff9292a75b196527ada54a5fc2af0404893a43c8329b915"
 }

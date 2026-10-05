@@ -122,7 +122,9 @@ def build_gate_input(*, candidate: dict, score, genotypes, harmonisation, basic_
         "evaluation": evaluation_block(audit),
         "reference_distribution": None if refdist is None else {
             k: refdist.get(k) for k in ("available", "reference_group", "reference_n", "n_intersection",
-                                        "reference_sensitive", "reference_sensitive_pairs", "detail")},
+                                        "reference_sensitive", "reference_sensitive_pairs",
+                                        "reference_sensitivity_assessable", "reference_sensitivity_detail",
+                                        "detail")},
     }
     body["input_digest"] = canonical_sha256(body)
     return body

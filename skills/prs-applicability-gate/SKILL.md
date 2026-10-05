@@ -7,7 +7,7 @@ description: >-
   change the result. Never produces absolute risk.
 license: MIT
 metadata:
-  version: "2.2.0"
+  version: "2.2.1"
   author: PRSGuard team (ClawBio Hackathon Challenge 3)
   domain: genomics
   tags:
@@ -116,6 +116,17 @@ Those are upstream/downstream steps of the PRSGuard pipeline.
 
 Gate inputs are produced by `prsguard.evidence.build_gate_input` in the PRSGuard repository.
 
+`reference_distribution.reference_sensitive` is tri-state:
+
+| Value | Meaning | G12 |
+|---|---|---|
+| `true` | percentiles against at least two defensible reference populations were compared and their 95% intervals are disjoint | fail: REFERENCE_SENSITIVE (RAW_ONLY) |
+| `false` | at least two defensible reference populations were compared and the intervals overlap | pass |
+| `null`, missing, or any non-boolean | sensitivity was not established (e.g. fewer than two defensible references) | fail: REFERENCE_SENSITIVITY_UNVERIFIED (RAW_ONLY) |
+
+An unevaluated check is never reported as `false`. `reference_sensitivity_assessable` and
+`reference_sensitivity_detail` say how many populations were compared.
+
 ## Workflow
 
 1. **Validate** the input file and document: an unreadable, empty or non-JSON file, a non-object document, or a
@@ -169,7 +180,7 @@ PGS001336 (SUPPORTED), an admixed ASW genome (RAW_ONLY, TARGET_REFERENCE_UNRESOL
 | G9 EVALUATION | Single-ancestry evaluation in that group with a metric whose 95% CI lies entirely above the null (evidence of association in the score's direction)? | NO_RELEVANT_EVALUATION, EVALUATION_NOT_INFORMATIVE | RAW_ONLY |
 | G10 SEX_EVALUATION | Do those evaluations include the person's sex? | SEX_POPULATION_MISMATCH | RAW_ONLY |
 | G11 REFERENCE_DISTRIBUTION | Reference distribution on the person's matched variants? | REFERENCE_DISTRIBUTION_UNAVAILABLE | RAW_ONLY |
-| G12 REFERENCE_SENSITIVITY | Percentile robust across equally defensible reference populations? | REFERENCE_SENSITIVE | RAW_ONLY |
+| G12 REFERENCE_SENSITIVITY | Percentile robust across equally defensible reference populations? | REFERENCE_SENSITIVE, REFERENCE_SENSITIVITY_UNVERIFIED | RAW_ONLY |
 
 **Key parameters** (`config/calibration.yaml`, derivations in the PRSGuard repository's `docs/calibration.md`):
 - `r_min = 0.90`: policy anchored in the published metric (a reduced score keeps ~r of the published per-SD
@@ -246,6 +257,8 @@ Output fields: `status`, `primary_reason`, `reason_codes`, `allowed_claims`, `ev
   units never count as group-specific evidence (G9).
 - **You will want to read "percent of variants matched" as scoreability.** Do not; a few heavily weighted
   variants can matter more than hundreds of small ones. The gate uses r(full, reduced) measured with LD.
+- **You will want to read a null or missing `reference_sensitive` as "not sensitive".** Do not; it means the
+  check could not be made, and the percentile is not released (REFERENCE_SENSITIVITY_UNVERIFIED).
 - **You will want to treat MAE/NR evaluations, an AUROC without a CI, or an inverse association (CI below the
   null, e.g. a case-only subtype comparison) as supporting evidence.** Do not; they are not.
 - **You will want to describe a passed G9 as "the score performs well" or "is clinically useful".** Do not; it

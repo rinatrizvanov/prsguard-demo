@@ -453,7 +453,9 @@
     "n_intersection": 467,
     "reference_sensitive": false,
     "reference_sensitive_pairs": [],
+    "reference_sensitivity_assessable": true,
+    "reference_sensitivity_detail": "compared 5 reference populations (CEU, FIN, GBR, IBS, TSI)",
     "detail": null
   },
-  "input_digest": "sha256:c8a55a21e936c92aa3e47fb9cc4967b76aa5f0941d727785fac656cec02e0cb2"
+  "input_digest": "sha256:99ccdd0d1248a1987b446f59ff6fd30e54ca498fc53615c245c071a4d595ffe5"
 }

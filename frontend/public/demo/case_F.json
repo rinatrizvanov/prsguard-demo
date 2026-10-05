@@ -58,8 +58,8 @@
         "sha256": "c35e7d32380df597e579a144747a6bc759fa7268e447ba76a66dafa84f6fba8d",
         "format": "vcf"
       },
-      "started_at": "2026-09-27T22:53:49+00:00",
-      "finished_at": "2026-09-27T22:53:49+00:00"
+      "started_at": "2026-10-05T12:35:04+00:00",
+      "finished_at": "2026-10-05T12:35:04+00:00"
     },
     {
       "step": 2,
@@ -77,8 +77,8 @@
         "rule": "a build is confirmed if >= 90% of >= 20 anchor rsIDs agree and refuted if <= 10%; otherwise the declared build if unambiguous and not refuted",
         "method": "empirical (rsID anchor positions) + declaration"
       },
-      "started_at": "2026-09-27T22:53:49+00:00",
-      "finished_at": "2026-09-27T22:53:49+00:00"
+      "started_at": "2026-10-05T12:35:04+00:00",
+      "finished_at": "2026-10-05T12:35:04+00:00"
     },
     {
       "step": 3,
@@ -97,8 +97,8 @@
           "MONDO_0004989"
         ]
       },
-      "started_at": "2026-09-27T22:53:49+00:00",
-      "finished_at": "2026-09-27T22:53:49+00:00"
+      "started_at": "2026-10-05T12:35:04+00:00",
+      "finished_at": "2026-10-05T12:35:04+00:00"
     },
     {
       "step": 4,
@@ -114,8 +114,8 @@
           "api_version": "1.8.6"
         }
       },
-      "started_at": "2026-09-27T22:53:49+00:00",
-      "finished_at": "2026-09-27T22:53:49+00:00"
+      "started_at": "2026-10-05T12:35:04+00:00",
+      "finished_at": "2026-10-05T12:35:04+00:00"
     },
     {
       "step": 5,
@@ -132,8 +132,8 @@
         "digest": "sha256:13d58f1fd3116bf1ce7cc060a3471c04b33f941d90d3baf5a01c6b1a7569d619",
         "frozen_at": "2026-09-26T22:00:23+00:00"
       },
-      "started_at": "2026-09-27T22:53:49+00:00",
-      "finished_at": "2026-09-27T22:53:49+00:00"
+      "started_at": "2026-10-05T12:35:04+00:00",
+      "finished_at": "2026-10-05T12:35:04+00:00"
     },
     {
       "step": 6,
@@ -148,8 +148,8 @@
         "placement_stability": 0.98,
         "n_sites_used": 6557
       },
-      "started_at": "2026-09-27T22:53:49+00:00",
-      "finished_at": "2026-09-27T22:53:53+00:00"
+      "started_at": "2026-10-05T12:35:04+00:00",
+      "finished_at": "2026-10-05T12:35:11+00:00"
     },
     {
       "step": 7,
@@ -158,8 +158,8 @@
       "tool": "prsguard.harmonize (+ ClawBio gwas-prs cross-check)",
       "summary": "PGS000004 274/313 matched, r = 0.9543; PGS001804 2984/2984 matched, r = 1.0; PGS001336 467/555 matched, r = 0.972",
       "outputs": {},
-      "started_at": "2026-09-27T22:53:53+00:00",
-      "finished_at": "2026-09-27T22:53:53+00:00"
+      "started_at": "2026-10-05T12:35:11+00:00",
+      "finished_at": "2026-10-05T12:35:11+00:00"
     },
     {
       "step": 8,
@@ -168,8 +168,8 @@
       "tool": "prsguard.catalog + prsguard.reference.distribution",
       "summary": "PGS000004 metadata resolved; PGS001804 metadata resolved; PGS001336 metadata resolved",
       "outputs": {},
-      "started_at": "2026-09-27T22:53:53+00:00",
-      "finished_at": "2026-09-27T22:53:53+00:00"
+      "started_at": "2026-10-05T12:35:11+00:00",
+      "finished_at": "2026-10-05T12:35:11+00:00"
     },
     {
       "step": 9,
@@ -182,8 +182,8 @@
         "PGS001804": "RAW_ONLY",
         "PGS001336": "RAW_ONLY"
       },
-      "started_at": "2026-09-27T22:53:53+00:00",
-      "finished_at": "2026-09-27T22:53:53+00:00"
+      "started_at": "2026-10-05T12:35:11+00:00",
+      "finished_at": "2026-10-05T12:35:11+00:00"
     },
     {
       "step": 10,
@@ -195,8 +195,8 @@
         "cross_pgs": "NOT_COMPARABLE",
         "primary": "PGS000004"
       },
-      "started_at": "2026-09-27T22:53:53+00:00",
-      "finished_at": "2026-09-27T22:53:53+00:00"
+      "started_at": "2026-10-05T12:35:11+00:00",
+      "finished_at": "2026-10-05T12:35:11+00:00"
     }
   ],
   "router": {
@@ -9204,9 +9204,7 @@
             "question": "Is the percentile robust to the reference population chosen?",
             "outcome": "pass",
             "effect": null,
-            "codes": [
-              "REFERENCE_SENSITIVE"
-            ],
+            "codes": [],
             "detail": "percentile intervals overlap across AMR reference populations",
             "what_would_change": null
           }
@@ -9214,10 +9212,10 @@
         "what_would_change_result": [],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.2.0",
+          "gate_version": "2.2.1",
           "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
-          "input_digest": "sha256:2205e243f3981f3ec279aceacf2f4d6e354da4aaae4323a62362af2fbf0d73b4",
+          "input_digest": "sha256:f38486642c4888db5adbed52d437f2e65c39c9283809dfb0563685c85b475e48",
           "deterministic": true
         },
         "disclaimer": "Research software, not a medical device. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, which is not evidence of clinically useful discrimination or calibration. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
@@ -13007,7 +13005,7 @@
             "retrieved_at": "2026-09-26T20:31:55+00:00"
           }
         ],
-        "gate_input_digest": "sha256:2205e243f3981f3ec279aceacf2f4d6e354da4aaae4323a62362af2fbf0d73b4"
+        "gate_input_digest": "sha256:f38486642c4888db5adbed52d437f2e65c39c9283809dfb0563685c85b475e48"
       }
     },
     {
@@ -13254,9 +13252,7 @@
             "question": "Is the percentile robust to the reference population chosen?",
             "outcome": "pass",
             "effect": null,
-            "codes": [
-              "REFERENCE_SENSITIVE"
-            ],
+            "codes": [],
             "detail": "percentile intervals overlap across AMR reference populations",
             "what_would_change": null
           }
@@ -13270,10 +13266,10 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.2.0",
+          "gate_version": "2.2.1",
           "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
-          "input_digest": "sha256:68f223ac698a7250a3e299176eb003ae0ba46f1dd8fec636ba356ced9aeabe73",
+          "input_digest": "sha256:914a4e9019bc9b08a4a854b92a5502d6c6f2e93a97586f465bbb6fa4cf057188",
           "deterministic": true
         },
         "disclaimer": "Research software, not a medical device. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, which is not evidence of clinically useful discrimination or calibration. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
@@ -13759,7 +13755,7 @@
             "retrieved_at": "2026-09-26T20:31:55+00:00"
           }
         ],
-        "gate_input_digest": "sha256:68f223ac698a7250a3e299176eb003ae0ba46f1dd8fec636ba356ced9aeabe73"
+        "gate_input_digest": "sha256:914a4e9019bc9b08a4a854b92a5502d6c6f2e93a97586f465bbb6fa4cf057188"
       }
     },
     {
@@ -14015,9 +14011,7 @@
             "question": "Is the percentile robust to the reference population chosen?",
             "outcome": "pass",
             "effect": null,
-            "codes": [
-              "REFERENCE_SENSITIVE"
-            ],
+            "codes": [],
             "detail": "percentile intervals overlap across AMR reference populations",
             "what_would_change": null
           }
@@ -14031,10 +14025,10 @@
         ],
         "provenance": {
           "gate": "prs-applicability-gate",
-          "gate_version": "2.2.0",
+          "gate_version": "2.2.1",
           "config_sha256": "sha256:727942cad27a64f1f2beec1a3298b354a739581e4124cda5d290b72714b76b7f",
           "config_canonical": true,
-          "input_digest": "sha256:9b2490f485a01e2c09dcbf1129f55eb362696eeef617a698113fb7e1ddfa9cfa",
+          "input_digest": "sha256:1ac6bb565145592ec9148c15c665d7f0e1ca3b44458048cc78fa1888771e84a9",
           "deterministic": true
         },
         "disclaimer": "Research software, not a medical device. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, which is not evidence of clinically useful discrimination or calibration. A polygenic score is not a diagnosis, and PRSGuard never converts a score into absolute risk. Genetic reference placement is not ethnicity or identity."
@@ -14618,7 +14612,7 @@
             "retrieved_at": "2026-09-26T20:31:55+00:00"
           }
         ],
-        "gate_input_digest": "sha256:9b2490f485a01e2c09dcbf1129f55eb362696eeef617a698113fb7e1ddfa9cfa"
+        "gate_input_digest": "sha256:1ac6bb565145592ec9148c15c665d7f0e1ca3b44458048cc78fa1888771e84a9"
       }
     }
   ],
@@ -16637,8 +16631,8 @@
     ]
   },
   "reproducibility": {
-    "prsguard_version": "1.0.2",
-    "git_commit": "0d99a785a2b6237902aa8d1ff1be5ac4cf4e780b",
+    "prsguard_version": "1.0.3",
+    "git_commit": "af6b09c5aaa938c405a3a564fbf6b4721df3564a",
     "git_dirty": true,
     "clawbio_commit": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
     "clawbio_pinned": "0ba950565ee6a0fe9da3bde2164f6c814bd57dc9",
@@ -16670,8 +16664,8 @@
       "release": "2026-09-17",
       "api_version": "1.8.6"
     },
-    "started_at": "2026-09-27T22:53:49+00:00",
-    "finished_at": "2026-09-27T22:53:53+00:00",
+    "started_at": "2026-10-05T12:35:03+00:00",
+    "finished_at": "2026-10-05T12:35:11+00:00",
     "command": "prsguard demo --case F --out runs/demo"
   },
   "disclaimer": "PRSGuard is RESEARCH SOFTWARE / a PROTOTYPE, not a medical device. It does not diagnose, and it never converts a polygenic score into absolute risk. SUPPORTED is a research-prototype reportability state, not a clinical recommendation: it requires evidence of association in a relevant evaluation group, not clinically useful discrimination or calibration. Genetic reference placement is not ethnicity or identity."

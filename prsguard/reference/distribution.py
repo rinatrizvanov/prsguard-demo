@@ -175,10 +175,17 @@ def reference_distribution(panel: ReferencePanel, score: ScoringFile, h: Harmoni
     disjoint = [(a_, b_) for i, a_ in enumerate(subs) for b_ in list(subs)[i + 1:]
                 if subs[a_]["ci_panel"][1] < subs[b_]["ci_panel"][0]
                 or subs[b_]["ci_panel"][1] < subs[a_]["ci_panel"][0]]
+    # Tri-state: true = compared and sensitive; false = compared and not sensitive; null = NOT evaluable (fewer
+    # than two defensible references to compare). An unevaluated check is never reported as "not sensitive".
+    evaluated = len(subs) >= 2
     out["subpopulation_percentiles"] = subs
-    out["reference_sensitivity_assessable"] = len(subs) >= 2
-    out["reference_sensitive"] = bool(disjoint)
-    out["reference_sensitive_pairs"] = [list(p) for p in disjoint]
+    out["reference_sensitivity_assessable"] = evaluated
+    out["reference_sensitive"] = bool(disjoint) if evaluated else None
+    out["reference_sensitive_pairs"] = [list(p) for p in disjoint] if evaluated else None
+    out["reference_sensitivity_detail"] = (
+        f"compared {len(subs)} reference populations ({', '.join(subs)})" if evaluated else
+        f"not evaluable: {len(subs)} defensible reference population(s) with >= 20 individuals "
+        f"({', '.join(subs) or 'none'}); at least two are needed to compare")
     return out
 
 
